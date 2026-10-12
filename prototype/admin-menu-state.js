@@ -56,6 +56,7 @@ window.AdminMenuRefresh=(()=>{
  function index(rows){const map=new Map(),groups=new Map(),stack=[];for(const [position,row]of rows.entries()){const depth=Number(row.tree?.depth)||0;while(stack.length&&stack.at(-1).depth>=depth)stack.pop();const parent=stack.at(-1)?.row.id||'',entry={row,parent,depth,position};map.set(row.id,entry);if(!groups.has(parent))groups.set(parent,[]);groups.get(parent).push(row.id);stack.push(entry);}return {map,groups};}
  function merge(source,saved){
   if(!accepts(source,saved))return clone(saved?.dataRevision===source?.dataRevision?saved:source);
+  const retiredPreview=window.AdminStreetTrajectoryMenu?.retirePreview(source,saved);if(retiredPreview)return retiredPreview;
   const toolsMigration=window.AdminToolsMenu.prepare(source,saved);if(toolsMigration){source=toolsMigration.source;saved=toolsMigration.saved;}
   // Compare local edits with the defaults from their own revision when a later
   // additive page follows a capture refresh; retain the older migration fallback.
@@ -212,6 +213,59 @@ window.AdminMenuState={
   next.appliedMigrations={...next.appliedMigrations,[migration]:true};next.menuDataRevision=tenant.menuDataRevision;
   return next;
  };
+})();
+
+/* SPEC-SUIYIN-ADMIN-081@1.1.0: medical profiles only, without reviving hidden menus.
+ * Existing medical tenants keep their recruitment anchor; newly approved medical
+ * skeletons receive only the necessary data group and this page. */
+window.AdminStreetTrajectoryMenu=(()=>{
+ const route='streetTrajectories',migration='street-trajectories-medical-v2';
+ const supports=tenant=>tenant?.industry==='medical-aesthetics'&&tenant?.capabilities?.streetTrajectories===true;
+ function retirePreview(source,saved){
+  // The unpublished broader preview only added this row to the same released
+  // menu. Retire it without storing duplicate full-table snapshots per tenant.
+  if(source.route!=='menu'||source.tables[0].rows.some(row=>row.tree?.key===route)||!['street-trajectories-v1',migration].some(version=>saved.dataRevision===source.dataRevision+'-'+version))return null;
+  const next={...structuredClone(saved),...structuredClone(source),tables:structuredClone(saved.tables),previousSampleRevision:saved.dataRevision,menuRefreshApplied:source.dataRevision};
+  next.tables[0].rows=next.tables[0].rows.filter(row=>row.tree?.key!==route);
+  for(const field of ['history','auditRecords','menuLayout','config'])if(Object.hasOwn(saved,field))next[field]=structuredClone(saved[field]);
+  if(next.menuLayout){delete next.menuLayout.parents?.[route];for(const [parent,order]of Object.entries(next.menuLayout.orders||{}))if(Array.isArray(order))next.menuLayout.orders[parent]=order.filter(id=>id!==route);}
+  return next;
+ }
+ const state=window.AdminMenuState,previous=state.migrate;
+ state.migrate=function(tenant,override){
+  const saved=previous.call(this,tenant,override);
+  if(!supports(tenant)){
+   if(!saved.enabled?.includes(route))return saved;
+   const next=structuredClone(saved);next.enabled=next.enabled.filter(item=>item!==route);
+   next.appliedMigrations={...next.appliedMigrations,[migration]:true};return next;
+  }
+  const parent=tenant.menu.find(group=>group.children?.some(child=>child.route===route));
+  if(!parent||saved.appliedMigrations?.[migration])return saved;
+  const next=structuredClone(saved),child=parent.children.find(item=>item.route===route);
+  const parentShown=(next.display?.[parent.route||parent.id]??parent.display)!=='隐藏';
+  const childShown=(next.display?.[route]??child.display)!=='隐藏';
+  const hadEnabled=Array.isArray(override?.enabled);
+  const previouslyHidden=override?.appliedMigrations?.['street-trajectories-v1']&&hadEnabled&&!override.enabled.includes(route)&&tenant.streetTrajectoriesNewParent!==true;
+  const siblingShown=parent.children.some(item=>item.route!==route&&next.enabled.includes(item.route)&&(next.display?.[item.route]??item.display)!=='隐藏');
+  if(!previouslyHidden&&!next.enabled.includes(route)&&parentShown&&childShown&&(!hadEnabled||siblingShown||tenant.streetTrajectoriesNewParent===true))next.enabled.push(route);
+  next.appliedMigrations={...next.appliedMigrations,[migration]:true};next.menuDataRevision=tenant.menuDataRevision;
+  return next;
+ };
+ function placeDefault(tenant,list,baseline,current){
+  const anchor=tenant.streetTrajectoriesAnchor,at=list.findIndex(node=>node.key===route),anchorAt=list.findIndex(node=>node.key===anchor);
+  if(at<0||anchorAt<0||!anchor)return;
+  const original=baseline?.byRoute.get(route),present=current?.byRoute.get(route);
+  if(original&&present){
+   if(original.parentId!==present.parentId)return;
+   // A platform reorder across this slot is an explicit decision and wins.
+   for(const node of baseline.nodes.values())if(node.id!==original.id&&node.parentId===original.parentId){
+    const live=current.nodes.get(node.id);
+    if(live?.parentId===present.parentId&&(node.index<original.index)!==(live.index<present.index))return;
+   }
+  }
+  const [item]=list.splice(at,1);list.splice(list.findIndex(node=>node.key===anchor)+1,0,item);
+ }
+ return {placeDefault,supports,retirePreview};
 })();
 
 /* SPEC-SUIYIN-ADMIN-060@1.1.0: one local platform definition, all tenant sidebars.
@@ -375,6 +429,8 @@ window.AdminTenantMenu=(()=>{
   for(const group of tenant.menu){const id=platformRoot(group),groupKey=group.route||group.id;if(id&&input.nodes.has(groupKey)){rootByPlatform.set(id,groupKey);platformByRoot.set(groupKey,id);}}
   const legacyOrder=node=>Number(override.order?.[node.key]??nav.get(node.key)?.sort??base.nodes.get(node.key)?.row.cells[indices.order]??0);
   for(const [id,entry]of input.nodes){
+    // Retired unpublished 081 scope must not survive as a local-only menu row.
+    if(id==='streetTrajectories'&&!window.AdminStreetTrajectoryMenu.supports(tenant))continue;
    // Generated folders only exist while their platform definition still exists.
    if(entry.row.tree?.menuSynthetic&&!current?.nodes.has(entry.row.tree.platformId))continue;
    const source=base.nodes.get(id),item=nav.get(id),row=clone(entry.row);
@@ -441,6 +497,7 @@ window.AdminTenantMenu=(()=>{
     else {const known=list.filter(node=>node.definition).sort((a,b)=>a.definition.index-b.definition.index);let offset=0;for(let i=0;i<list.length;i++)if(list[i].definition)list[i]=known[offset++];}
    }
    const order=layout?.orders?.[parent||'$root'];
+    if(!Array.isArray(order)&&!list.some(node=>override.order?.[node.key]!==undefined))window.AdminStreetTrajectoryMenu.placeDefault(tenant,list,baseline,current);
    if(Array.isArray(order)){const ranks=new Map(order.map((id,i)=>[id,i]));list.sort((a,b)=>(ranks.get(a.key)??Number.MAX_SAFE_INTEGER)-(ranks.get(b.key)??Number.MAX_SAFE_INTEGER));}
   }
   const rows=[],visited=new Set();

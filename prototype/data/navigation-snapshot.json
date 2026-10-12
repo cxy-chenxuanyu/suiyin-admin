@@ -692,6 +692,24 @@
               }
             },
             {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 32,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "anchorRoute": "newAddedRecords",
+              "requiredIndustry": "medical-aesthetics"
+            },
+            {
               "id": "salesStatsNew",
               "route": "salesStatsNew",
               "label": "销售统计",
@@ -703,7 +721,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 32,
+              "settingIndex": 33,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -724,7 +742,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 33,
+              "settingIndex": 34,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -745,7 +763,7 @@
               "display": "隐藏",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 34,
+              "settingIndex": 35,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -766,7 +784,7 @@
               "display": "隐藏",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 35,
+              "settingIndex": 36,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -787,7 +805,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 36,
+              "settingIndex": 37,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -808,7 +826,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 37,
+              "settingIndex": 38,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -829,7 +847,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 38,
+              "settingIndex": 39,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -850,7 +868,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 39,
+              "settingIndex": 40,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -871,7 +889,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 40,
+              "settingIndex": 41,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -892,7 +910,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 41,
+              "settingIndex": 42,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -913,7 +931,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 42,
+              "settingIndex": 43,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -934,7 +952,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 43,
+              "settingIndex": 44,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -955,7 +973,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 44,
+              "settingIndex": 45,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -976,7 +994,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 45,
+              "settingIndex": 46,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -997,7 +1015,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 46,
+              "settingIndex": 47,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1033,7 +1051,7 @@
               },
               "new": true,
               "approvalStatus": "approved",
-              "settingIndex": 47
+              "settingIndex": 48
             }
           ]
         },
@@ -1044,7 +1062,7 @@
           "display": "显示",
           "sort": 4,
           "superPermission": false,
-          "settingIndex": 48,
+          "settingIndex": 49,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -1066,7 +1084,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 49,
+              "settingIndex": 50,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1087,7 +1105,7 @@
               "display": "显示",
               "sort": 1,
               "superPermission": false,
-              "settingIndex": 50,
+              "settingIndex": 51,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1108,7 +1126,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 51,
+              "settingIndex": 52,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1129,7 +1147,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 52,
+              "settingIndex": 53,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1150,7 +1168,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 53,
+              "settingIndex": 54,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1171,7 +1189,7 @@
               "display": "显示",
               "sort": -1,
               "superPermission": false,
-              "settingIndex": 54,
+              "settingIndex": 55,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1192,7 +1210,7 @@
               "display": "显示",
               "sort": -2,
               "superPermission": false,
-              "settingIndex": 55,
+              "settingIndex": 56,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1229,7 +1247,7 @@
           "display": "显示",
           "sort": 3,
           "superPermission": false,
-          "settingIndex": 56,
+          "settingIndex": 57,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -1251,7 +1269,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 57,
+              "settingIndex": 58,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1272,7 +1290,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 58,
+              "settingIndex": 59,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1293,7 +1311,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 59,
+              "settingIndex": 60,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1311,7 +1329,7 @@
           "display": "显示",
           "sort": 2,
           "superPermission": false,
-          "settingIndex": 60,
+          "settingIndex": 61,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -1333,7 +1351,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 61,
+              "settingIndex": 62,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1354,7 +1372,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 62,
+              "settingIndex": 63,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1375,7 +1393,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 63,
+              "settingIndex": 64,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1396,7 +1414,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 64,
+              "settingIndex": 65,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1417,7 +1435,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 65,
+              "settingIndex": 66,
               "prototypeOnly": true,
               "liveEvidence": {
                 "liveObserved": false,
@@ -1433,7 +1451,7 @@
           "display": "显示",
           "sort": 1,
           "superPermission": false,
-          "settingIndex": 66,
+          "settingIndex": 67,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -1455,7 +1473,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 67,
+              "settingIndex": 68,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1476,7 +1494,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 68,
+              "settingIndex": 69,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1497,7 +1515,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 69,
+              "settingIndex": 70,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1518,7 +1536,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 70,
+              "settingIndex": 71,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1539,7 +1557,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 71,
+              "settingIndex": 72,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-sz.wecarepet.com/admin/menu",
@@ -1779,6 +1797,15 @@
           "sort": 0,
           "superPermission": false,
           "level": 1
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true,
+          "spec": "SPEC-SUIYIN-ADMIN-081@1.0.0"
         },
         {
           "label": "销售统计",
@@ -2073,7 +2100,7 @@
       "navigationCapturedAt": "2026-09-27T03:02:19.160Z",
       "clientVersion": "v2026092601",
       "clientVersionEvidence": "2026-09-27 authenticated current tenant download link",
-      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1",
+      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1-street-trajectories-medical-v2",
       "refreshStatus": "current-reference",
       "orderEvidence": {
         "navigation": "current-left-navigation-dom",
@@ -2507,10 +2534,14 @@
         "recordingAdmin"
       ],
       "capabilities": {
-        "guideLineManage": true
+        "guideLineManage": true,
+        "streetTrajectories": true
       },
       "base": "yestar",
-      "toolsMenuMigration": "tools-menu-v1"
+      "toolsMenuMigration": "tools-menu-v1",
+      "streetTrajectoriesAnchor": "newAddedRecords",
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0"
     },
     {
       "id": "jbfs",
@@ -19448,6 +19479,24 @@
               }
             },
             {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 32,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "anchorRoute": "newAddedRecords",
+              "requiredIndustry": "medical-aesthetics"
+            },
+            {
               "id": "salesStatsNew",
               "route": "salesStatsNew",
               "label": "销售统计",
@@ -19459,7 +19508,7 @@
               "display": "隐藏",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 32,
+              "settingIndex": 33,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19480,7 +19529,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 33,
+              "settingIndex": 34,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19501,7 +19550,7 @@
               "display": "隐藏",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 34,
+              "settingIndex": 35,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19522,7 +19571,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 35,
+              "settingIndex": 36,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19543,7 +19592,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 36,
+              "settingIndex": 37,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19564,7 +19613,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 37,
+              "settingIndex": 38,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19585,7 +19634,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 38,
+              "settingIndex": 39,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19606,7 +19655,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 39,
+              "settingIndex": 40,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19627,7 +19676,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 40,
+              "settingIndex": 41,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19648,7 +19697,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 41,
+              "settingIndex": 42,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19669,7 +19718,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 42,
+              "settingIndex": 43,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19690,7 +19739,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 43,
+              "settingIndex": 44,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19711,7 +19760,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 44,
+              "settingIndex": 45,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19732,7 +19781,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 45,
+              "settingIndex": 46,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19753,7 +19802,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 46,
+              "settingIndex": 47,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19789,7 +19838,7 @@
               },
               "new": true,
               "approvalStatus": "approved",
-              "settingIndex": 47
+              "settingIndex": 48
             }
           ]
         },
@@ -19800,7 +19849,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 48,
+          "settingIndex": 49,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -19822,7 +19871,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 49,
+              "settingIndex": 50,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19843,7 +19892,7 @@
               "display": "显示",
               "sort": 1,
               "superPermission": false,
-              "settingIndex": 50,
+              "settingIndex": 51,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19864,7 +19913,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 51,
+              "settingIndex": 52,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19885,7 +19934,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 52,
+              "settingIndex": 53,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19906,7 +19955,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 53,
+              "settingIndex": 54,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19927,7 +19976,7 @@
               "display": "显示",
               "sort": -1,
               "superPermission": false,
-              "settingIndex": 54,
+              "settingIndex": 55,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19948,7 +19997,7 @@
               "display": "显示",
               "sort": -2,
               "superPermission": false,
-              "settingIndex": 55,
+              "settingIndex": 56,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -19985,7 +20034,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 56,
+          "settingIndex": 57,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -20007,7 +20056,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 57,
+              "settingIndex": 58,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20028,7 +20077,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 58,
+              "settingIndex": 59,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20049,7 +20098,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 59,
+              "settingIndex": 60,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20067,7 +20116,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 60,
+          "settingIndex": 61,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -20089,7 +20138,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 61,
+              "settingIndex": 62,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20110,7 +20159,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 62,
+              "settingIndex": 63,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20131,7 +20180,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 63,
+              "settingIndex": 64,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20152,7 +20201,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 64,
+              "settingIndex": 65,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20173,7 +20222,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 65,
+              "settingIndex": 66,
               "prototypeOnly": true,
               "liveEvidence": {
                 "liveObserved": false,
@@ -20189,7 +20238,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 66,
+          "settingIndex": 67,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -20211,7 +20260,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 67,
+              "settingIndex": 68,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20232,7 +20281,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 68,
+              "settingIndex": 69,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20253,7 +20302,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 69,
+              "settingIndex": 70,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20274,7 +20323,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 70,
+              "settingIndex": 71,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20295,7 +20344,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 71,
+              "settingIndex": 72,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar.wecarepet.com/admin/menu",
@@ -20535,6 +20584,15 @@
           "sort": 0,
           "superPermission": false,
           "level": 1
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true,
+          "spec": "SPEC-SUIYIN-ADMIN-081@1.0.0"
         },
         {
           "label": "销售统计",
@@ -20828,7 +20886,7 @@
       },
       "navigationCapturedAt": "2026-09-27T03:15:43.585Z",
       "clientVersion": "v2026092601",
-      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1",
+      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1-street-trajectories-medical-v2",
       "refreshStatus": "current-reference",
       "orderEvidence": {
         "navigation": "current-left-navigation-dom",
@@ -21252,10 +21310,14 @@
       ],
       "clientVersionEvidence": "2026-09-27 authenticated current tenant download link",
       "capabilities": {
-        "guideLineManage": true
+        "guideLineManage": true,
+        "streetTrajectories": true
       },
       "base": "yestar",
-      "toolsMenuMigration": "tools-menu-v1"
+      "toolsMenuMigration": "tools-menu-v1",
+      "streetTrajectoriesAnchor": "newAddedRecords",
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0"
     },
     {
       "id": "yestar-bj",
@@ -21736,6 +21798,24 @@
               }
             },
             {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 23,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "anchorRoute": "newAddedRecords",
+              "requiredIndustry": "medical-aesthetics"
+            },
+            {
               "id": "salesStatsNew",
               "route": "salesStatsNew",
               "label": "销售统计",
@@ -21747,7 +21827,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 23,
+              "settingIndex": 24,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21768,7 +21848,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 24,
+              "settingIndex": 25,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21789,7 +21869,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 25,
+              "settingIndex": 26,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21810,7 +21890,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 26,
+              "settingIndex": 27,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21831,7 +21911,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 27,
+              "settingIndex": 28,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21852,7 +21932,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 28,
+              "settingIndex": 29,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21873,7 +21953,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 29,
+              "settingIndex": 30,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21894,7 +21974,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 30,
+              "settingIndex": 31,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21915,7 +21995,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 31,
+              "settingIndex": 32,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21936,7 +22016,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 32,
+              "settingIndex": 33,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21957,7 +22037,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 33,
+              "settingIndex": 34,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21978,7 +22058,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 34,
+              "settingIndex": 35,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -21999,7 +22079,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 35,
+              "settingIndex": 36,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22020,7 +22100,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 36,
+              "settingIndex": 37,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22056,7 +22136,7 @@
               },
               "new": true,
               "approvalStatus": "approved",
-              "settingIndex": 37
+              "settingIndex": 38
             }
           ]
         },
@@ -22067,7 +22147,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 38,
+          "settingIndex": 39,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -22089,7 +22169,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 39,
+              "settingIndex": 40,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22110,7 +22190,7 @@
               "display": "显示",
               "sort": 1,
               "superPermission": false,
-              "settingIndex": 40,
+              "settingIndex": 41,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22131,7 +22211,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 41,
+              "settingIndex": 42,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22152,7 +22232,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 42,
+              "settingIndex": 43,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22173,7 +22253,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 43,
+              "settingIndex": 44,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22194,7 +22274,7 @@
               "display": "显示",
               "sort": -1,
               "superPermission": false,
-              "settingIndex": 44,
+              "settingIndex": 45,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22215,7 +22295,7 @@
               "display": "显示",
               "sort": -2,
               "superPermission": false,
-              "settingIndex": 45,
+              "settingIndex": 46,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22252,7 +22332,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 46,
+          "settingIndex": 47,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -22274,7 +22354,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 47,
+              "settingIndex": 48,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22295,7 +22375,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 48,
+              "settingIndex": 49,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22316,7 +22396,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 49,
+              "settingIndex": 50,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22334,7 +22414,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 50,
+          "settingIndex": 51,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -22356,7 +22436,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 51,
+              "settingIndex": 52,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22377,7 +22457,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 52,
+              "settingIndex": 53,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22398,7 +22478,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 53,
+              "settingIndex": 54,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22419,7 +22499,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 54,
+              "settingIndex": 55,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22440,7 +22520,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 55,
+              "settingIndex": 56,
               "prototypeOnly": true,
               "liveEvidence": {
                 "liveObserved": false,
@@ -22456,7 +22536,7 @@
           "display": "显示",
           "sort": 0,
           "superPermission": false,
-          "settingIndex": 56,
+          "settingIndex": 57,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -22478,7 +22558,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 57,
+              "settingIndex": 58,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22499,7 +22579,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 58,
+              "settingIndex": 59,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22520,7 +22600,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 59,
+              "settingIndex": 60,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22541,7 +22621,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 60,
+              "settingIndex": 61,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22562,7 +22642,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 61,
+              "settingIndex": 62,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-bj.wecarepet.com/admin/menu",
@@ -22735,6 +22815,15 @@
           "sort": 0,
           "superPermission": false,
           "level": 1
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true,
+          "spec": "SPEC-SUIYIN-ADMIN-081@1.0.0"
         },
         {
           "label": "销售统计",
@@ -23019,7 +23108,7 @@
         "platformAssignment": "current-platform-and-prior-tenant-bindings",
         "content": "not-refreshed-in-this-step"
       },
-      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1",
+      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1-street-trajectories-medical-v2",
       "navigationCapturedAt": "2026-09-27T03:03:19.038Z",
       "refreshStatus": "current-reference",
       "orderEvidence": {
@@ -23448,10 +23537,14 @@
       "clientVersion": "v2026092601",
       "clientVersionEvidence": "2026-09-27 authenticated current tenant download link",
       "capabilities": {
-        "guideLineManage": true
+        "guideLineManage": true,
+        "streetTrajectories": true
       },
       "base": "yestar",
-      "toolsMenuMigration": "tools-menu-v1"
+      "toolsMenuMigration": "tools-menu-v1",
+      "streetTrajectoriesAnchor": "newAddedRecords",
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0"
     },
     {
       "id": "yestar-gz",
@@ -24135,6 +24228,24 @@
               }
             },
             {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 32,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "anchorRoute": "newAddedRecords",
+              "requiredIndustry": "medical-aesthetics"
+            },
+            {
               "id": "salesStatsNew",
               "route": "salesStatsNew",
               "label": "销售统计",
@@ -24146,7 +24257,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 32,
+              "settingIndex": 33,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24167,7 +24278,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 33,
+              "settingIndex": 34,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24188,7 +24299,7 @@
               "display": "隐藏",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 34,
+              "settingIndex": 35,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24209,7 +24320,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 35,
+              "settingIndex": 36,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24230,7 +24341,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 36,
+              "settingIndex": 37,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24251,7 +24362,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 37,
+              "settingIndex": 38,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24272,7 +24383,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 38,
+              "settingIndex": 39,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24293,7 +24404,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 39,
+              "settingIndex": 40,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24314,7 +24425,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 40,
+              "settingIndex": 41,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24335,7 +24446,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 41,
+              "settingIndex": 42,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24356,7 +24467,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 42,
+              "settingIndex": 43,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24377,7 +24488,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 43,
+              "settingIndex": 44,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24398,7 +24509,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 44,
+              "settingIndex": 45,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24419,7 +24530,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 45,
+              "settingIndex": 46,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24455,7 +24566,7 @@
               },
               "new": true,
               "approvalStatus": "approved",
-              "settingIndex": 46
+              "settingIndex": 47
             }
           ]
         },
@@ -24466,7 +24577,7 @@
           "display": "显示",
           "sort": 4,
           "superPermission": false,
-          "settingIndex": 47,
+          "settingIndex": 48,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -24488,7 +24599,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 48,
+              "settingIndex": 49,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24509,7 +24620,7 @@
               "display": "显示",
               "sort": 1,
               "superPermission": false,
-              "settingIndex": 49,
+              "settingIndex": 50,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24530,7 +24641,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 50,
+              "settingIndex": 51,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24551,7 +24662,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 51,
+              "settingIndex": 52,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24572,7 +24683,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 52,
+              "settingIndex": 53,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24593,7 +24704,7 @@
               "display": "显示",
               "sort": -1,
               "superPermission": false,
-              "settingIndex": 53,
+              "settingIndex": 54,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24614,7 +24725,7 @@
               "display": "显示",
               "sort": -2,
               "superPermission": false,
-              "settingIndex": 54,
+              "settingIndex": 55,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24651,7 +24762,7 @@
           "display": "显示",
           "sort": 3,
           "superPermission": false,
-          "settingIndex": 55,
+          "settingIndex": 56,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -24673,7 +24784,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 56,
+              "settingIndex": 57,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24694,7 +24805,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 57,
+              "settingIndex": 58,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24715,7 +24826,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 58,
+              "settingIndex": 59,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24733,7 +24844,7 @@
           "display": "显示",
           "sort": 2,
           "superPermission": false,
-          "settingIndex": 59,
+          "settingIndex": 60,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -24755,7 +24866,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 60,
+              "settingIndex": 61,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24776,7 +24887,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 61,
+              "settingIndex": 62,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24797,7 +24908,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 62,
+              "settingIndex": 63,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24818,7 +24929,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 63,
+              "settingIndex": 64,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24839,7 +24950,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 64,
+              "settingIndex": 65,
               "prototypeOnly": true,
               "liveEvidence": {
                 "liveObserved": false,
@@ -24855,7 +24966,7 @@
           "display": "显示",
           "sort": 1,
           "superPermission": false,
-          "settingIndex": 65,
+          "settingIndex": 66,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -24877,7 +24988,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 66,
+              "settingIndex": 67,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24898,7 +25009,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 67,
+              "settingIndex": 68,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24919,7 +25030,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 68,
+              "settingIndex": 69,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24940,7 +25051,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 69,
+              "settingIndex": 70,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -24961,7 +25072,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 70,
+              "settingIndex": 71,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-gz.wecarepet.com/admin/menu",
@@ -25201,6 +25312,15 @@
           "sort": 0,
           "superPermission": false,
           "level": 1
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true,
+          "spec": "SPEC-SUIYIN-ADMIN-081@1.0.0"
         },
         {
           "label": "销售统计",
@@ -25487,7 +25607,7 @@
       },
       "navigationCapturedAt": "2026-09-27T03:02:19.415Z",
       "clientVersion": "v2026092601",
-      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1",
+      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1-street-trajectories-medical-v2",
       "refreshStatus": "current-reference",
       "orderEvidence": {
         "navigation": "current-left-navigation-dom",
@@ -25920,10 +26040,14 @@
       ],
       "clientVersionEvidence": "2026-09-27 authenticated current tenant download link",
       "capabilities": {
-        "guideLineManage": true
+        "guideLineManage": true,
+        "streetTrajectories": true
       },
       "base": "yestar",
-      "toolsMenuMigration": "tools-menu-v1"
+      "toolsMenuMigration": "tools-menu-v1",
+      "streetTrajectoriesAnchor": "newAddedRecords",
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0"
     },
     {
       "id": "yestar-hz",
@@ -26710,6 +26834,24 @@
               }
             },
             {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 37,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "anchorRoute": "newAddedRecords",
+              "requiredIndustry": "medical-aesthetics"
+            },
+            {
               "id": "salesStatsNew",
               "route": "salesStatsNew",
               "label": "销售统计",
@@ -26721,7 +26863,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 37,
+              "settingIndex": 38,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26742,7 +26884,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 38,
+              "settingIndex": 39,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26763,7 +26905,7 @@
               "display": "隐藏",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 39,
+              "settingIndex": 40,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26784,7 +26926,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 40,
+              "settingIndex": 41,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26805,7 +26947,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 41,
+              "settingIndex": 42,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26826,7 +26968,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 42,
+              "settingIndex": 43,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26847,7 +26989,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 43,
+              "settingIndex": 44,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26868,7 +27010,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 44,
+              "settingIndex": 45,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26889,7 +27031,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 45,
+              "settingIndex": 46,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26910,7 +27052,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 46,
+              "settingIndex": 47,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26931,7 +27073,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 47,
+              "settingIndex": 48,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26952,7 +27094,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 48,
+              "settingIndex": 49,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26973,7 +27115,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 49,
+              "settingIndex": 50,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -26994,7 +27136,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 50,
+              "settingIndex": 51,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27030,7 +27172,7 @@
               },
               "new": true,
               "approvalStatus": "approved",
-              "settingIndex": 51
+              "settingIndex": 52
             }
           ]
         },
@@ -27041,7 +27183,7 @@
           "display": "显示",
           "sort": 2500,
           "superPermission": false,
-          "settingIndex": 52,
+          "settingIndex": 53,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -27063,7 +27205,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 53,
+              "settingIndex": 54,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27084,7 +27226,7 @@
               "display": "显示",
               "sort": 1,
               "superPermission": false,
-              "settingIndex": 54,
+              "settingIndex": 55,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27105,7 +27247,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 55,
+              "settingIndex": 56,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27126,7 +27268,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 56,
+              "settingIndex": 57,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27147,7 +27289,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 57,
+              "settingIndex": 58,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27168,7 +27310,7 @@
               "display": "显示",
               "sort": -1,
               "superPermission": false,
-              "settingIndex": 58,
+              "settingIndex": 59,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27189,7 +27331,7 @@
               "display": "显示",
               "sort": -2,
               "superPermission": false,
-              "settingIndex": 59,
+              "settingIndex": 60,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27226,7 +27368,7 @@
           "display": "显示",
           "sort": 1875,
           "superPermission": false,
-          "settingIndex": 60,
+          "settingIndex": 61,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -27248,7 +27390,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 61,
+              "settingIndex": 62,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27269,7 +27411,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 62,
+              "settingIndex": 63,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27290,7 +27432,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 63,
+              "settingIndex": 64,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27308,7 +27450,7 @@
           "display": "显示",
           "sort": 1250,
           "superPermission": false,
-          "settingIndex": 64,
+          "settingIndex": 65,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -27330,7 +27472,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 65,
+              "settingIndex": 66,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27351,7 +27493,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 66,
+              "settingIndex": 67,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27372,7 +27514,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 67,
+              "settingIndex": 68,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27393,7 +27535,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 68,
+              "settingIndex": 69,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27414,7 +27556,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 69,
+              "settingIndex": 70,
               "prototypeOnly": true,
               "liveEvidence": {
                 "liveObserved": false,
@@ -27430,7 +27572,7 @@
           "display": "显示",
           "sort": 625,
           "superPermission": false,
-          "settingIndex": 70,
+          "settingIndex": 71,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -27452,7 +27594,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 71,
+              "settingIndex": 72,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27473,7 +27615,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 72,
+              "settingIndex": 73,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27494,7 +27636,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 73,
+              "settingIndex": 74,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27515,7 +27657,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 74,
+              "settingIndex": 75,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27536,7 +27678,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 75,
+              "settingIndex": 76,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-hz.wecarepet.com/admin/menu",
@@ -27811,6 +27953,15 @@
           "sort": 0,
           "superPermission": false,
           "level": 1
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true,
+          "spec": "SPEC-SUIYIN-ADMIN-081@1.0.0"
         },
         {
           "label": "销售统计",
@@ -28097,7 +28248,7 @@
       },
       "navigationCapturedAt": "2026-09-27T03:02:19.336Z",
       "clientVersion": "v2026092601",
-      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1",
+      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1-street-trajectories-medical-v2",
       "refreshStatus": "current-reference",
       "orderEvidence": {
         "navigation": "current-left-navigation-dom",
@@ -28559,10 +28710,14 @@
       ],
       "clientVersionEvidence": "2026-09-27 authenticated current tenant download link",
       "capabilities": {
-        "guideLineManage": true
+        "guideLineManage": true,
+        "streetTrajectories": true
       },
       "base": "yestar",
-      "toolsMenuMigration": "tools-menu-v1"
+      "toolsMenuMigration": "tools-menu-v1",
+      "streetTrajectoriesAnchor": "newAddedRecords",
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0"
     },
     {
       "id": "yestar-jx",
@@ -29246,6 +29401,24 @@
               }
             },
             {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 32,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "anchorRoute": "newAddedRecords",
+              "requiredIndustry": "medical-aesthetics"
+            },
+            {
               "id": "salesStatsNew",
               "route": "salesStatsNew",
               "label": "销售统计",
@@ -29257,7 +29430,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 32,
+              "settingIndex": 33,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29278,7 +29451,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 33,
+              "settingIndex": 34,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29299,7 +29472,7 @@
               "display": "隐藏",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 34,
+              "settingIndex": 35,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29320,7 +29493,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 35,
+              "settingIndex": 36,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29341,7 +29514,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 36,
+              "settingIndex": 37,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29362,7 +29535,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 37,
+              "settingIndex": 38,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29383,7 +29556,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 38,
+              "settingIndex": 39,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29404,7 +29577,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 39,
+              "settingIndex": 40,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29425,7 +29598,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 40,
+              "settingIndex": 41,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29446,7 +29619,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 41,
+              "settingIndex": 42,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29467,7 +29640,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 42,
+              "settingIndex": 43,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29488,7 +29661,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 43,
+              "settingIndex": 44,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29509,7 +29682,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 44,
+              "settingIndex": 45,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29530,7 +29703,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 45,
+              "settingIndex": 46,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29566,7 +29739,7 @@
               },
               "new": true,
               "approvalStatus": "approved",
-              "settingIndex": 46
+              "settingIndex": 47
             }
           ]
         },
@@ -29577,7 +29750,7 @@
           "display": "显示",
           "sort": 4,
           "superPermission": false,
-          "settingIndex": 47,
+          "settingIndex": 48,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -29599,7 +29772,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 48,
+              "settingIndex": 49,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29620,7 +29793,7 @@
               "display": "显示",
               "sort": 1,
               "superPermission": false,
-              "settingIndex": 49,
+              "settingIndex": 50,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29641,7 +29814,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 50,
+              "settingIndex": 51,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29662,7 +29835,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 51,
+              "settingIndex": 52,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29683,7 +29856,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 52,
+              "settingIndex": 53,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29704,7 +29877,7 @@
               "display": "显示",
               "sort": -1,
               "superPermission": false,
-              "settingIndex": 53,
+              "settingIndex": 54,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29725,7 +29898,7 @@
               "display": "显示",
               "sort": -2,
               "superPermission": false,
-              "settingIndex": 54,
+              "settingIndex": 55,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29762,7 +29935,7 @@
           "display": "显示",
           "sort": 3,
           "superPermission": false,
-          "settingIndex": 55,
+          "settingIndex": 56,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -29784,7 +29957,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 56,
+              "settingIndex": 57,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29805,7 +29978,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 57,
+              "settingIndex": 58,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29826,7 +29999,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 58,
+              "settingIndex": 59,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29844,7 +30017,7 @@
           "display": "显示",
           "sort": 2,
           "superPermission": false,
-          "settingIndex": 59,
+          "settingIndex": 60,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -29866,7 +30039,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 60,
+              "settingIndex": 61,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29887,7 +30060,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 61,
+              "settingIndex": 62,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29908,7 +30081,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 62,
+              "settingIndex": 63,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29929,7 +30102,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 63,
+              "settingIndex": 64,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -29950,7 +30123,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 64,
+              "settingIndex": 65,
               "prototypeOnly": true,
               "liveEvidence": {
                 "liveObserved": false,
@@ -29966,7 +30139,7 @@
           "display": "显示",
           "sort": 1,
           "superPermission": false,
-          "settingIndex": 65,
+          "settingIndex": 66,
           "routeEvidence": "stable-group-label",
           "liveEvidence": {
             "source": "tenant-menu-inventory",
@@ -29988,7 +30161,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 66,
+              "settingIndex": 67,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -30009,7 +30182,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 67,
+              "settingIndex": 68,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -30030,7 +30203,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 68,
+              "settingIndex": 69,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -30051,7 +30224,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 69,
+              "settingIndex": 70,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -30072,7 +30245,7 @@
               "display": "显示",
               "sort": 0,
               "superPermission": false,
-              "settingIndex": 70,
+              "settingIndex": 71,
               "liveEvidence": {
                 "source": "tenant-menu-inventory",
                 "sourceUrl": "https://yestar-jx.wecarepet.com/admin/menu",
@@ -30312,6 +30485,15 @@
           "sort": 0,
           "superPermission": false,
           "level": 1
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true,
+          "spec": "SPEC-SUIYIN-ADMIN-081@1.0.0"
         },
         {
           "label": "销售统计",
@@ -30598,7 +30780,7 @@
       },
       "navigationCapturedAt": "2026-09-27T03:02:19.248Z",
       "clientVersion": "v2026092601",
-      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1",
+      "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-revisit-rules-v1-tools-menu-v1-street-trajectories-medical-v2",
       "refreshStatus": "current-reference",
       "orderEvidence": {
         "navigation": "current-left-navigation-dom",
@@ -31026,10 +31208,14 @@
       ],
       "clientVersionEvidence": "2026-09-27 authenticated current tenant download link",
       "capabilities": {
-        "guideLineManage": true
+        "guideLineManage": true,
+        "streetTrajectories": true
       },
       "base": "yestar",
-      "toolsMenuMigration": "tools-menu-v1"
+      "toolsMenuMigration": "tools-menu-v1",
+      "streetTrajectoriesAnchor": "newAddedRecords",
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0"
     },
     {
       "id": "yzhb",
@@ -32915,8 +33101,10 @@
       "captureNote": "本租户真实菜单与业务数据待采集。当前仅展示本轮批准的原型骨架，不代表线上完整菜单或已授权权限；账号及设置业务记录未采集，不等同于没有数据。",
       "prototypeOnly": true,
       "sourceSpec": "SPEC-SUIYIN-ADMIN-076@1.0.0",
-      "menuDataRevision": "2026-09-30-admin076-pending-capture-v1",
-      "capabilities": {},
+      "menuDataRevision": "2026-09-30-admin076-pending-capture-v1-street-trajectories-medical-v2",
+      "capabilities": {
+        "streetTrajectories": true
+      },
       "menu": [
         {
           "id": "salesManage",
@@ -32934,12 +33122,43 @@
           "settingIndex": 0
         },
         {
+          "id": "dataDisplay",
+          "label": "数据展示",
+          "display": "显示",
+          "sort": 1,
+          "superPermission": false,
+          "settingIndex": 1,
+          "contentStatus": "mock",
+          "prototypeOnly": true,
+          "sourceSpec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+          "routeEvidence": "approved-static-prototype",
+          "children": [
+            {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 2,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "requiredIndustry": "medical-aesthetics"
+            }
+          ]
+        },
+        {
           "id": "systemManage",
           "label": "系统管理",
           "display": "显示",
           "sort": 1,
           "superPermission": false,
-          "settingIndex": 1,
+          "settingIndex": 3,
           "contentStatus": "not-captured",
           "captureStatus": "not-captured",
           "prototypeOnly": true,
@@ -32959,7 +33178,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 2
+              "settingIndex": 4
             },
             {
               "id": "setting",
@@ -32974,9 +33193,62 @@
               "display": "显示",
               "sort": 3,
               "superPermission": false,
-              "settingIndex": 3
+              "settingIndex": 5
             }
           ]
+        }
+      ],
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+      "streetTrajectoriesNewParent": true,
+      "settings": [
+        {
+          "label": "碎银账号",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 0,
+          "prototypeOnly": true
+        },
+        {
+          "label": "数据展示",
+          "display": "显示",
+          "sort": 1,
+          "superPermission": false,
+          "level": 0,
+          "prototypeOnly": true
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true
+        },
+        {
+          "label": "系统管理",
+          "display": "显示",
+          "sort": 1,
+          "superPermission": false,
+          "level": 0,
+          "prototypeOnly": true
+        },
+        {
+          "label": "菜单管理",
+          "display": "显示",
+          "sort": 2,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true
+        },
+        {
+          "label": "系统设置",
+          "display": "显示",
+          "sort": 3,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true
         }
       ]
     },
@@ -32992,8 +33264,10 @@
       "captureNote": "本租户真实菜单与业务数据待采集。当前仅展示本轮批准的原型骨架，不代表线上完整菜单或已授权权限；账号及设置业务记录未采集，不等同于没有数据。",
       "prototypeOnly": true,
       "sourceSpec": "SPEC-SUIYIN-ADMIN-076@1.0.0",
-      "menuDataRevision": "2026-09-30-admin076-pending-capture-v1",
-      "capabilities": {},
+      "menuDataRevision": "2026-09-30-admin076-pending-capture-v1-street-trajectories-medical-v2",
+      "capabilities": {
+        "streetTrajectories": true
+      },
       "menu": [
         {
           "id": "salesManage",
@@ -33011,12 +33285,43 @@
           "settingIndex": 0
         },
         {
+          "id": "dataDisplay",
+          "label": "数据展示",
+          "display": "显示",
+          "sort": 1,
+          "superPermission": false,
+          "settingIndex": 1,
+          "contentStatus": "mock",
+          "prototypeOnly": true,
+          "sourceSpec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+          "routeEvidence": "approved-static-prototype",
+          "children": [
+            {
+              "id": "streetTrajectories",
+              "route": "streetTrajectories",
+              "label": "扫街轨迹",
+              "platformId": "platform-street-trajectories",
+              "platformLabel": "扫街轨迹",
+              "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" role=\"img\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" class=\"menu-icon\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M8.5 6H17a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h8.5\"/></g></svg>",
+              "contentStatus": "mock",
+              "routeEvidence": "approved-static-prototype",
+              "display": "显示",
+              "sort": 0,
+              "superPermission": false,
+              "settingIndex": 2,
+              "prototypeOnly": true,
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "requiredIndustry": "medical-aesthetics"
+            }
+          ]
+        },
+        {
           "id": "systemManage",
           "label": "系统管理",
           "display": "显示",
           "sort": 1,
           "superPermission": false,
-          "settingIndex": 1,
+          "settingIndex": 3,
           "contentStatus": "not-captured",
           "captureStatus": "not-captured",
           "prototypeOnly": true,
@@ -33036,7 +33341,7 @@
               "display": "显示",
               "sort": 2,
               "superPermission": false,
-              "settingIndex": 2
+              "settingIndex": 4
             },
             {
               "id": "setting",
@@ -33051,14 +33356,67 @@
               "display": "显示",
               "sort": 3,
               "superPermission": false,
-              "settingIndex": 3
+              "settingIndex": 5
             }
           ]
+        }
+      ],
+      "industry": "medical-aesthetics",
+      "streetTrajectoriesScope": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+      "streetTrajectoriesNewParent": true,
+      "settings": [
+        {
+          "label": "碎银账号",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 0,
+          "prototypeOnly": true
+        },
+        {
+          "label": "数据展示",
+          "display": "显示",
+          "sort": 1,
+          "superPermission": false,
+          "level": 0,
+          "prototypeOnly": true
+        },
+        {
+          "label": "扫街轨迹",
+          "display": "显示",
+          "sort": 0,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true
+        },
+        {
+          "label": "系统管理",
+          "display": "显示",
+          "sort": 1,
+          "superPermission": false,
+          "level": 0,
+          "prototypeOnly": true
+        },
+        {
+          "label": "菜单管理",
+          "display": "显示",
+          "sort": 2,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true
+        },
+        {
+          "label": "系统设置",
+          "display": "显示",
+          "sort": 3,
+          "superPermission": false,
+          "level": 1,
+          "prototypeOnly": true
         }
       ]
     }
   ],
-  "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-tools-menu-v1",
+  "menuDataRevision": "2026-09-27-live-menu-refresh-staging-v1-tools-menu-v1-street-trajectories-medical-v2",
   "prototypeAdditions": [
     {
       "route": "salesVoiceStats",
@@ -33086,6 +33444,13 @@
       "source": "approved-static-prototype",
       "prototypeOnly": true,
       "requiredCapability": "guideLineManage"
+    },
+    {
+      "route": "streetTrajectories",
+      "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+      "source": "approved-static-prototype",
+      "prototypeOnly": true,
+      "requiredIndustry": "medical-aesthetics"
     }
   ],
   "refreshStatus": "current-reference",

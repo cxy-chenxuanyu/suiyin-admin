@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+  "checkedAt": "2026-10-12T15:08:43.477Z",
+  "baseCommit": "1788b8e4521cd4024f0a94cb6f4df8d057f9e179",
+  "checkedCommit": "1788b8e4521cd4024f0a94cb6f4df8d057f9e179",
+  "assertions": 1032,
+  "tenantCount": 8,
+  "tenants": [
+    "yestar-sz",
+    "yestar",
+    "yestar-bj",
+    "yestar-gz",
+    "yestar-hz",
+    "yestar-jx",
+    "huamei-xian",
+    "aoli-xian"
+  ],
+  "excludedTenantCount": 9,
+  "excludedTenants": [
+    "jbfs",
+    "mengzhua",
+    "bzds",
+    "crrm",
+    "hqjd",
+    "ykjl",
+    "ruixi-kh-xiaowen",
+    "rxxz",
+    "yzhb"
+  ],
+  "scopeMigration": "street-trajectories-medical-v2",
+  "newMedicalParent": "dataDisplay",
+  "checks": [
+    "metadata and unique routes",
+    "exact previous menu baseline",
+    "all old business pages untouched",
+    "default effective positions with legacy platform cache",
+    "label and hidden overrides",
+    "hidden parent",
+    "explicit tenant and platform order",
+    "row visibility",
+    "eight explicit medical profiles and nine denied model/navigation contexts",
+    "retired unpublished nonmedical cache cannot restore the route",
+    "two new medical parents without fabricated recruitment pages"
+  ],
+  "expectedDerivedUpdates": {
+    "pages": 17,
+    "routes": "8 medical menu migration models, 8 streetTrajectories, bzds allMenu platform definition only; excluded menus retain the released source exactly",
+    "currentText": "Rebuilt from each current page label, table headers and table rows according to makePageText in sanitize-public-data.mjs.",
+    "publicDataPolicy": "public-demo-identities-v1",
+    "newRouteRevision": "Includes the existing public-data policy marker.",
+    "oldMenuBaselines": "Immutable prior headers and rows preserved; current derived text is not written into historical baselines."
+  },
+  "publicDataAudit": {
+    "tenants": 17,
+    "pages": 785,
+    "rows": 11356,
+    "checkedIdentityCells": 2456,
+    "checkedSecrets": 36,
+    "failures": []
+  },
+  "scope": "Static files and Node VM menu behavior; no live browser, production or deployment assertion."
+}

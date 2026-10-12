@@ -51,7 +51,7 @@
     "captureNote": "本租户真实菜单与业务数据待采集。当前仅展示本轮批准的原型骨架，不代表线上完整菜单或已授权权限；账号及设置业务记录未采集，不等同于没有数据。",
     "prototypeOnly": true,
     "sourceSpec": "SPEC-SUIYIN-ADMIN-076@1.0.0",
-    "dataRevision": "2026-09-30-admin076-pending-capture-v1-public-demo-identities-v1",
+    "dataRevision": "2026-09-30-admin076-pending-capture-v1-public-demo-identities-v1-street-trajectories-medical-v2",
     "forms": [],
     "inputs": [],
     "tables": [
@@ -90,6 +90,60 @@
             "prototypeOnly": true,
             "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
             "captureStatus": "not-captured"
+          },
+          {
+            "id": "huamei-xian-menu-dataDisplay",
+            "cells": [
+              "数据展示",
+              "否",
+              "显示",
+              "1",
+              "",
+              "编辑\n 删除\n 记录"
+            ],
+            "actions": [
+              "编辑",
+              "删除",
+              "记录"
+            ],
+            "tree": {
+              "depth": 0,
+              "hasChildren": true,
+              "key": "dataDisplay",
+              "parentKey": null,
+              "parentId": ""
+            },
+            "prototypeOnly": true,
+            "source": "SPEC-SUIYIN-ADMIN-081@1.1.0"
+          },
+          {
+            "id": "prototype-street-trajectories",
+            "cells": [
+              "扫街轨迹",
+              "否",
+              "显示",
+              "0",
+              "",
+              "编辑\n 删除\n 记录"
+            ],
+            "actions": [
+              "编辑",
+              "删除",
+              "记录"
+            ],
+            "tree": {
+              "depth": 1,
+              "hasChildren": false,
+              "key": "streetTrajectories",
+              "parentKey": "dataDisplay",
+              "parentId": "huamei-xian-menu-dataDisplay"
+            },
+            "evidence": {
+              "source": "approved-static-prototype",
+              "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+              "prototypeOnly": true,
+              "requiredIndustry": "medical-aesthetics"
+            }
           },
           {
             "id": "huamei-xian-menu-systemManage",
@@ -177,12 +231,257 @@
     ],
     "tabs": [],
     "pagination": "",
-    "text": "菜单管理\n菜单名称\t超级权限\t菜单状态\t排序\t\t操作\n碎银账号\t否\t显示\t1\t\t编辑\n 删除\n 记录\n系统管理\t否\t显示\t2\t\t编辑\n 删除\n 记录\n菜单管理\t否\t显示\t1\t\t编辑\n 删除\n 记录\n系统设置\t否\t显示\t2\t\t编辑\n 删除\n 记录",
+    "text": "菜单管理\n菜单名称\t超级权限\t菜单状态\t排序\t\t操作\n碎银账号\t否\t显示\t1\t\t编辑\n 删除\n 记录\n数据展示\t否\t显示\t1\t\t编辑\n 删除\n 记录\n扫街轨迹\t否\t显示\t0\t\t编辑\n 删除\n 记录\n系统管理\t否\t显示\t2\t\t编辑\n 删除\n 记录\n菜单管理\t否\t显示\t1\t\t编辑\n 删除\n 记录\n系统设置\t否\t显示\t2\t\t编辑\n 删除\n 记录",
     "canvas": 0,
     "expandedForms": {},
     "publicDataPolicy": "public-demo-identities-v1",
     "layout": "menu-tree",
-    "auditRecords": []
+    "auditRecords": [],
+    "menuRefresh": {
+      "previousRevision": "2026-09-30-admin076-pending-capture-v1-public-demo-identities-v1",
+      "previousHeaders": [
+        "菜单名称",
+        "超级权限",
+        "菜单状态",
+        "排序",
+        "",
+        "操作"
+      ],
+      "previousRows": [
+        {
+          "id": "huamei-xian-menu-salesManage",
+          "cells": [
+            "碎银账号",
+            "否",
+            "显示",
+            "1",
+            "",
+            "编辑\n 删除\n 记录"
+          ],
+          "actions": [
+            "编辑",
+            "删除",
+            "记录"
+          ],
+          "tree": {
+            "depth": 0,
+            "hasChildren": false,
+            "key": "salesManage",
+            "parentKey": null,
+            "parentId": ""
+          },
+          "prototypeOnly": true,
+          "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+          "captureStatus": "not-captured"
+        },
+        {
+          "id": "huamei-xian-menu-systemManage",
+          "cells": [
+            "系统管理",
+            "否",
+            "显示",
+            "2",
+            "",
+            "编辑\n 删除\n 记录"
+          ],
+          "actions": [
+            "编辑",
+            "删除",
+            "记录"
+          ],
+          "tree": {
+            "depth": 0,
+            "hasChildren": true,
+            "key": "systemManage",
+            "parentKey": null,
+            "parentId": ""
+          },
+          "prototypeOnly": true,
+          "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+          "captureStatus": "not-captured"
+        },
+        {
+          "id": "huamei-xian-menu-menu",
+          "cells": [
+            "菜单管理",
+            "否",
+            "显示",
+            "1",
+            "",
+            "编辑\n 删除\n 记录"
+          ],
+          "actions": [
+            "编辑",
+            "删除",
+            "记录"
+          ],
+          "tree": {
+            "depth": 1,
+            "hasChildren": false,
+            "key": "menu",
+            "parentKey": "systemManage",
+            "parentId": "huamei-xian-menu-systemManage"
+          },
+          "prototypeOnly": true,
+          "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+          "captureStatus": "not-captured"
+        },
+        {
+          "id": "huamei-xian-menu-setting",
+          "cells": [
+            "系统设置",
+            "否",
+            "显示",
+            "2",
+            "",
+            "编辑\n 删除\n 记录"
+          ],
+          "actions": [
+            "编辑",
+            "删除",
+            "记录"
+          ],
+          "tree": {
+            "depth": 1,
+            "hasChildren": false,
+            "key": "setting",
+            "parentKey": "systemManage",
+            "parentId": "huamei-xian-menu-systemManage"
+          },
+          "prototypeOnly": true,
+          "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+          "captureStatus": "not-captured"
+        }
+      ],
+      "baselines": {
+        "2026-09-30-admin076-pending-capture-v1-public-demo-identities-v1": {
+          "headers": [
+            "菜单名称",
+            "超级权限",
+            "菜单状态",
+            "排序",
+            "",
+            "操作"
+          ],
+          "rows": [
+            {
+              "id": "huamei-xian-menu-salesManage",
+              "cells": [
+                "碎银账号",
+                "否",
+                "显示",
+                "1",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": false,
+                "key": "salesManage",
+                "parentKey": null,
+                "parentId": ""
+              },
+              "prototypeOnly": true,
+              "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+              "captureStatus": "not-captured"
+            },
+            {
+              "id": "huamei-xian-menu-systemManage",
+              "cells": [
+                "系统管理",
+                "否",
+                "显示",
+                "2",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "key": "systemManage",
+                "parentKey": null,
+                "parentId": ""
+              },
+              "prototypeOnly": true,
+              "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+              "captureStatus": "not-captured"
+            },
+            {
+              "id": "huamei-xian-menu-menu",
+              "cells": [
+                "菜单管理",
+                "否",
+                "显示",
+                "1",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "menu",
+                "parentKey": "systemManage",
+                "parentId": "huamei-xian-menu-systemManage"
+              },
+              "prototypeOnly": true,
+              "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+              "captureStatus": "not-captured"
+            },
+            {
+              "id": "huamei-xian-menu-setting",
+              "cells": [
+                "系统设置",
+                "否",
+                "显示",
+                "2",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "setting",
+                "parentKey": "systemManage",
+                "parentId": "huamei-xian-menu-systemManage"
+              },
+              "prototypeOnly": true,
+              "source": "SPEC-SUIYIN-ADMIN-076@1.0.0",
+              "captureStatus": "not-captured"
+            }
+          ]
+        }
+      },
+      "revision": "2026-09-30-admin076-pending-capture-v1-public-demo-identities-v1-street-trajectories-medical-v2"
+    },
+    "prototypeAdditions": [
+      {
+        "route": "streetTrajectories",
+        "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+        "source": "approved-static-prototype",
+        "prototypeOnly": true,
+        "requiredIndustry": "medical-aesthetics"
+      }
+    ]
   },
   "setting": {
     "tenant": "huamei-xian",
@@ -217,5 +516,28 @@
     "canvas": 0,
     "expandedForms": {},
     "publicDataPolicy": "public-demo-identities-v1"
+  },
+  "streetTrajectories": {
+    "tenant": "huamei-xian",
+    "route": "streetTrajectories",
+    "label": "扫街轨迹",
+    "source": "本地合成演示数据 · SPEC-SUIYIN-ADMIN-081@1.1.0",
+    "sampleTenant": "huamei-xian",
+    "state": "mock",
+    "dataRevision": "2026-10-12-street-trajectories-medical-v2-public-demo-identities-v1",
+    "forms": [],
+    "inputs": [],
+    "tables": [],
+    "buttons": [
+      "查询",
+      "轨迹展示",
+      "重新播放"
+    ],
+    "tabs": [],
+    "text": "扫街轨迹",
+    "publicDataPolicy": "public-demo-identities-v1",
+    "prototypeOnly": true,
+    "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+    "requiredIndustry": "medical-aesthetics"
   }
 }

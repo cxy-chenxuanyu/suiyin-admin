@@ -116,3 +116,17 @@ const sourceHeaderIcons=window.AdminLiveUI?.headerIcons||[];if(sourceHeaderIcons
  // deferred menu refresh only after the draft has become clean; failed saves do not.
  window.addEventListener('storage',e=>{const key=(params.get('qa')==='1'?'admin-qa-guide-lines:v1:':'admin-guide-lines:v1:')+tenant?.id;if(deferredRefresh&&e.key===key)scheduleNavigation();});
 })();
+
+/* SPEC-SUIYIN-ADMIN-081: a hidden street-map page must stop its old playback. */
+(() => {
+ const route='streetTrajectories';
+ function stop(frame){
+  try{frame?.contentWindow?.AdminStreetTrajectories?.close?.();}catch{}
+  frame?.contentWindow?.postMessage({type:'admin-page-visibility',visible:false},location.origin);
+ }
+ function check(){const panel=$('panel-'+route);if(panel?.hidden)stop(panel.querySelector('iframe'));}
+ new MutationObserver(check).observe($('pages'),{subtree:true,childList:true,attributes:true,attributeFilter:['hidden']});
+ const oldSwitch=switchTenant;
+ switchTenant=function(target){stop($('panel-'+route)?.querySelector('iframe'));return oldSwitch(target);};
+ window.addEventListener('pagehide',()=>stop($('panel-'+route)?.querySelector('iframe')));
+})();

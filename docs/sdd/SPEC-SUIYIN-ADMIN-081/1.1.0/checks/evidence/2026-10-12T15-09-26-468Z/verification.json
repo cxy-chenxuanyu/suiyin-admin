@@ -1,0 +1,337 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+  "timestamp": "2026-10-12T15:10:29.038Z",
+  "scope": "local-static-prototype-medical-aesthetics",
+  "tenants": [
+    "yestar-sz",
+    "yestar",
+    "yestar-bj",
+    "yestar-gz",
+    "yestar-hz",
+    "yestar-jx",
+    "huamei-xian",
+    "aoli-xian"
+  ],
+  "excludedTenants": [
+    "bzds",
+    "jbfs",
+    "mengzhua",
+    "crrm",
+    "hqjd",
+    "ykjl",
+    "ruixi-kh-xiaowen",
+    "rxxz",
+    "yzhb"
+  ],
+  "results": [
+    {
+      "name": "8医美租户导航/menu、平台allMenu唯一；9非医美无入口",
+      "status": "PASS",
+      "elapsedMs": 143,
+      "approvedTenants": 8,
+      "excludedTenants": 9
+    },
+    {
+      "name": "日期范围全部样本、断轨坏点、单点空态与租户数据隔离",
+      "status": "PASS",
+      "elapsedMs": 46,
+      "samples": [
+        {
+          "days": 1,
+          "segments": 2,
+          "points": 15
+        },
+        {
+          "days": 7,
+          "segments": 14,
+          "points": 107
+        },
+        {
+          "days": 30,
+          "segments": 60,
+          "points": 460
+        },
+        {
+          "days": 365,
+          "segments": 730,
+          "points": 5596
+        }
+      ],
+      "densePoints": 418
+    },
+    {
+      "name": "8医美租户实际Shell入口与位置；9非医美直达不开放",
+      "status": "PASS",
+      "elapsedMs": 11962,
+      "tenants": [
+        {
+          "tenant": "yestar-sz",
+          "navCount": 1,
+          "menuCount": 1
+        },
+        {
+          "tenant": "yestar",
+          "navCount": 1,
+          "menuCount": 1
+        },
+        {
+          "tenant": "yestar-bj",
+          "navCount": 1,
+          "menuCount": 1
+        },
+        {
+          "tenant": "yestar-gz",
+          "navCount": 1,
+          "menuCount": 1
+        },
+        {
+          "tenant": "yestar-hz",
+          "navCount": 1,
+          "menuCount": 1
+        },
+        {
+          "tenant": "yestar-jx",
+          "navCount": 1,
+          "menuCount": 1
+        },
+        {
+          "tenant": "huamei-xian",
+          "navCount": 1,
+          "menuCount": 1
+        },
+        {
+          "tenant": "aoli-xian",
+          "navCount": 1,
+          "menuCount": 1
+        }
+      ]
+    },
+    {
+      "name": "两西安旧menu缓存与旧侧栏迁移；父级隐藏和直接访问边界",
+      "status": "PASS",
+      "elapsedMs": 5030,
+      "migrations": [
+        {
+          "tenant": "huamei-xian",
+          "parent": "dataDisplay",
+          "oldRevision": "2026-09-30-admin076-pending-capture-v1-public-demo-identities-v1",
+          "localFieldPreserved": true,
+          "parentHiddenBlocksDirect": true
+        },
+        {
+          "tenant": "aoli-xian",
+          "parent": "dataDisplay",
+          "oldRevision": "2026-09-30-admin076-pending-capture-v1-public-demo-identities-v1",
+          "localFieldPreserved": true,
+          "parentHiddenBlocksDirect": true
+        }
+      ]
+    },
+    {
+      "name": "9非医美v1/v2未发布缓存退役；本机字段保留且直达拒绝",
+      "status": "PASS",
+      "elapsedMs": 19209,
+      "retiredCaches": [
+        {
+          "tenant": "bzds",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "bzds",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "jbfs",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "jbfs",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "mengzhua",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "mengzhua",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "crrm",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "crrm",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "hqjd",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "hqjd",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "ykjl",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "ykjl",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "ruixi-kh-xiaowen",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "ruixi-kh-xiaowen",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "rxxz",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "rxxz",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "yzhb",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-v1",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        },
+        {
+          "tenant": "yzhb",
+          "retiredRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-street-trajectories-medical-v2",
+          "localFieldsPreserved": true,
+          "directAccessDenied": true
+        }
+      ]
+    },
+    {
+      "name": "人员列表、同名ID、姓名搜索、分页及默认今天",
+      "status": "PASS",
+      "elapsedMs": 1695,
+      "people": 24,
+      "defaultDate": "2026-10-12",
+      "sameNameIds": [
+        "demo-01",
+        "demo-02"
+      ]
+    },
+    {
+      "name": "1日真实时钟回放：动态中间态、全部片段及终点在10秒内",
+      "status": "PASS",
+      "elapsedMs": 11439,
+      "segments": 2,
+      "points": 15,
+      "playbackMs": 9504.3,
+      "clock": "real browser performance.now / MutationObserver",
+      "observedMs": 9505.699999809265
+    },
+    {
+      "name": "地图日历可操作、Escape取消草稿及关闭后列表日历恢复",
+      "status": "PASS",
+      "elapsedMs": 985
+    },
+    {
+      "name": "7/30/365日可控时钟回放：同一10秒预算覆盖全部行程",
+      "status": "PASS",
+      "elapsedMs": 1434,
+      "clock": "Playwright controlled browser clock",
+      "ranges": [
+        {
+          "days": 7,
+          "segments": 14,
+          "points": 107,
+          "playbackMs": 9728
+        },
+        {
+          "days": 30,
+          "segments": 60,
+          "points": 460,
+          "playbackMs": 9728
+        },
+        {
+          "days": 365,
+          "segments": 730,
+          "points": 5596,
+          "playbackMs": 9728
+        }
+      ]
+    },
+    {
+      "name": "日期草稿不改变结果；反向/缺失输入不提交；重播从头且不循环",
+      "status": "PASS",
+      "elapsedMs": 376,
+      "segments": 2,
+      "points": 15,
+      "playbackMs": 9700
+    },
+    {
+      "name": "无点/单点状态无伪造路线；范围超出样本为空",
+      "status": "PASS",
+      "elapsedMs": 627
+    },
+    {
+      "name": "播放中查询新范围、关闭和同名换人清理旧结果",
+      "status": "PASS",
+      "elapsedMs": 410
+    },
+    {
+      "name": "读取失败/坏点/全部无效/无权及高密度结果",
+      "status": "PASS",
+      "elapsedMs": 607
+    },
+    {
+      "name": "切页签取消旧回放；新租户人员/路线独立；非适用直达不泄露",
+      "status": "PASS",
+      "elapsedMs": 5899
+    },
+    {
+      "name": "无外网、定位调用或浏览器脚本错误",
+      "status": "PASS",
+      "elapsedMs": 0,
+      "externalRequests": [],
+      "geolocationCalls": [],
+      "scriptErrors": []
+    }
+  ],
+  "externalRequests": [],
+  "geolocationCalls": [],
+  "scriptErrors": []
+}

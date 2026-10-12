@@ -53,7 +53,17 @@ const child=inlinePage('admin-content.html');
 // Normalize this once so offline parent/child messages use * as target and compare the same origin.
 const bootstrap=`window.__ADMIN_INLINE_ORIGIN__=location.protocol==='file:'?'null':location.origin;window.__ADMIN_INLINE_DATA__=${serial(data)};window.__ADMIN_INLINE_ASSETS__=${serial(runtimeAssets)};window.fetch=${offlineFetch.toString()};window.__ADMIN_INLINE_FRAME__=function(params){const code='window.__ADMIN_INLINE_PARAMS__='+JSON.stringify(params)+';window.__ADMIN_INLINE_ORIGIN__=parent.__ADMIN_INLINE_ORIGIN__;window.__ADMIN_INLINE_DATA__=parent.__ADMIN_INLINE_DATA__;window.__ADMIN_INLINE_ASSETS__=parent.__ADMIN_INLINE_ASSETS__;window.fetch=parent.fetch.bind(parent);';return ${serial(child)}.replace('<head>','<head><script>'+code+'<'+ '/script>');};`;
 let output=inlinePage('_shell.html');
+// SPEC-081 must remain functional in a srcdoc/file bundle: the UI, local data,
+// access checks and shell cancellation are one inseparable feature package.
+const streetTrajectoryBundle={
+ spec:'SPEC-SUIYIN-ADMIN-081@1.1.0',
+ scripts:['admin-content.js','admin-navigation.js','admin-account-profile.js','admin-menu-state.js','admin-stats-date-picker.js','admin-filter-calendars.js','data/street-trajectories.js','admin-street-trajectories.js'],
+ styles:['admin-street-trajectories.css','admin-stats-date-picker.css','admin-filter-calendars.css'],
+};
+for(const [kind,paths] of [['scripts',streetTrajectoryBundle.scripts],['styles',streetTrajectoryBundle.styles]]){
+ for(const file of paths)if(!included[kind].has(file))throw Error('Street trajectory inline bundle is incomplete: '+file);
+}
 // Install data before any shell scripts; all original scripts retain their order at body end.
 output=output.replace('<body class="admin-shell">','<body class="admin-shell"><script>'+bootstrap+'<'+ '/script>');
 fs.writeFileSync(outputFile,output);
-console.log(JSON.stringify({output:'prototype/_shell_inline.html',jsonFiles:Object.keys(data).length,assets:Object.keys(assets).length,scripts:included.scripts.size,styles:included.styles.size,bytes:Buffer.byteLength(output),sha256:createHash('sha256').update(output).digest('hex')}));
+console.log(JSON.stringify({output:'prototype/_shell_inline.html',jsonFiles:Object.keys(data).length,assets:Object.keys(assets).length,scripts:included.scripts.size,styles:included.styles.size,streetTrajectoryBundle,bytes:Buffer.byteLength(output),sha256:createHash('sha256').update(output).digest('hex')}));

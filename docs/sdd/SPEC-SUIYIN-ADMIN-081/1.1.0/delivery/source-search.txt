@@ -1,0 +1,23 @@
+COMMAND: rg -n 15租户|未授权|本稿不新增|15 tenants E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\plan.md E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\tasks.md E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\verification.md
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\tasks.md:8:- [x] T002 15租户导航/menu/allMenu登记，兼容旧覆盖（R001）。
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\tasks.md:13:- [x] T007 验证全部13项AC、15租户及旧拉新页回归，保留实际证据（R001–R009）。
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:28:- **批准与修订**：2026-10-12「按这个做」批准交互；同日「完整推送，并给王梓先建立issue实现，提出人谢东华，提出环境深圳艺星，适用环境所以医美租户」将范围修订为所有医美租户，并授权发布和工程交付。1.0.0的15租户覆盖已被此明确范围取代。
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:89:| E002 | PROTO | 佰智德三/碎银原型/suiyin-admin/prototype/_shell.html、prototype/data/navigation-snapshot.json、prototype/admin-new-added-records.js | 静态管理页Shell；newAddedRecords有7租户，salesStatsReferral有9租户，德三重复，合计15租户；按稳定route区分同名项 | observed |
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:103:- E009已将15租户建议替换为所有医美租户；6艺星用稳定newAddedRecords锚点，2西安医美没有旧锚点时只增加必要父级与本功能。截图中的真实人员、账号或地点不得推断为轨迹源。
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:347:| 1.1.0 | 2026-10-12 | Codex | 范围改为所有医美租户；批准完整推送和工程建单 | 用户明确修订；15租户旧建议不再生效 |
+
+EXIT: 0
+
+COMMAND: rg -n 814|90种路由|90 种路由|90路由 README.md CLAUDE.md docs/design-spec.md prd/admin-live-reference.md flowcharts/admin-live-reference.md
+README.md:73:在仓根运行 `python -m http.server 8148 --bind 127.0.0.1`，用Google Chrome打开 `http://127.0.0.1:8148/prototype/_shell.html?tenant=yestar-sz&page=guideLineManage`，也可从工具管理进入话术。业务演示状态按租户与路由隔离；辅助线未解决队列和草稿均受离开保护，已保存为空不恢复默认。验收使用隔离浏览器或独立QA存储。单文件由生成器产出，不手工编辑。
+
+EXIT: 0
+
+COMMAND: rg -n Admin地图|位置上报|DR-099 E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\issue-handoff.md
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\issue-handoff.md:38:- 本单不恢复APP已撤销的位置上报设计，不新增采集频率、后台定位、考勤、效率排名或权限弹窗。APP #8116是独立二维码任务，不是Admin地图已实现的证据。跨仓依赖须按独立正式流程承接。
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:66:- 不实现 APP 上报、不改 DR-099 责任分工、不将 APP 位置使用门槛扩展到 Admin。
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:78:| APP / PC | 不改动 | APP 080、DR-099 保持 | 管理端回放不代表设备侧采集已实现 |
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:94:| E007 | DR | 佰智德三/碎银原型/suiyin-knowledge/decisions/DR-099-app-location-permission-required.md | 真实位置来源尚需工程核实；APP门槛不扩至Admin；不恢复前端上报 | confirmed |
+E:\AI 项目\prototype-sdd\specs\081-admin-street-trajectories\spec.md:101:- APP 080及DR-099中的「本轮无Admin地图」是其原任务范围排除；本用户需求独立新增Admin显示，不回写旧APP合同，也不恢复其撤销的定位/上报方案。
+
+EXIT: 0

@@ -1,0 +1,88 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-081@1.1.0",
+  "artifact": "E:\\AI 项目\\佰智德三\\碎银原型\\suiyin-admin\\prototype\\_shell_inline.html",
+  "sha256": "bb50d43c6a3e1c9749a4bdc73edd7e23f06e28fb5f2590f47017eaee2002d624",
+  "approved": [
+    "yestar-sz",
+    "yestar",
+    "yestar-bj",
+    "yestar-gz",
+    "yestar-hz",
+    "yestar-jx",
+    "huamei-xian",
+    "aoli-xian"
+  ],
+  "excluded": [
+    "bzds",
+    "jbfs",
+    "mengzhua",
+    "crrm",
+    "hqjd",
+    "ykjl",
+    "ruixi-kh-xiaowen",
+    "rxxz",
+    "yzhb"
+  ],
+  "results": [
+    {
+      "name": "http：8医美租户单文件入口、模型范围及嵌入资源",
+      "status": "PASS",
+      "tenants": 8
+    },
+    {
+      "name": "http：日历取消恢复、地图动态回放及全程终态",
+      "status": "PASS",
+      "playbackMs": 9514,
+      "totalPoints": 15,
+      "totalSegments": 2
+    },
+    {
+      "name": "http：页签切换与租户切换终止旧播放",
+      "status": "PASS",
+      "hiddenPageCancelled": true,
+      "tenantSwitchCancelled": true
+    },
+    {
+      "name": "http：隐藏入口与9非医美租户伪造单文件直达均受阻",
+      "status": "PASS",
+      "hiddenRouteBlocked": true,
+      "nonMedicalTenantsBlocked": 9
+    },
+    {
+      "name": "file：8医美租户单文件入口、模型范围及嵌入资源",
+      "status": "PASS",
+      "tenants": 8
+    },
+    {
+      "name": "file：日历取消恢复、地图动态回放及全程终态",
+      "status": "PASS",
+      "playbackMs": 9514,
+      "totalPoints": 15,
+      "totalSegments": 2
+    },
+    {
+      "name": "file：页签切换与租户切换终止旧播放",
+      "status": "PASS",
+      "hiddenPageCancelled": true,
+      "tenantSwitchCancelled": true
+    },
+    {
+      "name": "file：隐藏入口与9非医美租户伪造单文件直达均受阻",
+      "status": "PASS",
+      "hiddenRouteBlocked": true,
+      "nonMedicalTenantsBlocked": 9
+    },
+    {
+      "name": "单文件无外网、额外资源依赖、定位调用及脚本错误",
+      "status": "PASS",
+      "standalone": true
+    }
+  ],
+  "externalRequests": [],
+  "unexpectedAssetRequests": [],
+  "geolocationCalls": [],
+  "scriptErrors": [],
+  "browser": "154.0.8037.99",
+  "passed": 9,
+  "failed": 0
+}
