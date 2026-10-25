@@ -2,3 +2,13 @@
 node_modules/
 .wrangler/
 .DS_Store
+
+# Local-only tenant prompts, chat sources, identity mappings and screenshots.
+prototype/data/private/
+**/*.private.*
+# Historical local evidence includes production prompts and real chat findings.
+docs/verification/chat-quality-daily-20261024/v0.3.0-chengdu-prompt-list.png
+docs/verification/chat-quality-daily-20261024/v0.3.0-wechat-20261020.png
+docs/verification/chat-quality-daily-20261024/v0.3.0-wecom-20261019.png
+docs/verification/chat-quality-daily-20261024/v0.3.0-wecom-20261020.png
+docs/verification/chat-quality-daily-20261024/v0.3.0-model-directory.png

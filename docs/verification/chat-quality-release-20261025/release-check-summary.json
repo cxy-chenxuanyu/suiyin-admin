@@ -1,0 +1,147 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "checkedAt": "2026-10-25T03:18:21.684975+00:00",
+  "status": "passed",
+  "suiteCount": 12,
+  "checksPassed": 75837,
+  "checksFailed": 0,
+  "countingNote": "Model counts 445 assertions, not its 18 scenarios a second time. Drawer count includes repeated mutation cases across 3466 views; these are not 74959 independent product requirements.",
+  "actualPrivateCoverage": {
+    "reports": 4,
+    "sessions": 3466,
+    "retainedMessages": 20113,
+    "displayMessages": 30861,
+    "bundleSha256": "68932b8f2f75703926bef20de63f30b4434435fedd4cb59e4ab762e47d5fa0e3"
+  },
+  "boundaries": {
+    "actualNetworkRequests": 0,
+    "modelApiCalls": 0,
+    "productionReads": 0,
+    "productionWrites": 0,
+    "userChromeActions": 0,
+    "historicalReceiptsOverwritten": false,
+    "privatePayloadPublished": false
+  },
+  "suites": [
+    {
+      "script": "prototype/checks/quality-daily-model-check.cjs",
+      "command": "node prototype/checks/quality-daily-model-check.cjs --write",
+      "receipt": "model-check.json",
+      "checksPassed": 445,
+      "scope": "18 model scenarios / 445 assertions",
+      "scriptSha256": "c14fc73b5882299ad06e4078cf01d9904ce49234e3e9f125b559f5446f7f0e16",
+      "receiptSha256": "f110b94cba4e5151aea56315ca5535a0e6b3c34379fe9a901216b32f7febe9fc",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/quality-daily-prompt-delete-check.cjs",
+      "command": "node prototype/checks/quality-daily-prompt-delete-check.cjs",
+      "receipt": "prompt-delete-check.json",
+      "checksPassed": 60,
+      "scope": "Soft deletion and history preservation",
+      "scriptSha256": "e573ddc6795dfed9ba5bcaa59c7cfbf5dd81ff5b71287571a97b40cef5a73d05",
+      "receiptSha256": "bf53657fd4eae0715b78f87ab7c091df446f298124436ee285b6fcb7e42da2df",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/quality-daily-menu-check.cjs",
+      "command": "node prototype/checks/quality-daily-menu-check.cjs",
+      "receipt": "menu-check.json",
+      "checksPassed": 69,
+      "scope": "Menus, tenant isolation, one-time cache migration",
+      "scriptSha256": "2c45f0f35d8b05c64be379ee4737f342d5da20ead8a94352eb64bc26a6aeed66",
+      "receiptSha256": "755d0caf1828eb3c0d0b38da888cd093f73c2cfb6cb22e6b43da85a5bd1f70bc",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/quality-daily-view-check.cjs",
+      "command": "node prototype/checks/quality-daily-view-check.cjs",
+      "receipt": "view-check.json",
+      "checksPassed": 43,
+      "scope": "Synthetic report status projections and permission guards",
+      "scriptSha256": "ea12ff214e5d7109f29b7e995f28b436d1c0937bfc9b8b34d27b81727c73d178",
+      "receiptSha256": "46a7f467174372cbc7925ef26ff342336fc53d8b3581a7ebcb2b5b7b2fb66772",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/quality-daily-prompts-check.cjs",
+      "command": "node prototype/checks/quality-daily-prompts-check.cjs",
+      "receipt": "prompts-check.json",
+      "checksPassed": 60,
+      "scope": "Daily prompt actions and independent channel configuration",
+      "scriptSha256": "ee91bb85847a56b911cd6c76e157ae3896609ee7f5b004d0d685a7e9d4a7eba3",
+      "receiptSha256": "d83c31d8b505ec0b5099c009456414a2596c0b8b37c163eefc72b79e17880087",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/prompt-templates-check.cjs",
+      "command": "node prototype/checks/prompt-templates-check.cjs",
+      "receipt": "prompt-templates-check.json",
+      "checksPassed": 45,
+      "scope": "Ordinary template compatibility",
+      "scriptSha256": "435f911de5df754f109509ef62458029e04e6e911b70b2787b2319a4c79f98eb",
+      "receiptSha256": "01af947a8111ca2f6af1d60a6002eaab8676c86f3699b954460f5f629ead457d",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/prompt-navigation-check.cjs",
+      "command": "node prototype/checks/prompt-navigation-check.cjs",
+      "receipt": "prompt-navigation-check.json",
+      "checksPassed": 28,
+      "scope": "Prompt navigation and menu permissions",
+      "scriptSha256": "c6d336546f1d85c042ef92c611800bfb685ba09af68f1a8437004a3db0785c4d",
+      "receiptSha256": "4bf2750244fc00ca8be02baca727e1dbe9621882e76d026b503e880d316a1f56",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/shell-tab-restore-check.cjs",
+      "command": "node prototype/checks/shell-tab-restore-check.cjs",
+      "receipt": "shell-tab-restore-check.json",
+      "checksPassed": 18,
+      "scope": "Saved tab recovery",
+      "scriptSha256": "dd21cedfbd7e16328e89b4a76c66a29b3071afed187bd91662cc3c4b1ad1755f",
+      "receiptSha256": "23e0386ebcde7c584ffd371ed4a869cef937a3f4289dd9d6831eafe75c1c9724",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/quality-real-renderer-check.cjs",
+      "command": "node prototype/checks/quality-real-renderer-check.cjs",
+      "receipt": "real-renderer-check.json",
+      "checksPassed": 47,
+      "scope": "Current seven modules and read-only PC chat drawer",
+      "scriptSha256": "ca5b2529d70b0e0204c8dd4f3f91b98b26fd2d7071c36c49f1dc57a5a20cb669",
+      "receiptSha256": "210d9d317b20c13a2f306b49666726937fc952c64bd0b2a84ba054205e8fd462",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/quality-real-bundle-check.cjs",
+      "command": "node prototype/checks/quality-real-bundle-check.cjs",
+      "receipt": "real-bundle-check.json",
+      "checksPassed": 23,
+      "scope": "Actual local private bundle integrity and identity mapping",
+      "scriptSha256": "38ba4a54497346f3031d24447fdee9f245f7422eb7e01401ec75c279b95dcbaa",
+      "receiptSha256": "1490fb3876e03524d8a9d99a30588d330bf585352d7efde585697bed30e90db3",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/check-quality-chat-drawer.cjs",
+      "command": "node prototype/checks/check-quality-chat-drawer.cjs",
+      "receipt": "chat-drawer-check.json",
+      "checksPassed": 74959,
+      "scope": "3466 views, scope rejection and original-field immutability",
+      "scriptSha256": "8820141d7efb23e552a9cb172cfb76f8dacffbd9bcdf510a0bb53174ced3bb5c",
+      "receiptSha256": "ac95e856ae81aefeb53015e8d98a1d0d5dee07541047f541da0361e4da77dc63",
+      "status": "passed"
+    },
+    {
+      "script": "prototype/checks/quality-public-demo-check.cjs",
+      "command": "node prototype/checks/quality-public-demo-check.cjs",
+      "receipt": "public-demo-check.json",
+      "checksPassed": 40,
+      "scope": "Public synthetic provenance and private fetch isolation",
+      "scriptSha256": "ac106644bf71d228ebcb4dfcdd885644f1f7270fab51619118d3354f11bb3488",
+      "receiptSha256": "70f041427cdf2537d9188b9fecee6c47736ff1af62b5e908308728c04b8ed1a8",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-25T00:52:45.496Z",
+  "checks": 33,
+  "passed": 33,
+  "dataSha256": "68932b8f2f75703926bef20de63f30b4434435fedd4cb59e4ab762e47d5fa0e3",
+  "rendererSha256": "f8bd56f97c0b38aac167fd65c45712dcce3487111da93593a89253fd10a1bc28",
+  "reports": 4,
+  "sessions": 3466,
+  "baselineSha256": "2cf96d7e668020b7b021861ce7de849a7204014eeb526d11aafe383cf4973b22",
+  "displayMode": "private-original",
+  "localOnly": true,
+  "sourceAccountCount": 156,
+  "sourceRelationCount": 3285,
+  "retainedMessages": 20113,
+  "nameSourceCounts": {
+    "scope.remark": 849,
+    "scope.nickName": 2434,
+    "history.header.participants.customer_nick": 1,
+    "scope.userName": 1
+  },
+  "scope": "Isolated VM using the actual local-only private-original bundle; no network, API, production or browser actions. Receipts omit names and message contents.",
+  "results": [
+    {
+      "name": "wecom actual bundle accepted",
+      "ok": true
+    },
+    {
+      "name": "wecom dates selectable",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 coverage conserved",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 fourteen dimensions and unknown identities",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 recorded issue totals equal occurrences",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 coverage conserved",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 fourteen dimensions and unknown identities",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 recorded issue totals equal occurrences",
+      "ok": true
+    },
+    {
+      "name": "wecom renders seven modules with engine and completion",
+      "ok": true
+    },
+    {
+      "name": "wechat actual bundle accepted",
+      "ok": true
+    },
+    {
+      "name": "wechat dates selectable",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 coverage conserved",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 fourteen dimensions and unknown identities",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 recorded issue totals equal occurrences",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 cross-account template filter retains relevant evidence",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 coverage conserved",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 fourteen dimensions and unknown identities",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 recorded issue totals equal occurrences",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 cross-account template filter retains relevant evidence",
+      "ok": true
+    },
+    {
+      "name": "wechat renders seven modules with engine and completion",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 rendered intent bars exclude system-only",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 rendered intent table denominator matches eligible sessions",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 rendered intent bars exclude system-only",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 rendered intent table denominator matches eligible sessions",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 rendered intent bars exclude system-only",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 rendered intent table denominator matches eligible sessions",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 rendered intent bars exclude system-only",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 rendered intent table denominator matches eligible sessions",
+      "ok": true
+    },
+    {
+      "name": "private-original distribution and provenance are explicit",
+      "ok": true
+    },
+    {
+      "name": "all displayed identities match current persona and relation source fields",
+      "ok": true
+    },
+    {
+      "name": "coverage account names use the same persona display mapping",
+      "ok": true
+    },
+    {
+      "name": "every retained message contains exact current-session original text and explicit transcript provenance",
+      "ok": true
+    },
+    {
+      "name": "display-only rebuild preserves metrics identities selected sequences rule snapshots and semantic dispositions",
+      "ok": true
+    }
+  ]
+}

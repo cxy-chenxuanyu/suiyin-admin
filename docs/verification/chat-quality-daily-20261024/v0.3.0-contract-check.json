@@ -1,0 +1,29 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+  "generatedAt": "2026-10-24T12:42:15.058Z",
+  "status": "passed",
+  "deliveryStatus": "in-progress",
+  "checks": {
+    "spec": {
+      "file": "E:\\AI 项目\\prototype-sdd\\specs\\092-admin-chat-quality-daily\\spec.md",
+      "status": "approved",
+      "rules": 24,
+      "acceptanceCriteria": 38,
+      "questionsOpen": 0,
+      "dependencies": [
+        "SPEC-SUIYIN-ADMIN-068@1.0.0",
+        "SPEC-SUIYIN-ADMIN-077@1.0.1"
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    "plan": {
+      "file": "E:\\AI 项目\\prototype-sdd\\specs\\092-admin-chat-quality-daily\\plan.md",
+      "sourceSpec": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+      "artifactClass": "static-html",
+      "legacy": false,
+      "errors": [],
+      "warnings": []
+    }
+  }
+}

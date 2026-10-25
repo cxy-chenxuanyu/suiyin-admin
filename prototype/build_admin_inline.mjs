@@ -5,8 +5,10 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 const root=process.argv[2]?path.resolve(process.argv[2]):path.dirname(fileURLToPath(import.meta.url));
 const outputFile=process.argv[3]?path.resolve(process.argv[3]):path.join(root,'_shell_inline.html');
-const read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const files=(dir)=>fs.readdirSync(path.join(root,dir),{withFileTypes:true}).flatMap(d=>d.isDirectory()?files(dir+'/'+d.name):[dir+'/'+d.name]);
+const cleanPath=p=>p.split(/[?#]/)[0];
+const read=p=>fs.readFileSync(path.join(root,cleanPath(p)),'utf8').replace(/\r\n/g,'\n');
+const privatePath=p=>/(^|\/)(private|vendor|node_modules)(\/|$)|\.private\./i.test(p);
+const files=(dir)=>fs.readdirSync(path.join(root,dir),{withFileTypes:true}).flatMap(d=>{const p=dir+'/'+d.name;return privatePath(p)?[]:d.isDirectory()?files(p):[p];});
 const types={'.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.svg':'image/svg+xml'};
 const assets=Object.fromEntries(files('assets').map(p=>[p,'data:'+(types[path.extname(p)]||'application/octet-stream')+';base64,'+fs.readFileSync(path.join(root,p)).toString('base64')]));
 // Editable guide-line configurations retain compact, stable asset references in storage.
@@ -26,10 +28,11 @@ function offlineFetch(input){
 }
 function inlinePage(file){
  const scripts=[];
- let html=read(file).replace(/<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*\/?\s*>/gi,(_,p)=>{included.styles.add(p);return '<style>\n'+inlineFrameSelectors(embedAssets(read(p)))+'\n</style>';});
+ let html=read(file).replace(/<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["']\s*\/?\s*>/gi,(_,p)=>{included.styles.add(cleanPath(p));return '<style>\n'+inlineFrameSelectors(embedAssets(read(p)))+'\n</style>';});
  // Page-local parity rules need the same srcdoc selector adaptation as linked stylesheets.
  html=html.replace(/(<style\b[^>]*>)([\s\S]*?)(<\/style>)/gi,(_,start,css,end)=>start+inlineFrameSelectors(css)+end);
  html=html.replace(/<script\s+src=["']([^"']+)["'][^>]*>\s*<\/script>/gi,(_,p)=>{
+  p=cleanPath(p);
   let code=p==='data/guide-lines.js'?read(p):embedAssets(read(p));
   included.scripts.add(p);
   // about:srcdoc has an opaque location.origin; use the inherited parent origin for messages.

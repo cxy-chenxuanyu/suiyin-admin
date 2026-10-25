@@ -1,0 +1,165 @@
+/* 南京质检日报布局复刻：保留源 HTML 的全部 CSS 几何，仅替换蓝色主色及配套浅色。
+ * Source style SHA-256: 4de4ad3cb15366833f762817b2e7a95b49274dcffc955e5bcc357613ded2c660
+ * Scope: .qr-report only; body.qr-report-page is set only for the report route.
+ * Admin teal follows docs/design-spec.md; risk red/orange and role purple stay unchanged.
+ */
+body.qr-report-page {background:#f4f6fa}
+.qr-report {--qr-primary:var(--primary,#00c4af);--qr-primary-soft:#e8f8f5;line-height:normal}
+
+.qr-report, .qr-report * {box-sizing:border-box;margin:0;padding:0}
+.qr-report {font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#f4f6fa;color:#2b3445;font-size:14px}
+.qr-report.wrap, .qr-report .wrap {max-width:1180px;margin:0 auto;padding:22px 18px 60px}
+.qr-report h1 {font-size:23px;margin-bottom:4px}
+.qr-report .sub {color:#7a869a;margin-bottom:16px;font-size:13px}
+.qr-report .tabs {display:flex;gap:6px;margin-bottom:18px;background:#fff;padding:6px;border-radius:12px;box-shadow:0 1px 4px rgba(30,40,60,.08);position:sticky;top:8px;z-index:50}
+.qr-report .tabbtn {flex:1;padding:10px;border:none;background:transparent;border-radius:8px;font-size:14px;font-weight:600;color:#5c6a80;cursor:pointer}
+.qr-report .tabbtn.on {background:var(--qr-primary);color:#fff}
+.qr-report .tabbtn .n {font-size:11px;font-weight:400;opacity:.8;margin-left:4px}
+.qr-report .tabpane {display:none}
+.qr-report .tabpane.on {display:block}
+.qr-report .kpis {display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:18px}
+.qr-report .kpi {background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(30,40,60,.08);text-align:center}
+.qr-report .kpi .v {font-size:26px;font-weight:700}
+.qr-report .kpi .l {color:#7a869a;font-size:12px;margin-top:4px}
+.qr-report .kpi.red .v {color:#d64541}
+.qr-report .kpi.orange .v {color:#e67e22}
+.qr-report .kpi.green .v {color:#27ae60}
+.qr-report .kpi.blue .v {color:var(--qr-primary)}
+.qr-report .kpi small {color:#98a2b3;font-size:11px}
+.qr-report h2 {font-size:16px;margin:20px 0 10px;border-left:4px solid var(--qr-primary);padding-left:10px}
+.qr-report h3 {font-size:14px;margin:16px 0 8px;color:#3d4a60}
+.qr-report .card {background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 4px rgba(30,40,60,.08);overflow:auto;margin-bottom:16px}
+.qr-report table {border-collapse:collapse;width:100%;font-size:13px}
+.qr-report th, .qr-report td {border-bottom:1px solid #edf0f5;padding:8px 10px;text-align:left;white-space:normal}
+.qr-report th {background:#f0f8f7;cursor:pointer;user-select:none}
+.qr-report tr:hover td {background:#f5fbfa}
+.qr-report td.num, .qr-report th.num {text-align:right;font-variant-numeric:tabular-nums}
+.qr-report td.bad {color:#d64541;font-weight:600}
+.qr-report tr.hl td {background:#fff6f5}
+.qr-report .badge {display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.qr-report .b-h {background:#fdecec;color:#d64541}
+.qr-report .b-m {background:#fef3e2;color:#e67e22}
+.qr-report .b-l {background:#e9f7ef;color:#27ae60}
+.qr-report .tag {display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;background:var(--qr-primary-soft);color:var(--qr-primary);white-space:nowrap}
+.qr-report .tag.role {background:#f0eafb;color:#7c4dbe}
+.qr-report .file {color:#98a2b3;font-size:11px;font-family:Consolas,monospace}
+.qr-report input[type=text] {padding:8px 12px;border:1px solid #d7deea;border-radius:8px;width:280px;margin-bottom:10px}
+.qr-report ul.clean {list-style:none}
+.qr-report ul.clean li {padding:8px 4px;border-bottom:1px dashed #edf0f5;line-height:1.7}
+.qr-report .note {background:#fffbe8;border:1px solid #f2e3ae;border-radius:10px;padding:12px 16px;margin-top:10px;line-height:1.8}
+.qr-report .searchbar {display:flex;gap:10px;align-items:center}
+.qr-report .count {color:#98a2b3;font-size:12px}
+.qr-report .viewbtn {color:var(--qr-primary);cursor:pointer;font-size:12px;white-space:nowrap}
+.qr-report .viewbtn:hover {text-decoration:underline}
+.qr-report a.msgref {color:var(--qr-primary);cursor:pointer;font-weight:600;text-decoration:none;border-bottom:1px dotted var(--qr-primary)}
+.qr-report .insights {display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.qr-report .insight {background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 4px rgba(30,40,60,.08);display:flex;gap:14px;align-items:flex-start}
+.qr-report .insight .ico {font-size:24px;line-height:1;margin-top:2px}
+.qr-report .insight .txt {flex:1;line-height:1.75}
+.qr-report .insight .txt b {font-size:15px}
+.qr-report .insight .num {color:#d64541;font-weight:700}
+.qr-report .insight .act {margin-top:6px;font-size:12.5px;color:var(--qr-primary);background:#effaf8;border-radius:6px;padding:4px 10px;display:inline-block}
+.qr-report .rbgrid {display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qr-report .rbcard {background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 4px rgba(30,40,60,.08)}
+.qr-report .rbcard h3 {margin-top:0}
+.qr-report .rbitem {display:flex;justify-content:space-between;padding:7px 2px;border-bottom:1px dashed #edf0f5;font-size:13px}
+.qr-report .rbitem span {color:#5c6a80}
+.qr-report .rbitem.good span {color:#27ae60}
+.qr-report .chip {display:inline-block;background:var(--qr-primary-soft);color:var(--qr-primary);border-radius:6px;padding:5px 10px;margin:3px 4px 3px 0;font-size:12.5px;cursor:pointer}
+.qr-report .chip:hover {background:var(--qr-primary);color:#fff}
+.qr-report .rankrow {display:flex;align-items:center;gap:10px;padding:6px 2px;cursor:pointer;border-radius:8px}
+.qr-report .rankrow:hover {background:#f5fbfa}
+.qr-report .rankname {width:190px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qr-report .rankbarwrap {flex:1;display:flex;align-items:center;gap:8px}
+.qr-report .rankbar {height:18px;background:linear-gradient(90deg,#ff9a76,#d64541);border-radius:4px;min-width:8px}
+.qr-report .ranknum {font-weight:700;font-size:13px;white-space:nowrap}
+.qr-report .ranknum small {color:#98a2b3;font-weight:400}
+.qr-report .mini {font-size:11px;background:#fdecec;color:#d64541;border-radius:4px;padding:1px 6px;white-space:nowrap}
+.qr-report .t10item {display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px solid #f0f2f7;cursor:pointer;font-size:13px}
+.qr-report .t10item:hover {background:#f5fbfa}
+.qr-report .t10no {font-weight:700;color:#98a2b3;width:22px}
+.qr-report .t10cust {color:#7a869a}
+.qr-report .t10ev {flex:1;color:#5c6a80;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qr-report .empblock {border:1px solid #eef1f6;border-radius:10px;margin-bottom:14px;overflow:hidden}
+.qr-report .emphead {background:#f6f8fc;padding:10px 14px;display:flex;gap:10px;align-items:center}
+.qr-report .emphead .count {margin-left:auto}
+.qr-report .pitem {padding:10px 14px;border-top:1px solid #f0f2f7;cursor:pointer}
+.qr-report .pitem:hover {background:#f5fbfa}
+.qr-report .pline1 {margin-bottom:4px}
+.qr-report .cardtag {color:#7c4dbe;font-size:12px;background:#f6f1fd;padding:1px 6px;border-radius:4px;margin-left:4px}
+.qr-report .ptag {display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;background:var(--qr-primary-soft);color:#4a5b76;margin-right:6px;margin-top:2px}
+.qr-report .ptag.red {background:#fdecec;color:#d64541;font-weight:600}
+.qr-report .pline3 {color:#5c6a80;font-size:12px;margin-top:4px;line-height:1.6}
+.qr-report #drawerMask {position:fixed;inset:0;background:rgba(20,28,45,.45);display:none;z-index:99}
+.qr-report #drawer {position:fixed;top:0;right:-560px;width:560px;max-width:94vw;height:100vh;background:#f2f4f7;z-index:100;transition:right .25s;display:flex;flex-direction:column;box-shadow:-6px 0 24px rgba(0,0,0,.18)}
+.qr-report #drawer.open {right:0}
+.qr-report #drawerHead {background:var(--qr-primary);color:#fff;padding:14px 16px}
+.qr-report #drawerHead .c1 {font-size:16px;font-weight:700}
+.qr-report #drawerHead .c2 {font-size:12px;opacity:.85;margin-top:4px;line-height:1.6}
+.qr-report #drawerClose {float:right;cursor:pointer;font-size:20px;line-height:1}
+.qr-report #drawerMsgs {flex:1;overflow-y:auto;padding:16px 14px}
+.qr-report .msg {display:flex;margin-bottom:12px}
+.qr-report .msg.emp {justify-content:flex-end}
+.qr-report .bubble {max-width:72%;background:#fff;border-radius:10px;padding:8px 11px;font-size:13px;line-height:1.65;word-break:break-word}
+.qr-report .msg.emp .bubble {background:#95EC69}
+.qr-report .meta {font-size:11px;color:#98a2b3;margin-bottom:3px;display:flex;gap:8px;align-items:center}
+.qr-report .msg.emp .meta {justify-content:flex-end}
+.qr-report .seq {background:#dff5f1;color:var(--qr-primary);border-radius:4px;padding:0 5px;font-weight:600}
+.qr-report .msg.hl .bubble {outline:2px solid #e67e22;background:#fff7e8}
+.qr-report .msg.emp.hl .bubble {background:#e7f9c8}
+.qr-report .who {font-weight:600}
+.qr-report .msg.emp .who {color:#1f8a2c}
+.qr-report .msg.cust .who {color:var(--qr-primary)}
+.qr-report .rolechip {font-size:10px;background:#f0eafb;color:#7c4dbe;border-radius:3px;padding:0 4px;margin-left:4px}
+@media print {
+  .qr-report .tabs {display:none}
+  .qr-report .tabpane {display:block!important}
+}
+
+/* Neutralize only the Admin host defaults that the standalone source never had.
+ * Keep existing dialogs outside .qr-report on their current Admin styles.
+ */
+.qr-report .card, .qr-report .chip, .qr-report .badge {border:0}
+.qr-report .badge {vertical-align:baseline}
+.qr-report .bubble {white-space:normal}
+.qr-report .tabbtn {font-family:Arial,sans-serif;line-height:normal;white-space:normal;transition:none}
+.qr-report .tabbtn:hover:not(:disabled) {border:0;background:transparent;color:#5c6a80}
+.qr-report .tabbtn.on:hover:not(:disabled) {background:var(--qr-primary);color:#fff}
+.qr-report .tabbtn:focus-visible, .qr-report input:focus-visible, .qr-report select:focus-visible, .qr-report a:focus-visible {outline:2px solid var(--qr-primary);outline-offset:2px}
+.qr-report input[type=text] {font:400 13.3333px Arial,sans-serif;line-height:normal;background:#fff;color:#2b3445}
+
+/* Small Admin controls around the unchanged report layout. */
+.qr-report .qr-heading {display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.qr-report select.qr-date-title {font-family:inherit;font-size:23px;font-weight:700;line-height:normal;color:var(--qr-primary);background:transparent;border:0;border-radius:0;padding:0;width:auto;max-width:100%;cursor:pointer}
+.qr-report .qr-report-info {margin-top:20px;color:#98a2b3;font-size:11px;line-height:1.7}
+.qr-report .qr-report-info summary {cursor:pointer}
+.qr-report .qr-report-info p, .qr-report .qr-report-info ul {margin-top:8px}
+.qr-report .qr-report-info ul {padding-left:18px}
+.qr-report .qr-micro-note {color:#98a2b3;font-size:11px;line-height:1.6;margin:6px 0}
+.qr-report table.qr-wide {table-layout:auto;min-width:100%}
+.qr-report .qr-intent-kpis {grid-template-columns:repeat(5,1fr)}
+.qr-report button.viewbtn {border:0;background:transparent;padding:0;border-radius:0;font-family:inherit;font-size:12px;line-height:inherit;color:var(--qr-primary);text-align:left;transition:none}
+.qr-report button.viewbtn:hover:not(:disabled) {border:0;background:transparent;color:var(--qr-primary);text-decoration:underline}
+.qr-report button.rankrow {width:100%;border:0;background:transparent;color:inherit;font-family:inherit;line-height:inherit;text-align:left;white-space:normal;transition:none}
+.qr-report button.rankrow:hover:not(:disabled) {border:0;background:#f5fbfa;color:inherit}
+.qr-report [hidden] {display:none!important}
+.qr-report .qr-empty {padding:24px;text-align:center;color:#98a2b3;font-size:13px}
+.qr-report .qr-intent-list {max-height:640px;overflow-y:auto}
+.qr-report .qr-business-kpis {grid-template-columns:repeat(4,1fr)}
+.qr-report .searchbar {flex-wrap:wrap;margin-bottom:10px}
+.qr-report .searchbar select {padding:7px 10px;border:1px solid #d7deea;border-radius:8px;max-width:300px;background:#fff}
+.qr-report .searchbar .tabbtn {flex:0 0 auto;padding:6px 14px;font-size:12px}
+.qr-report .searchbar input {margin-bottom:0}
+.qr-report .pline1 .viewbtn {float:right}
+.qr-report .qr-teal-bar {background:linear-gradient(90deg,#80ded4,var(--qr-primary))}
+.qr-report button.act {border:0;cursor:pointer;line-height:1.75}
+.qr-report .qr-staff-detail {border-top:1px solid #edf0f5;margin-top:14px;padding-top:4px}
+.qr-report b.bad {color:#d64541}
+.qr-report .qr-report-info button {padding:5px 10px;margin-top:8px}
+.qr-report .qr-heading h1 > .live-select {display:inline-block;vertical-align:baseline;width:auto;min-width:0;margin:0}
+.qr-report .qr-heading .live-select-trigger {height:auto;min-height:0;padding:0 18px 0 0;border:0;border-radius:0;font:700 23px "Microsoft YaHei","PingFang SC",sans-serif;color:var(--qr-primary);background:transparent}
+.qr-report .qr-heading .live-select-caption {color:inherit;line-height:normal}
+.qr-report .qr-heading .live-select-arrow {right:2px;border-color:var(--qr-primary)}
+.qr-report .searchbar .live-select {width:220px;max-width:100%;flex:none}
+.qr-report .rankbarwrap {min-width:0}
+.qr-report .ranknum, .qr-report .rankbarwrap > .mini {flex-shrink:0}

@@ -1,0 +1,23 @@
+{
+  "spec_id": "SPEC-SUIYIN-ADMIN-092",
+  "spec_version": "0.3.3",
+  "canonical_url": "https://github.com/xfang9528-glitch/suiyin-admin/tree/v2026102501-admin-chat-quality-daily/docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3",
+  "engineering_handoff": false,
+  "actual_issue_creation": false,
+  "issue_url": null,
+  "artifact_class": "static-html",
+  "files": [
+    "spec.md",
+    "plan.md",
+    "tasks.md",
+    "source-convergence.md",
+    "README.md"
+  ],
+  "sha256": {
+    "spec.md": "5fb7b3979589027dea7bc27f2f61787246d9aa4875cdb844efccabbd3fdf432e",
+    "plan.md": "8e74731672036c4743f88ae56f927988e527d6d1b6278bd59007ad0d92e2670a",
+    "tasks.md": "b043b07e5a20348189e31ecacb3b9e99d4b5338f8b00d05abfe61f3e361b1ed9",
+    "source-convergence.md": "85fca81d52801e1b1b6702c0e4dcb03e27aabd565591a6a117c4471c4c3b98e0",
+    "README.md": "bbab33724a53299af10242312bf346afaae8921469e78ec0a492f701cb5d5d3b"
+  }
+}

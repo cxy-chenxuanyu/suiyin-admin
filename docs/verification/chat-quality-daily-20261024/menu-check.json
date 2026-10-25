@@ -1,0 +1,48 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+  "ok": true,
+  "checkedAt": "2026-10-25T02:03:40.385Z",
+  "checks": 69,
+  "routes": [
+    "wecomQualityDaily",
+    "wechatQualityDaily"
+  ],
+  "demoTenant": "yestar-sz",
+  "location": "Chat Management / group-10, appended after existing entries",
+  "otherTenants": 16,
+  "baselineRevision": "d1d6d9b5fc54a8b23946ef2754d101166bd4a5d4",
+  "nodeVersion": "v24.14.0",
+  "files": [
+    {
+      "path": "prototype/data/navigation-snapshot.json",
+      "sha256": "f7cac843125608a83254b162c75908ac44e3378ef1179584c408d73e2c00b8d5"
+    },
+    {
+      "path": "prototype/data/content/yestar-sz.json",
+      "sha256": "6882f30af00125d5cb787ab04e071b001891701facbb2bfc5fcdb7ea0bb32dd8"
+    },
+    {
+      "path": "prototype/data/content/bzds.json",
+      "sha256": "a4bfb3b8a7f9d9584ef5dc6075bc9ee87d77ed6482170569cb769fd6af476f67"
+    },
+    {
+      "path": "prototype/admin-menu-state.js",
+      "sha256": "e9ba1278dc1c8ad86524a49ce9e415f0ab42ebd90e2d78c1e274d425007d8184"
+    }
+  ],
+  "scope": "JSON semantic invariants plus isolated menu VM; browser checks remain with main integration",
+  "checksInclude": [
+    "unchanged tenants outside approved Prompt scope and unrelated page content",
+    "unchanged pre-existing menu rows and route order",
+    "pinned historical cache baselines including the prior AI parent",
+    "unique menu identities and dedicated mock sources",
+    "fresh and legacy-enabled route registration",
+    "custom labels, order and permissions",
+    "hidden or deleted tenant and platform parents",
+    "per-route visibility and one-time migration",
+    "all other tenant visible menu trees",
+    "existing AI cache and stale layout parents moved to Chat tail without duplicates",
+    "old hidden or deleted reports do not gain access during relocation",
+    "deleted destination groups remain absent"
+  ]
+}

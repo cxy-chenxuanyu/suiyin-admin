@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-25T00:53:40.155Z",
+  "bundleSha256": "68932b8f2f75703926bef20de63f30b4434435fedd4cb59e4ab762e47d5fa0e3",
+  "checks": [
+    {
+      "check": "wecom-evidence-original-text",
+      "passed": true,
+      "messages": 103
+    },
+    {
+      "check": "wecom-persona-filter",
+      "passed": true,
+      "rows": 3
+    },
+    {
+      "check": "wecom-date19-real-names",
+      "passed": true
+    },
+    {
+      "check": "wechat-date20-real-names",
+      "passed": true
+    },
+    {
+      "check": "wechat-evidence-original-text",
+      "passed": true,
+      "messages": 1
+    },
+    {
+      "check": "wechat-date19-real-names",
+      "passed": true
+    },
+    {
+      "check": "wechat-persona-filter",
+      "passed": true,
+      "rows": 26
+    },
+    {
+      "check": "final-original-mode-and-original-analysis-time",
+      "passed": true
+    },
+    {
+      "check": "long-persona-dropdown-readable",
+      "passed": true,
+      "width": 360,
+      "wrap": "normal"
+    }
+  ],
+  "passed": true
+}

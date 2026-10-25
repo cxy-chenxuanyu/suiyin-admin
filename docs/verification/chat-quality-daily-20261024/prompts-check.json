@@ -1,0 +1,392 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.2.1",
+  "generatedAt": "2026-10-24T12:25:21.837Z",
+  "timezone": "Asia/Shanghai",
+  "type": "static-dom-interaction",
+  "status": "passed",
+  "checks": [
+    {
+      "id": "P001",
+      "description": "Existing Admin route initializes successfully.",
+      "passed": true
+    },
+    {
+      "id": "P002",
+      "description": "All existing template rows remain in the original model.",
+      "passed": true
+    },
+    {
+      "id": "P003",
+      "description": "Two dedicated quality templates appear in the same table as existing rows.",
+      "passed": true
+    },
+    {
+      "id": "P004",
+      "description": "Both channel templates initially remain disabled.",
+      "passed": true
+    },
+    {
+      "id": "P044",
+      "description": "Unified list preserves the six observed columns and actual five-record count.",
+      "passed": true
+    },
+    {
+      "id": "P045",
+      "description": "Main list uses Chinese scenes, hides technical IDs, and provides shared-rule and create controls.",
+      "passed": true
+    },
+    {
+      "id": "P046",
+      "description": "All-scene filter can show only the enterprise-WeChat daily template.",
+      "passed": true
+    },
+    {
+      "id": "P047",
+      "description": "Clearing the scene filter restores all original and daily templates.",
+      "passed": true
+    },
+    {
+      "id": "P005",
+      "description": "Existing template editor still opens through Admin.edit.",
+      "passed": true
+    },
+    {
+      "id": "P006",
+      "description": "Existing template editor exposes its original name field.",
+      "passed": true
+    },
+    {
+      "id": "P007",
+      "description": "Cancelling the old template editor leaves its record unchanged.",
+      "passed": true
+    },
+    {
+      "id": "P008",
+      "description": "Existing edit form remains valid for a local save.",
+      "passed": true
+    },
+    {
+      "id": "P009",
+      "description": "Existing template save updates its own original row.",
+      "passed": true
+    },
+    {
+      "id": "P010",
+      "description": "Quality controls survive the existing list refresh.",
+      "passed": true
+    },
+    {
+      "id": "P051",
+      "description": "Create keeps the existing generic template form.",
+      "passed": true
+    },
+    {
+      "id": "P052",
+      "description": "Legacy create appears alongside both daily templates with the actual count.",
+      "passed": true
+    },
+    {
+      "id": "P053",
+      "description": "Legacy delete restores three original records without deleting daily templates.",
+      "passed": true
+    },
+    {
+      "id": "P011",
+      "description": "Existing template save uses its original scoped storage key.",
+      "passed": true
+    },
+    {
+      "id": "P048",
+      "description": "Daily editor follows the observed scene, timing, model, name and content order.",
+      "passed": true
+    },
+    {
+      "id": "P049",
+      "description": "Daily advanced workflow starts collapsed and footer keeps Confirm and Cancel.",
+      "passed": true
+    },
+    {
+      "id": "P050",
+      "description": "Model options use only enabled scene-compatible candidates with source scope and optional default.",
+      "passed": true
+    },
+    {
+      "id": "P042",
+      "description": "Delayed close events from prior editors do not clear the new editor state.",
+      "passed": true
+    },
+    {
+      "id": "P012",
+      "description": "Edited prompt is marked unsaved and cannot publish.",
+      "passed": true
+    },
+    {
+      "id": "P041",
+      "description": "Shell scrim close message preserves dirty editor and offers leave choices.",
+      "passed": true
+    },
+    {
+      "id": "P043",
+      "description": "Legacy direct close entry also respects the quality editor dirty guard.",
+      "passed": true
+    },
+    {
+      "id": "P013",
+      "description": "Saving a prompt only saves its draft.",
+      "passed": true
+    },
+    {
+      "id": "P014",
+      "description": "Saving one channel leaves the other published template unchanged.",
+      "passed": true
+    },
+    {
+      "id": "P015",
+      "description": "Failed trial displays a failure and blocks publication.",
+      "passed": true
+    },
+    {
+      "id": "P016",
+      "description": "Passing same-channel trial allows the saved candidate to publish.",
+      "passed": true
+    },
+    {
+      "id": "P017",
+      "description": "Changes after trial clear its visible proof and block publication.",
+      "passed": true
+    },
+    {
+      "id": "P018",
+      "description": "Saved changes invalidate previous trial in the shared model.",
+      "passed": true
+    },
+    {
+      "id": "P019",
+      "description": "Publishing enables only the chosen channel and increments its version.",
+      "passed": true
+    },
+    {
+      "id": "P020",
+      "description": "Storage failure retains unsaved edits and original stored draft.",
+      "passed": true
+    },
+    {
+      "id": "P021",
+      "description": "Escape cannot discard dirty prompt edits.",
+      "passed": true
+    },
+    {
+      "id": "P022",
+      "description": "Continue editing preserves the dirty content.",
+      "passed": true
+    },
+    {
+      "id": "P023",
+      "description": "Close button also guards unsaved edits.",
+      "passed": true
+    },
+    {
+      "id": "P024",
+      "description": "Saving a draft before leaving resolves navigation and closes the editor.",
+      "passed": true
+    },
+    {
+      "id": "P025",
+      "description": "Save-and-leave does not publish the pending prompt.",
+      "passed": true
+    },
+    {
+      "id": "P026",
+      "description": "Continue editing declines a Shell leave request.",
+      "passed": true
+    },
+    {
+      "id": "P027",
+      "description": "Discard leaves without changing the already saved draft.",
+      "passed": true
+    },
+    {
+      "id": "P028",
+      "description": "Both channel templates can be enabled independently.",
+      "passed": true
+    },
+    {
+      "id": "P029",
+      "description": "Shared-rule draft is one source and leaves current rule unchanged.",
+      "passed": true
+    },
+    {
+      "id": "P030",
+      "description": "Shared-rule changes invalidate both channel prompt trials.",
+      "passed": true
+    },
+    {
+      "id": "P031",
+      "description": "One successful channel cannot publish rules when both are enabled.",
+      "passed": true
+    },
+    {
+      "id": "P032",
+      "description": "A failed second-channel trial keeps old common rules effective.",
+      "passed": true
+    },
+    {
+      "id": "P033",
+      "description": "Both exact candidate trials permit shared-rule publication.",
+      "passed": true
+    },
+    {
+      "id": "P034",
+      "description": "One shared publish changes both rule references to the same version.",
+      "passed": true
+    },
+    {
+      "id": "P035",
+      "description": "Shared rules do not replace either dedicated template version.",
+      "passed": true
+    },
+    {
+      "id": "P036",
+      "description": "Previously generated report retains its original rule snapshot.",
+      "passed": true
+    },
+    {
+      "id": "P037",
+      "description": "Quality workflows do not mutate original template storage.",
+      "passed": true
+    },
+    {
+      "id": "P054",
+      "description": "Confirm preserves an empty binding and shows its scene default.",
+      "passed": true
+    },
+    {
+      "id": "P055",
+      "description": "Default-bound publication records the shared directory final model.",
+      "passed": true
+    },
+    {
+      "id": "P056",
+      "description": "Simulated platform model change refreshes candidates but preserves unsaved content.",
+      "passed": true
+    },
+    {
+      "id": "P057",
+      "description": "An unavailable default fails visibly and does not silently choose another enabled model.",
+      "passed": true
+    },
+    {
+      "id": "P058",
+      "description": "Empty model candidates explain platform configuration and expose the read-only directory link.",
+      "passed": true
+    },
+    {
+      "id": "P059",
+      "description": "Model-directory navigation uses the existing enterprise-model route and same origin.",
+      "passed": true
+    },
+    {
+      "id": "P060",
+      "description": "Default and directory tests still leave legacy storage and old report snapshots untouched.",
+      "passed": true
+    },
+    {
+      "id": "P038",
+      "description": "Corrupt channel storage shows an error instead of a false empty state.",
+      "passed": true
+    },
+    {
+      "id": "P039",
+      "description": "One corrupt channel preserves the other controls and the original list.",
+      "passed": true
+    },
+    {
+      "id": "P040",
+      "description": "No unexpected jsdom runtime errors occurred.",
+      "passed": true
+    }
+  ],
+  "boundaries": {
+    "syntheticOnly": true,
+    "networkRequests": 0,
+    "realModelCalls": 0,
+    "productWrites": 0,
+    "storage": "Fresh in-memory jsdom localStorage; no existing browser data read or modified.",
+    "dialogPolyfills": [
+      "showModal",
+      "close",
+      "scrollIntoView",
+      "ResizeObserver"
+    ],
+    "visualVerification": "Not performed by this check; actual Chrome verification is separate.",
+    "coverage": "Existing Admin template render/edit plus quality prompt and shared-rule interaction."
+  },
+  "runtime": {
+    "node": "v24.14.0",
+    "jsdom": "E:\\dev\\suiyin-insights\\node_modules\\jsdom\\lib\\api.js",
+    "consoleErrors": []
+  },
+  "inputs": [
+    {
+      "path": "data/live-ui-reference.js",
+      "sha256": "b231aa2c78d45c762c6b96bb8ec04539c17ad6d7b00110b37e2a8d5eba0d0ee1"
+    },
+    {
+      "path": "admin-live-controls.js",
+      "sha256": "0742d25ea57b8b1328bb1fbc9be394aabd2753ff805a295ce36700eab438687d"
+    },
+    {
+      "path": "admin-account-profile.js",
+      "sha256": "afe14f2c7563c532e97849eeac17b183d65233c8a325be3f92f41d7e5ce3eedd"
+    },
+    {
+      "path": "admin-menu-state.js",
+      "sha256": "bcafb280e1ea44bf04a4617d6df424507891919a23235f4d2cf60ba8935b98c3"
+    },
+    {
+      "path": "data/page-evidence.js",
+      "sha256": "9baf07fa2d3e05d9ae0e6dca9dc15ce826d67202434b1d58fb2e234184411302"
+    },
+    {
+      "path": "data/form-schemas.js",
+      "sha256": "879a134e7f8854ef8c27c1aeacc1704b7b983beef1059a072a6e9d28393f12f7"
+    },
+    {
+      "path": "data/button-states.js",
+      "sha256": "4607ab16abcd06939edf02d2eb092f5542621add657ded0aa68c00799c80c01c"
+    },
+    {
+      "path": "admin-content.js",
+      "sha256": "436c7081a89d39f423df7effeba00d07983a0e3e2503d491f55dec2732b6912f"
+    },
+    {
+      "path": "admin-quality-model.js",
+      "sha256": "2b05aede178d1660ce35225e5d7469cf7a04bf3436d5936a27c0253a424c7c90"
+    },
+    {
+      "path": "admin-quality-prompts.js",
+      "sha256": "35bedd6ad7226f55bd5d49bd6817b700c06e2db3bc72ef3b3e36d50b1aebe5ad"
+    },
+    {
+      "path": "data/content/yestar-sz.json",
+      "sha256": "6882f30af00125d5cb787ab04e071b001891701facbb2bfc5fcdb7ea0bb32dd8"
+    },
+    {
+      "path": "data/content/forms.json",
+      "sha256": "26b41f7c29e4cf099c4a442b42cfaba185d456d0371fb0ebd19fbcdcb424488d"
+    },
+    {
+      "path": "data/navigation-snapshot.json",
+      "sha256": "90539bf88562aab4617ad35d2fe9adec4497d3566120c9720e125997ae0e00d9"
+    },
+    {
+      "path": "data/content/options.json",
+      "sha256": "d776eaaaf0dbf03cc346bc3488e5411fee3a52e094ef385986c57c254e6f732d"
+    }
+  ],
+  "summary": {
+    "total": 60,
+    "passed": 60,
+    "failed": 0
+  }
+}

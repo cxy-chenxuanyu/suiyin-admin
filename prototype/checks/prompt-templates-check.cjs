@@ -1,0 +1,121 @@
+#!/usr/bin/env node
+/* Static synthetic checks. Never reads the ignored business-prompt JSON. */
+'use strict';
+const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
+const { JSDOM, VirtualConsole } = require(process.env.QUALITY_JSDOM_ROOT || 'E:/dev/suiyin-insights/node_modules/jsdom');
+const base = path.resolve(__dirname, '..'), checks = [], inputs = new Map(), windows = [];
+const receipt = { spec: process.env.QUALITY_CHECK_SPEC || 'SPEC-SUIYIN-ADMIN-092@0.3.0', type: 'static-synthetic-prompt-template-check', generatedAt: new Date().toISOString(), status: 'running', boundaries: { privateSnapshotRead: false, realModelCalls: 0, productWrites: 0, networkRequests: 0 }, checks };
+const settle = () => new Promise(resolve => setTimeout(resolve, 0));
+function check(id, description, condition) { checks.push({ id, description, passed: !!condition }); if (process.env.PROMPT_CHECK_TRACE) console.log(id + ': ' + !!condition); if (!condition) throw Error(id + ': ' + description); }
+function read(relative) { if (/private/.test(relative)) throw Error('Private prompt content must not be read by this check'); const raw = fs.readFileSync(path.join(base, relative), 'utf8'); inputs.set(relative, crypto.createHash('sha256').update(raw).digest('hex')); return raw; }
+function fixture(tenant, count = 6, totalRows = count) {
+  const scenes = [{ id: 'label_analysis', label: '标签', tagSupported: true, cronSupported: true, cronHelp: '合成条件：每日 02:00，过去 2 天。' }, { id: 'chat_progress', label: '客户沟通进度分析', cronSupported: true, cronHelp: '合成条件：每日 05:30。' }, { id: 'offline', label: '线下沟通分析', cronSupported: false, tagSupported: false }];
+  return { tenant, status: count === totalRows ? 'captured' : 'partial', capturedAt: '2026-10-24T12:00:00+08:00', totalRows, listComplete: count === totalRows, scenes, formSchema: { fieldOrder: ['scene', 'tags', 'cron', 'model', 'name', 'content'], contentLabel: '主要提示词', modelOptionsStatus: 'captured' }, tagOptions: [{ id: 'tag-one', label: '合成标签一' }, { id: 'tag-two', label: '合成标签二' }, { id: '', label: '无标识标签', disabled: true, disabledReason: '缺少唯一标识' }], models: [{ id: 'platform', label: '合成平台模型', scope: 'platform', enabled: true, scenes: ['label_analysis', 'chat_progress'] }, { id: 'enterprise', label: '合成企业模型', scope: 'enterprise', enabled: true, scenes: ['chat_progress'] }, { id: 'disabled', label: '合成停用模型', scope: 'platform', enabled: false, scenes: ['label_analysis'] }], rows: Array.from({ length: count }, (_, i) => ({ id: tenant + '-r' + i, name: tenant + ' 合成模板 ' + i, sceneId: i ? 'chat_progress' : 'label_analysis', sceneLabel: i ? '客户沟通进度分析' : '标签', modelId: 'platform', modelLabel: '合成平台模型', modelScope: 'platform', cronEnabled: false, tagIds: i ? [] : ['tag-one'], autoTags: i ? [] : ['合成标签一'], content: '仅供自动化测试的合成正文 ' + i + '\n<script>window.syntheticInjected=true</script>', contentStatus: i === 2 ? 'not-captured' : 'captured' })) };
+}
+async function boot(tenant, source, stored = {}) {
+  const errors = [], virtualConsole = new VirtualConsole(); virtualConsole.on('jsdomError', error => errors.push(error.message));
+  const dom = new JSDOM('<body><main id="app"></main><dialog id="dialog"><header><h2 id="dialogTitle"></h2><button id="closeDialog">×</button></header><div id="dialogBody"></div><footer id="dialogFooter"></footer></dialog><div id="toast"></div></body>', { url: 'http://synthetic.test/prototype/admin-content.html?tenant=' + tenant + '&route=promptTemplate&qa=1', runScripts: 'outside-only', pretendToBeVisual: true, virtualConsole });
+  const w = dom.window; windows.push(w); w.structuredClone = value => JSON.parse(JSON.stringify(value)); w.ResizeObserver = class { observe() {} unobserve() {} disconnect() {} }; w.HTMLElement.prototype.scrollIntoView = function () {};
+  w.HTMLDialogElement.prototype.showModal = function () { this.open = true; }; w.HTMLDialogElement.prototype.close = function () { this.open = false; w.setTimeout(() => this.dispatchEvent(new w.Event('close')), 0); };
+  w.fetch = async url => { if (/^[a-z]+:/i.test(url) || /private/.test(url)) throw Error('Network or private snapshot read prohibited'); return { ok: true, json: async () => JSON.parse(read(url)) }; };
+  Object.entries(stored).forEach(([key, value]) => w.localStorage.setItem(key, value));
+  w.AdminPromptSnapshots = { schemaVersion: 1, captureRevision: 'synthetic-v1', tenants: source }; w.AdminViews = { render: () => false };
+  ['data/live-ui-reference.js', 'admin-live-controls.js', 'admin-account-profile.js', 'admin-menu-state.js', 'data/page-evidence.js', 'data/form-schemas.js', 'data/button-states.js', 'admin-content.js', 'admin-quality-model.js', 'admin-prompt-templates.js', 'admin-quality-prompts.js'].forEach(file => w.eval(read(file)));
+  for (let i = 0; i < 50 && !w.document.body.dataset.contentReady; i++) await settle(); await settle();
+  const d = w.document, U = w.AdminPromptTemplates;
+  const button = label => [...d.querySelectorAll('button')].find(node => node.textContent.trim() === label || node.getAttribute('aria-label') === label);
+  const click = async label => { const control = button(label); if (!control || control.disabled) throw Error('Enabled button missing: ' + label); control.click(); await settle(); };
+  const change = (selector, value) => { const control = d.querySelector(selector); if (!control) throw Error('Control missing: ' + selector); if (control.type === 'checkbox') control.checked = !!value; else control.value = value; control.dispatchEvent(new w.Event('input', { bubbles: true })); control.dispatchEvent(new w.Event('change', { bubbles: true })); };
+  return { w, d, U, button, click, change, errors };
+}
+async function main() {
+  const captured = fixture('yestar-sz');
+  const subPrompt = '分组完整合成提示词。'.repeat(650) + '\n<script>window.subPromptInjected=true</script>';
+  captured.scenes[0].groupPromptsSupported = true;
+  captured.groupOptions = [{ id: 'group-a', label: '合成自媒体组' }, { id: 'group-b', label: '合成业务组' }];
+  captured.formSchema.groupPrompts = { optionsStatus: 'captured', label: '分组子提示词', addLabel: '添加分组', removeLabel: '删除分组', groupLabel: '权限分组', contentLabel: '子提示词', help: '客户所有正常好友人设均属于同一已配置分组时使用对应子提示词；跨组、未配置或子提示词留空时使用主要提示词。保存不会自动重跑客户。' };
+  captured.rows[0].groupPrompts = [{ id: 'sub-a', groupId: 'group-a', groupLabel: '合成自媒体组', content: subPrompt, contentStatus: 'captured' }];
+  const a = await boot('yestar-sz', { 'yestar-sz': captured }), { w, d, U, button, click, change } = a;
+  check('PT001', 'Private-snapshot projection uses one six-column table with six captured and two daily rows.', d.querySelectorAll('#app table').length === 1 && d.querySelectorAll('#app th').length === 6 && d.querySelectorAll('#app [data-prompt-id]').length === 6 && d.querySelectorAll('[data-quality-channel]').length === 2);
+  check('PT002', 'Referenced platform template rows are not presented as tenant captures.', !d.querySelector('#app').textContent.includes('录音 AI 分析') && d.querySelector('#app').textContent.includes('本租户已采列表 6 条'));
+  check('PT031', 'Configured group appears as a second line in the template name cell.', d.querySelector('[data-prompt-id="yestar-sz-r0"] .apt-group-summary')?.textContent === '分组子提示词：合成自媒体组');
+  check('PT032', 'Single-page list still displays page size, page one, disabled arrows and actual count.', d.querySelector('.apt-pagination').textContent.includes('20条/页') && d.querySelector('.apt-pagination').textContent.includes('共 8 条') && d.querySelector('.apt-page-number[aria-current="page"]')?.textContent === '1' && button('上一页').disabled && button('下一页').disabled);
+  change('#apt-scene-filter', 'label_analysis'); check('PT003', 'Captured scene filter shows only its own template.', d.querySelectorAll('#app tbody tr').length === 1 && d.querySelector('[data-prompt-id="yestar-sz-r0"]')); change('#apt-scene-filter', '');
+  await U.openEditor(U.getRecords()[0]);
+  check('PT004', 'Captured editor field order includes conditional tags, cron and observed content label.', [...d.querySelectorAll('.apt-editor > .apt-field')].map(field => field.firstElementChild.textContent).join('|') === '场景|填写标签|定时启动|绑定模型|模板名称|主要提示词');
+  check('PT005', 'Full synthetic text is preserved literally without executing its markup.', d.querySelector('#apt-content').value === fixture('yestar-sz').rows[0].content && !w.syntheticInjected);
+  check('PT006', 'Scene-compatible enabled models and scope are used for candidate selection.', [...d.querySelector('#apt-model').options].map(o => o.value).join('|') === '|platform' && d.querySelector('#apt-model').textContent.includes('平台'));
+  check('PT007', 'Cron help and disabled label options follow captured scene data.', d.querySelector('.apt-editor').textContent.includes('每日 02:00') && [...d.querySelectorAll('.apt-tags input')].some(input => input.disabled && !input.value));
+  check('PT025', 'Full long group prompt and observed fallback explanation remain intact.', d.querySelector('.apt-sub-prompt').value === subPrompt && d.querySelector('.apt-group-prompts').textContent.includes('保存不会自动重跑客户') && !w.subPromptInjected);
+  check('PT033', 'Existing group starts collapsed behind its captured group label.', d.querySelector('.apt-group-card').tagName === 'DETAILS' && !d.querySelector('.apt-group-card').open && d.querySelector('.apt-group-toggle').textContent.includes('合成自媒体组'));
+  check('PT034', 'Tags start as a closed multi-select instead of an exposed checkbox list.', d.querySelector('.apt-tag-menu').hidden && d.querySelector('.apt-tag-trigger').textContent.includes('合成标签一'));
+  await click('选择填写标签'); change('.apt-tag-search', '二');
+  check('PT035', 'Tag search filters options while retaining the prior selection.', !d.querySelector('.apt-tag-menu').hidden && d.querySelectorAll('.apt-tag-option').length === 1 && d.querySelector('.apt-tag-option').textContent.includes('合成标签二') && d.querySelector('.apt-tag-trigger').textContent.includes('合成标签一'));
+  change('.apt-tag-option input', true); check('PT036', 'Tag multi-select keeps both choices and marks local form dirty.', d.querySelectorAll('.apt-selected-tag').length === 2 && U.hasDirty());
+  d.querySelector('.apt-tag-search').dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  check('PT037', 'Escape closes only the tag selector and preserves the editor.', d.querySelector('.apt-tag-menu').hidden && d.querySelector('#dialog').open);
+  change('#apt-content', '本地编辑后的合成正文'); await click('确定');
+  check('PT008', 'Confirm persists a local edit and closes the form.', !d.querySelector('#dialog').open && U.getRecords()[0].content === '本地编辑后的合成正文');
+  check('PT026', 'Editing the main prompt does not drop the configured group prompt.', U.getRecords()[0].groupPrompts[0].content === subPrompt && U.getRecords()[0].groupPrompts[0].groupId === 'group-a');
+  await U.openEditor(U.getRecords()[0]); change('.apt-sub-prompt', '本地子提示词修改'); await click('确定');
+  check('PT027', 'Group prompt edits save independently of the main body.', U.getRecords()[0].groupPrompts[0].content === '本地子提示词修改' && U.getRecords()[0].content === '本地编辑后的合成正文');
+  await U.openEditor(U.getRecords()[0]); await click('添加分组');
+  const secondGroup = d.querySelectorAll('.apt-group-card')[1]; secondGroup.querySelector('select').value = 'group-b'; secondGroup.querySelector('select').dispatchEvent(new w.Event('change', { bubbles: true }));
+  check('PT028', 'A new configured group may intentionally have an empty body to use the main prompt.', secondGroup.querySelector('textarea').value === '' && d.querySelector('#apt-edit-form').checkValidity()); await click('确定');
+  check('PT029', 'Adding a group saves its identity and blank fallback body.', U.getRecords()[0].groupPrompts.length === 2 && U.getRecords()[0].groupPrompts[1].groupId === 'group-b' && U.getRecords()[0].groupPrompts[1].content === '');
+  await U.openEditor(U.getRecords()[0]); const removeGroup = [...d.querySelectorAll('.apt-group-card')[1].querySelectorAll('button')].find(control => control.textContent.trim() === '删除分组'); removeGroup.click(); await settle(); await click('确定');
+  check('PT030', 'Captured removal action removes only its group and keeps the main prompt.', U.getRecords()[0].groupPrompts.length === 1 && U.getRecords()[0].groupPrompts[0].content === '本地子提示词修改' && U.getRecords()[0].content === '本地编辑后的合成正文');
+  check('PT009', 'Captured-template edits do not mutate the old generic storage.', w.localStorage.getItem('admin-qa:v1:yestar-sz:promptTemplate') === null);
+  await U.openEditor(U.getRecords()[0]); change('#apt-name', '未保存名称');
+  w.dispatchEvent(new w.MessageEvent('message', { data: { type: 'admin-dialog-close' }, origin: w.location.origin, source: w.parent })); await settle();
+  check('PT010', 'Shell close preserves dirty legacy-template edits.', U.hasDirty() && d.querySelector('#dialog').open && !!d.querySelector('.apt-leave'));
+  await click('继续编辑'); let pending = U.requestLeave(); await click('放弃修改'); await pending;
+  check('PT011', 'Discard leaves the saved captured template unchanged.', U.getRecords()[0].name === 'yestar-sz 合成模板 0');
+  await U.openEditor(U.getRecords()[0]); change('#apt-content', '失败保存必须保留'); const goodSet = w.Storage.prototype.setItem;
+  w.Storage.prototype.setItem = function (key, value) { if (key.startsWith('admin-qa-prompt-templates:')) throw Error('synthetic quota'); return goodSet.call(this, key, value); }; await click('确定'); w.Storage.prototype.setItem = goodSet;
+  check('PT012', 'Storage failure retains dirty form and prior stored content.', U.hasDirty() && d.querySelector('#dialog').open && U.getRecords()[0].content === '本地编辑后的合成正文' && d.querySelector('.apt-note.error'));
+  pending = U.requestLeave(); await click('放弃修改'); await pending;
+  await U.openEditor(U.getRecords()[0]); change('#apt-scene', 'offline');
+  check('PT013', 'Switching to an unsupported scene hides tags/cron and clears incompatible model binding.', d.querySelector('#apt-cron').closest('.apt-field').hidden && d.querySelector('.apt-tags').closest('.apt-field').hidden && d.querySelector('#apt-model').value === '');
+  await click('确定'); check('PT014', 'Scene-dependent state changes save together without replacing the full prompt.', U.getRecords()[0].sceneId === 'offline' && U.getRecords()[0].tagIds.length === 0 && !U.getRecords()[0].cronEnabled && U.getRecords()[0].content === '本地编辑后的合成正文');
+  await U.openEditor(U.getRecords()[2]); check('PT015', 'Uncaptured content remains explicitly unavailable rather than synthesized.', d.querySelector('#apt-content').disabled && d.querySelector('#apt-content').value === '' && d.querySelector('#apt-content').placeholder.includes('尚未采集')); await U.requestLeave();
+  await click('创建'); change('#apt-scene', 'chat_progress'); change('#apt-name', '新建本地模板'); change('#apt-content', '新建合成正文'); change('#apt-model', 'enterprise'); await click('确定');
+  check('PT016', 'Create stores an independent local template with selected model source.', U.getRecords().length === 7 && U.getRecords().find(row => row.name === '新建本地模板').modelScope === 'enterprise');
+  const created = [...d.querySelectorAll('[data-prompt-id]')].find(row => row.textContent.includes('新建本地模板')); [...created.querySelectorAll('button')].find(b => b.textContent.trim() === '删除').click(); await settle(); await click('确认删除');
+  check('PT017', 'Local deletion leaves daily templates and captured snapshot rows intact.', U.getRecords().length === 6 && d.querySelectorAll('[data-quality-channel]').length === 2);
+  await w.AdminQualityPrompts.openTemplate('wecom'); change('#aqp-enabled', true); const switching = U.openEditor(U.getRecords()[1]); await settle();
+  check('PT018', 'Opening a captured template cannot bypass a dirty daily editor.', d.querySelector('.aqp-leave') && !d.querySelector('.apt-editor')); await click('继续编辑'); await switching;
+  pending = w.AdminQualityPrompts.requestLeave(); await click('放弃修改'); await pending;
+  await U.openEditor(U.getRecords()[1]); await settle(); change('#apt-content', '跨编辑器保留内容'); const toDaily = w.AdminQualityPrompts.openTemplate('wecom'); await settle();
+  check('PT019', 'Opening a daily template cannot bypass a dirty captured editor.', d.querySelector('.apt-leave') && U.hasDirty()); await click('继续编辑'); await toDaily;
+  pending = U.requestLeave(); await click('放弃修改'); await pending;
+  const stored = Object.fromEntries(Array.from({ length: w.localStorage.length }, (_, i) => { const key = w.localStorage.key(i); return [key, w.localStorage.getItem(key)]; }));
+  const b = await boot('yestar', { yestar: fixture('yestar', 5, 12), 'yestar-sz': fixture('yestar-sz') }, stored);
+  check('PT020', 'Another tenant uses its own sample and shows five captured rows out of twelve.', b.U.getRecords().length === 5 && b.U.getRecords().every(row => row.name.startsWith('yestar ')) && b.d.querySelector('#app').textContent.includes('已采 5 条／采样时共 12 条') && !b.d.querySelector('#app').textContent.includes('本地编辑后的合成正文'));
+  const c = await boot('yestar-bj', { yestar: fixture('yestar') }); check('PT021', 'Missing tenant snapshot does not fall back to another tenant or report a confirmed empty list.', c.U.getRecords().length === 0 && c.d.querySelector('#app').textContent.includes('本租户未采集') && !c.d.querySelector('#app').textContent.includes('本次采样确认暂无模板') && c.d.querySelector('.apt-pagination').textContent.includes('总条数待采集'));
+  const uncaptured=await boot('jbfs',{jbfs:{tenant:'jbfs',status:'not-captured',rows:[],listComplete:false}});
+  check('PT042','Login-blocked empty snapshots show unknown totals rather than a confirmed zero, and keep creation disabled.',uncaptured.d.querySelector('.apt-pagination').textContent.includes('总条数待采集')&&!uncaptured.d.querySelector('.apt-pagination').textContent.includes('共 0 条')&&uncaptured.button('创建').disabled);
+  const accessNote='已确认当前登录成功，导航没有AI管理；提示词和模型直达均返回人员管理。不可用的具体原因未知。';
+  const unavailable=await boot('hqjd',{hqjd:{tenant:'hqjd',status:'not-captured',accessStatus:'authenticated_route_unavailable',captureReason:'page_not_available_for_current_login',note:accessNote,rows:[],listComplete:false}});
+  check('PT045','Authenticated unavailable pages display their observed access evidence without implying login failure or zero templates.',unavailable.d.querySelector('.apt-note.warn')?.textContent===accessNote&&unavailable.d.querySelector('.apt-pagination').textContent.includes('总条数待采集')&&!unavailable.d.querySelector('#app').textContent.includes('本次采样确认暂无模板')&&!unavailable.d.querySelector('#app').textContent.includes('登录恢复')&&unavailable.button('创建').disabled);
+  const partialEmpty=await boot('yestar-bj',{'yestar-bj':{...fixture('yestar-bj',0),status:'partial',listComplete:false,totalRows:undefined}});
+  check('PT044','An incomplete sample with no rows also keeps its total explicitly unknown.',partialEmpty.d.querySelector('.apt-pagination').textContent.includes('总条数待采集'));
+  const emptyTags=fixture('yestar-bj',0);emptyTags.tagOptions=[];emptyTags.tagOptionsStatus='captured';const f=await boot('yestar-bj',{'yestar-bj':emptyTags});
+  check('PT043','A captured confirmed-empty list retains its actual zero count.',f.d.querySelector('.apt-pagination').textContent.includes('共 0 条')&&!f.d.querySelector('.apt-pagination').textContent.includes('总条数待采集'));
+  await f.click('创建');f.change('#apt-scene','label_analysis');await f.click('选择填写标签');
+  check('PT038','Captured zero tag options are distinguished from an uncaptured selector.',f.d.querySelector('.apt-tag-empty').textContent==='当前没有可选标签'&&!f.d.querySelector('.apt-tags').textContent.includes('尚未采集'));
+  const zeroGroups=fixture('mengzhua',0);zeroGroups.scenes[0].groupPromptsSupported=true;zeroGroups.scenes[0].contentLabel='主要提示词';zeroGroups.scenes[1].contentLabel='模板内容';zeroGroups.scenes[1].groupPromptsSupported=false;zeroGroups.groupOptions=[{id:'synthetic-team',label:'合成权限组'}];zeroGroups.formSchema.groupPrompts={optionsStatus:'captured',addLabel:'添加分组',removeLabel:'删除',help:'合成回退规则：未配置或子提示词留空时使用主要提示词。保存不会自动重跑客户。'};
+  const g=await boot('mengzhua',{'mengzhua':zeroGroups});await g.click('创建');g.change('#apt-scene','label_analysis');
+  check('PT039','A captured tag scene offers group prompts even when no existing template or child prompt exists.',!g.d.querySelector('.apt-group-prompts').hidden&&g.d.querySelectorAll('.apt-group-card').length===0&&!g.button('添加分组').disabled&&g.d.querySelector('#apt-content').closest('.apt-field').firstElementChild.textContent==='主要提示词');
+  g.change('#apt-name','合成切换场景');g.change('#apt-content','切换保留正文');await g.click('添加分组');g.change('.apt-sub-prompt','切换保留子正文');g.change('#apt-scene','chat_progress');
+  check('PT040','Switching scenes changes content label and captured scheduling help, and hides irrelevant groups without losing drafts.',g.d.querySelector('#apt-content').closest('.apt-field').firstElementChild.textContent==='模板内容'&&g.d.querySelector('.apt-group-prompts').hidden&&g.d.querySelector('.apt-editor').textContent.includes('每日 05:30')&&g.d.querySelector('#apt-content').value==='切换保留正文'&&g.d.querySelector('.apt-sub-prompt').value==='切换保留子正文'&&g.d.querySelector('#apt-edit-form').checkValidity());
+  g.change('#apt-scene','label_analysis');
+  check('PT041','Returning to the tag scene restores its help and child draft, with required group validation active.',!g.d.querySelector('.apt-group-prompts').hidden&&g.d.querySelector('#apt-content').closest('.apt-field').firstElementChild.textContent==='主要提示词'&&g.d.querySelector('.apt-editor').textContent.includes('每日 02:00')&&g.d.querySelector('.apt-sub-prompt').value==='切换保留子正文'&&!g.d.querySelector('#apt-edit-form').checkValidity());
+  const e = await boot('yestar-gz', { 'yestar-gz': fixture('yestar-gz', 21) }); check('PT022', 'More than twenty real sample rows use actual local pagination.', e.d.querySelectorAll('[data-prompt-id]').length === 20 && e.button('下一页')); await e.click('下一页'); check('PT023', 'Second page contains the remaining captured record.', e.d.querySelectorAll('[data-prompt-id]').length === 1 && e.d.querySelector('[data-prompt-id="yestar-gz-r20"]'));
+  check('PT024', 'No synthetic DOM runtime errors occurred.', [a, b, c, e].every(context => context.errors.length === 0));
+  receipt.status = 'passed';
+}
+main().catch(error => { receipt.status = 'failed'; receipt.error = { message: error.message, stack: error.stack }; process.exitCode = 1; }).finally(() => {
+  windows.forEach(window => window.close()); receipt.inputs = [...inputs].map(([file, sha256]) => ({ file, sha256 })); receipt.summary = { total: checks.length, passed: checks.filter(c => c.passed).length, failed: checks.filter(c => !c.passed).length };
+  const output = process.env.QUALITY_CHECK_OUTPUT_DIR ? path.resolve(process.env.QUALITY_CHECK_OUTPUT_DIR, 'prompt-templates-check.json') : path.resolve(base, '../docs/verification/prompt-templates-20261024/check.json'); fs.mkdirSync(path.dirname(output), { recursive: true }); fs.writeFileSync(output, JSON.stringify(receipt, null, 2) + '\n'); console.log(JSON.stringify({ status: receipt.status, ...receipt.summary, output, error: receipt.error?.message }));
+});

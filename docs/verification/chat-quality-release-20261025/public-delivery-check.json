@@ -1,0 +1,102 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "artifactClass": "static-html",
+  "checkedAt": "2026-10-25T03:20:00.746Z",
+  "status": "passed",
+  "passed": 6,
+  "total": 6,
+  "source": {
+    "publicFixture": "prototype/data/quality-public-demo.json",
+    "publicFixtureSha256": "e308d5d0d9b995a105232a346096d53ea48ef948db46e3212e024d48848cf1a1",
+    "inline": "prototype/_shell_inline.html",
+    "inlineSha256": "07fc3370fc427551a7cab29a98e155418fa7ef4c80063d93b4419a6d560495b3",
+    "checkScriptSha256": "6ef50a0902cbb092c4ece149774e862279dced6f0e9ecf7aa78e25ebdead47e4"
+  },
+  "boundaries": {
+    "productionWrites": 0,
+    "modelCalls": 0,
+    "privateDataPublished": false,
+    "localPrivateFilesPreserved": true
+  },
+  "results": [
+    {
+      "id": "synthetic-reproducible-build",
+      "status": "passed",
+      "detail": {
+        "reports": 4,
+        "sessions": 32,
+        "bodyMessages": 100,
+        "allMessages": 124,
+        "privateInputsRead": 0,
+        "networkCalls": 0,
+        "storageWrites": 0
+      }
+    },
+    {
+      "id": "shared-report-and-pc-message-rendering",
+      "status": "passed",
+      "detail": {
+        "renderedTabs": 28,
+        "renderedChats": 32,
+        "messageRows": 124,
+        "metricsMatchReports": 4,
+        "scope": "HTML rendering and metric agreement; browser interactions are checked separately"
+      }
+    },
+    {
+      "id": "private-data-and-images-excluded-from-git",
+      "status": "passed",
+      "detail": {
+        "privateFiles": 3,
+        "screenshots": 5,
+        "trackedPrivatePaths": 0,
+        "localPrivateFilesRetained": 3
+      }
+    },
+    {
+      "id": "inline-data-keys-and-payload",
+      "status": "passed",
+      "detail": {
+        "dataKeys": 83,
+        "privateKeys": 0,
+        "privatePayloadMarkers": 0,
+        "publicFixtureMatches": true,
+        "bytes": 17177852,
+        "sha256": "07fc3370fc427551a7cab29a98e155418fa7ef4c80063d93b4419a6d560495b3"
+      }
+    },
+    {
+      "id": "inline-known-private-body-comparison",
+      "status": "passed",
+      "detail": {
+        "comparisonAvailable": true,
+        "privatePromptBodiesCompared": 25,
+        "privateChatBodiesCompared": 8847,
+        "promptBodyMatches": 0,
+        "chatBodyMatches": 0,
+        "method": "Exact complete string values; short generic chat fragments are not treated as identity evidence"
+      }
+    },
+    {
+      "id": "pending-text-secret-patterns",
+      "status": "passed",
+      "detail": {
+        "files": 102,
+        "matches": 0,
+        "patternClasses": [
+          "phone",
+          "jwt",
+          "providerKey",
+          "privateKey"
+        ],
+        "scope": "Conservative literal-pattern scan; not a proof of all possible secrets or identities"
+      }
+    }
+  ],
+  "limitations": [
+    "Public artifacts must be deployed from the audited Git manifest or a clean export; Git ignore alone does not constrain directory uploads.",
+    "This check does not authorize publishing private source JSON, raw captures, production prompts or runtime configuration.",
+    "Exact comparison cannot detect every paraphrase; screenshot exclusions and source review remain required.",
+    "Static data and HTML checks do not establish production API, model, scheduler or browser interaction completion."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-10-24T14:07:25.118Z",
+  "tool": "cua_repl Chrome",
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "check": "wecom-20261019",
+      "passed": true
+    },
+    {
+      "check": "wechat-20261020",
+      "passed": true
+    },
+    {
+      "check": "wechat-20261019",
+      "passed": true
+    },
+    {
+      "check": "shenzhen-prompt-six-plus-two-daily",
+      "passed": true
+    },
+    {
+      "check": "chengdu-main-and-group-text-length",
+      "passed": true,
+      "main": 5242,
+      "group": 6411
+    },
+    {
+      "check": "wechat-excluded-not-intent-unknown",
+      "passed": true
+    },
+    {
+      "check": "wecom-20261020",
+      "passed": true
+    },
+    {
+      "check": "direct-evidence-expanded-context-collapsed",
+      "passed": true
+    },
+    {
+      "check": "real-synthetic-switch-retains-demo",
+      "passed": true
+    },
+    {
+      "check": "real-account-filter",
+      "passed": true
+    },
+    {
+      "check": "model-date-current-private-snapshot",
+      "passed": true
+    },
+    {
+      "check": "confirmed-empty-distinct-from-not-captured",
+      "passed": true
+    },
+    {
+      "check": "synthetic-source-label-correct",
+      "passed": true
+    },
+    {
+      "check": "restore-four-tabs-load-one-active-frame",
+      "passed": true
+    },
+    {
+      "check": "restored-inactive-daily-loads-on-first-open",
+      "passed": true
+    },
+    {
+      "check": "switch-back-retains-loaded-real-report",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Two production tenants still require login: jbfs,hqjd",
+    "Private local prototype only; not production or DeepSeek execution"
+  ]
+}

@@ -3,3 +3,9 @@ docs/sdd/** -text
 # Generated self-contained HTML and release integrity manifest are byte-verified online.
 prototype/_shell_inline.html -text
 release.json -text
+# SPEC-092 verification receipts bind source and evidence bytes exactly.
+prototype/admin-quality-* -text
+prototype/admin-prompt-templates.* -text
+prototype/checks/** -text
+docs/verification/chat-quality-*/* -text
+docs/verification/prompt-templates-20261024/* -text

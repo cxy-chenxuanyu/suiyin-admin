@@ -1,0 +1,183 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-25T00:52:41.984Z",
+  "checks": 43,
+  "passed": 43,
+  "source": "E:/AI 项目/佰智德三/碎银原型/suiyin-admin/prototype/admin-quality-real.js",
+  "sourceSha256": "f8bd56f97c0b38aac167fd65c45712dcce3487111da93593a89253fd10a1bc28",
+  "scope": "Isolated VM with minimal DOM adapter; fixture is test-only. Covers legacy deidentified and local-only private-original modes. No real model calls or production reads/writes.",
+  "results": [
+    {
+      "name": "invalid bundle rejected",
+      "ok": true
+    },
+    {
+      "name": "false DeepSeek claim rejected",
+      "ok": true
+    },
+    {
+      "name": "cross-session evidence rejected",
+      "ok": true
+    },
+    {
+      "name": "duplicate report identity rejected",
+      "ok": true
+    },
+    {
+      "name": "duplicate message identity rejected",
+      "ok": true
+    },
+    {
+      "name": "deidentified valid import accepted",
+      "ok": true
+    },
+    {
+      "name": "dates come from imported reports",
+      "ok": true
+    },
+    {
+      "name": "no synthetic fallback for absent date",
+      "ok": true
+    },
+    {
+      "name": "unknown status and saved dimensions preserved",
+      "ok": true
+    },
+    {
+      "name": "returned report is detached from saved import",
+      "ok": true
+    },
+    {
+      "name": "filter keeps unknown expected coverage",
+      "ok": true
+    },
+    {
+      "name": "filter does not invent missing response metrics",
+      "ok": true
+    },
+    {
+      "name": "filter preserves semantic dimension conclusion",
+      "ok": true
+    },
+    {
+      "name": "renderer clearly identifies actual engine and incomplete coverage",
+      "ok": true
+    },
+    {
+      "name": "renderer retains seven module entries",
+      "ok": true
+    },
+    {
+      "name": "real report mode offers no mutation actions",
+      "ok": true
+    },
+    {
+      "name": "synthetic toggle delegates to original renderer",
+      "ok": true
+    },
+    {
+      "name": "no application storage writes occurred",
+      "ok": true
+    },
+    {
+      "name": "import itself triggers no network call",
+      "ok": true
+    },
+    {
+      "name": "shared occurrence outside its own session is rejected",
+      "ok": true
+    },
+    {
+      "name": "valid shared material occurrences import",
+      "ok": true
+    },
+    {
+      "name": "filter retains material when original representative is outside account",
+      "ok": true
+    },
+    {
+      "name": "filtered material count and title use only matching occurrences",
+      "ok": true
+    },
+    {
+      "name": "affected-session summary counts all occurrences once",
+      "ok": true
+    },
+    {
+      "name": "filtering does not mutate saved representative",
+      "ok": true
+    },
+    {
+      "name": "filtered expected coverage excludes system-only records",
+      "ok": true
+    },
+    {
+      "name": "evidence dialog follows filtered member and evidence instead of original representative",
+      "ok": true
+    },
+    {
+      "name": "issue opens only directly linked evidence",
+      "ok": true
+    },
+    {
+      "name": "unrelated context is present but collapsed with explicit count",
+      "ok": true
+    },
+    {
+      "name": "saved conclusion title follows imported count and avoids hardcoded dimension claim",
+      "ok": true
+    },
+    {
+      "name": "session entry retains complete imported evidence",
+      "ok": true
+    },
+    {
+      "name": "intent bars exclude system-only from unknown count",
+      "ok": true
+    },
+    {
+      "name": "intent table excludes system-only but retains actual unknown customer",
+      "ok": true
+    },
+    {
+      "name": "private-original import requires a local-only declaration",
+      "ok": true
+    },
+    {
+      "name": "private-original import rejects mixed deidentification declarations",
+      "ok": true
+    },
+    {
+      "name": "private-original import rejects legacy origin and missing evidence representation",
+      "ok": true
+    },
+    {
+      "name": "valid private-original payload is accepted without changing saved conclusions",
+      "ok": true
+    },
+    {
+      "name": "private-origin header and account picker expose names as escaped text",
+      "ok": true
+    },
+    {
+      "name": "original evidence preserves newlines and escapes markup instead of interpreting it",
+      "ok": true
+    },
+    {
+      "name": "identity details distinguish captured customer remark nickname and persona name",
+      "ok": true
+    },
+    {
+      "name": "voice transcripts and unknown attachments retain different evidence labels",
+      "ok": true
+    },
+    {
+      "name": "AI explanation remains separate from original evidence and also escapes markup",
+      "ok": true
+    },
+    {
+      "name": "private-original import and evidence viewing remain local read-only",
+      "ok": true
+    }
+  ]
+}

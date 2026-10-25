@@ -1,0 +1,156 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+  "status": "passed",
+  "checkedAt": "2026-10-24T13:34:44.559Z",
+  "boundaries": {
+    "networkCalls": 0,
+    "privatePromptsRead": false,
+    "productionWrites": 0
+  },
+  "summary": {
+    "total": 28,
+    "passed": 28
+  },
+  "results": [
+    {
+      "id": "huamei-xian-preserved",
+      "description": "Existing tenant menus and unrelated page contents remain unchanged.",
+      "passed": true
+    },
+    {
+      "id": "huamei-xian-metadata",
+      "description": "Observed and awaiting-login evidence remain distinct and tenant-local.",
+      "passed": true
+    },
+    {
+      "id": "huamei-xian-fresh",
+      "description": "Fresh effective sidebar contains both new local entry points.",
+      "passed": true
+    },
+    {
+      "id": "huamei-xian-legacy",
+      "description": "Legacy visible menu gains only the newly requested routes without changing label or order decisions.",
+      "passed": true
+    },
+    {
+      "id": "huamei-xian-hidden",
+      "description": "An explicitly hidden route or new parent stays hidden.",
+      "passed": true
+    },
+    {
+      "id": "huamei-xian-all-hidden",
+      "description": "An existing all-hidden menu is not revived by the migration.",
+      "passed": true
+    },
+    {
+      "id": "huamei-xian-stored-menu",
+      "description": "Saved menu migration retains edited names and adds the requested entries.",
+      "passed": true
+    },
+    {
+      "id": "aoli-xian-preserved",
+      "description": "Existing tenant menus and unrelated page contents remain unchanged.",
+      "passed": true
+    },
+    {
+      "id": "aoli-xian-metadata",
+      "description": "Observed and awaiting-login evidence remain distinct and tenant-local.",
+      "passed": true
+    },
+    {
+      "id": "aoli-xian-fresh",
+      "description": "Fresh effective sidebar contains both new local entry points.",
+      "passed": true
+    },
+    {
+      "id": "aoli-xian-legacy",
+      "description": "Legacy visible menu gains only the newly requested routes without changing label or order decisions.",
+      "passed": true
+    },
+    {
+      "id": "aoli-xian-hidden",
+      "description": "An explicitly hidden route or new parent stays hidden.",
+      "passed": true
+    },
+    {
+      "id": "aoli-xian-all-hidden",
+      "description": "An existing all-hidden menu is not revived by the migration.",
+      "passed": true
+    },
+    {
+      "id": "aoli-xian-stored-menu",
+      "description": "Saved menu migration retains edited names and adds the requested entries.",
+      "passed": true
+    },
+    {
+      "id": "jbfs-preserved",
+      "description": "Existing tenant menus and unrelated page contents remain unchanged.",
+      "passed": true
+    },
+    {
+      "id": "jbfs-metadata",
+      "description": "Observed and awaiting-login evidence remain distinct and tenant-local.",
+      "passed": true
+    },
+    {
+      "id": "jbfs-fresh",
+      "description": "Fresh effective sidebar contains both new local entry points.",
+      "passed": true
+    },
+    {
+      "id": "jbfs-legacy",
+      "description": "Legacy visible menu gains only the newly requested routes without changing label or order decisions.",
+      "passed": true
+    },
+    {
+      "id": "jbfs-hidden",
+      "description": "An explicitly hidden route or new parent stays hidden.",
+      "passed": true
+    },
+    {
+      "id": "jbfs-all-hidden",
+      "description": "An existing all-hidden menu is not revived by the migration.",
+      "passed": true
+    },
+    {
+      "id": "jbfs-stored-menu",
+      "description": "Saved menu migration retains edited names and adds the requested entries.",
+      "passed": true
+    },
+    {
+      "id": "hqjd-preserved",
+      "description": "Existing tenant menus and unrelated page contents remain unchanged.",
+      "passed": true
+    },
+    {
+      "id": "hqjd-metadata",
+      "description": "Observed and awaiting-login evidence remain distinct and tenant-local.",
+      "passed": true
+    },
+    {
+      "id": "hqjd-fresh",
+      "description": "Fresh effective sidebar contains both new local entry points.",
+      "passed": true
+    },
+    {
+      "id": "hqjd-legacy",
+      "description": "Legacy visible menu gains only the newly requested routes without changing label or order decisions.",
+      "passed": true
+    },
+    {
+      "id": "hqjd-hidden",
+      "description": "An explicitly hidden route or new parent stays hidden.",
+      "passed": true
+    },
+    {
+      "id": "hqjd-all-hidden",
+      "description": "An existing all-hidden menu is not revived by the migration.",
+      "passed": true
+    },
+    {
+      "id": "hqjd-stored-menu",
+      "description": "Saved menu migration retains edited names and adds the requested entries.",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "checkedAt": "2026-10-25T03:11:07.766Z",
+  "status": "passed",
+  "checks": 18,
+  "passed": 18,
+  "sourceSha256": "391eec511559533a7b3b771f8d522e4ca0f746ad0638f18af7893cfb25ba209d",
+  "boundaries": {
+    "syntheticDOM": true,
+    "realNetworkCalls": 0,
+    "privateDataReads": 0,
+    "userBrowserStorageAccess": false
+  },
+  "limitations": [
+    "Checks lazy frame creation, tab state and draft guards; real iframe rendering is separately checked in Chrome."
+  ],
+  "results": [
+    {
+      "id": "STR001",
+      "description": "Restoring four tabs creates only the active iframe, keeping every tab and its order.",
+      "passed": true
+    },
+    {
+      "id": "STR002",
+      "description": "The active restored iframe has the correct route and retains the QA namespace.",
+      "passed": true
+    },
+    {
+      "id": "STR003",
+      "description": "Saved active tab, expanded menu, sidebar position and collapsed state survive restore.",
+      "passed": true
+    },
+    {
+      "id": "STR004",
+      "description": "Declining a dirty editor leave keeps the current tab and does not create the destination iframe.",
+      "passed": true
+    },
+    {
+      "id": "STR005",
+      "description": "Accepting a dirty editor leave loads a restored inactive tab on its first sidebar visit.",
+      "passed": true
+    },
+    {
+      "id": "STR006",
+      "description": "Returning to a visited tab reuses its existing iframe and in-memory state.",
+      "passed": true
+    },
+    {
+      "id": "STR007",
+      "description": "Closing an unvisited restored tab removes only tab state without creating an iframe.",
+      "passed": true
+    },
+    {
+      "id": "STR008",
+      "description": "Declining close of a dirty active tab retains its iframe and the unvisited neighbor.",
+      "passed": true
+    },
+    {
+      "id": "STR009",
+      "description": "Closing the active tab activates and creates its previously unvisited adjacent tab.",
+      "passed": true
+    },
+    {
+      "id": "STR010",
+      "description": "Close-others retains a loaded background tab when its dirty-editor guard declines.",
+      "passed": true
+    },
+    {
+      "id": "STR011",
+      "description": "Close-others removes accepted background frames while retaining the active frame.",
+      "passed": true
+    },
+    {
+      "id": "STR012",
+      "description": "Closing the last tab clears the active route and frames without creating replacements.",
+      "passed": true
+    },
+    {
+      "id": "STR013",
+      "description": "A sidebar route remains usable after all restored tabs have been closed.",
+      "passed": true
+    },
+    {
+      "id": "STR014",
+      "description": "Only the isolated shell navigation key changes; unrelated stored business data is preserved.",
+      "passed": true
+    },
+    {
+      "id": "STR015",
+      "description": "An explicit URL route wins over the saved active tab and still creates one iframe.",
+      "passed": true
+    },
+    {
+      "id": "STR016",
+      "description": "Legacy session-tab restore also loads only the active iframe.",
+      "passed": true
+    },
+    {
+      "id": "STR017",
+      "description": "Duplicate and unavailable restored tabs are filtered before lazy activation.",
+      "passed": true
+    },
+    {
+      "id": "STR018",
+      "description": "The synthetic harness performs only its stubbed navigation fetch and has no DOM runtime errors.",
+      "passed": true
+    }
+  ]
+}

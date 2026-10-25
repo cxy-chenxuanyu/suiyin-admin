@@ -1,0 +1,329 @@
+{
+  "type": "static-synthetic-prompt-template-check",
+  "generatedAt": "2026-10-24T15:31:39.535Z",
+  "status": "passed",
+  "boundaries": {
+    "privateSnapshotRead": false,
+    "realModelCalls": 0,
+    "productWrites": 0,
+    "networkRequests": 0
+  },
+  "checks": [
+    {
+      "id": "PT001",
+      "description": "Private-snapshot projection uses one six-column table with six captured and two daily rows.",
+      "passed": true
+    },
+    {
+      "id": "PT002",
+      "description": "Referenced platform template rows are not presented as tenant captures.",
+      "passed": true
+    },
+    {
+      "id": "PT031",
+      "description": "Configured group appears as a second line in the template name cell.",
+      "passed": true
+    },
+    {
+      "id": "PT032",
+      "description": "Single-page list still displays page size, page one, disabled arrows and actual count.",
+      "passed": true
+    },
+    {
+      "id": "PT003",
+      "description": "Captured scene filter shows only its own template.",
+      "passed": true
+    },
+    {
+      "id": "PT004",
+      "description": "Captured editor field order includes conditional tags, cron and observed content label.",
+      "passed": true
+    },
+    {
+      "id": "PT005",
+      "description": "Full synthetic text is preserved literally without executing its markup.",
+      "passed": true
+    },
+    {
+      "id": "PT006",
+      "description": "Scene-compatible enabled models and scope are used for candidate selection.",
+      "passed": true
+    },
+    {
+      "id": "PT007",
+      "description": "Cron help and disabled label options follow captured scene data.",
+      "passed": true
+    },
+    {
+      "id": "PT025",
+      "description": "Full long group prompt and observed fallback explanation remain intact.",
+      "passed": true
+    },
+    {
+      "id": "PT033",
+      "description": "Existing group starts collapsed behind its captured group label.",
+      "passed": true
+    },
+    {
+      "id": "PT034",
+      "description": "Tags start as a closed multi-select instead of an exposed checkbox list.",
+      "passed": true
+    },
+    {
+      "id": "PT035",
+      "description": "Tag search filters options while retaining the prior selection.",
+      "passed": true
+    },
+    {
+      "id": "PT036",
+      "description": "Tag multi-select keeps both choices and marks local form dirty.",
+      "passed": true
+    },
+    {
+      "id": "PT037",
+      "description": "Escape closes only the tag selector and preserves the editor.",
+      "passed": true
+    },
+    {
+      "id": "PT008",
+      "description": "Confirm persists a local edit and closes the form.",
+      "passed": true
+    },
+    {
+      "id": "PT026",
+      "description": "Editing the main prompt does not drop the configured group prompt.",
+      "passed": true
+    },
+    {
+      "id": "PT027",
+      "description": "Group prompt edits save independently of the main body.",
+      "passed": true
+    },
+    {
+      "id": "PT028",
+      "description": "A new configured group may intentionally have an empty body to use the main prompt.",
+      "passed": true
+    },
+    {
+      "id": "PT029",
+      "description": "Adding a group saves its identity and blank fallback body.",
+      "passed": true
+    },
+    {
+      "id": "PT030",
+      "description": "Captured removal action removes only its group and keeps the main prompt.",
+      "passed": true
+    },
+    {
+      "id": "PT009",
+      "description": "Captured-template edits do not mutate the old generic storage.",
+      "passed": true
+    },
+    {
+      "id": "PT010",
+      "description": "Shell close preserves dirty legacy-template edits.",
+      "passed": true
+    },
+    {
+      "id": "PT011",
+      "description": "Discard leaves the saved captured template unchanged.",
+      "passed": true
+    },
+    {
+      "id": "PT012",
+      "description": "Storage failure retains dirty form and prior stored content.",
+      "passed": true
+    },
+    {
+      "id": "PT013",
+      "description": "Switching to an unsupported scene hides tags/cron and clears incompatible model binding.",
+      "passed": true
+    },
+    {
+      "id": "PT014",
+      "description": "Scene-dependent state changes save together without replacing the full prompt.",
+      "passed": true
+    },
+    {
+      "id": "PT015",
+      "description": "Uncaptured content remains explicitly unavailable rather than synthesized.",
+      "passed": true
+    },
+    {
+      "id": "PT016",
+      "description": "Create stores an independent local template with selected model source.",
+      "passed": true
+    },
+    {
+      "id": "PT017",
+      "description": "Local deletion leaves daily templates and captured snapshot rows intact.",
+      "passed": true
+    },
+    {
+      "id": "PT018",
+      "description": "Opening a captured template cannot bypass a dirty daily editor.",
+      "passed": true
+    },
+    {
+      "id": "PT019",
+      "description": "Opening a daily template cannot bypass a dirty captured editor.",
+      "passed": true
+    },
+    {
+      "id": "PT020",
+      "description": "Another tenant uses its own sample and shows five captured rows out of twelve.",
+      "passed": true
+    },
+    {
+      "id": "PT021",
+      "description": "Missing tenant snapshot does not fall back to another tenant or report a confirmed empty list.",
+      "passed": true
+    },
+    {
+      "id": "PT042",
+      "description": "Login-blocked empty snapshots show unknown totals rather than a confirmed zero, and keep creation disabled.",
+      "passed": true
+    },
+    {
+      "id": "PT045",
+      "description": "Authenticated unavailable pages display their observed access evidence without implying login failure or zero templates.",
+      "passed": true
+    },
+    {
+      "id": "PT044",
+      "description": "An incomplete sample with no rows also keeps its total explicitly unknown.",
+      "passed": true
+    },
+    {
+      "id": "PT043",
+      "description": "A captured confirmed-empty list retains its actual zero count.",
+      "passed": true
+    },
+    {
+      "id": "PT038",
+      "description": "Captured zero tag options are distinguished from an uncaptured selector.",
+      "passed": true
+    },
+    {
+      "id": "PT039",
+      "description": "A captured tag scene offers group prompts even when no existing template or child prompt exists.",
+      "passed": true
+    },
+    {
+      "id": "PT040",
+      "description": "Switching scenes changes content label and captured scheduling help, and hides irrelevant groups without losing drafts.",
+      "passed": true
+    },
+    {
+      "id": "PT041",
+      "description": "Returning to the tag scene restores its help and child draft, with required group validation active.",
+      "passed": true
+    },
+    {
+      "id": "PT022",
+      "description": "More than twenty real sample rows use actual local pagination.",
+      "passed": true
+    },
+    {
+      "id": "PT023",
+      "description": "Second page contains the remaining captured record.",
+      "passed": true
+    },
+    {
+      "id": "PT024",
+      "description": "No synthetic DOM runtime errors occurred.",
+      "passed": true
+    }
+  ],
+  "inputs": [
+    {
+      "file": "data/live-ui-reference.js",
+      "sha256": "b231aa2c78d45c762c6b96bb8ec04539c17ad6d7b00110b37e2a8d5eba0d0ee1"
+    },
+    {
+      "file": "admin-live-controls.js",
+      "sha256": "0742d25ea57b8b1328bb1fbc9be394aabd2753ff805a295ce36700eab438687d"
+    },
+    {
+      "file": "admin-account-profile.js",
+      "sha256": "afe14f2c7563c532e97849eeac17b183d65233c8a325be3f92f41d7e5ce3eedd"
+    },
+    {
+      "file": "admin-menu-state.js",
+      "sha256": "e9ba1278dc1c8ad86524a49ce9e415f0ab42ebd90e2d78c1e274d425007d8184"
+    },
+    {
+      "file": "data/page-evidence.js",
+      "sha256": "9baf07fa2d3e05d9ae0e6dca9dc15ce826d67202434b1d58fb2e234184411302"
+    },
+    {
+      "file": "data/form-schemas.js",
+      "sha256": "879a134e7f8854ef8c27c1aeacc1704b7b983beef1059a072a6e9d28393f12f7"
+    },
+    {
+      "file": "data/button-states.js",
+      "sha256": "4607ab16abcd06939edf02d2eb092f5542621add657ded0aa68c00799c80c01c"
+    },
+    {
+      "file": "admin-content.js",
+      "sha256": "436c7081a89d39f423df7effeba00d07983a0e3e2503d491f55dec2732b6912f"
+    },
+    {
+      "file": "admin-quality-model.js",
+      "sha256": "2b05aede178d1660ce35225e5d7469cf7a04bf3436d5936a27c0253a424c7c90"
+    },
+    {
+      "file": "admin-prompt-templates.js",
+      "sha256": "40a026003b00fa6dcc20989abe437e45c30a32cba8480fd056709085c6a4c542"
+    },
+    {
+      "file": "admin-quality-prompts.js",
+      "sha256": "35bedd6ad7226f55bd5d49bd6817b700c06e2db3bc72ef3b3e36d50b1aebe5ad"
+    },
+    {
+      "file": "data/content/yestar-sz.json",
+      "sha256": "6882f30af00125d5cb787ab04e071b001891701facbb2bfc5fcdb7ea0bb32dd8"
+    },
+    {
+      "file": "data/content/forms.json",
+      "sha256": "26b41f7c29e4cf099c4a442b42cfaba185d456d0371fb0ebd19fbcdcb424488d"
+    },
+    {
+      "file": "data/navigation-snapshot.json",
+      "sha256": "f7cac843125608a83254b162c75908ac44e3378ef1179584c408d73e2c00b8d5"
+    },
+    {
+      "file": "data/content/options.json",
+      "sha256": "d776eaaaf0dbf03cc346bc3488e5411fee3a52e094ef385986c57c254e6f732d"
+    },
+    {
+      "file": "data/content/yestar.json",
+      "sha256": "ea1f3ea8ea4fbd01805e2d7068bfa50a8c400d058d0e5a383ea2c811d16b61f8"
+    },
+    {
+      "file": "data/content/yestar-bj.json",
+      "sha256": "ccfb50b6d8de3ae5a706bb88fb3bfb22ade7063e687d059b3aedea380b473bad"
+    },
+    {
+      "file": "data/content/jbfs.json",
+      "sha256": "cf414f9767a20322592321252ae0bedfe79d6b6ce7ccda61aa4701e86d669ed3"
+    },
+    {
+      "file": "data/content/hqjd.json",
+      "sha256": "25185e297481f7d7aba7d3a9b5821085f0d4ed233ec9502a4d5300e7951066d2"
+    },
+    {
+      "file": "data/content/mengzhua.json",
+      "sha256": "584fadfd36d6cc8ae9a999fabbf044d845ee35f55daf3490f55541decb4f8a6a"
+    },
+    {
+      "file": "data/content/yestar-gz.json",
+      "sha256": "7809c92000ac1ddea6e9815e56debf04c818c28b77ffb3f6b7ab14e6295fbb07"
+    }
+  ],
+  "summary": {
+    "total": 45,
+    "passed": 45,
+    "failed": 0
+  }
+}

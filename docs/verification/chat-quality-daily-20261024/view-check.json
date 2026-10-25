@@ -1,0 +1,519 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.2.1",
+  "ok": true,
+  "checkedAt": "2026-10-24T13:53:22.247Z",
+  "checkCount": 43,
+  "passed": 43,
+  "failed": 0,
+  "baselineRevision": "d1d6d9b5fc54a8b23946ef2754d101166bd4a5d4",
+  "nodeVersion": "v24.14.0",
+  "files": [
+    {
+      "path": "prototype/admin-quality-model.js",
+      "sha256": "2b05aede178d1660ce35225e5d7469cf7a04bf3436d5936a27c0253a424c7c90"
+    },
+    {
+      "path": "prototype/admin-quality-daily.js",
+      "sha256": "3f4321e36d50463c6a69ca29965eda589ddfb0766d9ea5b117ad48c957e038f1"
+    }
+  ],
+  "scope": "Actual model and daily view executed in an isolated Node VM with a minimal DOM adapter; covers scenario events, report projection, generated headings and content branches. Not browser/layout/accessibility validation.",
+  "checks": [
+    {
+      "name": "baseline is partial with one failed session",
+      "ok": true
+    },
+    {
+      "name": "late preserves partial status",
+      "ok": true
+    },
+    {
+      "name": "late preserves incomplete coverage",
+      "ok": true
+    },
+    {
+      "name": "late does not manufacture a partial finish time",
+      "ok": true
+    },
+    {
+      "name": "partial title remains distinct from late badge",
+      "ok": true
+    },
+    {
+      "name": "scenario projection does not mutate original report",
+      "ok": true
+    },
+    {
+      "name": "empty has consistent empty status and zero counts",
+      "ok": true
+    },
+    {
+      "name": "empty clears stale late flag and has completion metadata",
+      "ok": true
+    },
+    {
+      "name": "empty header and content agree",
+      "ok": true
+    },
+    {
+      "name": "failure projection accounts for every failed session",
+      "ok": true
+    },
+    {
+      "name": "failure projection clears inherited late flag",
+      "ok": true
+    },
+    {
+      "name": "failure heading is generation failure",
+      "ok": true
+    },
+    {
+      "name": "actual failure title survives an independent late flag",
+      "ok": true
+    },
+    {
+      "name": "late completed report preserves completed status",
+      "ok": true
+    },
+    {
+      "name": "completed late report shows separate status and time badge",
+      "ok": true
+    },
+    {
+      "name": "wecom unconnected has its own status and explanation",
+      "ok": true
+    },
+    {
+      "name": "wecom unconnected shows unknown expected count without progress",
+      "ok": true
+    },
+    {
+      "name": "wecom unconnected keeps all report tabs free of metrics",
+      "ok": true
+    },
+    {
+      "name": "wecom unsynced has its own status and explanation",
+      "ok": true
+    },
+    {
+      "name": "wecom unsynced shows unknown expected count without progress",
+      "ok": true
+    },
+    {
+      "name": "wecom unsynced keeps all report tabs free of metrics",
+      "ok": true
+    },
+    {
+      "name": "wecom read error survives empty projection",
+      "ok": true
+    },
+    {
+      "name": "wecom read error survives late projection",
+      "ok": true
+    },
+    {
+      "name": "wecom read error survives failed projection",
+      "ok": true
+    },
+    {
+      "name": "wecom read error survives generating projection",
+      "ok": true
+    },
+    {
+      "name": "wecom read error survives partial projection",
+      "ok": true
+    },
+    {
+      "name": "wecom read error survives unconnected projection",
+      "ok": true
+    },
+    {
+      "name": "wecom read error survives unsynced projection",
+      "ok": true
+    },
+    {
+      "name": "wecom corrupt source is not silently overwritten",
+      "ok": true
+    },
+    {
+      "name": "wechat unconnected has its own status and explanation",
+      "ok": true
+    },
+    {
+      "name": "wechat unconnected shows unknown expected count without progress",
+      "ok": true
+    },
+    {
+      "name": "wechat unconnected keeps all report tabs free of metrics",
+      "ok": true
+    },
+    {
+      "name": "wechat unsynced has its own status and explanation",
+      "ok": true
+    },
+    {
+      "name": "wechat unsynced shows unknown expected count without progress",
+      "ok": true
+    },
+    {
+      "name": "wechat unsynced keeps all report tabs free of metrics",
+      "ok": true
+    },
+    {
+      "name": "wechat read error survives empty projection",
+      "ok": true
+    },
+    {
+      "name": "wechat read error survives late projection",
+      "ok": true
+    },
+    {
+      "name": "wechat read error survives failed projection",
+      "ok": true
+    },
+    {
+      "name": "wechat read error survives generating projection",
+      "ok": true
+    },
+    {
+      "name": "wechat read error survives partial projection",
+      "ok": true
+    },
+    {
+      "name": "wechat read error survives unconnected projection",
+      "ok": true
+    },
+    {
+      "name": "wechat read error survives unsynced projection",
+      "ok": true
+    },
+    {
+      "name": "wechat corrupt source is not silently overwritten",
+      "ok": true
+    }
+  ],
+  "cases": [
+    {
+      "name": "wechat late remains partial",
+      "status": "partial",
+      "late": true,
+      "actualFinish": null,
+      "expected": 8,
+      "success": 7,
+      "failed": 1,
+      "pending": 0,
+      "displayedExpected": 8,
+      "showsProgress": true,
+      "showsReportMetrics": true,
+      "headline": "部分完成"
+    },
+    {
+      "name": "wechat complete collection with no data",
+      "status": "empty",
+      "late": false,
+      "actualFinish": "2026-10-24T08:00:00+08:00",
+      "expected": 0,
+      "success": 0,
+      "failed": 0,
+      "pending": 0,
+      "displayedExpected": 0,
+      "showsProgress": true,
+      "showsReportMetrics": false,
+      "headline": "采集完整 · 无数据"
+    },
+    {
+      "name": "wechat failed projection",
+      "status": "failed",
+      "late": false,
+      "actualFinish": null,
+      "expected": 8,
+      "success": 0,
+      "failed": 8,
+      "pending": 0,
+      "displayedExpected": 8,
+      "showsProgress": true,
+      "showsReportMetrics": false,
+      "headline": "生成失败"
+    },
+    {
+      "name": "actual failed report is also late",
+      "status": "failed",
+      "late": true,
+      "actualFinish": null,
+      "expected": 8,
+      "success": 0,
+      "failed": 8,
+      "pending": 0,
+      "displayedExpected": 8,
+      "showsProgress": true,
+      "showsReportMetrics": false,
+      "headline": "生成失败"
+    },
+    {
+      "name": "wecom completed report is late",
+      "status": "completed",
+      "late": true,
+      "actualFinish": "2026-10-24T08:30:00+08:00",
+      "expected": 8,
+      "success": 8,
+      "failed": 0,
+      "pending": 0,
+      "displayedExpected": 8,
+      "showsProgress": true,
+      "showsReportMetrics": true,
+      "headline": "报告已完成"
+    },
+    {
+      "name": "wecom unconnected has unknown coverage",
+      "status": "completed",
+      "late": false,
+      "actualFinish": "2026-10-24T06:18:00+08:00",
+      "expected": 8,
+      "success": 8,
+      "failed": 0,
+      "pending": 0,
+      "displayedExpected": "unknown",
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本渠道尚未接入"
+    },
+    {
+      "name": "wecom unsynced has unknown coverage",
+      "status": "completed",
+      "late": false,
+      "actualFinish": "2026-10-24T06:18:00+08:00",
+      "expected": 8,
+      "success": 8,
+      "failed": 0,
+      "pending": 0,
+      "displayedExpected": "unknown",
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "工作号采集不完整"
+    },
+    {
+      "name": "wecom read error with empty selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wecom read error with late selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wecom read error with failed selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wecom read error with generating selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wecom read error with partial selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wecom read error with unconnected selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wecom read error with unsynced selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wechat unconnected has unknown coverage",
+      "status": "partial",
+      "late": true,
+      "actualFinish": null,
+      "expected": 8,
+      "success": 7,
+      "failed": 1,
+      "pending": 0,
+      "displayedExpected": "unknown",
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本渠道尚未接入"
+    },
+    {
+      "name": "wechat unsynced has unknown coverage",
+      "status": "partial",
+      "late": true,
+      "actualFinish": null,
+      "expected": 8,
+      "success": 7,
+      "failed": 1,
+      "pending": 0,
+      "displayedExpected": "unknown",
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "工作号采集不完整"
+    },
+    {
+      "name": "wechat read error with empty selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wechat read error with late selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wechat read error with failed selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wechat read error with generating selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wechat read error with partial selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wechat read error with unconnected selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    },
+    {
+      "name": "wechat read error with unsynced selected",
+      "status": "error",
+      "late": null,
+      "actualFinish": null,
+      "expected": null,
+      "success": null,
+      "failed": null,
+      "pending": null,
+      "displayedExpected": null,
+      "showsProgress": false,
+      "showsReportMetrics": false,
+      "headline": "本地演示记录读取失败"
+    }
+  ]
+}

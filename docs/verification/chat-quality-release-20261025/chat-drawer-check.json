@@ -1,0 +1,23 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "checkedAt": "2026-10-25T03:17:06.303Z",
+  "ok": true,
+  "counts": {
+    "reports": 4,
+    "sessions": 3466,
+    "views": 3466,
+    "validatedSessions": 3466,
+    "importedMessages": 20113,
+    "displayMessages": 30861,
+    "scopeRejections": 13864,
+    "originalFieldRejections": 47940,
+    "messageShapeRejections": 9588,
+    "allowedOpenGuards": 12,
+    "rejectedOpenGuards": 84,
+    "networkCalls": 0,
+    "checksPassed": 74959,
+    "checksFailed": 0
+  },
+  "failedChecks": [],
+  "sourceSha256": "4e622e90a68e8cfe237a7814544c5694ce1e13231789df1bc51687e0e5be1578"
+}

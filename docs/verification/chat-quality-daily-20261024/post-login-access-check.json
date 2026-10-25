@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-24T15:31:52.1841221Z",
+  "tenants": [
+    {
+      "tenant": "jbfs",
+      "authenticated": true,
+      "aiMenuVisible": false,
+      "promptRoute": {
+        "requested": "https://jbfs.wecarepet.com/admin/promptTemplate",
+        "observed": "https://jbfs.wecarepet.com/admin/salesManage",
+        "outcome": "redirected_to_sales"
+      },
+      "modelRoute": {
+        "requested": "https://jbfs.wecarepet.com/admin/aiEntModelConfig",
+        "observed": "https://jbfs.wecarepet.com/admin/salesManage",
+        "outcome": "redirected_to_sales"
+      },
+      "captureStatus": "not-captured",
+      "accessStatus": "authenticated_route_unavailable",
+      "verifiedAt": "2026-10-24T15:30:02.553Z"
+    },
+    {
+      "tenant": "hqjd",
+      "authenticated": true,
+      "aiMenuVisible": false,
+      "promptRoute": {
+        "requested": "https://hqjd.wecarepet.com/admin/promptTemplate",
+        "observed": "https://hqjd.wecarepet.com/admin/salesManage",
+        "outcome": "redirected_to_sales"
+      },
+      "modelRoute": {
+        "requested": "https://hqjd.wecarepet.com/admin/aiEntModelConfig",
+        "observed": "https://hqjd.wecarepet.com/admin/salesManage",
+        "outcome": "redirected_to_sales"
+      },
+      "captureStatus": "not-captured",
+      "accessStatus": "authenticated_route_unavailable",
+      "verifiedAt": "2026-10-24T15:30:02.553Z"
+    }
+  ],
+  "promptSnapshotSha256": "5d7c47243f997768f75dde5c749bdc26c4a41b56704196cc9f78fd911ee91e26",
+  "scope": "Read-only browser navigation. No production settings changed. No inference about cause of missing menu.",
+  "uiAssetVersion": "092-0.3.0-access"
+}

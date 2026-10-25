@@ -1,0 +1,205 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "checkedAt": "2026-10-25T03:15:45.133Z",
+  "ok": true,
+  "checks": 47,
+  "passed": 47,
+  "failed": 0,
+  "sourceSha256": {
+    "admin-quality-report.js": "e07869c6a3eb9972d970e9db45de9f8bc982768aaba4cb825bbad2078448beaf",
+    "admin-quality-pc-messages.js": "e25de725282cc868f075640c35722d5bb244020402df9e2f83d69e5127cba6a5",
+    "admin-quality-chat-drawer.js": "4e622e90a68e8cfe237a7814544c5694ce1e13231789df1bc51687e0e5be1578",
+    "admin-quality-real.js": "9d8029b26de30185f8791a149b78645716bc6cb569f89be63170bceb4374c4f5"
+  },
+  "scope": "JSDOM synthetic fixtures; fetch stub only; no private input, HTTP, model/API calls or storage writes",
+  "results": [
+    {
+      "name": "reject wrong tenant",
+      "ok": true
+    },
+    {
+      "name": "reject inconsistent report channel",
+      "ok": true
+    },
+    {
+      "name": "reject out-of-scope date",
+      "ok": true
+    },
+    {
+      "name": "reject fabricated Codex API execution",
+      "ok": true
+    },
+    {
+      "name": "reject false DeepSeek execution",
+      "ok": true
+    },
+    {
+      "name": "reject duplicate revisions",
+      "ok": true
+    },
+    {
+      "name": "reject duplicate session identity",
+      "ok": true
+    },
+    {
+      "name": "reject duplicate message identity",
+      "ok": true
+    },
+    {
+      "name": "reject cross-session dimension evidence",
+      "ok": true
+    },
+    {
+      "name": "reject cross-session issue evidence",
+      "ok": true
+    },
+    {
+      "name": "reject cross-session occurrence evidence",
+      "ok": true
+    },
+    {
+      "name": "reject private mode without local-only flag",
+      "ok": true
+    },
+    {
+      "name": "install validated private-original fixture",
+      "ok": true
+    },
+    {
+      "name": "import does not fetch or persist",
+      "ok": true
+    },
+    {
+      "name": "available dates and absent-date stay separate",
+      "ok": true
+    },
+    {
+      "name": "getReport returns detached records",
+      "ok": true
+    },
+    {
+      "name": "account projection retains member issue evidence",
+      "ok": true
+    },
+    {
+      "name": "projection excludes system-only denominator and deduplicates risk sessions",
+      "ok": true
+    },
+    {
+      "name": "projection does not mutate source membership",
+      "ok": true
+    },
+    {
+      "name": "unknown coverage and response metrics remain unknown",
+      "ok": true
+    },
+    {
+      "name": "presentation excludes system-only intent and preserves actual unknown",
+      "ok": true
+    },
+    {
+      "name": "real page renders seven modules and selected date",
+      "ok": true
+    },
+    {
+      "name": "removed top-level filters remain absent",
+      "ok": true
+    },
+    {
+      "name": "private status and unknown provenance visible",
+      "ok": true
+    },
+    {
+      "name": "module overview renders",
+      "ok": true
+    },
+    {
+      "name": "module intent renders",
+      "ok": true
+    },
+    {
+      "name": "module staff renders",
+      "ok": true
+    },
+    {
+      "name": "module issues renders",
+      "ok": true
+    },
+    {
+      "name": "module risk renders",
+      "ok": true
+    },
+    {
+      "name": "module business renders",
+      "ok": true
+    },
+    {
+      "name": "module standards renders",
+      "ok": true
+    },
+    {
+      "name": "intent details omit excluded session",
+      "ok": true
+    },
+    {
+      "name": "module-local search filters and restores rows",
+      "ok": true
+    },
+    {
+      "name": "issue entry exists for occurrence",
+      "ok": true
+    },
+    {
+      "name": "evidence opens right-hand PC drawer",
+      "ok": true
+    },
+    {
+      "name": "issue highlights only linked messages",
+      "ok": true
+    },
+    {
+      "name": "customer left and staff right templates retained",
+      "ok": true
+    },
+    {
+      "name": "raw evidence escapes markup and preserves newline",
+      "ok": true
+    },
+    {
+      "name": "AI summary separate and escaped",
+      "ok": true
+    },
+    {
+      "name": "voice transcript and saved conclusions collapse by default",
+      "ok": true
+    },
+    {
+      "name": "missing media and identity are explicit without fake playback or portraits",
+      "ok": true
+    },
+    {
+      "name": "optional local supplement failure leaves imported messages",
+      "ok": true
+    },
+    {
+      "name": "closing drawer restores page and focus",
+      "ok": true
+    },
+    {
+      "name": "second occurrence opens only its own conversation",
+      "ok": true
+    },
+    {
+      "name": "page hide closes evidence",
+      "ok": true
+    },
+    {
+      "name": "conversation entry retains complete imported evidence without issue highlight",
+      "ok": true
+    },
+    {
+      "name": "readonly rendering has no storage writes or jsdom errors",
+      "ok": true
+    }
+  ]
+}

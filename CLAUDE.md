@@ -1,5 +1,17 @@
 # 碎银 Admin 原型维护入口
 
+2026-10-25会话质检日报以[092@0.3.3](docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/spec.md)为当前规则；用户已确认“原型图OK了，完整推送”。当前静态行为已验收，远端交付须实际回执，不能用本文预先宣称完成。维护前读[PRD](prd/chat-quality-daily.md)、[流程](flowcharts/chat-quality-daily.md)、[设计规范](docs/design-spec.md)及[来源账本](docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/source-convergence.md)。历史0.3.x过程记录只证明当时状态。
+
+092固定边界：
+
+- 两日报在聊天管理，路由`wecomQualityDaily`／`wechatQualityDaily`；AI管理中的`promptTemplate`／`aiEntModelConfig`仍独立，不把日报放回AI菜单。
+- 当前真实报告标题内日期，七页签在KPI前；工作号筛选和搜索在相应名单内，来源说明在页尾。不要恢复顶部综合／分组过滤器或旧右上折叠筛选。完整布局使用`admin-quality-report.js/.css`，只重聚合已保存结论，不新增语义判断。
+- 原文用`admin-quality-chat-drawer.js/.css`与`admin-quality-pc-messages.js/.css`的右侧只读PC时间轴，客户左我方右，证据按所选occurrence及自身seq定位；禁止回退居中原文对话框。关闭／Esc／遮罩恢复页签、名单状态、滚动与焦点；无发送／转发／撤回。
+- 日报模板与普通模板在同一六列表格，操作都是编辑／删除，不出现查看日报链接。编辑高级设置保留；本地删除只停用目标渠道，取消／写入失败不改变原配置，历史日报、另一渠道、共用规则、模型和正文备份保持，不另造恢复重建流程。
+- `data/private/prompt-templates.json`、真实报告bundle、聊天显示侧车及含真实原文的截图仅本机Git忽略，不得打入公开仓、构建、单文件或版本化SDD。公开`quality-public-demo.json`只从旧合成model fixture生成四报告，经独立installPublic校验，复用最终日报和PC抽屉；本机优先私有，仅404可回退公开合成，明确无实际AI，其他错误不能吞成合成成功。构建须递归排除private，并正确解析带缓存版本参数的资源路径。
+- 15家Prompt采样完成、2家已登录但入口不可用且用户延期；北京确认0与未知总数区分，不借bzds替代其他租户。深圳真实样本限2026-10-19／20双渠道，已存分析来源Codex／`apiExecuted=false`，不能改为DeepSeek或重新生成时间。
+- API执行暂停；独立runtime-plan、Operational Profile、provider及本机服务未执行／未验收，不随静态交付包打入，也不从日报插入运行面板或请求业务API。本轮无工程Issue与开发进度表更新。
+
 2026-10-12新增[扫街轨迹](prd/street-trajectories.md)：所有医美租户可选人员与日期，在地图上10秒内回放全部有效行程。当前覆盖六艺星及画美/傲丽两个西安租户；无旧拉新入口的两店补必要数据展示父级。非医美不开放。详见[081@1.1.0](docs/sdd/SPEC-SUIYIN-ADMIN-081/1.1.0/README.md)与[流程](flowcharts/street-trajectories.md)。本地示意地图和合成数据不代表真实轨迹已接入。
 
 2026-10-02全部账号状态执行[ACCOUNT-TYPE-001@0.2.0](docs/sdd/SPEC-SUIYIN-ADMIN-ACCOUNT-TYPE-001/0.2.0/README.md)：佰智德三平台总览使用43个环境、1139个真实采集账号及118张代理卡片；统计和在线/掉线名单只按个微、企微分类，统计末行汇总，不存在第三分类。类型读取创建时已保存的属性，名称匹配仅用于静态采集构建，生产以稳定账号ID关联。公开数据中的13处手机号已遮罩；原始采集与私人诊断只留本地。见[产品说明](prd/all-account-status.md)、[流程](flowcharts/all-account-status.md)和[工程Issue #458](https://github.com/PetWebOrg/suiyin-admin/issues/458)，生产实现仍待正式工程流程。
@@ -23,6 +35,10 @@
 - 不创建、更新或对账 APP/PC 开发进度表；工程 Issue 需另行明确指令。以真实远端回执判定交付，不把本机检查当部署。
 
 ## 主线结构
+
+- `admin-quality-model.js`、`admin-quality-daily.js/css`：双渠道独立合成演示、模板／规则版本及本地状态；不代替真实运行。
+- `admin-quality-real.js/css`、`admin-quality-report.js/css`：本机私有保存报告与七模块版式；`admin-quality-chat-drawer.js/css`、`admin-quality-pc-messages.js/css`承载右侧原文。
+- `admin-prompt-templates.js/css`、`admin-quality-prompts.js/css`、`admin-quality-models.js/css`：各租户自己的采样列表、日报模板同表扩展、企业只读模型目录。
 
 - `prototype/_shell.html`、`admin-navigation.js/css`、`admin-menu-state.js`：租户、导航、页签、菜单本地覆盖。
 - `admin-account-profile.js`：076默认账号名称与八租户时间字段能力；077八租户系统称谓与角色适配。按tenant和稳定route处理，保留字段键、自由文本、统计口径和其他角色，不全仓替换销售。

@@ -1,0 +1,349 @@
+{
+  "tenant": "yestar-sz",
+  "currentCapturedAt": "2026-10-25T00:46:39.974Z",
+  "uiCapturedAt": "2026-10-25T00:44:34.441Z",
+  "containsPersonalValues": false,
+  "stableJoin": "raw session.accountId = persona.id; no nickname guessing",
+  "baselineAccounts": 372,
+  "currentAccounts": 372,
+  "baselineStableIdsRetained": 372,
+  "newStableIds": 0,
+  "removedOrInaccessibleStableIds": 0,
+  "allOriginalAccounts": {
+    "scopeIds": 372,
+    "matched": 372,
+    "missing": 0,
+    "nonemptyName": 372,
+    "changes": {
+      "name": 0,
+      "nickName": 0,
+      "wcId": 0,
+      "provider": 0,
+      "group": 0,
+      "online_status": 1
+    }
+  },
+  "reportAccounts": {
+    "scopeIds": 156,
+    "matched": 156,
+    "missing": 0,
+    "nonemptyName": 156,
+    "changes": {
+      "name": 0,
+      "nickName": 0,
+      "wcId": 0,
+      "provider": 0,
+      "group": 0,
+      "online_status": 1
+    }
+  },
+  "perChannel": {
+    "wecom": {
+      "scopeIds": 35,
+      "matched": 35,
+      "missing": 0,
+      "nonemptyName": 35,
+      "changes": {
+        "name": 0,
+        "nickName": 0,
+        "wcId": 0,
+        "provider": 0,
+        "group": 0,
+        "online_status": 0
+      }
+    },
+    "wechat": {
+      "scopeIds": 121,
+      "matched": 121,
+      "missing": 0,
+      "nonemptyName": 121,
+      "changes": {
+        "name": 0,
+        "nickName": 0,
+        "wcId": 0,
+        "provider": 0,
+        "group": 0,
+        "online_status": 1
+      }
+    }
+  },
+  "uiVerification": {
+    "rows": 20,
+    "counts": {
+      "trimmed_pair_unique": 1,
+      "name_only": 1,
+      "exact_pair_unique": 16,
+      "nickname_only": 1,
+      "unmatched": 1
+    },
+    "rowsDetail": [
+      {
+        "row": 1,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 0,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "trimmed_pair_unique"
+      },
+      {
+        "row": 2,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 0,
+        "trimmedPairCount": 0,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 0,
+        "pairedProviders": [],
+        "classification": "name_only"
+      },
+      {
+        "row": 3,
+        "channel": "企微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 4,
+        "channel": "企微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 5,
+        "channel": "企微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 6,
+        "channel": "企微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 7,
+        "channel": "企微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 8,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 9,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 10,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 11,
+        "channel": "企微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 12,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 13,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 0,
+        "trimmedPairCount": 0,
+        "nameMatchCount": 0,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [],
+        "classification": "nickname_only"
+      },
+      {
+        "row": 14,
+        "channel": "个微",
+        "nicknameProvided": false,
+        "exactPairCount": 0,
+        "trimmedPairCount": 0,
+        "nameMatchCount": 0,
+        "nicknameMatchCount": 0,
+        "pairedProviders": [],
+        "classification": "unmatched"
+      },
+      {
+        "row": 15,
+        "channel": "企微",
+        "nicknameProvided": false,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 0,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 16,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 17,
+        "channel": "企微",
+        "nicknameProvided": false,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 0,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 18,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 19,
+        "channel": "个微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          ""
+        ],
+        "classification": "exact_pair_unique"
+      },
+      {
+        "row": 20,
+        "channel": "企微",
+        "nicknameProvided": true,
+        "exactPairCount": 1,
+        "trimmedPairCount": 1,
+        "nameMatchCount": 1,
+        "nicknameMatchCount": 1,
+        "pairedProviders": [
+          "qw"
+        ],
+        "classification": "exact_pair_unique"
+      }
+    ],
+    "meaning": "Same-row pairing supports 人设名称=name and 微信昵称=nickName; unpaired visible values are not stable identity evidence."
+  },
+  "implementation": {
+    "currentSource": "E:/AI 项目/outputs/shenzhen-chat-quality-20261019-20/identity-20261025/personas-current.private.json",
+    "receipt": "E:/AI 项目/outputs/shenzhen-chat-quality-20261019-20/identity-20261025/personas-current-receipt.json",
+    "fallbackSource": "E:/AI 项目/outputs/shenzhen-chat-quality-20261019-20/personas.private.json",
+    "selection": "Use current name for exact stable id match; if missing, retain original name with original-collection provenance. Never select a current persona by UI nickname.",
+    "reportStableIdAudit": "E:/AI 项目/outputs/shenzhen-chat-quality-20261019-20/identity-20261025/report-account-current-mapping.private.json"
+  },
+  "limits": [
+    "Current account labels are not historical operator identities.",
+    "UI rows have no captured stable id or wcId, so unmatched visible names cannot be safely assigned to a new or renamed account.",
+    "No production writes and no customer/history queries were executed."
+  ]
+}

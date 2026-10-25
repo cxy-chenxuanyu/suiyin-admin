@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-10-24T15:38:25.073Z",
+  "uiAssetVersion": "092-0.3.0-access",
+  "checks": [
+    {
+      "tenant": "jbfs",
+      "page": "promptTemplate",
+      "reasonVisible": true,
+      "totalUnknown": true,
+      "noFalseZero": true,
+      "createDisabled": true,
+      "passed": true
+    },
+    {
+      "tenant": "hqjd",
+      "page": "promptTemplate",
+      "reasonVisible": true,
+      "totalUnknown": true,
+      "noFalseZero": true,
+      "createDisabled": true,
+      "passed": true
+    },
+    {
+      "tenant": "jbfs",
+      "page": "aiEntModelConfig",
+      "reasonVisible": true,
+      "catalogUnknown": true,
+      "readOnly": true,
+      "passed": true
+    },
+    {
+      "tenant": "hqjd",
+      "page": "aiEntModelConfig",
+      "reasonVisible": true,
+      "catalogUnknown": true,
+      "readOnly": true,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

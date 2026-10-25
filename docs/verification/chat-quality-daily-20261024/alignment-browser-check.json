@@ -1,0 +1,109 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.2.1",
+  "checkedAt": "2026-10-24T08:54:40.826Z",
+  "tool": "cua_repl / Chrome",
+  "status": "passed",
+  "checkCount": 18,
+  "checks": [
+    {
+      "id": "B01",
+      "description": "两个日报在聊天管理末尾，AI 提示词与模型管理仍在 AI 管理",
+      "passed": true
+    },
+    {
+      "id": "B02",
+      "description": "统一提示词表格仅一张，六列，三条原模板加两条日报模板",
+      "passed": true
+    },
+    {
+      "id": "B03",
+      "description": "企微场景筛选仅一条，恢复全部场景回到五条",
+      "passed": true
+    },
+    {
+      "id": "B04",
+      "description": "日报编辑器基础字段按场景、定时、模型、名称、正文排列",
+      "passed": true
+    },
+    {
+      "id": "B05",
+      "description": "候选含默认、平台与企业合成配置，停用和其他场景配置不显示",
+      "passed": true
+    },
+    {
+      "id": "B06",
+      "description": "不选模型时明确显示当前默认配置名称与平台来源",
+      "passed": true
+    },
+    {
+      "id": "B07",
+      "description": "新增高级设置默认折叠，展开显示草稿、试跑、发布并明确本地模拟",
+      "passed": true
+    },
+    {
+      "id": "B08",
+      "description": "修改模型后取消触发未保存提示，提供保存、放弃、继续编辑",
+      "passed": true
+    },
+    {
+      "id": "B09",
+      "description": "放弃修改回到列表，企微已发布 p2 配置保持",
+      "passed": true
+    },
+    {
+      "id": "B10",
+      "description": "提示词编辑器查看 AI 模型管理跳转 aiEntModelConfig",
+      "passed": true
+    },
+    {
+      "id": "B11",
+      "description": "企业模型目录六列，七条采样加四条明确合成配置，无模型编辑入口",
+      "passed": true
+    },
+    {
+      "id": "B12",
+      "description": "模型目录查看提示词管理返回统一列表",
+      "passed": true
+    },
+    {
+      "id": "B13",
+      "description": "原录音 AI 分析模板仍可打开旧编辑器并取消",
+      "passed": true
+    },
+    {
+      "id": "B14",
+      "description": "提示词表格查看企微日报进入企微页面",
+      "passed": true
+    },
+    {
+      "id": "B15",
+      "description": "聊天管理个微入口进入独立个微页面",
+      "passed": true
+    },
+    {
+      "id": "B16",
+      "description": "整页刷新后企微、个微、提示词、模型四个已打开页面全部恢复",
+      "passed": true
+    },
+    {
+      "id": "B17",
+      "description": "最终浏览器无 error 或 warn 日志",
+      "passed": true
+    },
+    {
+      "id": "B18",
+      "description": "统一表格、聊天菜单、模型目录及个微页截图保存并核对",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "prompt-unified-chat-menu.png",
+    "model-directory-aligned.png",
+    "wechat-chat-menu-aligned.png"
+  ],
+  "notes": [
+    "原多页签一度空白，关闭重开后恢复；最终整页刷新四页均正常，未修改既有 iframe 恢复逻辑。",
+    "本轮模型选择修改已放弃；保持前次浏览器 p2/r2 演示状态。",
+    "真实页面只读核验见 live-prompt-model-alignment.md；原型未调用真实 API。"
+  ]
+}

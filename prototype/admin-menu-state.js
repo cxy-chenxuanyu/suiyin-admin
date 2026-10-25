@@ -58,6 +58,7 @@ window.AdminMenuRefresh=(()=>{
   if(!accepts(source,saved))return clone(saved?.dataRevision===source?.dataRevision?saved:source);
   const retiredPreview=window.AdminStreetTrajectoryMenu?.retirePreview(source,saved);if(retiredPreview)return retiredPreview;
   const toolsMigration=window.AdminToolsMenu.prepare(source,saved);if(toolsMigration){source=toolsMigration.source;saved=toolsMigration.saved;}
+   saved=window.AdminQualityDailyMenu?.prepare(source,saved)||saved;
   // Compare local edits with the defaults from their own revision when a later
   // additive page follows a capture refresh; retain the older migration fallback.
   const revision=source.menuRefresh.baselines?.[saved.dataRevision];
@@ -268,6 +269,89 @@ window.AdminStreetTrajectoryMenu=(()=>{
  return {placeDefault,supports,retirePreview};
 })();
 
+/* SPEC-SUIYIN-ADMIN-092@0.2.0: two isolated daily-report routes in the existing
+ * Shenzhen demo only. Relocate the reports to Chat Management while preserving
+ * hidden pages, local labels, permissions and unrelated ordering decisions. */
+window.AdminQualityDailyMenu=(()=>{
+  const routes=['wecomQualityDaily','wechatQualityDaily'],migration='chat-quality-daily-v1',relocation='chat-quality-daily-chat-v1';
+ const supports=tenant=>tenant?.id==='yestar-sz'&&tenant?.capabilities?.chatQualityDaily===true;
+  function prepare(source,saved){
+   const config=source?.qualityDailyMenuMigration;
+   if(config?.version!==relocation||saved?.qualityDailyMenuMigration?.version===relocation)return saved;
+   const next=structuredClone(saved),rows=next.tables[0].rows,identity=row=>row.tree?.key||row.cells[source.tables[0].headers.indexOf('菜单路由')];
+   const selected=routes.map(route=>rows.find(row=>identity(row)===route)).filter(Boolean);
+   if(!selected.length)return next;
+   const parent=rows.find(row=>row.id===config.parentId),priorParent=rows.find(row=>row.id===config.previousParentId),display=next.tables[0].headers.indexOf('菜单状态');
+   next.tables[0].rows=rows.filter(row=>!routes.includes(identity(row)));
+   if(parent){
+    for(const row of selected){
+     row.tree={...row.tree,depth:1,parentId:config.parentId,hasChildren:false};
+     if(source.route==='menu'){row.tree.parentKey=config.parentKey;row.tree.menuOriginParentKey=config.parentKey;row.tree.menuOriginDepth=1;}
+     if(row.extra&&Object.hasOwn(row.extra,'parentId'))row.extra.parentId=config.parentId;
+     // A hidden old branch must not grant report visibility merely by moving it.
+     if(display>=0&&priorParent?.cells[display]==='隐藏')row.cells[display]='隐藏';
+    }
+    const target=next.tables[0].rows;let end=target.indexOf(parent)+1;while(end<target.length&&(Number(target[end].tree?.depth)||0)>0)end++;
+    target.splice(end,0,...selected);
+   }
+   const layout=next.menuLayout;
+   if(layout){
+    for(const route of routes)if(layout.parents&&Object.hasOwn(layout.parents,route))layout.parents[route]=config.parentKey;
+    for(const key of Object.keys(layout.orders||{}))layout.orders[key]=layout.orders[key].filter(route=>!routes.includes(route));
+    if(layout.orders?.[config.parentKey])layout.orders[config.parentKey].push(...selected.map(identity));
+   }
+   return next;
+  }
+ const state=window.AdminMenuState,previous=state.migrate;
+ state.migrate=function(tenant,override){
+  const saved=previous.call(this,tenant,override);
+   if(!supports(tenant)||(saved.appliedMigrations?.[migration]&&saved.appliedMigrations?.[relocation]))return saved;
+  const next=structuredClone(saved),hadEnabled=Array.isArray(override?.enabled);
+   if(!saved.appliedMigrations?.[migration])for(const route of routes){
+   const parent=tenant.menu.find(group=>group.children?.some(child=>child.route===route));
+   if(!parent)continue;
+   const child=parent.children.find(item=>item.route===route);
+   const parentShown=(next.display?.[parent.route||parent.id]??parent.display)!=='隐藏';
+   const childShown=(next.display?.[route]??child.display)!=='隐藏';
+   const siblingShown=parent.children.some(item=>!routes.includes(item.route)&&next.enabled.includes(item.route)&&(next.display?.[item.route]??item.display)!=='隐藏');
+   if(parentShown&&childShown&&(!hadEnabled||siblingShown)&&!next.enabled.includes(route))next.enabled.push(route);
+  }
+   if(override?.appliedMigrations?.[migration]&&!saved.appliedMigrations?.[relocation]){
+    if(override.display?.['group-12']==='隐藏'){next.display={...next.display};for(const route of routes)next.display[route]='隐藏';}
+    if(next.order)for(const route of routes)delete next.order[route];
+   }
+   next.appliedMigrations={...next.appliedMigrations,[migration]:true,[relocation]:true};
+  next.menuDataRevision=tenant.menuDataRevision;
+  return next;
+ };
+  function placeDefault(tenant,parent,list,layout,override){
+   if(!supports(tenant)||parent!=='group-10'||routes.some(route=>layout?.orders?.[parent]?.includes(route)||override.order?.[route]!==undefined))return;
+   const moved=routes.map(route=>list.find(node=>node.key===route)).filter(Boolean);
+   for(let i=list.length-1;i>=0;i--)if(routes.includes(list[i].key))list.splice(i,1);
+   list.push(...moved);
+  }
+  return {routes,supports,prepare,placeDefault};
+})();
+
+/* SPEC-SUIYIN-ADMIN-092@0.3.0: append the four newly requested Prompt branches.
+ * Existing explicit hidden routes/parents, labels and order remain local choices.
+ */
+(() => {
+ const state=window.AdminMenuState,previous=state.migrate;
+ state.migrate=function(tenant,override){
+  const saved=previous.call(this,tenant,override),config=tenant.promptCaptureMenuMigration;
+  if(!config||saved.appliedMigrations?.[config.version])return saved;
+  const next=structuredClone(saved),parent=tenant.menu.find(group=>group.id===config.groupKey);
+  const parentShown=parent&&(next.display?.[config.groupKey]??parent.display)!=='隐藏';
+  const legacyHadVisible=!Array.isArray(override?.enabled)||override.enabled.length>0;
+  if(parentShown&&legacyHadVisible)for(const route of config.routes){
+   const child=parent.children.find(item=>item.route===route);
+   if(child&&(next.display?.[route]??child.display)!=='隐藏'&&!next.enabled.includes(route))next.enabled.push(route);
+  }
+  next.appliedMigrations={...next.appliedMigrations,[config.version]:true};next.menuDataRevision=tenant.menuDataRevision;return next;
+ };
+})();
+
 /* SPEC-SUIYIN-ADMIN-060@1.1.0: one local platform definition, all tenant sidebars.
  * Project only existing tenant routes; never copy another tenant's page inventory. */
 window.AdminPlatformMenu=(()=>{
@@ -431,6 +515,7 @@ window.AdminTenantMenu=(()=>{
   for(const [id,entry]of input.nodes){
     // Retired unpublished 081 scope must not survive as a local-only menu row.
     if(id==='streetTrajectories'&&!window.AdminStreetTrajectoryMenu.supports(tenant))continue;
+    if(window.AdminQualityDailyMenu.routes.includes(id)&&!window.AdminQualityDailyMenu.supports(tenant))continue;
    // Generated folders only exist while their platform definition still exists.
    if(entry.row.tree?.menuSynthetic&&!current?.nodes.has(entry.row.tree.platformId))continue;
    const source=base.nodes.get(id),item=nav.get(id),row=clone(entry.row);
@@ -499,6 +584,7 @@ window.AdminTenantMenu=(()=>{
    const order=layout?.orders?.[parent||'$root'];
     if(!Array.isArray(order)&&!list.some(node=>override.order?.[node.key]!==undefined))window.AdminStreetTrajectoryMenu.placeDefault(tenant,list,baseline,current);
    if(Array.isArray(order)){const ranks=new Map(order.map((id,i)=>[id,i]));list.sort((a,b)=>(ranks.get(a.key)??Number.MAX_SAFE_INTEGER)-(ranks.get(b.key)??Number.MAX_SAFE_INTEGER));}
+    window.AdminQualityDailyMenu.placeDefault(tenant,parent,list,layout,override);
   }
   const rows=[],visited=new Set();
   function emit(parent,depth){

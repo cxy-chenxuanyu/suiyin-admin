@@ -1,0 +1,72 @@
+/* Read-only PC message styling extracted from:
+ * E:/AI 项目/佰智德三/碎银原型/suiyin-pc-chat/prototype/prototype_v1.0.html
+ * Source SHA-256: 1967f633c3393ebed4f79757ce708de9833471410356d612da27d40f12314991
+ * 3244 message-area; 9549–9572 / 9681–9707 row, avatar, sender and bubble;
+ * 1544–1561 time typography; 9405–9452 voice and transcript.
+ * Tailwind utility values are expanded here under .qr-pc-chat only. No runtime CSS dependency.
+ * Evidence/time/source labels and collapsed transcripts are read-only report adaptations.
+ */
+.qr-pc-chat, .qr-pc-chat * {box-sizing:border-box}
+.qr-pc-chat {min-width:0;margin:0;padding:16px 48px;background:#f0f0f0;color:#333;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;line-height:1.5;overflow-wrap:break-word}
+.qr-pc-chat .qr-pc-date-divider {margin:16px 0;text-align:center;color:#b0b0b0;font-size:11px;line-height:16px}
+.qr-pc-chat .qr-pc-message {display:flex;align-items:flex-start;justify-content:flex-start;gap:0;margin:0 0 12px;padding:0;min-width:0;border:0;background:transparent;scroll-margin-block:20px}
+.qr-pc-chat .qr-pc-message.is-sent {justify-content:flex-end}
+.qr-pc-chat .qr-pc-avatar-stack {display:flex;flex-shrink:0;flex-direction:column;align-items:center;width:36px;margin:2px 8px 0 0}
+.qr-pc-chat .qr-pc-avatar-stack.is-staff {margin:2px 0 0 8px}
+.qr-pc-chat .qr-pc-avatar-box {position:relative;width:36px;height:36px;overflow:hidden;border-radius:4px;flex-shrink:0}
+.qr-pc-chat .qr-pc-avatar, .qr-pc-chat .qr-pc-avatar-fallback {display:flex;align-items:center;justify-content:center;width:36px;height:36px;margin:0;border:0;border-radius:4px;object-fit:cover}
+.qr-pc-chat .qr-pc-avatar {position:absolute;inset:0;background:#e0e0e0}
+.qr-pc-chat .qr-pc-avatar-fallback {background:#e0e0e0;color:#666;font-size:10px;font-weight:500;line-height:1}
+.qr-pc-chat .qr-pc-avatar-fallback.is-staff {background:#7b2d8e;color:#fff}
+.qr-pc-chat .qr-pc-device {display:block;margin-top:2px;line-height:0}
+.qr-pc-chat .qr-pc-device svg {display:block;width:14px;height:14px}
+.qr-pc-chat .qr-pc-message-stack {display:flex;flex-direction:column;align-items:flex-start;max-width:70%;min-width:0}
+.qr-pc-chat .is-sent > .qr-pc-message-stack {align-items:flex-end}
+.qr-pc-chat .qr-pc-sender {margin:0 0 4px;color:#999;font-size:11px;line-height:16px;overflow-wrap:anywhere}
+.qr-pc-chat .is-sent > .qr-pc-message-stack > .qr-pc-sender {text-align:right}
+.qr-pc-chat .qr-pc-bubble {position:relative;display:inline-block;max-width:100%;padding:8px 10px;border:0;border-radius:4px;background:#fff;color:#333;font-size:13px;line-height:1.5;box-shadow:0 1px 2px 0 rgba(0,0,0,.05);overflow-wrap:anywhere}
+.qr-pc-chat .is-sent .qr-pc-bubble {background:#95ec69}
+.qr-pc-chat .qr-pc-bubble::before {position:absolute;top:10px;left:-5px;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-right:5px solid #fff;content:""}
+.qr-pc-chat .is-sent .qr-pc-bubble::before {right:-5px;left:auto;border-right:0;border-left:5px solid #95ec69}
+.qr-pc-chat .qr-pc-text {white-space:pre-wrap}
+.qr-pc-chat .qr-pc-placeholder {color:#999;font-size:12px}
+.qr-pc-chat .qr-pc-message-meta {display:flex;flex-wrap:wrap;gap:3px 8px;max-width:100%;margin-top:3px;color:#999;font-size:11px;line-height:16px}
+.qr-pc-chat .is-sent > .qr-pc-message-stack > .qr-pc-message-meta {justify-content:flex-end;text-align:right}
+.qr-pc-chat .qr-pc-message-meta time {white-space:nowrap}
+.qr-pc-chat .qr-pc-source-status {display:flex;flex-wrap:wrap;gap:3px 8px;max-width:100%;margin-top:1px;color:#999;font-size:11px;line-height:16px}
+.qr-pc-chat .is-sent > .qr-pc-message-stack > .qr-pc-source-status {justify-content:flex-end;text-align:right}
+.qr-pc-chat .qr-pc-status-warning {color:#d4526e}
+.qr-pc-chat .qr-pc-scope {color:#777}
+.qr-pc-chat .qr-pc-evidence-label {color:#b86d15}
+.qr-pc-chat .qr-pc-message.is-highlighted > .qr-pc-message-stack > .qr-pc-bubble,
+.qr-pc-chat .qr-pc-message.is-highlighted .qr-pc-voice-bubble,
+.qr-pc-chat .qr-pc-message.is-highlighted .qr-pc-media-placeholder,
+.qr-pc-chat .qr-pc-message.is-highlighted .qr-pc-media-image {outline:2px solid #e6a23c;outline-offset:2px}
+.qr-pc-chat .qr-pc-message:focus-visible {outline:2px solid #e6a23c;outline-offset:5px;border-radius:4px}
+.qr-pc-chat .qr-pc-voice, .qr-pc-chat .qr-pc-media {display:flex;flex-direction:column;align-items:flex-start;max-width:100%;min-width:0}
+.qr-pc-chat .is-sent .qr-pc-voice, .qr-pc-chat .is-sent .qr-pc-media {align-items:flex-end}
+.qr-pc-chat .qr-pc-voice-bubble {min-width:118px;cursor:default}
+.qr-pc-chat .qr-pc-voice-line {display:flex;align-items:center;gap:4px;color:#666;font-size:12px}
+.qr-pc-chat .is-sent .qr-pc-voice-line {flex-direction:row-reverse}
+.qr-pc-chat .qr-pc-voice-line svg {flex:none;width:14px;height:18px}
+.qr-pc-chat .qr-pc-media-note {display:block;margin-top:4px;color:#888;font-size:11px;line-height:1.5}
+.qr-pc-chat .qr-pc-media-type {display:block}
+.qr-pc-chat .qr-pc-media-image {display:block;width:auto;max-width:100%;max-height:280px;border-radius:4px;object-fit:contain}
+.qr-pc-chat .qr-pc-image-failure {display:block;padding:10px;color:#888;background:#fff;border-radius:4px;font-size:12px}
+.qr-pc-chat .qr-pc-detail {max-width:100%;margin-top:4px;padding:0;border:0;border-radius:4px;color:#888;font-size:12px;line-height:1.6}
+.qr-pc-chat .qr-pc-detail > summary {padding:3px 0;color:#777;cursor:pointer;user-select:none}
+.qr-pc-chat .qr-pc-detail[open] > summary {margin-bottom:3px}
+.qr-pc-chat .qr-pc-detail-text {max-width:300px;padding:8px 10px;border:1px solid #e8e8e8;border-radius:4px;background:#fff;color:#333;font-size:13px;line-height:1.6;box-shadow:0 1px 2px rgba(0,0,0,.05);white-space:pre-wrap;overflow-wrap:anywhere}
+.qr-pc-chat .qr-pc-quote {padding-left:8px;border-left:2px solid #c0c0c0;border-radius:0}
+.qr-pc-chat .qr-pc-jump {display:inline-block;min-height:0;margin:5px 0 0;padding:0;border:0;background:transparent;color:#576b95;font-family:inherit;font-size:12px;line-height:1.6;cursor:pointer}
+.qr-pc-chat .qr-pc-jump:hover:not(:disabled) {border:0;background:transparent;color:#576b95;text-decoration:underline}
+.qr-pc-chat .qr-pc-jump:focus-visible, .qr-pc-chat summary:focus-visible {outline:2px solid #576b95;outline-offset:2px}
+.qr-pc-chat .qr-pc-system {display:flex;flex-direction:column;align-items:center;justify-content:center;color:#999;font-size:12px;text-align:center;white-space:pre-wrap}
+.qr-pc-chat .qr-pc-system .qr-pc-message-meta {justify-content:center}
+.qr-pc-chat .qr-pc-system.is-highlighted {outline:2px solid #e6a23c;outline-offset:3px;border-radius:4px}
+.qr-pc-chat .qr-pc-empty {padding:32px 0;text-align:center;color:#999;font-size:13px}
+.qr-pc-chat [hidden] {display:none!important}
+@media (max-width:600px) {
+  .qr-pc-chat {padding-right:18px;padding-left:18px}
+  .qr-pc-chat .qr-pc-message-stack {max-width:calc(100% - 44px)}
+}

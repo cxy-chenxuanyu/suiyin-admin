@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-24T15:39:11.815743+00:00",
+  "syntax": [
+    {
+      "file": "prototype\\admin-content.js",
+      "passed": true,
+      "sha256": "436c7081a89d39f423df7effeba00d07983a0e3e2503d491f55dec2732b6912f"
+    },
+    {
+      "file": "prototype\\admin-menu-state.js",
+      "passed": true,
+      "sha256": "e9ba1278dc1c8ad86524a49ce9e415f0ab42ebd90e2d78c1e274d425007d8184"
+    },
+    {
+      "file": "prototype\\admin-navigation.js",
+      "passed": true,
+      "sha256": "141e0ce1b5caa9bfe4acf3fe99fb93d0a3e2e8f5ae52e783c3216648e5ace7a4"
+    },
+    {
+      "file": "prototype\\admin-prompt-templates.js",
+      "passed": true,
+      "sha256": "40a026003b00fa6dcc20989abe437e45c30a32cba8480fd056709085c6a4c542"
+    },
+    {
+      "file": "prototype\\admin-quality-model.js",
+      "passed": true,
+      "sha256": "2b05aede178d1660ce35225e5d7469cf7a04bf3436d5936a27c0253a424c7c90"
+    },
+    {
+      "file": "prototype\\admin-quality-daily.js",
+      "passed": true,
+      "sha256": "3f4321e36d50463c6a69ca29965eda589ddfb0766d9ea5b117ad48c957e038f1"
+    },
+    {
+      "file": "prototype\\admin-quality-prompts.js",
+      "passed": true,
+      "sha256": "35bedd6ad7226f55bd5d49bd6817b700c06e2db3bc72ef3b3e36d50b1aebe5ad"
+    },
+    {
+      "file": "prototype\\admin-quality-models.js",
+      "passed": true,
+      "sha256": "9af3850fe63868bc562057273773edef96b56a94ad1e1cdab4853c3f936267fb"
+    },
+    {
+      "file": "prototype\\admin-quality-real.js",
+      "passed": true,
+      "sha256": "572f9fec7f2d5e6026ad63c6bbf5190c9fc1f3cb78815e5fed061ad47cc56979"
+    }
+  ],
+  "privateIgnored": true,
+  "privateFiles": [
+    "prototype/data/private/prompt-templates.json",
+    "prototype/data/private/quality-real-yestar-sz-20261019-20.json"
+  ],
+  "scope": "Local static prototype only. No production or model API execution.",
+  "assetVersion": "092-0.3.0-access"
+}

@@ -11320,7 +11320,7 @@
     "schemaSource": "https://jbfs.wecarepet.com/admin/menu",
     "capturedAt": "2026-09-27T03:06:34.305Z",
     "state": "captured",
-    "dataRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1",
+    "dataRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1-prompt-capture-menu-20261024-v1",
     "forms": [],
     "inputs": [],
     "tables": [
@@ -12562,6 +12562,99 @@
               "parentKey": "group-11",
               "parentId": "0-44"
             }
+          },
+          {
+            "id": "jbfs-menu-aiManagePrompt092",
+            "cells": [
+              "AI 管理",
+              "否",
+              "显示",
+              "0",
+              "",
+              "编辑\n 删除\n 记录"
+            ],
+            "actions": [
+              "编辑",
+              "删除",
+              "记录"
+            ],
+            "tree": {
+              "key": "aiManagePrompt092",
+              "depth": 0,
+              "parentKey": null,
+              "parentId": "",
+              "hasChildren": true
+            },
+            "prototypeOnly": true,
+            "source": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+            "captureStatus": "not-captured",
+            "liveEvidence": {
+              "source": "approved-local-prototype-awaiting-login",
+              "liveObserved": false,
+              "spec": "SPEC-SUIYIN-ADMIN-092@0.3.0"
+            }
+          },
+          {
+            "id": "jbfs-menu-promptTemplate",
+            "cells": [
+              "AI提示词库",
+              "否",
+              "显示",
+              "0",
+              "",
+              "编辑\n 删除\n 记录"
+            ],
+            "actions": [
+              "编辑",
+              "删除",
+              "记录"
+            ],
+            "tree": {
+              "key": "promptTemplate",
+              "depth": 1,
+              "parentKey": "aiManagePrompt092",
+              "parentId": "jbfs-menu-aiManagePrompt092",
+              "hasChildren": false
+            },
+            "prototypeOnly": true,
+            "source": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+            "captureStatus": "not-captured",
+            "liveEvidence": {
+              "source": "approved-local-prototype-awaiting-login",
+              "liveObserved": false,
+              "spec": "SPEC-SUIYIN-ADMIN-092@0.3.0"
+            }
+          },
+          {
+            "id": "jbfs-menu-aiEntModelConfig",
+            "cells": [
+              "AI模型管理",
+              "否",
+              "显示",
+              "0",
+              "",
+              "编辑\n 删除\n 记录"
+            ],
+            "actions": [
+              "编辑",
+              "删除",
+              "记录"
+            ],
+            "tree": {
+              "key": "aiEntModelConfig",
+              "depth": 1,
+              "parentKey": "aiManagePrompt092",
+              "parentId": "jbfs-menu-aiManagePrompt092",
+              "hasChildren": false
+            },
+            "prototypeOnly": true,
+            "source": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+            "captureStatus": "not-captured",
+            "liveEvidence": {
+              "source": "approved-local-prototype-awaiting-login",
+              "liveObserved": false,
+              "spec": "SPEC-SUIYIN-ADMIN-092@0.3.0"
+            }
           }
         ]
       }
@@ -12570,7 +12663,7 @@
       "全部记录"
     ],
     "tabs": [],
-    "text": "菜单管理\n菜单名称\t超级权限\t菜单状态\t排序\t\t操作\n销售管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n好友管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n好友列表\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群列表\t否\t显示\t0\t\t编辑\n 删除\n 记录\n添加好友\t否\t显示\t0\t\t编辑\n 删除\n 记录\n删退审核\t否\t显示\t0\t\t编辑\n 删除\n 记录\n好友标签\t否\t显示\t0\t\t编辑\n 删除\n 记录\n工具管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n话术管理\t否\t显示\t1\t\t编辑\n 删除\n 记录\n商品管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群发管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群发管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\nPYQ管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n分佣管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n预付确认\t否\t显示\t0\t\t编辑\n 删除\n 记录\n收入确认\t否\t显示\t0\t\t编辑\n 删除\n 记录\n分佣明细\t否\t显示\t0\t\t编辑\n 删除\n 记录\n分佣合计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n数据展示\t否\t显示\t0\t\t编辑\n 删除\n 记录\n拉新记录\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n反馈分析\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n回访统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售排名\t否\t显示\t0\t\t编辑\n 删除\n 记录\n上班记录\t否\t显示\t0\t\t编辑\n 删除\n 记录\n预付统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n交付统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n消息占比统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n数据查看日志\t否\t显示\t0\t\t编辑\n 删除\n 记录\n留存统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群发统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n朋友圈统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售使用统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售变声统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n录音管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n聊天管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n全部聊天\t否\t显示\t2\t\t编辑\n 删除\n 记录\n销售接待查询\t否\t显示\t1\t\t编辑\n 删除\n 记录\n分配记录\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售词控\t否\t显示\t0\t\t编辑\n 删除\n 记录\n客户词控\t否\t显示\t0\t\t编辑\n 删除\n 记录\n智能分析\t否\t显示\t0\t\t编辑\n 删除\n 记录\n微信管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n帐号状态\t否\t显示\t0\t\t编辑\n 删除\n 记录\n拉新文案\t否\t显示\t0\t\t编辑\n 删除\n 记录\n通友管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n系统管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n角色管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n菜单管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n标签模板管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n系统设置\t否\t显示\t0\t\t编辑\n 删除\n 记录\n标签管理\t否\t显示\t0\t\t编辑\n 删除\n 记录",
+    "text": "菜单管理\n菜单名称\t超级权限\t菜单状态\t排序\t\t操作\n销售管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n好友管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n好友列表\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群列表\t否\t显示\t0\t\t编辑\n 删除\n 记录\n添加好友\t否\t显示\t0\t\t编辑\n 删除\n 记录\n删退审核\t否\t显示\t0\t\t编辑\n 删除\n 记录\n好友标签\t否\t显示\t0\t\t编辑\n 删除\n 记录\n工具管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n话术管理\t否\t显示\t1\t\t编辑\n 删除\n 记录\n商品管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群发管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群发管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\nPYQ管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n分佣管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n预付确认\t否\t显示\t0\t\t编辑\n 删除\n 记录\n收入确认\t否\t显示\t0\t\t编辑\n 删除\n 记录\n分佣明细\t否\t显示\t0\t\t编辑\n 删除\n 记录\n分佣合计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n数据展示\t否\t显示\t0\t\t编辑\n 删除\n 记录\n拉新记录\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n反馈分析\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n回访统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售排名\t否\t显示\t0\t\t编辑\n 删除\n 记录\n上班记录\t否\t显示\t0\t\t编辑\n 删除\n 记录\n预付统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n交付统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n消息占比统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n数据查看日志\t否\t显示\t0\t\t编辑\n 删除\n 记录\n留存统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n群发统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n朋友圈统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售使用统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售变声统计\t否\t显示\t0\t\t编辑\n 删除\n 记录\n录音管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n聊天管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n全部聊天\t否\t显示\t2\t\t编辑\n 删除\n 记录\n销售接待查询\t否\t显示\t1\t\t编辑\n 删除\n 记录\n分配记录\t否\t显示\t0\t\t编辑\n 删除\n 记录\n销售词控\t否\t显示\t0\t\t编辑\n 删除\n 记录\n客户词控\t否\t显示\t0\t\t编辑\n 删除\n 记录\n智能分析\t否\t显示\t0\t\t编辑\n 删除\n 记录\n微信管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n帐号状态\t否\t显示\t0\t\t编辑\n 删除\n 记录\n拉新文案\t否\t显示\t0\t\t编辑\n 删除\n 记录\n通友管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n系统管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n角色管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n菜单管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n标签模板管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\n系统设置\t否\t显示\t0\t\t编辑\n 删除\n 记录\n标签管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\nAI 管理\t否\t显示\t0\t\t编辑\n 删除\n 记录\nAI提示词库\t否\t显示\t0\t\t编辑\n 删除\n 记录\nAI模型管理\t否\t显示\t0\t\t编辑\n 删除\n 记录",
     "expandedForms": {},
     "layout": "menu-tree",
     "publicDataPolicy": "public-demo-identities-v1",
@@ -12593,7 +12686,7 @@
       "staging": false
     },
     "menuRefresh": {
-      "previousRevision": "2026-09-20-menu-sales-voice-stats-v1-public-demo-identities-v1",
+      "previousRevision": "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1",
       "previousHeaders": [
         "菜单名称",
         "超级权限",
@@ -12622,7 +12715,8 @@
             "depth": 0,
             "hasChildren": false,
             "key": "salesManage",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -12644,7 +12738,8 @@
             "depth": 0,
             "hasChildren": true,
             "key": "group-1",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -12666,7 +12761,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "customerManagement",
-            "parentKey": "group-1"
+            "parentKey": "group-1",
+            "parentId": "0-1"
           }
         },
         {
@@ -12688,7 +12784,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "customerGroupList",
-            "parentKey": "group-1"
+            "parentKey": "group-1",
+            "parentId": "0-1"
           }
         },
         {
@@ -12710,7 +12807,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "uploadCustomerList",
-            "parentKey": "group-1"
+            "parentKey": "group-1",
+            "parentId": "0-1"
           }
         },
         {
@@ -12732,7 +12830,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "approvalList",
-            "parentKey": "group-1"
+            "parentKey": "group-1",
+            "parentId": "0-1"
           }
         },
         {
@@ -12754,13 +12853,14 @@
             "depth": 1,
             "hasChildren": false,
             "key": "customerTags",
-            "parentKey": "group-1"
+            "parentKey": "group-1",
+            "parentId": "0-1"
           }
         },
         {
-          "id": "0-7",
+          "id": "0-toolsManage",
           "cells": [
-            "话术管理",
+            "工具管理",
             "否",
             "显示",
             "0",
@@ -12774,9 +12874,40 @@
           ],
           "tree": {
             "depth": 0,
+            "hasChildren": true,
+            "parentId": "",
+            "key": "toolsManage",
+            "parentKey": null
+          },
+          "evidence": {
+            "source": "approved-static-prototype",
+            "spec": "SPEC-SUIYIN-ADMIN-073@1.0.0",
+            "liveObserved": false
+          },
+          "prototypeOnly": true,
+          "source": "SPEC-SUIYIN-ADMIN-073@1.0.0"
+        },
+        {
+          "id": "0-7",
+          "cells": [
+            "话术管理",
+            "否",
+            "显示",
+            "1",
+            "",
+            "编辑\n 删除\n 记录"
+          ],
+          "actions": [
+            "编辑",
+            "删除",
+            "记录"
+          ],
+          "tree": {
+            "depth": 1,
             "hasChildren": false,
             "key": "languageManage",
-            "parentKey": null
+            "parentKey": "toolsManage",
+            "parentId": "0-toolsManage"
           }
         },
         {
@@ -12798,7 +12929,8 @@
             "depth": 0,
             "hasChildren": false,
             "key": "products",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -12820,7 +12952,8 @@
             "depth": 0,
             "hasChildren": false,
             "key": "massMessageList",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -12842,7 +12975,8 @@
             "depth": 0,
             "hasChildren": false,
             "key": "massMessageListYx",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -12864,7 +12998,8 @@
             "depth": 0,
             "hasChildren": false,
             "key": "friendCircle",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -12886,7 +13021,8 @@
             "depth": 0,
             "hasChildren": true,
             "key": "group-7",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -12908,7 +13044,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "prepaymentList",
-            "parentKey": "group-7"
+            "parentKey": "group-7",
+            "parentId": "0-12"
           }
         },
         {
@@ -12930,7 +13067,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "incomeConfirm",
-            "parentKey": "group-7"
+            "parentKey": "group-7",
+            "parentId": "0-12"
           }
         },
         {
@@ -12952,7 +13090,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "rewardListNew",
-            "parentKey": "group-7"
+            "parentKey": "group-7",
+            "parentId": "0-12"
           }
         },
         {
@@ -12974,7 +13113,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "rewardTotalNew",
-            "parentKey": "group-7"
+            "parentKey": "group-7",
+            "parentId": "0-12"
           }
         },
         {
@@ -12996,7 +13136,8 @@
             "depth": 0,
             "hasChildren": true,
             "key": "group-8",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -13018,7 +13159,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "salesStatsReferral",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13040,7 +13182,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "salesStatsNew",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13062,7 +13205,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "feedbackAi",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13084,7 +13228,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "salesStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13106,7 +13251,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "revisitStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13128,7 +13274,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "salesRakingStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13150,7 +13297,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "dutyRecord",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13172,7 +13320,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "prepayStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13194,7 +13343,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "revenueStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13216,7 +13366,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "messageStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13238,7 +13389,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "dataViewLog",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13260,7 +13412,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "retentionStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13282,7 +13435,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "massMessageStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13304,7 +13458,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "friendCircleStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13326,7 +13481,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "salesMessageUsage",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           }
         },
         {
@@ -13348,9 +13504,35 @@
             "depth": 1,
             "hasChildren": false,
             "key": "salesVoiceStats",
-            "parentKey": "group-8"
+            "parentKey": "group-8",
+            "parentId": "0-17"
           },
           "source": "SPEC-SUIYIN-ADMIN-052@1.0.0"
+        },
+        {
+          "id": "live-20260927-recordingAdmin",
+          "cells": [
+            "录音管理",
+            "否",
+            "显示",
+            "0",
+            "",
+            "编辑\n 删除\n 记录"
+          ],
+          "actions": [
+            "编辑",
+            "删除",
+            "记录"
+          ],
+          "tree": {
+            "depth": 1,
+            "hasChildren": false,
+            "key": "recordingAdmin",
+            "parentKey": "group-8",
+            "parentId": "0-17"
+          },
+          "new": true,
+          "approvalStatus": "approved"
         },
         {
           "id": "0-33",
@@ -13371,7 +13553,8 @@
             "depth": 0,
             "hasChildren": true,
             "key": "group-9",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -13393,7 +13576,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "allChat",
-            "parentKey": "group-9"
+            "parentKey": "group-9",
+            "parentId": "0-33"
           }
         },
         {
@@ -13415,7 +13599,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "salesReceptionQuery",
-            "parentKey": "group-9"
+            "parentKey": "group-9",
+            "parentId": "0-33"
           }
         },
         {
@@ -13437,7 +13622,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "allocationRecord",
-            "parentKey": "group-9"
+            "parentKey": "group-9",
+            "parentId": "0-33"
           }
         },
         {
@@ -13459,7 +13645,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "sensitiveWords",
-            "parentKey": "group-9"
+            "parentKey": "group-9",
+            "parentId": "0-33"
           }
         },
         {
@@ -13481,7 +13668,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "sensitiveWordsCustomer",
-            "parentKey": "group-9"
+            "parentKey": "group-9",
+            "parentId": "0-33"
           }
         },
         {
@@ -13503,7 +13691,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "aiLabelStats",
-            "parentKey": "group-9"
+            "parentKey": "group-9",
+            "parentId": "0-33"
           }
         },
         {
@@ -13525,7 +13714,8 @@
             "depth": 0,
             "hasChildren": true,
             "key": "group-10",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -13547,7 +13737,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "wechatStatus",
-            "parentKey": "group-10"
+            "parentKey": "group-10",
+            "parentId": "0-40"
           }
         },
         {
@@ -13569,7 +13760,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "wechatLaxin",
-            "parentKey": "group-10"
+            "parentKey": "group-10",
+            "parentId": "0-40"
           }
         },
         {
@@ -13591,7 +13783,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "acceptFriendConfig",
-            "parentKey": "group-10"
+            "parentKey": "group-10",
+            "parentId": "0-40"
           }
         },
         {
@@ -13613,7 +13806,8 @@
             "depth": 0,
             "hasChildren": true,
             "key": "group-11",
-            "parentKey": null
+            "parentKey": null,
+            "parentId": ""
           }
         },
         {
@@ -13635,7 +13829,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "role",
-            "parentKey": "group-11"
+            "parentKey": "group-11",
+            "parentId": "0-44"
           }
         },
         {
@@ -13657,7 +13852,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "menu",
-            "parentKey": "group-11"
+            "parentKey": "group-11",
+            "parentId": "0-44"
           }
         },
         {
@@ -13679,7 +13875,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "labels",
-            "parentKey": "group-11"
+            "parentKey": "group-11",
+            "parentId": "0-44"
           }
         },
         {
@@ -13701,7 +13898,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "setting",
-            "parentKey": "group-11"
+            "parentKey": "group-11",
+            "parentId": "0-44"
           }
         },
         {
@@ -13723,7 +13921,8 @@
             "depth": 1,
             "hasChildren": false,
             "key": "labelsManage",
-            "parentKey": "group-11"
+            "parentKey": "group-11",
+            "parentId": "0-44"
           }
         }
       ],
@@ -14939,6 +15138,1247 @@
               }
             }
           ]
+        },
+        "2026-09-27-live-menu-refresh-staging-v1-public-demo-identities-v1-tools-menu-v1": {
+          "headers": [
+            "菜单名称",
+            "超级权限",
+            "菜单状态",
+            "排序",
+            "",
+            "操作"
+          ],
+          "rows": [
+            {
+              "id": "0-0",
+              "cells": [
+                "销售管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": false,
+                "key": "salesManage",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-1",
+              "cells": [
+                "好友管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "key": "group-1",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-2",
+              "cells": [
+                "好友列表",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "customerManagement",
+                "parentKey": "group-1",
+                "parentId": "0-1"
+              }
+            },
+            {
+              "id": "0-3",
+              "cells": [
+                "群列表",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "customerGroupList",
+                "parentKey": "group-1",
+                "parentId": "0-1"
+              }
+            },
+            {
+              "id": "0-4",
+              "cells": [
+                "添加好友",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "uploadCustomerList",
+                "parentKey": "group-1",
+                "parentId": "0-1"
+              }
+            },
+            {
+              "id": "0-5",
+              "cells": [
+                "删退审核",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "approvalList",
+                "parentKey": "group-1",
+                "parentId": "0-1"
+              }
+            },
+            {
+              "id": "0-6",
+              "cells": [
+                "好友标签",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "customerTags",
+                "parentKey": "group-1",
+                "parentId": "0-1"
+              }
+            },
+            {
+              "id": "0-toolsManage",
+              "cells": [
+                "工具管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "parentId": "",
+                "key": "toolsManage",
+                "parentKey": null
+              },
+              "evidence": {
+                "source": "approved-static-prototype",
+                "spec": "SPEC-SUIYIN-ADMIN-073@1.0.0",
+                "liveObserved": false
+              },
+              "prototypeOnly": true,
+              "source": "SPEC-SUIYIN-ADMIN-073@1.0.0"
+            },
+            {
+              "id": "0-7",
+              "cells": [
+                "话术管理",
+                "否",
+                "显示",
+                "1",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "languageManage",
+                "parentKey": "toolsManage",
+                "parentId": "0-toolsManage"
+              }
+            },
+            {
+              "id": "0-8",
+              "cells": [
+                "商品管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": false,
+                "key": "products",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-9",
+              "cells": [
+                "群发管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": false,
+                "key": "massMessageList",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-10",
+              "cells": [
+                "群发管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": false,
+                "key": "massMessageListYx",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-11",
+              "cells": [
+                "PYQ管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": false,
+                "key": "friendCircle",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-12",
+              "cells": [
+                "分佣管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "key": "group-7",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-13",
+              "cells": [
+                "预付确认",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "prepaymentList",
+                "parentKey": "group-7",
+                "parentId": "0-12"
+              }
+            },
+            {
+              "id": "0-14",
+              "cells": [
+                "收入确认",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "incomeConfirm",
+                "parentKey": "group-7",
+                "parentId": "0-12"
+              }
+            },
+            {
+              "id": "0-15",
+              "cells": [
+                "分佣明细",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "rewardListNew",
+                "parentKey": "group-7",
+                "parentId": "0-12"
+              }
+            },
+            {
+              "id": "0-16",
+              "cells": [
+                "分佣合计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "rewardTotalNew",
+                "parentKey": "group-7",
+                "parentId": "0-12"
+              }
+            },
+            {
+              "id": "0-17",
+              "cells": [
+                "数据展示",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "key": "group-8",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-18",
+              "cells": [
+                "拉新记录",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "salesStatsReferral",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-19",
+              "cells": [
+                "销售统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "salesStatsNew",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-20",
+              "cells": [
+                "反馈分析",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "feedbackAi",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-21",
+              "cells": [
+                "销售统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "salesStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-22",
+              "cells": [
+                "回访统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "revisitStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-23",
+              "cells": [
+                "销售排名",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "salesRakingStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-24",
+              "cells": [
+                "上班记录",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "dutyRecord",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-25",
+              "cells": [
+                "预付统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "prepayStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-26",
+              "cells": [
+                "交付统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "revenueStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-27",
+              "cells": [
+                "消息占比统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "messageStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-28",
+              "cells": [
+                "数据查看日志",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "dataViewLog",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-29",
+              "cells": [
+                "留存统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "retentionStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-30",
+              "cells": [
+                "群发统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "massMessageStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-31",
+              "cells": [
+                "朋友圈统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "friendCircleStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-32",
+              "cells": [
+                "销售使用统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "salesMessageUsage",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              }
+            },
+            {
+              "id": "0-salesVoiceStats",
+              "cells": [
+                "销售变声统计",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "salesVoiceStats",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              },
+              "source": "SPEC-SUIYIN-ADMIN-052@1.0.0"
+            },
+            {
+              "id": "live-20260927-recordingAdmin",
+              "cells": [
+                "录音管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "recordingAdmin",
+                "parentKey": "group-8",
+                "parentId": "0-17"
+              },
+              "new": true,
+              "approvalStatus": "approved"
+            },
+            {
+              "id": "0-33",
+              "cells": [
+                "聊天管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "key": "group-9",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-34",
+              "cells": [
+                "全部聊天",
+                "否",
+                "显示",
+                "2",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "allChat",
+                "parentKey": "group-9",
+                "parentId": "0-33"
+              }
+            },
+            {
+              "id": "0-35",
+              "cells": [
+                "销售接待查询",
+                "否",
+                "显示",
+                "1",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "salesReceptionQuery",
+                "parentKey": "group-9",
+                "parentId": "0-33"
+              }
+            },
+            {
+              "id": "0-36",
+              "cells": [
+                "分配记录",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "allocationRecord",
+                "parentKey": "group-9",
+                "parentId": "0-33"
+              }
+            },
+            {
+              "id": "0-37",
+              "cells": [
+                "销售词控",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "sensitiveWords",
+                "parentKey": "group-9",
+                "parentId": "0-33"
+              }
+            },
+            {
+              "id": "0-38",
+              "cells": [
+                "客户词控",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "sensitiveWordsCustomer",
+                "parentKey": "group-9",
+                "parentId": "0-33"
+              }
+            },
+            {
+              "id": "0-39",
+              "cells": [
+                "智能分析",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "aiLabelStats",
+                "parentKey": "group-9",
+                "parentId": "0-33"
+              }
+            },
+            {
+              "id": "0-40",
+              "cells": [
+                "微信管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "key": "group-10",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-41",
+              "cells": [
+                "帐号状态",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "wechatStatus",
+                "parentKey": "group-10",
+                "parentId": "0-40"
+              }
+            },
+            {
+              "id": "0-42",
+              "cells": [
+                "拉新文案",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "wechatLaxin",
+                "parentKey": "group-10",
+                "parentId": "0-40"
+              }
+            },
+            {
+              "id": "0-43",
+              "cells": [
+                "通友管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "acceptFriendConfig",
+                "parentKey": "group-10",
+                "parentId": "0-40"
+              }
+            },
+            {
+              "id": "0-44",
+              "cells": [
+                "系统管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 0,
+                "hasChildren": true,
+                "key": "group-11",
+                "parentKey": null,
+                "parentId": ""
+              }
+            },
+            {
+              "id": "0-45",
+              "cells": [
+                "角色管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "role",
+                "parentKey": "group-11",
+                "parentId": "0-44"
+              }
+            },
+            {
+              "id": "0-46",
+              "cells": [
+                "菜单管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "menu",
+                "parentKey": "group-11",
+                "parentId": "0-44"
+              }
+            },
+            {
+              "id": "0-47",
+              "cells": [
+                "标签模板管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "labels",
+                "parentKey": "group-11",
+                "parentId": "0-44"
+              }
+            },
+            {
+              "id": "0-48",
+              "cells": [
+                "系统设置",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "setting",
+                "parentKey": "group-11",
+                "parentId": "0-44"
+              }
+            },
+            {
+              "id": "0-49",
+              "cells": [
+                "标签管理",
+                "否",
+                "显示",
+                "0",
+                "",
+                "编辑\n 删除\n 记录"
+              ],
+              "actions": [
+                "编辑",
+                "删除",
+                "记录"
+              ],
+              "tree": {
+                "depth": 1,
+                "hasChildren": false,
+                "key": "labelsManage",
+                "parentKey": "group-11",
+                "parentId": "0-44"
+              }
+            }
+          ]
         }
       }
     },
@@ -14947,6 +16387,15 @@
       "languageRowId": "0-7",
       "toolsRowId": "0-toolsManage",
       "guideRowId": null
+    },
+    "promptCaptureMenuMigration": {
+      "version": "prompt-capture-menu-20261024-v1",
+      "groupKey": "aiManagePrompt092",
+      "routes": [
+        "promptTemplate",
+        "aiEntModelConfig"
+      ],
+      "liveObserved": false
     }
   },
   "labels": {
@@ -15189,6 +16638,70 @@
     "text": "标签管理\n分组名称\t排序\t状态\t组内标签\t操作\n客户标签\t100\t显示\t客户标签 (customer)\n用户\t编辑\n隐藏\n 删除\n销售标签\t90\t显示\t售卖记录\n购买记录\n充值记录\n商品浏览\n商品加购\n小程序分享\t编辑\n隐藏\n 删除\n回访标签\t80\t显示\t回访标签\t编辑\n隐藏\n 删除\nAI\t70\t显示\t录音记录\nAI分析\t编辑\n隐藏\n 删除",
     "canvas": 0,
     "expandedForms": {},
+    "publicDataPolicy": "public-demo-identities-v1"
+  },
+  "promptTemplate": {
+    "tenant": "jbfs",
+    "sampleTenant": "jbfs",
+    "route": "promptTemplate",
+    "label": "Prompt模板管理",
+    "source": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+    "state": "mock",
+    "captureStatus": "not-captured",
+    "captureNote": "本租户待登录核验，展示未采集状态；不引用其他租户。",
+    "dataRevision": "prompt-capture-menu-20261024-v1-public-demo-identities-v1",
+    "inputs": [],
+    "buttons": [],
+    "tabs": [],
+    "pagination": "",
+    "tables": [
+      {
+        "headers": [
+          "模版名称",
+          "场景",
+          "绑定模型",
+          "自动填写的标签",
+          "定时",
+          "操作"
+        ],
+        "rows": []
+      }
+    ],
+    "forms": [],
+    "text": "Prompt模板管理\n模版名称\t场景\t绑定模型\t自动填写的标签\t定时\t操作",
+    "sourceSpec": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+    "publicDataPolicy": "public-demo-identities-v1"
+  },
+  "aiEntModelConfig": {
+    "tenant": "jbfs",
+    "sampleTenant": "jbfs",
+    "route": "aiEntModelConfig",
+    "label": "AI-企业模型配置",
+    "source": "SPEC-SUIYIN-ADMIN-092@0.3.0",
+    "state": "mock",
+    "captureStatus": "not-captured",
+    "captureNote": "本租户待登录核验，展示未采集状态；不引用其他租户。",
+    "dataRevision": "prompt-capture-menu-20261024-v1-public-demo-identities-v1",
+    "inputs": [],
+    "buttons": [],
+    "tabs": [],
+    "pagination": "",
+    "tables": [
+      {
+        "headers": [
+          "来源",
+          "模型名称",
+          "供应商",
+          "接口地址",
+          "场景",
+          "是否启用"
+        ],
+        "rows": []
+      }
+    ],
+    "forms": [],
+    "text": "AI-企业模型配置\n来源\t模型名称\t供应商\t接口地址\t场景\t是否启用",
+    "sourceSpec": "SPEC-SUIYIN-ADMIN-092@0.3.0",
     "publicDataPolicy": "public-demo-identities-v1"
   }
 }

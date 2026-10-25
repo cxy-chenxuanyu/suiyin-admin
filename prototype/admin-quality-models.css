@@ -1,0 +1,25 @@
+/* SPEC-SUIYIN-ADMIN-092@0.2.1: scoped read-only model directory. */
+.aqm-page .aqm-intro{margin:0 0 16px;line-height:1.7;color:#303133}
+.aqm-page .aqm-intro p{margin:0 0 5px}
+.aqm-page .aqm-note,.aqm-page .aqm-footer{color:#7b8088;font-size:12px}
+.aqm-page .aqm-intro .link{padding-left:0;margin-top:5px}
+.aqm-page .aqm-card{padding:0;overflow:hidden}
+.aqm-page .aqm-table-wrap{overflow:auto;max-height:calc(100vh - 235px)}
+.aqm-page .aqm-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;table-layout:fixed}
+.aqm-page .aqm-table th,.aqm-page .aqm-table td{padding:13px 15px;text-align:left;border-bottom:1px solid #ebeef5;vertical-align:top;overflow-wrap:anywhere;line-height:1.6}
+.aqm-page .aqm-table th{position:sticky;top:0;z-index:1;background:#f7f9fb;color:#606266;font-weight:500}
+.aqm-page .aqm-table th:nth-child(1){width:10%}
+.aqm-page .aqm-table th:nth-child(2){width:25%}
+.aqm-page .aqm-table th:nth-child(3){width:11%}
+.aqm-page .aqm-table th:nth-child(4){width:18%}
+.aqm-page .aqm-table th:nth-child(5){width:27%}
+.aqm-page .aqm-table th:nth-child(6){width:9%}
+.aqm-page .aqm-table tbody tr:hover{background:#fafcfc}
+.aqm-page .aqm-row-note{display:block;color:#909399;font-size:11px;margin-top:3px}
+.aqm-page .aqm-pending{color:#9d701b}
+.aqm-page .aqm-demo-row{background:#fffef9}
+.aqm-page .aqm-footer{padding:13px 16px;margin:0;line-height:1.7;background:#fafafa}
+.aqm-page .aqm-error{padding:20px}
+.aqm-page .aqm-empty{text-align:center;color:#909399;padding:36px}
+.aqm-page button:focus-visible{outline:2px solid #07c160;outline-offset:2px}
+@media(max-width:1000px){.aqm-page .aqm-table{min-width:920px}.aqm-page .aqm-table-wrap{max-height:calc(100vh - 255px)}}

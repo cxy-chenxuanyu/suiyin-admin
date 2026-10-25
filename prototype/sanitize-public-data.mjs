@@ -12,7 +12,7 @@ import {fileURLToPath} from 'node:url';
 const base=path.dirname(fileURLToPath(import.meta.url)),repo=path.dirname(base),dataDir=path.join(base,'data');
 const policy='public-demo-identities-v1',checkOnly=process.argv.includes('--check');
 const arg=process.argv.indexOf('--backup-dir'),backupDir=arg>=0?path.resolve(process.argv[arg+1]||''):null;
-const walkFiles=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walkFiles(path.join(dir,e.name)):[path.join(dir,e.name)]);
+const walkFiles=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>/^(private|vendor|node_modules)$/i.test(e.name)||/\.private\./i.test(e.name)?[]:e.isDirectory()?walkFiles(path.join(dir,e.name)):[path.join(dir,e.name)]);
 // Navigation is a business contract (tenant/brand/menu identity), never customer data.
 const navigationFile=path.join(dataDir,'navigation-snapshot.json');
 const jsonFiles=walkFiles(dataDir).filter(f=>f.endsWith('.json')&&f!==navigationFile);

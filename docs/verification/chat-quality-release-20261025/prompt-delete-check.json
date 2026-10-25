@@ -1,0 +1,10 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "checkedAt": "2026-10-25T03:17:04.002Z",
+  "ok": true,
+  "checks": 60,
+  "passed": 60,
+  "failed": 0,
+  "failedChecks": [],
+  "sourceSha256": "014e9851918252095d76eae6e84aacf6d678792a189003ff530ca977e017728b"
+}

@@ -1,12 +1,16 @@
 # 碎银管理后台 HTML 原型
 
+2026-10-25：房总已确认“原型图OK了，完整推送”。会话质检日报按[092@0.3.3](docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/spec.md)进入静态交付：企微、个微分别从**聊天管理**进入；沿南京参考的七页签布局，使用碎银青绿色。标题内切换日期，各模块名单内筛选工作号／搜索，原文从右侧PC只读聊天抽屉打开。两条日报模板并入AI提示词库同一表格，操作统一编辑／删除。见[产品说明](prd/chat-quality-daily.md)、[交互流程](flowcharts/chat-quality-daily.md)、[设计规则](docs/design-spec.md#会话质检日报092033)和[来源收敛](docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/source-convergence.md)。远端commit／tag／部署以本次发布回执为准，文档不提前代表已经推送。
+
+完整Prompt、深圳真实名称／聊天原文、私有报告JSON及截图只留本机，**不包含在远端或离线单文件中**。公开包使用`quality-public-demo.json`中仅由旧合成fixture生成的19/20双渠道四报告，独立`installPublic`校验后复用同一新版日报及PC抽屉，明确标“合成／无实际AI”。本机先读私有结果，只有404才回退公开合成；其他错误不掩盖，不替换真实结果。API继续暂停，未执行／未验收的runtime合同与服务不随本包交付；本次不证明DeepSeek调用、每天出报或04:00–08:00目标已经达成。
+
 2026-10-12新增[扫街轨迹](prd/street-trajectories.md)：所有医美租户可选人员与日期，在地图上10秒内回放全部有效行程。当前覆盖六艺星及画美/傲丽两个西安租户；无旧拉新入口的两店补必要数据展示父级。非医美不开放。详见[081@1.1.0](docs/sdd/SPEC-SUIYIN-ADMIN-081/1.1.0/README.md)与[流程](flowcharts/street-trajectories.md)。本地示意地图和合成数据不代表真实轨迹已接入。
 
 2026-10-02：[全部账号状态](https://suiyin-admin.pages.dev/prototype/_shell.html?tenant=bzds&page=allWeChatStatus)已对齐真实总览结构，统计列固定为个微、企微、汇总，在线/掉线名单各按两类分组。账号类型使用创建时的既定类型，页面没有第三分类。当前静态样例为43环境、1,139账号和118代理卡，名称内手机号已掩码；本地原始采集不公开。见[产品说明](prd/all-account-status.md)、[交互流程](flowcharts/all-account-status.md)、[0.2.0版本合同](docs/sdd/SPEC-SUIYIN-ADMIN-ACCOUNT-TYPE-001/0.2.0/README.md)及[验收记录](docs/sdd/SPEC-SUIYIN-ADMIN-ACCOUNT-TYPE-001/0.2.0/verification.md)。工程待办为[Admin #458](https://github.com/PetWebOrg/suiyin-admin/issues/458)，负责人/提出人房昕，提出环境佰智德三；生产尚未实现。
 
 2026-09-30文案调整：全部17租户的「系统管理 → 菜单管理」第二列表头统一显示「仅超级管理员可见」，列宽为180px，保持单行。沿用已有菜单字段及权限合同；见[菜单产品说明](prd/tenant-menu-drag.md)、[交互流程](flowcharts/tenant-menu-drag.md)和[本次验收](docs/verification/menu-label-20260930/README.md)。
 
-这是十七租户的静态管理后台原型，用于对照真实页面、评审操作和统计规则。2026-10-12 按当前导航登记 **17 个租户、822 个租户×页面入口、91 种路由**。其中783个入口属于2026-09-27源环境采集队列，741个可见页面已有有效DOM和截图，42个保持源隐藏状态；另有13个既有AI费用、6个艺星回访规则、6个艺星辅助线管理和画美/傲丽各3个待采集原型入口，以及本轮8个医美扫街轨迹原型入口。工具管理是结构父级，不计业务路由；新增原型不计入实站采集页数，采集覆盖不等于全部页面、全部状态逐像素一致。
+这是十七租户的静态管理后台原型，用于对照真实页面、评审操作和统计规则。以下为2026-10-12历史导航快照：**17个租户、822个租户×页面入口、91种路由**，不包含后续092新增入口。其中783个入口属于2026-09-27源环境采集队列，741个可见页面已有有效DOM和截图，42个保持源隐藏状态；另有13个既有AI费用、6个艺星回访规则、6个艺星辅助线管理和画美/傲丽各3个当时待采集入口，以及8个医美扫街轨迹原型入口。工具管理是结构父级，不计业务路由；新增原型不计入实站采集页数，采集覆盖不等于全部页面、全部状态逐像素一致。
 
 2026-09-30按[076@1.0.1](docs/sdd/SPEC-SUIYIN-ADMIN-076/1.0.1/README.md)与[077@1.0.1](docs/sdd/SPEC-SUIYIN-ADMIN-077/1.0.1/README.md)新增画美医美-西安、傲丽医美-西安；全部租户账号入口统一为「碎银账号」。六个现有艺星及这两租户的系统人员称谓为「咨询」，原销售角色回显为「线上咨询」，另有「现场咨询」「科室助理」可多选，其他角色和既有权限保留。同一八租户移除账号顶部与系统设置的上下班时间入口；上班记录、在线状态和「离开状态可转交」保持。普通/平台菜单状态在表内直接选「显示 / 隐藏」并保存，失败回滚，原作用范围不变。两新租户只有独立最小原型框架，真实菜单、账号和业务资料待采集，不扩散艺星回访或辅助线能力。见[产品说明](prd/admin-account-menu-status.md)与[流程](flowcharts/admin-account-menu-status.md)。
 
@@ -23,6 +27,16 @@
 - [当前产品说明](prd/admin-live-reference.md) · [交互流程](flowcharts/admin-live-reference.md) · [设计规范](docs/design-spec.md)
 - [2026-09-27刷新合同](docs/sdd/SPEC-SUIYIN-ADMIN-REFRESH-001/0.2.0/README.md) · [公开验证摘要](docs/verification/live-refresh-20260927/README.md) · [公开样本审计](docs/verification/live-refresh-20260927/public-data-audit.md)
 - [验收与已知边界](docs/verification/admin-live-reference.md) · [离线单文件](prototype/_shell_inline.html)
+
+## 会话质检日报
+
+当前入口为`prototype/_shell.html?tenant=yestar-sz&page=wecomQualityDaily`与`page=wechatQualityDaily`。AI管理只保留提示词／模型配置入口，不承载日报；提示词行也没有“查看日报”快捷链接。深圳真实视图范围固定为2026-10-19／20两日双渠道，仍是Codex已保存离线候选（`apiExecuted=false`），统计分母及分析时间不会因显示迭代改变。工作号按稳定ID映射账号状态中的人设号名字，不能据此推断实际操作人。
+
+17租户提示词状态按本次各自证据保留：15家已采57份完整主正文、1份成都分组子正文及各自场景／标签／分组／模型选项；北京确认0模板。锦帛美学、厚全鸡蛋已登录但当前账号无AI入口、直达目标页返回销售管理，数量未知，按用户要求延期。画美、傲丽本轮提示词及模型已采，不能再按9月最小框架当作其当前Prompt状态；其他业务采集不由本轮补齐。
+
+原文抽屉复用PC布局，客户左、我方右，问题按本会话证据定位；只有已有音频源才提供播放，转写、图片缺失及发送来源保持真实可得状态。关闭按钮／Esc／遮罩恢复原页签、滚动与入口焦点。新日报模板的保存／试跑／发布和删除都为本地演示；删除仅停用目标渠道，确认／取消／失败明确，保留历史、另一渠道、共用规则、模型和正文备份。
+
+静态验收：[右侧抽屉](docs/verification/chat-quality-daily-20261025/chat-drawer.md)。0.3.0／0.3.1及早期版式记录是当时的过程证据，旧顶部筛选、居中原文弹窗、AI菜单日报入口、独立日报模板表及查看日报操作均已被092@0.3.3替代。完整推送不新增工程Issue、不更新开发进度表。
 
 ## 艺星回访规则
 
@@ -51,6 +65,7 @@
 
 | 合同 | 当前职责 |
 |---|---|
+| [092@0.3.3](docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/spec.md) | 企微／个微独立日报、当前七模块版式、PC原文抽屉、统一提示词编辑／本地删除、共用规则与私有来源边界；API暂停，runtime不打包 |
 | [076@1.0.1](docs/sdd/SPEC-SUIYIN-ADMIN-076/1.0.1/README.md) | 两个西安租户、全部租户碎银账号名称、八租户移除时间配置、菜单表内状态胶囊及失败回滚；仅指定两个功能进入本轮工程Issue |
 | [077@1.0.1](docs/sdd/SPEC-SUIYIN-ADMIN-077/1.0.1/README.md) | 八租户咨询称谓与三类岗位；原销售默认线上咨询，多选与其他角色保留，不定义岗位差异权限 |
 | [073@1.0.0](docs/sdd/SPEC-SUIYIN-ADMIN-073/1.0.0/README.md) | 原15租户工具父级及话术入口迁移；全部艺星辅助线分类/图片自助维护、租户隔离草稿、异常重试、离开守卫与PC效果预览；限定替代旧一级话术和固定库在Admin中的范围 |
@@ -74,7 +89,7 @@
 
 真实后台只读；不接真实认证、发送、录音上传、共享数据库或生产写接口。原始客户截图、DOM捕获、连接配置和本机诊断资料不放入公开包。未采曲线点、其他筛选区间和未查看详情继续明确为未知或未采集。
 
-本轮交付标签为 `v2026100201-admin-account-type-status`，实际提交、单文件验收、tag推送和远端部署以 [release.json](release.json) 与发布回执为准；文档链接不单独证明已经部署。`v2026093002-admin-menu-permission-label`为上轮菜单文案标签。旧 [2026-09-20纠偏](docs/verification/pixel-correction-20260920.md)、[冻结验收](docs/verification/filters-sticky-20260920.md) 和版本化SDD仅证明各自当时范围。旧主题及好友独立页见 [历史入口](docs/history/before-admin-live-reference/README.md)，不作为当前Shell实现指令。
+历史交付标签`v2026100201-admin-account-type-status`与`v2026093002-admin-menu-permission-label`只证明各自当时范围。2026-10-25的092交付提交、单文件验收、tag推送和远端部署以 [release.json](release.json) 与本轮实际发布回执为准；文档链接不单独证明已经部署。旧 [2026-09-20纠偏](docs/verification/pixel-correction-20260920.md)、[冻结验收](docs/verification/filters-sticky-20260920.md) 和版本化SDD保留历史属性。旧主题及好友独立页见 [历史入口](docs/history/before-admin-live-reference/README.md)，不作为当前Shell实现指令。
 
 原型发布不等于生产上线。073的既有Admin工程Issue为[#442](https://github.com/PetWebOrg/suiyin-admin/issues/442)，负责人王梓先（`build996`），提出环境佰智德三、提出人房昕，当前为`status:todo`；执行以[073交接合同](docs/sdd/SPEC-SUIYIN-ADMIN-073/1.0.0/issue-handoff.md)与[Test Contract](docs/sdd/SPEC-SUIYIN-ADMIN-073/1.0.0/test-contract.md)为准。既有销售变声[#401](https://github.com/PetWebOrg/suiyin-admin/issues/401)、AI费用[#402](https://github.com/PetWebOrg/suiyin-admin/issues/402)、预约图表[#404](https://github.com/PetWebOrg/suiyin-admin/issues/404)、租户菜单[#432](https://github.com/PetWebOrg/suiyin-admin/issues/432)仍由各自精确合同承接。当前17租户是原型验证清单，不是生产白名单；本轮工程只交接时间入口移除与菜单状态胶囊，两新租户登记和077术语/角色不扩为工程任务。不更新开发进度表。
 

@@ -1,0 +1,178 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "checkedAt": "2026-10-25T03:16:40.507Z",
+  "ok": true,
+  "checks": 40,
+  "passed": 40,
+  "failed": 0,
+  "publicBundleSha256": "e308d5d0d9b995a105232a346096d53ea48ef948db46e3212e024d48848cf1a1",
+  "sourceSha256": {
+    "admin-quality-report.js": "e07869c6a3eb9972d970e9db45de9f8bc982768aaba4cb825bbad2078448beaf",
+    "admin-quality-pc-messages.js": "e25de725282cc868f075640c35722d5bb244020402df9e2f83d69e5127cba6a5",
+    "admin-quality-chat-drawer.js": "4e622e90a68e8cfe237a7814544c5694ce1e13231789df1bc51687e0e5be1578",
+    "admin-quality-real.js": "9d8029b26de30185f8791a149b78645716bc6cb569f89be63170bceb4374c4f5"
+  },
+  "scope": "JSDOM with in-memory fetch responses. No HTTP, private input, Chrome, model/API or production activity.",
+  "results": [
+    {
+      "name": "public artifact has independent synthetic provenance",
+      "ok": true
+    },
+    {
+      "name": "reject private schema at public entry",
+      "ok": true
+    },
+    {
+      "name": "reject false synthetic claim",
+      "ok": true
+    },
+    {
+      "name": "reject cross-tenant public bundle",
+      "ok": true
+    },
+    {
+      "name": "reject real analysis engine in public source",
+      "ok": true
+    },
+    {
+      "name": "reject fabricated public API execution",
+      "ok": true
+    },
+    {
+      "name": "reject real origin kind",
+      "ok": true
+    },
+    {
+      "name": "reject non-synthetic report",
+      "ok": true
+    },
+    {
+      "name": "reject duplicated channel date",
+      "ok": true
+    },
+    {
+      "name": "reject cross-channel report",
+      "ok": true
+    },
+    {
+      "name": "reject foreign report date",
+      "ok": true
+    },
+    {
+      "name": "reject cross-tenant session",
+      "ok": true
+    },
+    {
+      "name": "reject duplicate public message",
+      "ok": true
+    },
+    {
+      "name": "reject dimension evidence outside conversation",
+      "ok": true
+    },
+    {
+      "name": "reject issue evidence outside conversation",
+      "ok": true
+    },
+    {
+      "name": "reject occurrence evidence outside conversation",
+      "ok": true
+    },
+    {
+      "name": "valid public artifact accepted without fetch",
+      "ok": true
+    },
+    {
+      "name": "wecom remote default requests public bundle only",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 public page keeps seven modules and synthetic labels",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 synthetic issue opens PC drawer",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-19 synthetic drawer never requests private sidecar",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 public page keeps seven modules and synthetic labels",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 synthetic issue opens PC drawer",
+      "ok": true
+    },
+    {
+      "name": "wecom 2026-10-20 synthetic drawer never requests private sidecar",
+      "ok": true
+    },
+    {
+      "name": "wecom public DOM has no script errors",
+      "ok": true
+    },
+    {
+      "name": "wechat remote default requests public bundle only",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 public page keeps seven modules and synthetic labels",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 synthetic issue opens PC drawer",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-19 synthetic drawer never requests private sidecar",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 public page keeps seven modules and synthetic labels",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 synthetic issue opens PC drawer",
+      "ok": true
+    },
+    {
+      "name": "wechat 2026-10-20 synthetic drawer never requests private sidecar",
+      "ok": true
+    },
+    {
+      "name": "wechat public DOM has no script errors",
+      "ok": true
+    },
+    {
+      "name": "127.0.0.1 local missing private bundle falls back to public",
+      "ok": true
+    },
+    {
+      "name": "localhost local missing private bundle falls back to public",
+      "ok": true
+    },
+    {
+      "name": "[::1] local missing private bundle falls back to public",
+      "ok": true
+    },
+    {
+      "name": "local valid private import takes priority",
+      "ok": true
+    },
+    {
+      "name": "private HTTP 403 is not hidden by public success",
+      "ok": true
+    },
+    {
+      "name": "private HTTP 500 is not hidden by public success",
+      "ok": true
+    },
+    {
+      "name": "explicit private URL failure never silently falls back",
+      "ok": true
+    }
+  ]
+}

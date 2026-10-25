@@ -1,0 +1,158 @@
+{
+  "spec": "SPEC-SUIYIN-ADMIN-092@0.3.3",
+  "artifactClass": "static-html",
+  "generatedAt": "2026-10-25T03:11:06.712Z",
+  "fixtureToday": "2026-10-24",
+  "command": "node prototype/checks/quality-daily-model-check.cjs --write",
+  "target": "prototype/admin-quality-model.js",
+  "targetSha256": "014e9851918252095d76eae6e84aacf6d678792a189003ff530ca977e017728b",
+  "relatedSources": [
+    {
+      "path": "prototype/admin-quality-models.js",
+      "sha256": "9af3850fe63868bc562057273773edef96b56a94ad1e1cdab4853c3f936267fb"
+    },
+    {
+      "path": "prototype/admin-quality-models.css",
+      "sha256": "4c113acf8fd4def9a7133871905dd0301b8271c8e621abcd1c698fe992802a8d"
+    }
+  ],
+  "status": "passed",
+  "scenarios": 18,
+  "passed": 18,
+  "failed": 0,
+  "assertions": 445,
+  "limitations": [
+    "Synthetic fixtures and in-memory localStorage only.",
+    "No real DeepSeek, production API, production scheduler or medical accuracy validation.",
+    "Model API permission demonstrations are not server-side access control.",
+    "No actual four-hour capacity or browser visual verification."
+  ],
+  "results": [
+    {
+      "id": "AC-R003-01/AC-R005-01",
+      "title": "Known fixture totals and independent response denominators",
+      "status": "passed",
+      "assertions": 20,
+      "oracle": "Eight independently identified conversations contain 25 body messages: 22 effective and 3 excluded. Three timeout events belong to two of six applicable conversations."
+    },
+    {
+      "id": "AC-R004-01/AC-R004-02/AC-R005-02/AC-R007-02",
+      "title": "Cross-midnight grouping, prior-day ownership and observation context",
+      "status": "passed",
+      "assertions": 14,
+      "oracle": "23:55→00:03 is 8 minutes; 23:55→00:16 is 21; 23:59/00:02→00:10 is 8 from the last customer message. The 28-minute prior-day event contributes neither numerator nor denominator today."
+    },
+    {
+      "id": "AC-R001-01/AC-R015-01",
+      "title": "One filter updates all seven module inputs without changing the source report",
+      "status": "passed",
+      "assertions": 16,
+      "oracle": "Work account 01 owns exactly four conversations, five body messages and one issue. Filtering cannot leave other-account rows or mutate the unfiltered report."
+    },
+    {
+      "id": "AC-R001-02/AC-R006-01/AC-R014-01",
+      "title": "One failed channel remains independent and unresolved media prevents completion",
+      "status": "passed",
+      "assertions": 16,
+      "oracle": "Personal WeChat has 7 successful and 1 failed tasks plus one unparsed voice and image. Retrying the same input can recover the failed task but cannot invent media content or advance the revision."
+    },
+    {
+      "id": "AC-R008-01/AC-R010-01/AC-R015-01",
+      "title": "Scoped evidence and default-off tenants",
+      "status": "passed",
+      "assertions": 42,
+      "oracle": "Every issue cites a real message in its own conversation. The limited-evidence fixture, another channel, non-demo tenants and an unknown channel must refuse evidence or mutations."
+    },
+    {
+      "id": "AC-R011-01/AC-R011-02/AC-R011-03",
+      "title": "Independent prompt drafts, exact trial binding and explicit publication",
+      "status": "passed",
+      "assertions": 19,
+      "oracle": "Saving a prompt cannot enable it. An edited draft cannot reuse an earlier passing trial, a failing trial cannot publish, and the other channel configuration remains unchanged."
+    },
+    {
+      "id": "AC-R018-01/AC-R018-02/AC-R011-02",
+      "title": "Common-rule publication requires each enabled channel and preserves effective rules on failure",
+      "status": "passed",
+      "assertions": 24,
+      "oracle": "When both channels are enabled, a changed common draft invalidates old trials. One passing channel or a failed second trial cannot publish; both passing channels cause a single r2 publication."
+    },
+    {
+      "id": "AC-R012-01/AC-R012-02/AC-R014-01",
+      "title": "Frozen history, rerun revisions, request idempotency and failed latest revision",
+      "status": "passed",
+      "assertions": 27,
+      "oracle": "Changing a threshold to 60 minutes and removing configured products affects a new revision only. Request retries reuse it; a later failed revision remains the latest and does not hide behind old success."
+    },
+    {
+      "id": "AC-R009-01",
+      "title": "Review and handling are separate; corrections retain original AI judgement",
+      "status": "passed",
+      "assertions": 15,
+      "oracle": "Marking handled does not confirm an issue. Confirm then false-positive removes the confirmed count but keeps the AI candidate and three audit entries. Intent correction preserves AI intent."
+    },
+    {
+      "id": "AC-R006-01/AC-R007-01/AC-R007-03/AC-R008-01",
+      "title": "Fourteen synthetic dimensions preserve applicability, uncertainty and valid evidence",
+      "status": "passed",
+      "assertions": 124,
+      "oracle": "Every conversation has fourteen explicit dimension decisions. Short conversations do not inherit required business actions; unknown media does not become a passing semantic finding; candidate findings retain their original AI state after human correction."
+    },
+    {
+      "id": "AC-R011-01/AC-R014-01",
+      "title": "Storage failures, corruption and reload",
+      "status": "passed",
+      "assertions": 10,
+      "oracle": "A rejected browser write must not mutate stored configuration or emit success. A new model instance reads saved state; malformed scoped data is an error rather than default success."
+    },
+    {
+      "id": "AC-R017-02",
+      "title": "Late start is not represented as on-time completion",
+      "status": "passed",
+      "assertions": 6,
+      "oracle": "The fixed 2026-10-22 report starts at 05:00 and finishes at 08:30: elapsed time is 3.5 hours, while the 08:00 target is missed. This checks presentation data, not actual throughput."
+    },
+    {
+      "id": "AC-R011-01",
+      "title": "Initial prompt prose matches the canonical approved draft bodies",
+      "status": "passed",
+      "assertions": 4,
+      "oracle": "The embedded bodies match the two SPEC prompt documents after the template-body heading; configuration notes are not silently mixed into model prose."
+    },
+    {
+      "id": "MODEL-ASSOCIATION-01",
+      "title": "Model choices come from one saved directory and respect enabled scene support",
+      "status": "passed",
+      "assertions": 14,
+      "oracle": "Platform and enterprise examples are selectable; disabled and old-scene examples are not. Existing deepseek-existing bindings remain valid without migrating channel storage."
+    },
+    {
+      "id": "MODEL-ASSOCIATION-02",
+      "title": "Empty prompt binding resolves the scene default and binds trial to the final configuration",
+      "status": "passed",
+      "assertions": 22,
+      "oracle": "The final default model changes only after a simulated platform directory update; this invalidates the prior trial and records the actually resolved configuration in the new report snapshot."
+    },
+    {
+      "id": "MODEL-ASSOCIATION-03",
+      "title": "Disabled, unsupported and missing-default configurations fail closed",
+      "status": "passed",
+      "assertions": 18,
+      "oracle": "A binding is retained with an explicit failure instead of silently selecting an available alternative. New trials and new batches fail; reading historical data still works."
+    },
+    {
+      "id": "MODEL-ASSOCIATION-04",
+      "title": "Final model parameter changes invalidate both prompt and common-rule validation",
+      "status": "passed",
+      "assertions": 21,
+      "oracle": "Changing the selected configuration after trial makes that trial stale. Common-rule publication must also revalidate the effective model parameters of enabled channels."
+    },
+    {
+      "id": "MODEL-DIRECTORY-READONLY",
+      "title": "Enterprise model page preserves captured rows and exposes no model mutation controls",
+      "status": "passed",
+      "assertions": 33,
+      "oracle": "Tenant-isolated synthetic snapshots and four clearly marked quality fixtures share one read-only table. Missing tenants never reuse another catalog."
+    }
+  ]
+}

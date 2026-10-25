@@ -1,0 +1,16 @@
+/* The real-report view uses the existing qd layout and table system. */
+.qr-page .qr-source{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.qr-source-return{margin:0 0 12px}.qr-source-return .qd-demo{margin:0}
+.qr-page .qd-status{display:block}.qr-page .qd-status p{margin:9px 0 0}
+.qr-page .qd-note{overflow-wrap:anywhere}
+.qr-page .qd-panel+.qd-panel{margin-top:18px}
+.qr-pre{white-space:pre-wrap;max-height:360px;overflow:auto;font:12px/1.8 inherit;overflow-wrap:anywhere}
+.qr-evidence .qd-conversation{max-height:48vh;overflow:auto;margin-top:12px}
+.qr-evidence details+details{margin-top:16px}.qr-evidence .qd-message header{flex-wrap:wrap;overflow-wrap:anywhere}
+.qr-evidence .qd-message p{white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:760px){.qr-page .qr-source{align-items:flex-start;flex-direction:column}.qr-page .qd-filter label{min-width:150px}}
+
+
+.qr-identity{display:flex;flex-wrap:wrap;gap:8px 20px;margin:12px 0;padding:12px;background:#f7f9fa;color:#606266;overflow-wrap:anywhere}.qr-page .qd-filter label:has(#qr-account){min-width:260px}.qr-page .qd-table td:first-child{max-width:300px;overflow-wrap:anywhere}
+
+.qr-page label:has(#qr-account) .live-option{white-space:normal;height:auto;min-height:34px;line-height:22px;padding-top:6px;padding-bottom:6px;overflow-wrap:anywhere}
