@@ -1,0 +1,2387 @@
+{
+  "schemaVersion": "quality-issue-test-mapping-v1",
+  "preparedAt": "2026-10-25",
+  "status": "issued",
+  "actualIssueCreation": true,
+  "source": {
+    "specId": "SPEC-SUIYIN-ADMIN-092",
+    "version": "0.3.3",
+    "sha256": "5fb7b3979589027dea7bc27f2f61787246d9aa4875cdb844efccabbd3fdf432e",
+    "publicUrl": "https://github.com/xfang9528-glitch/suiyin-admin/blob/v2026102501-admin-chat-quality-daily/docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/spec.md"
+  },
+  "metadata": {
+    "tenant": "艺星",
+    "reporter": "房昕",
+    "productionScope": "深圳yestar-sz双渠道，其他租户只保留已交付参考与现有行为回归",
+    "publicSafe": true
+  },
+  "counts": {
+    "mustRules": 27,
+    "acceptanceCriteria": 48,
+    "slices": 2,
+    "tests": 79,
+    "automated": 76,
+    "manual": 3,
+    "referenceRegression": 10
+  },
+  "slices": [
+    {
+      "id": "I001",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "tenant": "艺星",
+      "platform": "不适用",
+      "reporter": "房昕",
+      "title": "feat(quality-daily): 深圳双渠道日报生成、配置快照与定时任务（管理者每天可以查看企微和个微昨日报告及未完成范围）",
+      "ruleIds": [
+        "R001",
+        "R002",
+        "R003",
+        "R004",
+        "R005",
+        "R006",
+        "R007",
+        "R008",
+        "R009",
+        "R010",
+        "R011",
+        "R012",
+        "R013",
+        "R014",
+        "R016",
+        "R017",
+        "R018",
+        "R021",
+        "R022",
+        "R023",
+        "R025",
+        "R026",
+        "R027"
+      ],
+      "acceptanceIds": [
+        "AC-R001-01",
+        "AC-R001-02",
+        "AC-R002-01",
+        "AC-R002-02",
+        "AC-R003-01",
+        "AC-R004-01",
+        "AC-R004-02",
+        "AC-R005-01",
+        "AC-R005-02",
+        "AC-R006-01",
+        "AC-R007-01",
+        "AC-R007-02",
+        "AC-R007-03",
+        "AC-R008-01",
+        "AC-R009-01",
+        "AC-R010-01",
+        "AC-R011-01",
+        "AC-R011-02",
+        "AC-R011-03",
+        "AC-R012-01",
+        "AC-R012-02",
+        "AC-R013-01",
+        "AC-R014-01",
+        "AC-R014-02",
+        "AC-R016-01",
+        "AC-R017-01",
+        "AC-R017-02",
+        "AC-R018-01",
+        "AC-R018-02",
+        "AC-R021-01",
+        "AC-R022-01",
+        "AC-R023-01",
+        "AC-R023-02",
+        "AC-R025-01",
+        "AC-R025-02",
+        "AC-R026-01",
+        "AC-R027-01"
+      ],
+      "testIds": [
+        "T-R002-01",
+        "T-R002-02",
+        "T-R003-01",
+        "T-R004-01",
+        "T-R004-02",
+        "T-R005-01",
+        "T-R005-02",
+        "T-R006-01",
+        "T-R007-01",
+        "T-R007-02",
+        "T-R007-03",
+        "T-R008-01",
+        "T-R009-01",
+        "T-R010-01",
+        "T-R011-02",
+        "T-R011-03",
+        "T-R012-01",
+        "T-R012-02",
+        "T-R013-01",
+        "T-R014-01",
+        "T-R014-02",
+        "T-R016-01",
+        "T-R017-01",
+        "T-R017-02",
+        "T-R018-01",
+        "T-R018-02",
+        "T-R021-01",
+        "T-R022-01",
+        "T-R023-01",
+        "T-R023-02",
+        "T-R025-02",
+        "T-R027-01",
+        "T-R001-03",
+        "T-R001-04",
+        "T-R011-06",
+        "T-R025-03",
+        "T-R026-05"
+      ],
+      "status": "planned",
+      "issueRef": "https://github.com/PetWebOrg/suiyin-go/issues/4901"
+    },
+    {
+      "id": "I002",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "tenant": "艺星",
+      "platform": "PC",
+      "reporter": "房昕",
+      "title": "feat(quality-daily): 接入深圳企微与个微日报及提示词管理（管理者可以分别查看两类日报并核对聊天原文）",
+      "ruleIds": [
+        "R001",
+        "R002",
+        "R005",
+        "R006",
+        "R007",
+        "R008",
+        "R009",
+        "R010",
+        "R011",
+        "R012",
+        "R013",
+        "R014",
+        "R015",
+        "R016",
+        "R017",
+        "R018",
+        "R019",
+        "R020",
+        "R023",
+        "R024",
+        "R025",
+        "R026"
+      ],
+      "acceptanceIds": [
+        "AC-R001-01",
+        "AC-R001-02",
+        "AC-R002-01",
+        "AC-R002-02",
+        "AC-R005-01",
+        "AC-R005-02",
+        "AC-R006-01",
+        "AC-R007-01",
+        "AC-R008-01",
+        "AC-R009-01",
+        "AC-R010-01",
+        "AC-R011-01",
+        "AC-R011-02",
+        "AC-R011-03",
+        "AC-R011-04",
+        "AC-R011-05",
+        "AC-R012-01",
+        "AC-R012-02",
+        "AC-R013-01",
+        "AC-R014-01",
+        "AC-R014-02",
+        "AC-R015-01",
+        "AC-R016-01",
+        "AC-R017-02",
+        "AC-R018-01",
+        "AC-R018-02",
+        "AC-R019-01",
+        "AC-R019-02",
+        "AC-R019-03",
+        "AC-R020-01",
+        "AC-R023-01",
+        "AC-R023-02",
+        "AC-R024-01",
+        "AC-R025-01",
+        "AC-R025-02",
+        "AC-R026-01",
+        "AC-R026-02",
+        "AC-R026-03",
+        "AC-R026-04"
+      ],
+      "testIds": [
+        "T-R001-01",
+        "T-R001-02",
+        "T-R011-01",
+        "T-R011-04",
+        "T-R011-05",
+        "T-R015-01",
+        "T-R019-01",
+        "T-R019-02",
+        "T-R019-03",
+        "T-R020-01",
+        "T-R024-01",
+        "T-R025-01",
+        "T-R026-01",
+        "T-R026-02",
+        "T-R026-03",
+        "T-R026-04",
+        "T-R002-03",
+        "T-R002-04",
+        "T-R005-03",
+        "T-R005-04",
+        "T-R006-02",
+        "T-R007-04",
+        "T-R008-02",
+        "T-R009-02",
+        "T-R010-02",
+        "T-R011-07",
+        "T-R011-08",
+        "T-R012-03",
+        "T-R012-04",
+        "T-R013-02",
+        "T-R014-03",
+        "T-R014-04",
+        "T-R016-02",
+        "T-R017-03",
+        "T-R018-03",
+        "T-R018-04",
+        "T-R023-03",
+        "T-R023-04",
+        "T-R025-04",
+        "T-R001-05",
+        "T-R011-09",
+        "T-R026-06"
+      ],
+      "status": "planned",
+      "issueRef": "https://github.com/PetWebOrg/suiyin-admin/issues/569"
+    }
+  ],
+  "rules": [
+    {
+      "id": "R001",
+      "statement": "企微和个微分为两个独立分析页面，各页只展示本渠道日报、筛选、版本及生成状态",
+      "level": "MUST",
+      "testIds": [
+        "T-R001-01",
+        "T-R001-02",
+        "T-R001-03",
+        "T-R001-04",
+        "T-R001-05"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "R002",
+      "statement": "使用Asia/Shanghai，D+1日04:00启动D日报，08:00前完成为目标；记录计划与实际时间",
+      "level": "MUST",
+      "testIds": [
+        "T-R002-01",
+        "T-R002-02",
+        "T-R002-03",
+        "T-R002-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R003",
+      "statement": "数据范围由租户、渠道、工作号和稳定客户关系限定；去重并明确有效／排除消息",
+      "level": "MUST",
+      "testIds": [
+        "T-R003-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "R004",
+      "statement": "连续时间轴计算响应；以事件首条客户消息日期归属、末条起计时；跨日不重复",
+      "level": "MUST",
+      "testIds": [
+        "T-R004-01",
+        "T-R004-02"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "R005",
+      "statement": "程序计算计数、时长、去重、分母与聚合，AI不得重写；所有统计标单位及适用范围",
+      "level": "MUST",
+      "testIds": [
+        "T-R005-01",
+        "T-R005-02",
+        "T-R005-03",
+        "T-R005-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R006",
+      "statement": "未接入、未同步、未解析、模型失败、无权限、不适用及真实无问题分别表达",
+      "level": "MUST",
+      "testIds": [
+        "T-R006-01",
+        "T-R006-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R007",
+      "statement": "十四维度保留适用性、证据充分性与结论；购买意向、无回应和服务优先级分别保存",
+      "level": "MUST",
+      "testIds": [
+        "T-R007-01",
+        "T-R007-02",
+        "T-R007-03",
+        "T-R007-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R008",
+      "statement": "稳定消息ID定位证据；工作号、发言者、事发接待人、当前归属人分开，不猜身份",
+      "level": "MUST",
+      "testIds": [
+        "T-R008-01",
+        "T-R008-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R009",
+      "statement": "AI结果先待复核；确认、误报、处理和更正均留痕，不自动个人扣分",
+      "level": "MUST",
+      "testIds": [
+        "T-R009-01",
+        "T-R009-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R010",
+      "statement": "读报告、读原文、复核、配置、重跑分别检查权限与数据范围",
+      "level": "MUST",
+      "testIds": [
+        "T-R010-01",
+        "T-R010-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R011",
+      "statement": "现有提示词管理分别建立企微、个微场景及模板，显式绑定生效ID／版本；正文、试跑和模型绑定独立；同表统一编辑／删除，移除日报快捷链接，本地删除只停用当前渠道演示模板",
+      "level": "MUST",
+      "testIds": [
+        "T-R011-01",
+        "T-R011-02",
+        "T-R011-03",
+        "T-R011-04",
+        "T-R011-05",
+        "T-R011-06",
+        "T-R011-07",
+        "T-R011-08",
+        "T-R011-09"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "R012",
+      "statement": "批次启动冻结正文、规则、最终模型配置和输入快照；重试沿用，主动重跑留新版本",
+      "level": "MUST",
+      "testIds": [
+        "T-R012-01",
+        "T-R012-02",
+        "T-R012-03",
+        "T-R012-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R013",
+      "statement": "日报专属JSON契约及证据校验先于入库汇总；失败不得解释为无问题",
+      "level": "MUST",
+      "testIds": [
+        "T-R013-01",
+        "T-R013-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R014",
+      "statement": "按渠道分别生成、幂等、显示进度和恢复失败；同快照重试和新输入修订区分",
+      "level": "MUST",
+      "testIds": [
+        "T-R014-01",
+        "T-R014-02",
+        "T-R014-03",
+        "T-R014-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R015",
+      "statement": "集成既有Admin导航与设计，保持租户术语、排序、权限及原有页面；合成数据明确标注",
+      "level": "MUST",
+      "testIds": [
+        "T-R015-01"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "R016",
+      "statement": "静态验收后，真实本地验证必须具备调用、统计、证据、持久化和恢复证据",
+      "level": "MUST",
+      "testIds": [
+        "T-R016-01",
+        "T-R016-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R017",
+      "statement": "用目标代表规模实测完整耗时和成本；容量耗时与08:00按时完成分别验收",
+      "level": "MUST",
+      "testIds": [
+        "T-R017-01",
+        "T-R017-02",
+        "T-R017-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R018",
+      "statement": "同一租户两渠道引用同一规则集及版本，只有一个规则真源；提示词及分析方式可独立演进",
+      "level": "MUST",
+      "testIds": [
+        "T-R018-01",
+        "T-R018-02",
+        "T-R018-03",
+        "T-R018-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R019",
+      "statement": "17租户Prompt状态分别保留；已采15家完整内容，jbfs／hqjd按用户指令延期；无入口、未采、部分和确认空态分开",
+      "level": "MUST",
+      "testIds": [
+        "T-R019-01",
+        "T-R019-02",
+        "T-R019-03"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "R020",
+      "statement": "原始Prompt／会话及完整回算结果只存本机outputs与Git忽略私有JSON；公开仅代码与无原文元数据",
+      "level": "MUST",
+      "testIds": [
+        "T-R020-01"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "R021",
+      "statement": "离线回算仅深圳yestar-sz、2026-10-19/20、wecom/wechat，记录原v1.4来源及输入摘要",
+      "level": "MUST",
+      "testIds": [
+        "T-R021-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "R022",
+      "statement": "本轮真实来源结果标engine=Codex、apiExecuted=false，不调用不可限定且可能落库的DeepSeek业务接口",
+      "level": "MUST",
+      "testIds": [
+        "T-R022-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "R023",
+      "statement": "status、actualOperator、OCR等未暴露即unknown；采集分页、算术覆盖和语义分析覆盖独立计量",
+      "level": "MUST",
+      "testIds": [
+        "T-R023-01",
+        "T-R023-02",
+        "T-R023-03",
+        "T-R023-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "R024",
+      "statement": "真实来源结果使用独立仅本机只读renderer，不覆盖合成fixture、演示状态或配置",
+      "level": "MUST",
+      "testIds": [
+        "T-R024-01"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "R025",
+      "statement": "深圳指定两日双渠道工作号用账号状态的人设号名字，按稳定ID映射；其他已有真实显示名按原采样呈现",
+      "level": "MUST",
+      "testIds": [
+        "T-R025-01",
+        "T-R025-02",
+        "T-R025-03",
+        "T-R025-04"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "R026",
+      "statement": "原文以复用PC布局的右侧只读时间轴显示，客户左我方右；问题按所选会话及自身证据ID高亮定位，AI摘要分开；关闭恢复原位置，可用独立私有侧车补齐本机已采集消息，不改原分析bundle与分母",
+      "level": "MUST",
+      "testIds": [
+        "T-R026-01",
+        "T-R026-02",
+        "T-R026-03",
+        "T-R026-04",
+        "T-R026-05",
+        "T-R026-06"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "R027",
+      "statement": "原型验收后启动已授权深圳本地功能版，独立runtime Plan复用既有DeepSeek与提示词；先跑通双渠道，再验证04:00至08:00",
+      "level": "MUST",
+      "testIds": [
+        "T-R027-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "AC-R001-01",
+      "ruleId": "R001",
+      "title": "两个独立分析页面",
+      "sourceLine": 177,
+      "testIds": [
+        "T-R001-01",
+        "T-R001-03",
+        "T-R001-05"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R001-02",
+      "ruleId": "R001",
+      "title": "页面状态、任务和失败独立",
+      "sourceLine": 183,
+      "testIds": [
+        "T-R001-02",
+        "T-R001-04"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R002-01",
+      "ruleId": "R002",
+      "title": "统计日与生成窗口",
+      "sourceLine": 188,
+      "testIds": [
+        "T-R002-01",
+        "T-R002-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R002-02",
+      "ruleId": "R002",
+      "title": "迟启动与目标超时",
+      "sourceLine": 193,
+      "testIds": [
+        "T-R002-02",
+        "T-R002-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R003-01",
+      "ruleId": "R003",
+      "title": "范围、状态与重复消息",
+      "sourceLine": 198,
+      "testIds": [
+        "T-R003-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R004-01",
+      "ruleId": "R004",
+      "title": "跨日回复与归属",
+      "sourceLine": 203,
+      "testIds": [
+        "T-R004-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R004-02",
+      "ruleId": "R004",
+      "title": "等待中、超时和跨日连发",
+      "sourceLine": 208,
+      "testIds": [
+        "T-R004-02"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R005-01",
+      "ruleId": "R005",
+      "title": "稳定分母与统一聚合",
+      "sourceLine": 213,
+      "testIds": [
+        "T-R005-01",
+        "T-R005-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R005-02",
+      "ruleId": "R005",
+      "title": "历史事件不混入当日分母",
+      "sourceLine": 218,
+      "testIds": [
+        "T-R005-02",
+        "T-R005-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R006-01",
+      "ruleId": "R006",
+      "title": "语音图片缺失",
+      "sourceLine": 225,
+      "testIds": [
+        "T-R006-01",
+        "T-R006-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R007-01",
+      "ruleId": "R007",
+      "title": "意向、适用性与售后",
+      "sourceLine": 230,
+      "testIds": [
+        "T-R007-01",
+        "T-R007-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R007-02",
+      "ruleId": "R007",
+      "title": "次日回复与次日意向分开",
+      "sourceLine": 235,
+      "testIds": [
+        "T-R007-02"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R007-03",
+      "ruleId": "R007",
+      "title": "短会话边界",
+      "sourceLine": 240,
+      "testIds": [
+        "T-R007-03"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R008-01",
+      "ruleId": "R008",
+      "title": "证据与身份",
+      "sourceLine": 245,
+      "testIds": [
+        "T-R008-01",
+        "T-R008-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R009-01",
+      "ruleId": "R009",
+      "title": "复核和处理留痕",
+      "sourceLine": 250,
+      "testIds": [
+        "T-R009-01",
+        "T-R009-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R010-01",
+      "ruleId": "R010",
+      "title": "权限在入口和证据侧一致",
+      "sourceLine": 255,
+      "testIds": [
+        "T-R010-01",
+        "T-R010-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R011-01",
+      "ruleId": "R011",
+      "title": "复用入口与生效",
+      "sourceLine": 262,
+      "testIds": [
+        "T-R011-01",
+        "T-R011-06"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R011-02",
+      "ruleId": "R011",
+      "title": "试跑结果与生效配置一致",
+      "sourceLine": 270,
+      "testIds": [
+        "T-R011-02",
+        "T-R011-07"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R011-03",
+      "ruleId": "R011",
+      "title": "显式绑定两份生效模板",
+      "sourceLine": 275,
+      "testIds": [
+        "T-R011-03",
+        "T-R011-08"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R011-04",
+      "ruleId": "R011",
+      "title": "同表操作一致与日报入口保留",
+      "sourceLine": 280,
+      "testIds": [
+        "T-R011-04",
+        "T-R011-09"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R011-05",
+      "ruleId": "R011",
+      "title": "本地删除确认、取消与失败保留",
+      "sourceLine": 285,
+      "testIds": [
+        "T-R011-05"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R012-01",
+      "ruleId": "R012",
+      "title": "批次快照与重试",
+      "sourceLine": 291,
+      "testIds": [
+        "T-R012-01",
+        "T-R012-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R012-02",
+      "ruleId": "R012",
+      "title": "主动重跑的确定语义",
+      "sourceLine": 296,
+      "testIds": [
+        "T-R012-02",
+        "T-R012-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R013-01",
+      "ruleId": "R013",
+      "title": "结构与证据校验",
+      "sourceLine": 301,
+      "testIds": [
+        "T-R013-01",
+        "T-R013-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R014-01",
+      "ruleId": "R014",
+      "title": "部分完成、幂等与修订",
+      "sourceLine": 308,
+      "testIds": [
+        "T-R014-01",
+        "T-R014-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R014-02",
+      "ruleId": "R014",
+      "title": "无数据与缺失区别",
+      "sourceLine": 313,
+      "testIds": [
+        "T-R014-02",
+        "T-R014-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R015-01",
+      "ruleId": "R015",
+      "title": "原型集成与原有行为",
+      "sourceLine": 320,
+      "testIds": [
+        "T-R015-01"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R016-01",
+      "ruleId": "R016",
+      "title": "本地功能闭环",
+      "sourceLine": 325,
+      "testIds": [
+        "T-R016-01",
+        "T-R016-02"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R017-01",
+      "ruleId": "R017",
+      "title": "代表规模与4小时目标",
+      "sourceLine": 330,
+      "testIds": [
+        "T-R017-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R017-02",
+      "ruleId": "R017",
+      "title": "迟启动不能冒充按时完成",
+      "sourceLine": 335,
+      "testIds": [
+        "T-R017-02",
+        "T-R017-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R018-01",
+      "ruleId": "R018",
+      "title": "共用规则只有一个来源",
+      "sourceLine": 340,
+      "testIds": [
+        "T-R018-01",
+        "T-R018-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R018-02",
+      "ruleId": "R018",
+      "title": "提示词可独立演进",
+      "sourceLine": 345,
+      "testIds": [
+        "T-R018-02",
+        "T-R018-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R019-01",
+      "ruleId": "R019",
+      "title": "十七租户逐一采证，不使用参考替代",
+      "sourceLine": 352,
+      "testIds": [
+        "T-R019-01"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R019-02",
+      "ruleId": "R019",
+      "title": "完整正文与条件字段",
+      "sourceLine": 357,
+      "testIds": [
+        "T-R019-02"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R019-03",
+      "ruleId": "R019",
+      "title": "两家延期不伪装完成",
+      "sourceLine": 362,
+      "testIds": [
+        "T-R019-03"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R020-01",
+      "ruleId": "R020",
+      "title": "私有原文与公开元数据分离",
+      "sourceLine": 367,
+      "testIds": [
+        "T-R020-01"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R021-01",
+      "ruleId": "R021",
+      "title": "四份限定回算与规则来源",
+      "sourceLine": 372,
+      "testIds": [
+        "T-R021-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R022-01",
+      "ruleId": "R022",
+      "title": "引擎与执行来源真实",
+      "sourceLine": 377,
+      "testIds": [
+        "T-R022-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R023-01",
+      "ruleId": "R023",
+      "title": "缺失字段保持未知",
+      "sourceLine": 382,
+      "testIds": [
+        "T-R023-01",
+        "T-R023-03"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R023-02",
+      "ruleId": "R023",
+      "title": "统计完整与语义分析覆盖分别呈现",
+      "sourceLine": 387,
+      "testIds": [
+        "T-R023-02",
+        "T-R023-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R024-01",
+      "ruleId": "R024",
+      "title": "真实来源只读投影与合成演示隔离",
+      "sourceLine": 392,
+      "testIds": [
+        "T-R024-01"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R025-01",
+      "ruleId": "R025",
+      "title": "人设号名称与稳定身份关联",
+      "sourceLine": 400,
+      "testIds": [
+        "T-R025-01",
+        "T-R025-03"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R025-02",
+      "ruleId": "R025",
+      "title": "同名、改名和缺失不串号",
+      "sourceLine": 405,
+      "testIds": [
+        "T-R025-02",
+        "T-R025-04"
+      ],
+      "sliceIds": [
+        "I001",
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R026-01",
+      "ruleId": "R026",
+      "title": "右侧PC聊天时间轴与问题原文定位",
+      "sourceLine": 410,
+      "testIds": [
+        "T-R026-01",
+        "T-R026-05",
+        "T-R026-06"
+      ],
+      "sliceIds": [
+        "I002",
+        "I001"
+      ]
+    },
+    {
+      "id": "AC-R026-02",
+      "ruleId": "R026",
+      "title": "展示修订保持分析与分母不变",
+      "sourceLine": 415,
+      "testIds": [
+        "T-R026-02"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R026-03",
+      "ruleId": "R026",
+      "title": "只读抽屉关闭与页面状态恢复",
+      "sourceLine": 420,
+      "testIds": [
+        "T-R026-03"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R026-04",
+      "ruleId": "R026",
+      "title": "已采集消息侧车与分析结果隔离",
+      "sourceLine": 425,
+      "testIds": [
+        "T-R026-04"
+      ],
+      "sliceIds": [
+        "I002"
+      ]
+    },
+    {
+      "id": "AC-R027-01",
+      "ruleId": "R027",
+      "title": "先原型验收，再双渠道功能，最后时间窗口",
+      "sourceLine": 430,
+      "testIds": [
+        "T-R027-01"
+      ],
+      "sliceIds": [
+        "I001"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "T-R001-01",
+      "sliceId": "I002",
+      "ruleId": "R001",
+      "acceptanceId": "AC-R001-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r001.spec.ts",
+      "oracle": "两个独立聊天管理路由各默认昨日，仅查询本渠道；七模块保持本页筛选和版本；提示词/模型仍在AI管理；未接入个微显示未接入，不显示已检测零问题。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R001-02",
+      "sliceId": "I002",
+      "ruleId": "R001",
+      "acceptanceId": "AC-R001-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r001.spec.ts",
+      "oracle": "在企微历史日期/工作号/版本/复核状态保持的前提进入个微并补跑失败项，个微不继承前页状态；渠道缓存、进度与批次身份分开，企微结果保持。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R002-01",
+      "sliceId": "I001",
+      "ruleId": "R002",
+      "acceptanceId": "AC-R002-01",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r002_test.go",
+      "oracle": "Asia/Shanghai的D主体窗口为D日00:00至D+1日00:00左闭右开，计划D+1日04:00、目标08:00，观察截至/实际启动/实际完成独立记录，完成后即可读取。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R002-02",
+      "sliceId": "I001",
+      "ruleId": "R002",
+      "acceptanceId": "AC-R002-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r002_test.go",
+      "oracle": "05:00迟启动仍保存04:00计划；08:00未完成保留真实进度和超时标记，不转成完成、不改统计日、不以零问题填空。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R003-01",
+      "sliceId": "I001",
+      "ruleId": "R003",
+      "acceptanceId": "AC-R003-01",
+      "layer": "security",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r003_test.go",
+      "oracle": "以租户/渠道/工作号/稳定客户关系建会话并按稳定消息ID去重；同名不合并，失败/系统/观察点已撤回均排除；原始、排除、有效数可对账且越范围记录拒绝。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R004-01",
+      "sliceId": "I001",
+      "ruleId": "R004",
+      "acceptanceId": "AC-R004-01",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r004_test.go",
+      "oracle": "合成23:55客户至次日00:03有效回复计8分钟，按20分钟样例不超时；事件归D且次日不重复，次日消息不增加D日消息数。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R004-02",
+      "sliceId": "I001",
+      "ruleId": "R004",
+      "acceptanceId": "AC-R004-02",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r004_test.go",
+      "oracle": "23:55至次日00:16计21分钟一个超时；23:59/00:02连发至00:10按末条计8分钟、归首条日；边界采用当前规则，未回复只有等待下限，零点不提前判定。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R005-01",
+      "sliceId": "I001",
+      "ruleId": "R005",
+      "acceptanceId": "AC-R005-01",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r005_test.go",
+      "oracle": "合成100活跃/70适用/14超时会话得14%全量占比和20%适用率；超时事件另计，30仅触达为当日未回应；各聚合来自同一结果集，未知身份单列。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R005-02",
+      "sliceId": "I001",
+      "ruleId": "R005",
+      "acceptanceId": "AC-R005-02",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r005_test.go",
+      "oracle": "D-1日23:59及D日00:02连发事件归D-1；D日仍可有活跃会话，但适用响应会话/超时会话/次数均不增加，分母0返回不适用而非0%。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R006-01",
+      "sliceId": "I001",
+      "ruleId": "R006",
+      "acceptanceId": "AC-R006-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r006_test.go",
+      "oracle": "语音未转写/图片未OCR的数量及受影响维度保持证据不足，不判合格或缺失业务动作；文本结果可保留，覆盖部分完成；补解析后另存修订。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R007-01",
+      "sliceId": "I001",
+      "ruleId": "R007",
+      "acceptanceId": "AC-R007-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r007_test.go",
+      "oracle": "仅统计日客户表达支持购买意向，员工主动预约不能升级客户意向；售后/投诉服务优先级独立，无回应单列；14维有适用性/证据/结论/引用，不适用或未知不计合格，医疗候选待有资质人员复核。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R007-02",
+      "sliceId": "I001",
+      "ruleId": "R007",
+      "acceptanceId": "AC-R007-02",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r007_test.go",
+      "oracle": "次日00:03回复可解释D日诉求收尾；次日02:00新项目/预约表达不升级D日意向，补充上下文不增D日深聊/互动数，不以D最后发送者直接认定违规。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R007-03",
+      "sliceId": "I001",
+      "ruleId": "R007",
+      "acceptanceId": "AC-R007-03",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r007_test.go",
+      "oracle": "按当前共享规则阈值，样例双方有效2条为不适用，恰3条进入场景/岗位判定；客户条数不能替代双方条数，撤回/系统/失败不凑门槛，3条本身不证明违规。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R008-01",
+      "sliceId": "I001",
+      "ruleId": "R008",
+      "acceptanceId": "AC-R008-01",
+      "layer": "security",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r008_test.go",
+      "oracle": "接待A转B、当前归属C及未知实际操作人分别保存；不统一归责C；稳定证据ID必须属于授权会话，伪造/跨会话/跨租户ID拒绝。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R009-01",
+      "sliceId": "I001",
+      "ruleId": "R009",
+      "acceptanceId": "AC-R009-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r009_test.go",
+      "oracle": "确认/误报/处理/更正原子保存操作人、时间、理由及前后状态；原AI和复核历史不覆盖；误报不计人工确认仍计原候选；取消/保存失败不变，已处理不自动等于诉求解决。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R010-01",
+      "sliceId": "I001",
+      "ruleId": "R010",
+      "acceptanceId": "AC-R010-01",
+      "layer": "security",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r010_test.go",
+      "oracle": "读汇总/原文/复核/配置/重跑分别鉴权；汇总可读但原文无权时通过直接URL/API也不能取到原文；服务端验证租户及工作号范围。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-01",
+      "sliceId": "I002",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r011.spec.ts",
+      "oracle": "两日报与旧模板共用六列表及全部场景筛选，工具栏进入共同规则；基础编辑沿旧流程、高级区明确草稿/试跑/发布；企微保存仅影响企微，失败保留草稿、取消保持；候选模型按启用/场景过滤并标来源，默认缺失或失效阻断，企业目录只读且浏览器无密钥。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-02",
+      "sliceId": "I001",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-02",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r011_test.go",
+      "oracle": "试跑签名覆盖租户/渠道/场景/正文/共同规则/最终模型参数/系统契约/同渠道样本；任一输出相关值变化后旧通过不能发布新配置；共规变化使两渠道候选记录失效，旧发布与历史保持。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-03",
+      "sliceId": "I001",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-03",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r011_test.go",
+      "oracle": "各渠道仅按租户+渠道+场景显式绑定的生效模板ID/版本及有效模型执行；新增同名或最新草稿不能替代；模板缺失仅该渠道配置异常，不借对方。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-04",
+      "sliceId": "I002",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-04",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r011.spec.ts",
+      "oracle": "两日报行与普通行均为编辑/删除，无查看日报快捷链接；编辑沿原流程且保留高级配置与未保存保护；普通CRUD及聊天管理日报入口不回退。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-05",
+      "sliceId": "I002",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-05",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "仅回归已交付本地演示删除合同：确认并本地持久化成功才隐藏/停用目标渠道、刷新保持；取消/存储失败原样且失败提示；历史、另一渠道、共规、模型、正文备份保持；不产生API/线上删除/恢复重建。不能据此实现未经定义的生产删除接口。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R012-01",
+      "sliceId": "I001",
+      "ruleId": "R012",
+      "acceptanceId": "AC-R012-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r012_test.go",
+      "oracle": "04:00计划快照先固定共规，再冻结各渠道模板/最终模型/输入；06:00编辑不影响排队与原批重试；两个计划渠道用同一共规快照，主动重跑生成本渠道新修订且旧版可读。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R012-02",
+      "sliceId": "I001",
+      "ruleId": "R012",
+      "acceptanceId": "AC-R012-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r012_test.go",
+      "oracle": "主动重跑提交摘要显示当前已启用配置/原范围/截至点，重新冻结纳入早于D+1日04:00的晚到或补解析数据；04:00后的事件不得纳入；恢复失败项沿原输入配置。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R013-01",
+      "sliceId": "I001",
+      "ruleId": "R013",
+      "acceptanceId": "AC-R013-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r013_test.go",
+      "oracle": "缺字段/非法枚举/截断JSON/Markdown包装/伪造或越界证据均不入成功与统计；错误可追溯且有限重试后列未完成；仅接收规定字段，会话内越权指令不执行，旧Markdown场景不变。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R014-01",
+      "sliceId": "I001",
+      "ruleId": "R014",
+      "acceptanceId": "AC-R014-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r014_test.go",
+      "oracle": "合成100任务90成功5失败5待处理互斥对账且非完成；重复计划触发/恢复不重复批次或问题；同快照失败重试不改修订，晚到/补解析/主动重算新修订并留旧版。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R014-02",
+      "sliceId": "I001",
+      "ruleId": "R014",
+      "acceptanceId": "AC-R014-02",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r014_test.go",
+      "oracle": "完整同步无消息、离线不完整、渠道未接入为不同状态；后两者不计已分析；未知预计数保持unknown并说明，不返回虚假100%。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R015-01",
+      "sliceId": "I002",
+      "ruleId": "R015",
+      "acceptanceId": "AC-R015-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r015.spec.ts",
+      "oracle": "复用既有Shell/菜单身份/排序/权限/租户术语；日报页签与意向筛选互不误绑；切换/返回/编辑/租户转换不使旧页回退，合成操作明确本地，不伪称线上生成。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R016-01",
+      "sliceId": "I001",
+      "ruleId": "R016",
+      "acceptanceId": "AC-R016-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r016_test.go",
+      "oracle": "在独立批准的运行边界及预算内，对深圳企微/个微各保留真实provider调用、程序计数、结构证据校验、持久化、重启回读、版本/幂等/失败恢复回执；stub/旧Codex/静态HTML不能满足真实调用验收。当前生产测试planned，不据本地结果直接置verified。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R017-01",
+      "sliceId": "I001",
+      "ruleId": "R017",
+      "acceptanceId": "AC-R017-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r017_test.go",
+      "oracle": "代表输入规模/长度/配额明确，两渠道同时运行完整取数至落库链并注入限流/超时；记录规模/token/并发/实际或可核验费用/阶段耗时；全批成功<4小时与实际早于08:00分别判定，小样本/推算不替代实测。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R017-02",
+      "sliceId": "I001",
+      "ruleId": "R017",
+      "acceptanceId": "AC-R017-02",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r017_test.go",
+      "oracle": "计划04:00、实际05:00至08:30完整完成时容量耗时3.5小时通过，但08:00按时目标失败；两字段及迟启动/完成记录独立，不合成总达标。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R018-01",
+      "sliceId": "I001",
+      "ruleId": "R018",
+      "acceptanceId": "AC-R018-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r018_test.go",
+      "oracle": "共规单一ID/版本；已启用两渠道各用候选规则及各自拟生效模板/模型/契约试跑，任一失败不发布；全过原子发布，未启用不阻断但启用前需验证；历史不变，不复制两套标准。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R018-02",
+      "sliceId": "I001",
+      "ruleId": "R018",
+      "acceptanceId": "AC-R018-02",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r018_test.go",
+      "oracle": "只发布个微p3后个微r1+p3、企微r1+p1，核心统计口径不变；本渠道新增字段需带版本扩展及校验，不删共同核心、不破坏企微或历史读取。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R019-01",
+      "sliceId": "I002",
+      "ruleId": "R019",
+      "acceptanceId": "AC-R019-01",
+      "layer": "parameterized",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "以公开合成metadata回归17租户独立采样状态：未开入口/失败/未采/部分/确认0分别显示；条数与总数只在完整页/逐行身份核对后称完整；不借其他租户数据、不补开入口；不要求工程重新采集历史17租户。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R019-02",
+      "sliceId": "I002",
+      "ruleId": "R019",
+      "acceptanceId": "AC-R019-02",
+      "layer": "parameterized",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "用合成场景schema回归原有完整主/子正文保留、标签/定时/模型/字段文案及分组操作；同一已配置分组用子提示词、跨组/未配置/空子正文回主正文，保存不自动重跑；原场景02:00/05:30不得改为日报04:00；不将私有采样写入公开测试。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R019-03",
+      "sliceId": "I002",
+      "ruleId": "R019",
+      "acceptanceId": "AC-R019-03",
+      "layer": "parameterized",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "历史metadata保持15/17采样、2家已登录但无目标入口且用户延期/内容未取得；总条数未知不等于确认0，不称登录仍失败或全部完成，也不阻塞深圳；不要求生产补采。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R020-01",
+      "sliceId": "I002",
+      "ruleId": "R020",
+      "acceptanceId": "AC-R020-01",
+      "layer": "security",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "构建/版本化交接只允许代码及无原文metadata/合成fixture；扫描不含真实Prompt、名称、会话和截图；本机私有源被忽略且不打包，不能以改写业务规则假脱敏；深圳私有显示许可不扩大为公开许可。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R021-01",
+      "sliceId": "I001",
+      "ruleId": "R021",
+      "acceptanceId": "AC-R021-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_reference_contract_test.go",
+      "oracle": "回归旧离线来源清单格式只允许深圳10/19与10/20两渠道四组合、原v1.4摘要和输入范围可追溯；不得把当前共规或新Prompt冒充旧来源、不得覆盖合成历史；只验证公开合成清单，不要求重采或重跑历史私有材料。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R022-01",
+      "sliceId": "I001",
+      "ruleId": "R022",
+      "acceptanceId": "AC-R022-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_reference_contract_test.go",
+      "oracle": "旧source-v1.4-offline条目始终Codex/apiExecuted=false并保留输入/规则摘要和原分析时间；禁止改标DeepSeek、编造费用/耗时或借其通过真实功能/按时验收；新执行必须另有真实来源记录。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R023-01",
+      "sliceId": "I001",
+      "ruleId": "R023",
+      "acceptanceId": "AC-R023-01",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r023_test.go",
+      "oracle": "status/操作人/OCR未提供保留null/unknown及原因；不默认成功、未撤回、具体员工或已解析图片；有效量/响应/语义注明可判定范围，原始/排除/未知计数分开。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R023-02",
+      "sliceId": "I001",
+      "ruleId": "R023",
+      "acceptanceId": "AC-R023-02",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r023_test.go",
+      "oracle": "分页、算术与语义覆盖独立；应分析/已分析/未分析/失败/媒体缺失互相可对账；语义聚合仅已分析范围并明确分母，未分析不等于零问题或合格，空首页等范围限制保留。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R024-01",
+      "sliceId": "I002",
+      "ruleId": "R024",
+      "acceptanceId": "AC-R024-01",
+      "layer": "security",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "公开合成与本机真实只读来源/配置/存储隔离；只读源不能生成/重跑/发布/回写；仅私有404才经installPublic切到明确合成四报告，其他错误保留错误，不覆盖私有；旧Codex展示不当生产执行。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R025-01",
+      "sliceId": "I002",
+      "ruleId": "R025",
+      "acceptanceId": "AC-R025-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r025.spec.ts",
+      "oracle": "筛选、工作号表、会话和证据均按稳定ID取账号状态人设名并展示来源/采样时间/映射状态；不以salesName/当前分配人/alias替代，不推断实际操作人；仅授权范围显示。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R025-02",
+      "sliceId": "I001",
+      "ruleId": "R025",
+      "acceptanceId": "AC-R025-02",
+      "layer": "domain",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r025_test.go",
+      "oracle": "同名工作号仍按ID独立；同ID改名仅变显示映射不变会话键；缺失/冲突为unknown及原因，不按名称模糊拼接，不将人设名作为事发员工。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R026-01",
+      "sliceId": "I002",
+      "ruleId": "R026",
+      "acceptanceId": "AC-R026-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r026.spec.ts",
+      "oracle": "右侧只读PC时间轴按时间+自身seq显示当前会话已导入消息，客户左/我方右/未知方向独立；选中occurrence只使用其自身证据ID高亮定位，不能套代表seq；可靠元信息与unknown/头像占位明确，AI摘要不进入气泡，缺文本/媒体不补造，不宣称设备完整历史。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R026-02",
+      "sliceId": "I002",
+      "ruleId": "R026",
+      "acceptanceId": "AC-R026-02",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "对历史合成对照清单执行显示修订时，原稳定ID、证据引用、分析结论、意向、响应、各分母与Codex/apiExecuted=false不变；显示修订另有摘要；纯系统排除及缺失unknown不变，公开内容不含原文。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R026-03",
+      "sliceId": "I002",
+      "ruleId": "R026",
+      "acceptanceId": "AC-R026-03",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r026.spec.ts",
+      "oracle": "关闭按钮/Esc/遮罩三路径恢复原日期、页签、名单筛选、滚动和可用入口焦点；抽屉滚动不改报告定位，无输入框/发送/转发/撤回，不触发写入、模型调用或新取数。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R026-04",
+      "sliceId": "I002",
+      "ruleId": "R026",
+      "acceptanceId": "AC-R026-04",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/contracts/quality-daily-reference.spec.ts",
+      "oracle": "仅回归历史显示侧车契约：按同租户/日期/渠道/稳定会话/自身seq关联既有本机记录，来源摘要和显示版本独立；原bundle摘要/分析时间/来源/结论/分母不变；缺侧车/校验失败明示缺口且不跨客户拼接，不要求生产重建私有历史包。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "delivered_reference_regression"
+    },
+    {
+      "id": "T-R027-01",
+      "sliceId": "I001",
+      "ruleId": "R027",
+      "acceptanceId": "AC-R027-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r027_test.go",
+      "oracle": "阶段证据顺序为已验收原型→独立运行边界→企微/个微真实功能闭环→双渠道共同时间窗口实测；各阶段独立回执，不以静态/旧Codex/小样本替代后续验收，不把本地成功宣称生产部署。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R001-03",
+      "sliceId": "I001",
+      "ruleId": "R001",
+      "acceptanceId": "AC-R001-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r001_test.go",
+      "oracle": "按租户/渠道/统计日/工作号范围查询，未接入返回明确状态；企微请求不得返回个微报告或另一租户数据。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R001-04",
+      "sliceId": "I001",
+      "ruleId": "R001",
+      "acceptanceId": "AC-R001-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r001_test.go",
+      "oracle": "两渠道批次ID、任务、缓存和补跑互相隔离；仅个微失败恢复时企微结果与修订保持不变。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R002-03",
+      "sliceId": "I002",
+      "ruleId": "R002",
+      "acceptanceId": "AC-R002-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r002.spec.ts",
+      "oracle": "页面分别展示统计日、观察截至、计划/实际启动及实际完成；完成即可展示且不将生成日期替代统计日。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R002-04",
+      "sliceId": "I002",
+      "ruleId": "R002",
+      "acceptanceId": "AC-R002-02",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r002.spec.ts",
+      "oracle": "迟启动和超过08:00保留计划时间与实际进度，页面不提前完成、不改日期或显示零问题。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R005-03",
+      "sliceId": "I002",
+      "ruleId": "R005",
+      "acceptanceId": "AC-R005-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r005.spec.ts",
+      "oracle": "14/100与14/70分别显示命名明确的14%与20%，事件次数另列；筛选后全部模块一致，未知身份和当日未回应不隐藏。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R005-04",
+      "sliceId": "I002",
+      "ruleId": "R005",
+      "acceptanceId": "AC-R005-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r005.spec.ts",
+      "oracle": "历史响应事件单列；当日适用分母0显示不适用，不显示0%，活跃会话保留。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R006-02",
+      "sliceId": "I002",
+      "ruleId": "R006",
+      "acceptanceId": "AC-R006-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r006.spec.ts",
+      "oracle": "未解析媒体数、受影响证据不足维度与部分完成标识可见；有文本结果仍可读，修订前后不互相覆盖。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R007-04",
+      "sliceId": "I002",
+      "ruleId": "R007",
+      "acceptanceId": "AC-R007-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r007.spec.ts",
+      "oracle": "分别显示购买意向/当日未回应/服务优先级与14维适用性、充分性和结论；未知/不适用不计合格或个人处罚。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R008-02",
+      "sliceId": "I002",
+      "ruleId": "R008",
+      "acceptanceId": "AC-R008-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r008.spec.ts",
+      "oracle": "工作号/已知事发接待人/实际发言者/当前归属分别显示，未知不猜；详情只能定位选中会话的证据。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R009-02",
+      "sliceId": "I002",
+      "ruleId": "R009",
+      "acceptanceId": "AC-R009-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r009.spec.ts",
+      "oracle": "确认/误报/处理/更正均提交理由且保存后回显审计；取消/失败保持原状态；候选与确认数分开，已处理不冒充已解决。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R010-02",
+      "sliceId": "I002",
+      "ruleId": "R010",
+      "acceptanceId": "AC-R010-01",
+      "layer": "security",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r010.spec.ts",
+      "oracle": "无原文权限时入口及直达详情均为无权限且无原文载荷；切换租户清理筛选/详情；配置/复核/重跑权限独立，前端隐藏不作为后端权限证明。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-06",
+      "sliceId": "I001",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r011_test.go",
+      "oracle": "验证两个独立场景及显式模板模型绑定、单一共规引用、候选模型场景/启用过滤、默认最终解析冻结；保存/取消/失败原子，密钥不得进入浏览器响应。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-07",
+      "sliceId": "I002",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-02",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r011.spec.ts",
+      "oracle": "候选正文/规则/模型改动后旧试跑通过显示失效并阻断发布；跨渠道试跑不可借用；共同规则变化两模板提示重新验证，历史显示不改。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-08",
+      "sliceId": "I002",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-03",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r011.spec.ts",
+      "oracle": "展示实际生效模板ID/版本及模型解析结果；缺配置只该渠道异常，不以最新草稿或对方模板代替。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R012-03",
+      "sliceId": "I002",
+      "ruleId": "R012",
+      "acceptanceId": "AC-R012-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r012.spec.ts",
+      "oracle": "报告标准页与历史显示实际执行快照；运行中编辑后的当前配置不得改写旧日报，重跑生成独立可选修订。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R012-04",
+      "sliceId": "I002",
+      "ruleId": "R012",
+      "acceptanceId": "AC-R012-02",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r012.spec.ts",
+      "oracle": "主动重跑确认摘要包含本渠道当前配置、原范围和D+1日04:00截至点；失败恢复与主动重跑文案/版本行为分开，不同时重跑对方。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R013-02",
+      "sliceId": "I002",
+      "ruleId": "R013",
+      "acceptanceId": "AC-R013-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r013.spec.ts",
+      "oracle": "校验失败显示未完成及错误状态，保持旧历史可读；无问题只来自合法结果，不能用空表遮掩模型或schema失败。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R014-03",
+      "sliceId": "I002",
+      "ruleId": "R014",
+      "acceptanceId": "AC-R014-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r014.spec.ts",
+      "oracle": "100任务的90成功/5失败/5待处理准确展示且未完成；重复提交防抖，恢复和新修订显示清楚，旧版本保留。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R014-04",
+      "sliceId": "I002",
+      "ruleId": "R014",
+      "acceptanceId": "AC-R014-02",
+      "layer": "parameterized",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r014.spec.ts",
+      "oracle": "完整无数据/采集不完整/未接入/预计数量未知有不同文案与分母；未知覆盖不画100%，筛选空态可恢复。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R016-02",
+      "sliceId": "I002",
+      "ruleId": "R016",
+      "acceptanceId": "AC-R016-01",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r016.spec.ts",
+      "oracle": "受控联调读取新真实结果并在后端重启后再次回读，显示对应版本/来源/状态/统计；不把静态fixture、旧Codex或仅样本完成称为正式全日完成。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R017-03",
+      "sliceId": "I002",
+      "ruleId": "R017",
+      "acceptanceId": "AC-R017-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r017.spec.ts",
+      "oracle": "05:00至08:30示例显示容量3.5小时与08:00未达标两个事实，保留迟启动/迟完成，不显示统称达标。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R018-03",
+      "sliceId": "I002",
+      "ruleId": "R018",
+      "acceptanceId": "AC-R018-01",
+      "layer": "e2e",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r018.spec.ts",
+      "oracle": "共规只有一个编辑入口；显示影响渠道及各自试跑状态，任一已启用渠道失败不能发布；未启用渠道启用前校验，共规发布不改历史。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R018-04",
+      "sliceId": "I002",
+      "ruleId": "R018",
+      "acceptanceId": "AC-R018-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r018.spec.ts",
+      "oracle": "个微p3发布后两个页面分别显示r1+p3和r1+p1；渠道扩展字段按版本读取，核心/另一渠道/历史报告保持兼容。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R023-03",
+      "sliceId": "I002",
+      "ruleId": "R023",
+      "acceptanceId": "AC-R023-01",
+      "layer": "parameterized",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r023.spec.ts",
+      "oracle": "状态、发言人、OCR未知逐项显示原因；工作号名不是实际操作人，未解析图片不生成确定业务标签或确认超时。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R023-04",
+      "sliceId": "I002",
+      "ruleId": "R023",
+      "acceptanceId": "AC-R023-02",
+      "layer": "integration",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r023.spec.ts",
+      "oracle": "分页/算术/语义覆盖分开展示，语义表只以已分析为分母；未分析/失败/媒体缺失可见，不随算术100%变为语义100%。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R025-03",
+      "sliceId": "I001",
+      "ruleId": "R025",
+      "acceptanceId": "AC-R025-01",
+      "layer": "contract",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r025_test.go",
+      "oracle": "账号状态人设名通过稳定账号ID映射，返回采样时间/来源/映射状态，缺失不借聊天header或当前归属推实名。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R025-04",
+      "sliceId": "I002",
+      "ruleId": "R025",
+      "acceptanceId": "AC-R025-02",
+      "layer": "parameterized",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "tests/quality-daily/r025.spec.ts",
+      "oracle": "同名仍能独立筛选，改名不改变会话归属；无名称/映射冲突显示unknown及原因，不造成合并或员工归责。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R026-05",
+      "sliceId": "I001",
+      "ruleId": "R026",
+      "acceptanceId": "AC-R026-01",
+      "layer": "security",
+      "automation": "automated",
+      "targetRepo": "PetWebOrg/suiyin-go",
+      "plannedTestPath": "admin/service/quality_daily_r026_test.go",
+      "oracle": "原文读取校验租户/渠道/工作号/会话及消息身份；多occurrence同文案必须使用所选会话自己的证据ID，拒绝代表seq跨客户引用；已导入范围和缺失元信息如实返回。",
+      "evidence": "planned",
+      "manualReason": "—",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R001-05",
+      "sliceId": "I002",
+      "ruleId": "R001",
+      "acceptanceId": "AC-R001-01",
+      "layer": "visual",
+      "automation": "manual",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "docs/testing/quality-daily/visual-acceptance.md",
+      "oracle": "在批准原型对应浏览器视口逐页比对：聊天管理双入口、标题内日期、七页签在卡片前、名单内筛选、页尾来源说明和碎银青绿色层级保持；无旧顶部分组筛选或同页渠道切换。",
+      "evidence": "planned",
+      "manualReason": "跨容器位置、视觉层级及批准参考的一致性需人工逐页比对；DOM断言不能单独证明视觉体验。使用合成数据，截图存PR受控artifact并记录视口/浏览器/逐项判断。",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R011-09",
+      "sliceId": "I002",
+      "ruleId": "R011",
+      "acceptanceId": "AC-R011-04",
+      "layer": "visual",
+      "automation": "manual",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "docs/testing/quality-daily/visual-acceptance.md",
+      "oracle": "在同一提示词表内比对普通行与两日报行，编辑/删除文案、字重、间距、排列和交互位置一致；无额外查看日报链接；长名/空态不破坏表格。",
+      "evidence": "planned",
+      "manualReason": "同表按钮视觉对齐与长文本布局需对照批准原型人工确认；自动化仍独立检查按钮/行为。仅合成模板截图，记录比较项及结果。",
+      "applicability": "engineering_acceptance"
+    },
+    {
+      "id": "T-R026-06",
+      "sliceId": "I002",
+      "ruleId": "R026",
+      "acceptanceId": "AC-R026-01",
+      "layer": "visual",
+      "automation": "manual",
+      "targetRepo": "PetWebOrg/suiyin-admin",
+      "plannedTestPath": "docs/testing/quality-daily/visual-acceptance.md",
+      "oracle": "对照批准PC布局核对右贴边抽屉、客户左/我方右、头像昵称/来源/时间、未知占位、问题高亮及AI摘要分离；检查长消息、转写展开与滚动可读性；无发送区。",
+      "evidence": "planned",
+      "manualReason": "聊天气泡空间层次、阅读连贯性及高亮可辨性不能仅靠DOM存在判断；用合成会话逐项验收并保存标注截图，功能关闭恢复另由自动化验。",
+      "applicability": "engineering_acceptance"
+    }
+  ],
+  "verification": {
+    "traceability": "awaiting_parent_handoff",
+    "productionTestsExecuted": false,
+    "productionAcceptanceVerified": false
+  },
+  "boundaries": [
+    "源SPEC 0.3.3保持字节不变；后续工程授权由本次Issue交接记录承接，不追改静态快照中的历史状态。",
+    "17租户采样、旧v1.4四报告、Codex/apiExecuted=false、显示侧车与本地演示删除均为已交付参考或回归，不要求生产重新采证、重算或复刻本机路径。",
+    "生产API、调度、鉴权、持久化及当前配置接入进入正式Issue/worktree/Phase/PR审核；本草案不执行生产开发。",
+    "只允许公开合成数据/不含原文metadata进入测试与CI；真实Prompt、名称、聊天、截图、凭据及本机运行store不进入公开包。",
+    "全部测试证据planned；真实调用及04:00–08:00验收需要独立安全回执，不由静态/小样本/推算替代。"
+  ]
+}
