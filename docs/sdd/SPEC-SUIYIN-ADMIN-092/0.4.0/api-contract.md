@@ -14,7 +14,7 @@
 - `POST /overview/query`：Scope → `{context,metrics:MetricValue[],risk:{high,medium,low,unknown},priorities:[{code,count}],highlights:Insight[],suggestions:Insight[],unresolved:ConversationRow[]}`。`Insight={conversationId:string,title:string,evidenceIds:string[],resultVersion:number}`，亮点和建议打开原文时同时携带resultVersion；以上名单有界，更多用列表查询。
 - `POST /accounts/query`：Scope+reportRefs+cursor+limit → Page<AccountRow>；行含 `{workAccountId,name,departmentName?,metrics:MetricValue[],dimensions:DimensionSummary[],coverage,state}`。
 - `POST /conversations/query`：Scope+reportRefs+cursor+limit+`intention?,servicePriority?,risk?,metricCode?` → Page<ConversationRow>。
-- `POST /facts/query`：Scope+reportRefs+cursor+limit+`kind?,factCode?,valueStatus?,severity?,redlineStatus?,reviewStatus?,handlingStatus?,conversationId?,productId?` → Page<FactRow>。问题、红线和维度下钻共用此入口，按固定kind含义过滤，不放任意表达式。
+- `POST /facts/query`：Scope+reportRefs+cursor+limit+`kind?,factCode?,valueStatus?,severity?,redlineStatus?,reviewStatus?,handlingStatus?,conversationId?,productId?` → `FactPage=Page<FactRow>&{summary?:RedlineSummary}`。问题、红线和维度下钻共用此入口，按固定kind含义过滤，不放任意表达式。红线查询参数`redlineStatus`为`all|candidate|confirmed|rejected`；省略或空字符串不返回summary，其余非法值拒绝。
 - `POST /products/query`：Scope+reportRefs → `{context,items:[{id,name,category,mentionCount,conversationCount,staffConversationCount,availability}],actions:MetricValue[]}`；零触达由该版目录补齐。
 - `POST /standards/query`：Scope+reportRefs → `{context,config,versions,limitations}`，按选定报告完整快照解释。
 - `GET /conversations/:id/evidence?resultVersion=...`：`{conversation,messages:[{id,at,direction,type,status,text,parseStatus,automated,actualOperatorId?,reason?}],facts,reviews,coverage}`。重新验证证据权限，原文不混入普通列表。
@@ -32,6 +32,12 @@
 
 `redlineStatus='none'|'candidate'|'confirmed'|'rejected'`为独立红线认定状态；候选不算已认定。它不能通过严重度、问题reviewStatus或handlingStatus推断：确认问题不自动确认红线，处理完成不自动改变认定，误报问题不能继续保留有效红线。所选事实值按mode读取原始或有效值，独立人工认定状态和审计仍明确展示。
 
+`RedlineSummary={scope:'report_scope',availability:'ready'|'not_collected',total:number|null,statuses:{candidate:number|null,confirmed:number|null,rejected:number|null},handling:{pending:number|null,processing:number|null,resolved:number|null},statisticsPending:boolean}`。
+
+summary只随页头日期、部门、工作号、reportRefs及当前可信ACL收敛，表示所选报告范围内的红线事件总数。列表的factCode、严重度、红线认定、问题复核、处理状态、其他明细条件及分页不缩小这组汇总；前端不能对当前页items求和代替总数。total包含candidate、confirmed、rejected，排除none，且应同时等于statuses三项之和及handling三项之和。问题复核和处理完成不能替代独立红线认定／否定；`ai/effective × current/original`四种视图中的红线分类都表达相同的独立人工认定状态，不把“原判视图”解释成忽略人工红线结论。
+
+六项计数复用既有quality_daily_stat内的`__redline_status`和`__redline_handling`两组投影，不新增表或可编辑指标配置。只有每个reportRef都有同一已发布投影中的全部六项、全部ready且两组总数一致时返回ready数值。任一报告缺项、未采集、尚无投影或两组不一致，则summary整体not_collected，total和六个计数全部null；不拿其余报告局部结果补零。取数完成且确无消息的完整投影可返回合法0。完整旧投影等待重算时可保留旧数并返回statisticsPending=true，通过既有统计重算补齐，不改变模型分析范围。
+
 `DimensionSummary={code:string,name:string,definitionVersion:number,source:'ai_original',counts:Partial<Record<'true'|'false'|'known'|'unknown'|'not_applicable',number|null>>,availability:'ready'|'not_collected'}`。判定类型返回四态；数值／枚举返回known、unknown、not_applicable。counts来自该定义版本的原始事实分布，不受人工复核改写；只有ready时为数值，not_collected的空值不得转成0。工作号表行展开显示此分布，不自动增加统计指标列；指标列仍由metrics配置决定。
 
 点击可用维度计数，使用该工作号原reportRef以及`mode='ai'`、`factCode`、`valueStatus`查询事实；valueStatus的枚举同FactRow.status。不得强制`kind='dimension'`，因为问题事实也可能对应该判定维度；未采集项不提供虚构下钻结果。
@@ -40,7 +46,7 @@
 
 - `GET /config` → `ConfigDTO={revision,value:QualityConfig,limits,operations,sourceOperations,sourceCatalog,warnings}`。
 - `PUT /config`：`{expectedRevision,value}` → `ConfigDTO`并附`changeKinds:('display'|'statistics'|'analysis')[]`及`affectedMetricCodes`。只有保存不自动启动模型；同输入无实际变化不升语义版本。冲突409，不静默覆盖。
-- `POST /statistics/rebuild`：`{scope,reportRefs,expectedConfigRevision,operationId}` → `{operationId,reportRefs,statisticsPending}`；只按可用事实重算选定工作号日，不调用模型。新语义缺失明确not_collected。
+- `POST /statistics/rebuild`：`{scope,reportRefs,expectedConfigRevision,operationId}` → `{operationId,reportRefs,statisticsPending}`；只按可用事实重算选定工作号日，不调用模型。新语义缺失明确not_collected。相同operationId与相同原始请求可重放：即使首次接受后projectionRevision已推进，也复用原统计任务并返回当前可用reportRefs／等待状态，不重复创建分析或外呼；仍重新验证当前ACL及原analysisRevision。同operationId改为不同scope、reportRefs或expectedConfigRevision须冲突，不能据旧操作身份接受另一请求。
 
 `limits={parameters:{[name:string]:{min:number,max:number}},maxFacts:number,maxMetrics:number,maxProducts:number}`。`operations={judgment:Operation[],number:Operation[],enum:Operation[]}`，Operation取下面MetricDefinition的operation受控枚举；前端按返回值展示可选算法及上限。
 
@@ -56,7 +62,7 @@ parameters：`responseGroupMinutes,timeoutMinutes,deepChatCustomerMessages`，�
 ## 复核与执行
 
 - `POST /reviews`：`{targetKind:'fact'|'intention',targetId,resultVersion,expectedReviewVersion,operationId,reason,patch}` → `{targetKind,targetId,reviewVersion,effective,statisticsPending}`。patch仅受控字段：fact `{confirmed?,severity?,redlineConfirmed?,handlingStatus?}`；intention `{level}`。操作先校验当前结果版本/权限，审计与有效状态一致保存；冲突409，重复operationId返回原结果。处理进度不改变问题成立与否；认定红线需要明确字段。
-- `POST /generate`：`{channel,date,workAccountIds?:string[],operationId,mode:'generate'|'reanalyze'}` → `{operationId,batchId,reportIds,state}`。无原报告generate沿用该日意图，reanalyze明确创建新修订，冻结当前规则/Prompt/模型；请求只完成有界准入，取数与调用走持久公共任务。
+- `POST /generate`：`{channel,date,workAccountIds?:string[],operationId,mode:'generate'|'reanalyze'}` → `{operationId,batchId,reportIds,state}`。无原报告generate沿用该日意图，reanalyze明确创建新修订，冻结当前规则/Prompt/模型；请求只完成有界准入，取数与调用走持久公共任务。手动请求未选工作号时，“全部”只表示当前操作者可见工作号，先解析并冻结实际范围，不能占用租户自动调度的全企业空范围批次身份；无可见号不扩为全租户。准入成功时批次和各工作号报表元数据已经持久可读，异步采集尚未完成也显示generating及覆盖缺口；取数失败／中断须落报表失败状态和原因（采集未完成为partial_failed），不能让已提交任务从生成记录消失或显示为无消息。
 - `POST /reports/:id/recover`：`{operationId}` → `{operationId,batchId,reportId,state,unknownTaskCount:number}`。恢复本报告未完成任务，成功会话不调用，未知外呼保持隔离；规则/Prompt/模型不刷新。
 
 执行只注册一个公共`TaskQualityDaily`任务类型，内部`ExtraSnapshot.daily_phase`为`capture|analysis|statistics|recover`。capture、statistics、recover复用公共本地阶段与持久恢复，analysis才进入公共模型调用及用量链路，不增加日报独立队列／worker。恢复控制任务冻结目标及原execution attempt，未知调用只计入unknownTaskCount并保持隔离；成功任务不重发，失败任务仍使用原模型／Prompt快照与原会话输入，不因当前配置改变转用新模型或新语义。新分析修订由明确的reanalyze请求产生。
