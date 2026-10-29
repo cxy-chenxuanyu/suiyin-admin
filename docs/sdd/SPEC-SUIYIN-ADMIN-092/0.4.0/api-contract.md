@@ -22,15 +22,15 @@
 
 `QualityDailyMessage={id:string,at:string,direction:'customer'|'staff'|'unknown',type:'text'|'voice'|'image'|'video'|'other',status:'success'|'failed'|'withdrawn'|'unknown',text:string,parseStatus:'parsed'|'unparsed',automated:'yes'|'no'|'unknown',system:boolean,actualOperatorId?:string,reason?:string}`。at为消息时间（RFC3339）；receivedAt只供后台采集使用，不对外返回。automated是三态字符串，不能按布尔真值判断（'no'和'unknown'也都是非空字符串）；system独立表达系统记录，不与自动发送状态合并。方向、发送状态及解析状态按各自枚举显示，unknown不猜成客户／员工／发送成功，unparsed不当作“无消息”；actualOperatorId缺失时不推断真实操作者。
 
-`Coverage={total:number|null,analyzed:number,failed:number,pending:number,unreadable:number,collectionComplete:boolean,gaps:string[]}`。所有响应中的coverage.gaps统一为string[]，没有缺口时返回[]，不返回null；取数未完整时total不能猜测，使用null，已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|partial_failed|failed|no_data|completed`。
+`Coverage={total:number|null,eligible:number|null,analyzed:number,skipped:number,failed:number,pending:number,paused:number,skipReasons:{code:string,count:number}[],unreadable:number,collectionComplete:boolean,gaps:string[]}`。所有响应中的coverage.gaps统一为string[]，没有缺口时返回[]，不返回null；取数未完整时total不能猜测，使用null，已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|paused|partial_failed|failed|no_data|completed`。
 
 `RunRow={id, batchId,reportId,revision,state,coverage,waitReason?,retryAt?,failureReason?,canRecover,tasks?:[{id,state}]}`，id等于reportId；没有真实任务时不伪造task ID。`versions={name:string,version:number}[]`，`limitations:string[]`。
 
-`MetricValue={code:string,name:string,value:number|null,unit:string,numerator:number,denominator:number,availability:'ready'|'unknown'|'not_applicable'|'not_collected'|'pending',reason:string,definitionVersion:number,sourceCode:string,operation:Operation,unknown:number,notApplicable:number}`，对应后端metricDTO；reason无说明时为空字符串，numerator／denominator及unknown／notApplicable均实际返回，不是可省略字段。unknown与notApplicable是统计缺口计数，不是展示结果value的替代值。
+`MetricValue={code:string,name:string,value:number|null,unit:string,numerator:number,denominator:number,availability:'ready'|'unknown'|'not_applicable'|'not_collected'|'pending',reason:string,definitionVersion:number,sourceCode:string,operation:Operation,denominatorBasis?:'all_conversations'|'assessed_conversations',unknown:number,notApplicable:number}`，对应后端metricDTO；reason无说明时为空字符串，numerator／denominator及unknown／notApplicable均实际返回，不是可省略字段。unknown与notApplicable是统计缺口计数，不是展示结果value的替代值。
 
 展示以服务端value是否为null判断是否有数值，并结合availability／reason说明缺口；合法0必须展示为0，null不补0。普通count／conversation_count／sum／min／max的denominator=0并不表示指标不可用，不能用统一“分母为0”规则隐藏这些数值。仅operation为ratio或average时，numerator／denominator用于展示比率或均值的计算依据；零分母由服务端给出null与not_applicable等适用状态。ratio的value已经是百分数，不再乘100；前端不得重算统计或平均各工作号比率。
 
-`ConversationRow={id,reportId,workAccountId,workAccountName,customerName,relationId,state,risk,intention:{level,summary,projects?,timeExpressions?,evidenceIds},originalIntention?,servicePriority,unresolvedCount,issueCount,reviewVersion,resultVersion,coverage}`。列表不得带全部消息。
+`ConversationRow={id,reportId,workAccountId,workAccountName,customerName,relationId,state,analysisReason?,risk,intention:{level,summary,projects?,timeExpressions?,evidenceIds},originalIntention?,servicePriority,unresolvedCount,issueCount,reviewVersion,resultVersion,coverage}`。列表不得带全部消息。
 
 `FactRow={id,reportId,conversationId,workAccountId,customerName,kind,code,name,definitionVersion,resultVersion,status,value?,valueLabel?,unit?,severity,redlineCandidate,redlineConfirmed,redlineStatus,reviewStatus,handlingStatus,evidenceIds,evidencePreview?,reviewVersion,original?}`。判定类型使用`true/false/unknown/not_applicable`四态，数值／枚举的合法值状态为`known`，缺口仍为`unknown/not_applicable`；因此FactRow.status的总枚举为`true|false|known|unknown|not_applicable`，value为boolean/number/string单值。`valueLabel?:string`、`unit?:string`来自与事实definitionVersion匹配的定义，枚举按稳定ID找标签，不用当前新语义猜旧值。
 
@@ -80,3 +80,14 @@ parameters：`responseGroupMinutes,timeoutMinutes,deepChatCustomerMessages`，�
 执行只注册一个公共`TaskQualityDaily`任务类型，内部`ExtraSnapshot.daily_phase`为`capture|analysis|statistics|recover`。capture、statistics、recover复用公共本地阶段与持久恢复，analysis才进入公共模型调用及用量链路，不增加日报独立队列／worker。恢复控制任务冻结目标及原execution attempt，未知调用只计入unknownTaskCount并保持隔离；成功任务不重发，失败任务仍使用原模型／Prompt快照与原会话输入，不因当前配置改变转用新模型或新语义。新分析修订由明确的reanalyze请求产生。
 
 统一错误：400非法合同、403无权限、404权限内记录不存在、409版本冲突、422配置依赖或数据缺口不允许操作、503暂时不可用。具体HTTP/业务code按现有errs映射保持一致。所有生成和复核mutation具备稳定operationId及幂等语义。实现时若改路径/字段，先更新同一合同通知两端，不靠前端兼容旧日报大JSON。
+
+
+## 2026-10-30 准入与暂停增补
+
+准入、定时和六条AC以[调整Plan](adjustment-20261030.md)为准。Coverage中total收集完成后=eligible+skipped，eligible=analyzed+failed+pending+paused；eligible是本报告来源下的分析准入（明确手动可免自动5+5），未采集历史及尚未判定时可null。unreadable与上述状态可以重叠，不相加。每个skipped只存一个主analysisReason，skipReasons按该主因计数，合计等于skipped。已采集但不足门槛保留程序事实，AI保持unknown。全跳过状态completed，analyzed=0且skipped=total，不能显示no_data或全员合格；no_data只表示完整范围确认0会话。无消息、未采齐和客户身份查询出错不同。
+
+ConversationRow.state可为skipped|paused，analysisReason受控code首版为message_threshold|no_readable_content|cron_disabled；值不能作为模型原文输出。暂停同时沿RunRow.waitReason说明模板关闭及明确补跑要求。缺字段表示历史未采集，前端不得猜0。context数据及coverage继续属于其reportRefs；displayingPreviousRevision时最新生成进度只在RunRow/最新修订提示表达，不能与旧可读指标相加。
+
+ratio的MetricValue.denominatorBasis必返all_conversations或assessed_conversations，后者是该指标明确评估的会话数（真+假／已知），不是总AI完成数。其他操作可省略。前端据此展示“全部纳入会话”或“已明确评估会话”，仍直接使用服务端value/分子/分母。手动generate/reanalyze保留当前权限，recover沿原快照来源；无新增业务开关、设置页或集合。
+
+定时只创建持久本地扫描Task，模型调用仍由已创建的公共Task负责。模板关闭停止新业务会话派发，既有Task继续完成所有阶段与记账；重开不自动重跑旧暂停批次。UTC Cron为0 20 * * *，无timeZone，启动请求295秒/Job330秒/2次curl重试及既有0-4分钟错峰。Cron资源不由admin部署流水线自动下发，实际集群覆盖和四小时容量尚未验证。
