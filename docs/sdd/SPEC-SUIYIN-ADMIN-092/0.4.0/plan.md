@@ -320,3 +320,17 @@ runAIStage 已有调用前 request／dispatch attempt 的持久化、未知结�
 本次把指标上下按钮改为拖动手柄；拖动只调整显示草稿，保存后同步概览卡片和工作号统计列，不更改事实、公式、规则语义或产生模型调用。正式管理页优先复用项目现有表格拖动能力，不为此另建排序服务。键盘手柄操作保留，取消拖动不产生改动。
 
 完整性复查已明确：定时关闭仅阻止新自动批次；统计定义快照保留原公式；批次范围沿用公共批次存储；复核当前值有唯一落点。按用户“有需要、有用才调整”的要求，统计重算收敛为受影响工作号当天，取消预设逐指标增量优化；一致性只实施适配真实部署的一条路径，性能规模按实际峰值确定。五集合及既有AI Task方案保留，不增加远期分析平台或重复公共能力。实施仍以本稿六条AC及其真实环境证据为准。
+
+
+### 联调合同技术补充（2026-10-29）
+
+本节把已确认设计落实到[同版API合同](api-contract.md)，不新增用户配置页、业务范围、集合或审批。源候选仍待正式合入，工程实施授权沿用本轮已确认Plan／AC；只读核对当前开发实现不代表所有AC已通过。
+
+- 配置响应提供只读sourceCatalog及sourceOperations，让事实与程序来源共用一个指标选源目录；特定来源的算法限制优先，当前定义的稳定ID、类型、单位、版本和可用性一并返回。无需再建立一套可编辑来源规则。
+- 事实返回匹配定义版本的valueLabel／unit；数值和枚举合法状态为known，判定维度保留原四态。红线认定状态none／candidate／confirmed／rejected与问题复核、严重度、处理进度分别表达；问题误报不能继续算有效红线。
+- 概览亮点／建议带resultVersion，打开原文不丢结果版本。context明确最新修订、当前是否展示上一可读修订及是否沿用历史分析标准；同页所有值、覆盖和下钻沿同一reportRefs读取。
+- 工作号看板的维度原判分布按definitionVersion读取，在现有表行展开；不自动塞进指标列。判定四态及数值／枚举known分布读取原始事实，不被复核覆盖；not_collected返回空值而非0，下钻按原reportRef＋factCode＋mode=ai＋valueStatus，并允许问题事实命中该维度。
+- Setting内部RequiredStatisticsRevision仅作为持久重算水位，随配置CAS保存、JSON不暴露；后台分批重算有缺口的号日报。保留五集合，不因恢复增加日报任务表或新控制台。
+- 公共TaskQualityDaily只使用capture／analysis／statistics／recover四个内部阶段；采集、统计和恢复仍为本地任务阶段。恢复冻结目标及执行代，未知外呼不重发、成功会话不重付费，失败会话保留原模型、Prompt及输入快照；需要新语义时显式新建分析修订。
+
+核对实现位置：后端`admin/dailyquality/catalog.go`、`admin/service/daily_quality_service.go`、`daily_quality_query.go`、`daily_quality_recovery.go`、`daily_quality_pipeline.go`及`db/models/quality_daily.go`；管理页`src/api/ai/quality_daily/types.ts`、`src/views/ai/quality_daily/logic.ts`及工作号行展开／事实下钻。两端类型核对确认缺口计数可为null，以及数值／枚举known状态；实现及验证证据由Go #5055 / Admin #606维护，本次仅同步合同。
