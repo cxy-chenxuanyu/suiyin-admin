@@ -26,7 +26,7 @@
 
 `RunRow={id, batchId,reportId,revision,state,coverage,waitReason?,retryAt?,failureReason?,canRecover,tasks?:[{id,state}]}`，id等于reportId；没有真实任务时不伪造task ID。`versions={name:string,version:number}[]`，`limitations:string[]`。
 
-`MetricValue={code:string,name:string,value:number|null,unit:string,numerator:number,denominator:number,availability:'ready'|'unknown'|'not_applicable'|'not_collected'|'pending',reason:string,definitionVersion:number,sourceCode:string,operation:Operation,denominatorBasis?:'all_conversations'|'assessed_conversations',unknown:number,notApplicable:number}`，对应后端metricDTO；reason无说明时为空字符串，numerator／denominator及unknown／notApplicable均实际返回，不是可省略字段。unknown与notApplicable是统计缺口计数，不是展示结果value的替代值。
+`MetricValue={code:string,name:string,value:number|null,unit:string,numerator:number,denominator:number|null,availability:'ready'|'unknown'|'not_applicable'|'not_collected'|'pending',reason:string,definitionVersion:number,sourceCode:string,operation:Operation,denominatorBasis?:'all_conversations'|'assessed_conversations',unknown:number,notApplicable:number}`，对应后端metricDTO；reason无说明时为空字符串，numerator／denominator及unknown／notApplicable均实际返回，不是可省略字段。unknown与notApplicable是统计缺口计数，不是展示结果value的替代值。
 
 展示以服务端value是否为null判断是否有数值，并结合availability／reason说明缺口；合法0必须展示为0，null不补0。普通count／conversation_count／sum／min／max的denominator=0并不表示指标不可用，不能用统一“分母为0”规则隐藏这些数值。仅operation为ratio或average时，numerator／denominator用于展示比率或均值的计算依据；零分母由服务端给出null与not_applicable等适用状态。ratio的value已经是百分数，不再乘100；前端不得重算统计或平均各工作号比率。
 
@@ -86,8 +86,11 @@ parameters：`responseGroupMinutes,timeoutMinutes,deepChatCustomerMessages`，�
 
 准入、定时和六条AC以[调整Plan](adjustment-20261030.md)为准。Coverage中total收集完成后=eligible+skipped，eligible=analyzed+failed+pending+paused；新增eligible/skipped/paused在未采集历史上为null，不能补0；新报告已确认的计数返回number。eligible是本报告来源下的分析准入（明确手动可免自动5+5），未采集历史及尚未判定时可null。unreadable与上述状态可以重叠，不相加。每个skipped只存一个主analysisReason，skipReasons按该主因计数，合计等于skipped。已采集但不足门槛保留程序事实，AI保持unknown。全跳过状态completed，analyzed=0且skipped=total，不能显示no_data或全员合格；no_data只表示完整范围确认0会话。无消息、未采齐和客户身份查询出错不同。
 
-ConversationRow.state可为skipped|paused，analysisReason受控code首版为message_threshold|no_readable_content|cron_disabled；值不能作为模型原文输出。暂停同时沿RunRow.waitReason说明模板关闭及明确补跑要求。缺字段表示历史未采集，前端不得猜0。context数据及coverage继续属于其reportRefs；displayingPreviousRevision时最新生成进度只在RunRow/最新修订提示表达，不能与旧可读指标相加。
+ConversationRow.state可为skipped|paused，analysisReason受控code首版为message_threshold|no_readable_content|cron_disabled|eligibility_changed；值不能作为模型原文输出。暂停同时沿RunRow.waitReason说明模板关闭及明确补跑要求。缺字段表示历史未采集，前端不得猜0。context数据及coverage继续属于其reportRefs；displayingPreviousRevision时最新生成进度只在RunRow/最新修订提示表达，不能与旧可读指标相加。
 
 ratio的MetricValue.denominatorBasis必返all_conversations或assessed_conversations，后者是该指标明确评估的会话数（真+假／已知），不是总AI完成数。其他操作可省略。前端据此展示“全部纳入会话”或“已明确评估会话”，仍直接使用服务端value/分子/分母。手动generate/reanalyze保留当前权限，recover沿原快照来源；无新增业务开关、设置页或集合。
 
 定时只创建持久本地扫描Task，模型调用仍由已创建的公共Task负责。模板关闭停止新业务会话派发，既有Task继续完成所有阶段与记账；重开不自动重跑旧暂停批次。UTC Cron为0 20 * * *，无timeZone，启动请求295秒/Job330秒/2次curl重试及既有0-4分钟错峰。Cron资源不由admin部署流水线自动下发，实际集群覆盖和四小时容量尚未验证。
+
+
+2026-10-30 独立审查增补（原六条AC内）：采集未完成且coverage.total=null时，all_conversations比例的value=null、denominator=null、availability=unknown，保留已知numerator并说明“全部会话数尚未确认”；不能用当前已采集数冒充全量。assessed_conversations仍按该指标明确评估样本计算。跨工作号合并含未知全量时同样不发布全量比例；分母已确认0才显示合法0与not_applicable。首次创建会话AI任务前复核当前正式客户、有效非Purged关联及启用工作号；已入队任务继续。失去资格但已保存的会话保留程序事实，state=skipped、analysisReason=eligibility_changed。原capture阶段遇持久暂停不自动恢复，明确recover才可续派；已有新版五表运行快照通过原可信定时操作标识识别自动来源，不把缺字段默认为手动，不读取六旧集合。普通任务创建拒绝日报/沟通进度专用scene/type与未注册scene，保留既有合法语音和内部场景。
