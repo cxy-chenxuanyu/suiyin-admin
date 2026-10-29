@@ -15,8 +15,8 @@
 - `POST /accounts/query`：Scope+reportRefs+cursor+limit → Page<AccountRow>；行含 `{workAccountId,name,departmentName?,metrics:MetricValue[],dimensions:DimensionSummary[],coverage,state}`。
 - `POST /conversations/query`：Scope+reportRefs+cursor+limit+`intention?,servicePriority?,risk?,metricCode?` → Page<ConversationRow>。
 - `POST /facts/query`：Scope+reportRefs+cursor+limit+`kind?,factCode?,valueStatus?,severity?,redlineStatus?,reviewStatus?,handlingStatus?,conversationId?,productId?` → `FactPage=Page<FactRow>&{summary?:RedlineSummary}`。问题、红线和维度下钻共用此入口，按固定kind含义过滤，不放任意表达式。红线查询参数`redlineStatus`为`all|candidate|confirmed|rejected`；省略或空字符串不返回summary，其余非法值拒绝。
-- `POST /products/query`：Scope+reportRefs → `{context,items:[{id,name,category,mentionCount,conversationCount,staffConversationCount,availability}],actions:MetricValue[]}`；零触达由该版目录补齐。
-- `POST /standards/query`：Scope+reportRefs → `{context,config,versions,limitations}`，按选定报告完整快照解释。
+- `POST /products/query`：Scope+reportRefs → `{context,items:[{id,name,category,mentionCount:number|null,conversationCount:number|null,staffConversationCount:number|null,availability}],actions:MetricValue[]}`。三种数量在数据不可用时可为null，需结合availability显示缺口，不转成0；仅已采集且确无触达才显示合法0，目录中未采集的产品仍须与零触达区分。
+- `POST /standards/query`：Scope+reportRefs → `{context,config,versions,limitations}`。view=current返回当前规则配置；view=original且有选定报告时，返回reportRefs所指报告的执行配置快照（可为重新分析后的修订，不限定为初次报告）。所选报告执行配置不一致时，original返回409并提示按单个工作号查看，不能把其中一份配置冒充所有报告的标准；没有选定报告时返回当前配置，但不称其为报告执行快照。versions始终列出所选报告的执行配置版本，页面标题及说明随view区分当前规则和执行快照。
 - `GET /conversations/:id/evidence?resultVersion=...`：`{conversation,messages:QualityDailyMessage[],facts:FactRow[],reviews:ReviewRecord[],reviewsHasMore:boolean,coverage}`。重新验证证据权限，原文不混入普通列表。
 - `POST /runs/query`：Scope+cursor+limit → Page<RunRow>；包含batchId/reportId与关联task摘要、revision、state、coverage、waitReason、retryAt、failureReason、canRecover，不暴露原文或密钥。
 
@@ -57,7 +57,7 @@ summary只随页头日期、部门、工作号、reportRefs及当前可信ACL收
 ## 规则及指标
 
 - `GET /config` → `ConfigDTO={revision,value:QualityConfig,limits,operations,sourceOperations,sourceCatalog,warnings}`。
-- `PUT /config`：`{expectedRevision,value}` → `ConfigDTO`并附`changeKinds:('display'|'statistics'|'analysis')[]`及`affectedMetricCodes`。只有保存不自动启动模型；同输入无实际变化不升语义版本。冲突409，不静默覆盖。
+- `PUT /config`：`{expectedRevision,value}` → `ConfigDTO`并附必返数组`changeKinds:('display'|'statistics'|'analysis')[]`及`affectedMetricCodes:string[]`。同输入无实际变化不升语义版本，仍返回这两个字段，空内容为[]，不省略或返回null；客户端对缺字段的稳健防护不改变服务端合同。只有保存不自动启动模型。冲突409，不静默覆盖。
 - `POST /statistics/rebuild`：`{scope,reportRefs,expectedConfigRevision,operationId}` → `{operationId,reportRefs,statisticsPending}`；只按可用事实重算选定工作号日，不调用模型。新语义缺失明确not_collected。相同operationId与相同原始请求可重放：即使首次接受后projectionRevision已推进，也复用原统计任务并返回当前可用reportRefs／等待状态，不重复创建分析或外呼；仍重新验证当前ACL及原analysisRevision。同operationId改为不同scope、reportRefs或expectedConfigRevision须冲突，不能据旧操作身份接受另一请求。
 
 `limits={parameters:{[name:string]:{min:number,max:number}},maxFacts:number,maxMetrics:number,maxProducts:number}`。`operations={judgment:Operation[],number:Operation[],enum:Operation[]}`，Operation取下面MetricDefinition的operation受控枚举；前端按返回值展示可选算法及上限。
