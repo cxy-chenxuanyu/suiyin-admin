@@ -17,14 +17,18 @@
 - `POST /facts/query`：Scope+reportRefs+cursor+limit+`kind?,factCode?,valueStatus?,severity?,redlineStatus?,reviewStatus?,handlingStatus?,conversationId?,productId?` → `FactPage=Page<FactRow>&{summary?:RedlineSummary}`。问题、红线和维度下钻共用此入口，按固定kind含义过滤，不放任意表达式。红线查询参数`redlineStatus`为`all|candidate|confirmed|rejected`；省略或空字符串不返回summary，其余非法值拒绝。
 - `POST /products/query`：Scope+reportRefs → `{context,items:[{id,name,category,mentionCount,conversationCount,staffConversationCount,availability}],actions:MetricValue[]}`；零触达由该版目录补齐。
 - `POST /standards/query`：Scope+reportRefs → `{context,config,versions,limitations}`，按选定报告完整快照解释。
-- `GET /conversations/:id/evidence?resultVersion=...`：`{conversation,messages:[{id,at,direction,type,status,text,parseStatus,automated,actualOperatorId?,reason?}],facts:FactRow[],reviews:ReviewRecord[],reviewsHasMore:boolean,coverage}`。重新验证证据权限，原文不混入普通列表。
+- `GET /conversations/:id/evidence?resultVersion=...`：`{conversation,messages:QualityDailyMessage[],facts:FactRow[],reviews:ReviewRecord[],reviewsHasMore:boolean,coverage}`。重新验证证据权限，原文不混入普通列表。
 - `POST /runs/query`：Scope+cursor+limit → Page<RunRow>；包含batchId/reportId与关联task摘要、revision、state、coverage、waitReason、retryAt、failureReason、canRecover，不暴露原文或密钥。
+
+`QualityDailyMessage={id:string,at:string,direction:'customer'|'staff'|'unknown',type:'text'|'voice'|'image'|'video'|'other',status:'success'|'failed'|'withdrawn'|'unknown',text:string,parseStatus:'parsed'|'unparsed',automated:'yes'|'no'|'unknown',system:boolean,actualOperatorId?:string,reason?:string}`。at为消息时间（RFC3339）；receivedAt只供后台采集使用，不对外返回。automated是三态字符串，不能按布尔真值判断（'no'和'unknown'也都是非空字符串）；system独立表达系统记录，不与自动发送状态合并。方向、发送状态及解析状态按各自枚举显示，unknown不猜成客户／员工／发送成功，unparsed不当作“无消息”；actualOperatorId缺失时不推断真实操作者。
 
 `Coverage={total:number|null,analyzed:number,failed:number,pending:number,unreadable:number,collectionComplete:boolean,gaps:string[]}`。所有响应中的coverage.gaps统一为string[]，没有缺口时返回[]，不返回null；取数未完整时total不能猜测，使用null，已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|partial_failed|failed|no_data|completed`。
 
 `RunRow={id, batchId,reportId,revision,state,coverage,waitReason?,retryAt?,failureReason?,canRecover,tasks?:[{id,state}]}`，id等于reportId；没有真实任务时不伪造task ID。`versions={name:string,version:number}[]`，`limitations:string[]`。
 
-`MetricValue={code,name,value:number|null,unit,numerator?,denominator?,availability:'ready'|'unknown'|'not_applicable'|'not_collected'|'pending',reason?,definitionVersion}`。未知不补0，前端不重新计算统计或风险。
+`MetricValue={code:string,name:string,value:number|null,unit:string,numerator:number,denominator:number,availability:'ready'|'unknown'|'not_applicable'|'not_collected'|'pending',reason:string,definitionVersion:number,sourceCode:string,operation:Operation,unknown:number,notApplicable:number}`，对应后端metricDTO；reason无说明时为空字符串，numerator／denominator及unknown／notApplicable均实际返回，不是可省略字段。unknown与notApplicable是统计缺口计数，不是展示结果value的替代值。
+
+展示以服务端value是否为null判断是否有数值，并结合availability／reason说明缺口；合法0必须展示为0，null不补0。普通count／conversation_count／sum／min／max的denominator=0并不表示指标不可用，不能用统一“分母为0”规则隐藏这些数值。仅operation为ratio或average时，numerator／denominator用于展示比率或均值的计算依据；零分母由服务端给出null与not_applicable等适用状态。ratio的value已经是百分数，不再乘100；前端不得重算统计或平均各工作号比率。
 
 `ConversationRow={id,reportId,workAccountId,workAccountName,customerName,relationId,state,risk,intention:{level,summary,projects?,timeExpressions?,evidenceIds},originalIntention?,servicePriority,unresolvedCount,issueCount,reviewVersion,resultVersion,coverage}`。列表不得带全部消息。
 
