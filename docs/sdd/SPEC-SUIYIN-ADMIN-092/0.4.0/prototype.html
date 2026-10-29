@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>工作号每日质检 · 0.4.0 合成原型</title><style>body{margin:0} .cursor-interaction{cursor:pointer}</style><script src="https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js"></script></head><body>
+<script>
+(() => {
+  const key='suiyin-quality-daily-spec-092-0.4.0';
+  let widgetState={};
+  try { widgetState=JSON.parse(localStorage.getItem(key)||'{}'); } catch (_) { /* An unreadable prior demo is not reused. */ }
+  window.openai={widgetState, async setWidgetState(next) { localStorage.setItem(key,JSON.stringify(next)); this.widgetState=next; }};
+})();
+</script>
+<style>
+#quality-daily-app{--q-bg:light-dark(#f4f6f9,#171f26);--q-panel:light-dark(#ffffff,#212c35);--q-text:light-dark(#293747,#e2e9ef);--q-sub:light-dark(#657586,#a9b9c6);--q-line:light-dark(#e3e9ee,#35444f);--q-soft:light-dark(#edf7f5,#203e3b);--q-brand:light-dark(#148a7e,#70d3c6);--q-top:light-dark(#57b9ae,#24695f);--q-danger:light-dark(#c44649,#ff9c9e);--q-danger-bg:light-dark(#fff1f0,#492c31);--q-warn:light-dark(#a16a13,#f2ca7c);--q-warn-bg:light-dark(#fff7e7,#3e3527);--q-blue:light-dark(#377bb7,#8cc6f5);--q-shadow:light-dark(#193e4d14,#00000045);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--q-text);background:var(--q-bg);font-size:14px;line-height:1.55;position:relative;min-width:0;text-align:left;color-scheme:light dark}
+#quality-daily-app *{box-sizing:border-box}#quality-daily-app button,#quality-daily-app input,#quality-daily-app select,#quality-daily-app textarea{font:inherit}#quality-daily-app button{color:inherit}#quality-daily-app button:disabled{opacity:.5;cursor:not-allowed}#quality-daily-app h1,#quality-daily-app h2,#quality-daily-app h3,#quality-daily-app p{margin:0}#quality-daily-app h1{font-size:23px;line-height:1.4;font-weight:600}#quality-daily-app h2{font-size:16px;font-weight:600}#quality-daily-app h3{font-size:14px;font-weight:600}#quality-daily-app button,#quality-daily-app select,#quality-daily-app summary{cursor:default}#quality-daily-app .q-top{display:flex;align-items:center;gap:18px;background:var(--q-top);color:#fff;padding-right:108px;min-height:56px}#quality-daily-app .q-brand{background:var(--q-panel);color:var(--q-brand);min-width:174px;padding:17px 20px;font-size:19px;letter-spacing:2px;font-weight:600}#quality-daily-app .q-top-label{flex:1;min-width:0;font-size:13px}#quality-daily-app .q-shell{display:grid;grid-template-columns:174px minmax(0,1fr)}#quality-daily-app .q-sidebar{background:var(--q-panel);border-right:1px solid var(--q-line);padding:20px 10px;min-width:0}#quality-daily-app .q-nav-heading{padding:14px 12px 8px;color:var(--q-sub);font-size:12px}#quality-daily-app .q-nav{width:100%;display:flex;align-items:center;gap:9px;border:0;background:transparent;text-align:left;padding:12px 10px;border-radius:5px;margin:3px 0;font-size:13px}#quality-daily-app .q-nav.active{background:var(--q-soft);color:var(--q-brand);font-weight:600}#quality-daily-app .q-tenant{margin:26px 8px 0;border-top:1px solid var(--q-line);padding-top:14px;color:var(--q-sub);font-size:12px}#quality-daily-app .q-main{padding:24px;min-width:0}#quality-daily-app .q-breadcrumb{font-size:12px;color:var(--q-sub);margin-bottom:12px}#quality-daily-app .q-title-row{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}#quality-daily-app .q-sub{color:var(--q-sub);font-size:12px}#quality-daily-app .q-title-row .q-sub{margin-top:5px}#quality-daily-app .q-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}#quality-daily-app .q-button{background:var(--q-panel);border:1px solid var(--q-line);border-radius:5px;padding:7px 12px;min-height:34px;white-space:nowrap}#quality-daily-app .q-button.primary{background:var(--q-brand);border-color:var(--q-brand);color:light-dark(#fff,#132c29)}#quality-daily-app .q-button.link{color:var(--q-brand);border:0;background:transparent;padding:5px 0;white-space:normal;text-align:left}#quality-daily-app .q-button.danger{color:var(--q-danger)}#quality-daily-app .q-button.small{padding:4px 8px;min-height:28px;font-size:12px}#quality-daily-app .q-filters{display:flex;flex-wrap:wrap;gap:12px;background:var(--q-panel);padding:15px 16px;border:1px solid var(--q-line);border-radius:7px;margin-bottom:12px}#quality-daily-app label.q-field{display:flex;flex-direction:column;gap:5px;min-width:120px;flex:1;font-size:12px;color:var(--q-sub)}#quality-daily-app .q-input{background:var(--q-panel);color:var(--q-text);border:1px solid var(--q-line);border-radius:4px;padding:7px 9px;width:100%;min-width:0;min-height:34px}#quality-daily-app textarea.q-input{resize:vertical;min-height:90px}#quality-daily-app .q-notice{border-radius:5px;background:var(--q-soft);color:var(--q-brand);padding:10px 13px;font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}#quality-daily-app .q-notice.warn{background:var(--q-warn-bg);color:var(--q-warn)}#quality-daily-app .q-tabs{display:flex;gap:3px;flex-wrap:wrap;padding:5px;background:var(--q-panel);border:1px solid var(--q-line);border-radius:7px;margin:16px 0}#quality-daily-app .q-tab{flex:1;min-width:75px;padding:10px 7px;background:transparent;border:0;border-radius:4px;color:var(--q-sub);font-size:12px;white-space:nowrap}#quality-daily-app .q-tab.active{background:var(--q-soft);color:var(--q-brand);font-weight:600}#quality-daily-app .q-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}#quality-daily-app .q-kpi{text-align:left;background:var(--q-panel);border:1px solid var(--q-line);border-radius:7px;padding:15px 17px;min-width:0;transition:border-color .15s}#quality-daily-app .q-kpi:hover{border-color:var(--q-brand)}#quality-daily-app .q-kpi-label{font-size:12px;color:var(--q-sub);display:flex;gap:8px;justify-content:space-between;align-items:center}#quality-daily-app .q-kpi-number{font-size:29px;font-weight:600;line-height:1.4;margin:7px 0 2px;font-variant-numeric:tabular-nums;color:var(--q-text)}#quality-daily-app .q-kpi-number.risk{color:var(--q-danger)}#quality-daily-app .q-kpi-number small{font-size:12px;font-weight:400;margin-left:4px;color:var(--q-sub)}#quality-daily-app .q-kpi-note{font-size:11px;color:var(--q-sub)}#quality-daily-app .q-panel{background:var(--q-panel);border:1px solid var(--q-line);border-radius:7px;padding:18px;margin-bottom:16px;min-width:0}#quality-daily-app .q-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}#quality-daily-app .q-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}#quality-daily-app .q-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}#quality-daily-app .q-tag{display:inline-block;vertical-align:middle;background:var(--q-bg);color:var(--q-sub);padding:2px 7px;border-radius:4px;white-space:nowrap;font-size:11px;font-weight:400}#quality-daily-app .q-tag.green{background:var(--q-soft);color:var(--q-brand)}#quality-daily-app .q-tag.red{background:var(--q-danger-bg);color:var(--q-danger)}#quality-daily-app .q-tag.amber{background:var(--q-warn-bg);color:var(--q-warn)}#quality-daily-app .q-table-wrap{overflow-x:auto;max-width:100%}#quality-daily-app table{width:100%;border-collapse:collapse;text-align:left;font-size:12px}#quality-daily-app th{background:var(--q-bg);color:var(--q-sub);font-weight:500;padding:10px 11px;white-space:nowrap;border-bottom:1px solid var(--q-line)}#quality-daily-app td{padding:12px 11px;border-bottom:1px solid var(--q-line);vertical-align:top}#quality-daily-app tr:last-child td{border-bottom:0}#quality-daily-app .q-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}#quality-daily-app .q-row-title{font-weight:500;min-width:80px}#quality-daily-app .q-risk{color:var(--q-danger)}#quality-daily-app .q-bar-row{display:grid;grid-template-columns:minmax(80px,140px) minmax(40px,1fr) 60px;gap:10px;align-items:center;font-size:12px;margin:13px 0;width:100%;border:0;background:transparent;text-align:left;padding:0}#quality-daily-app .q-bar-track{height:9px;background:var(--q-bg);border-radius:5px;overflow:hidden}#quality-daily-app .q-bar-fill{height:100%;background:var(--q-top);border-radius:5px}#quality-daily-app .q-rank-label{overflow-wrap:anywhere}#quality-daily-app .q-insight{border-left:3px solid var(--q-top);padding:2px 0 2px 12px;margin:16px 0;font-size:13px}#quality-daily-app .q-insight.risk{border-left-color:var(--q-danger)}#quality-daily-app .q-insight p{margin:5px 0;color:var(--q-sub);font-size:12px}#quality-daily-app .q-toolbar{display:flex;gap:9px;align-items:end;flex-wrap:wrap;margin-bottom:14px}#quality-daily-app .q-toolbar .q-field{flex:1;min-width:130px}#quality-daily-app .q-empty{text-align:center;padding:46px 18px;color:var(--q-sub)}#quality-daily-app .q-empty strong{display:block;color:var(--q-text);font-size:17px;margin-bottom:8px}#quality-daily-app .q-pagination{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:15px;font-size:12px;color:var(--q-sub)}#quality-daily-app .q-intent-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}#quality-daily-app .q-intent{padding:13px;background:var(--q-panel);border:1px solid var(--q-line);border-radius:6px;text-align:left}#quality-daily-app .q-intent.active{border-color:var(--q-brand);background:var(--q-soft)}#quality-daily-app .q-intent strong{display:block;font-size:24px;margin-top:4px}#quality-daily-app .q-list-item{padding:14px 0;border-bottom:1px solid var(--q-line)}#quality-daily-app .q-list-item:last-child{border-bottom:0}#quality-daily-app .q-list-title{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}#quality-daily-app .q-option-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}#quality-daily-app input[type=checkbox]{accent-color:var(--q-brand);width:16px;height:16px}#quality-daily-app .q-switch{display:inline-flex;align-items:center;gap:7px;font-size:12px}#quality-daily-app .q-config-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}#quality-daily-app .q-config-grid .q-field{font-size:13px}#quality-daily-app .q-help{font-size:12px;color:var(--q-sub);margin:8px 0 16px}#quality-daily-app .q-criterion{padding:10px 0;border-bottom:1px solid var(--q-line)}#quality-daily-app .q-criterion p{font-size:12px;color:var(--q-sub);margin-top:4px}#quality-daily-app .q-overlay{position:absolute;inset:0;background:light-dark(#182f4a55,#00000088);z-index:20;padding:26px 20px;display:flex;align-items:flex-start;justify-content:flex-end}#quality-daily-app .q-dialog{background:var(--q-panel);border:1px solid var(--q-line);border-radius:9px;box-shadow:0 12px 50px var(--q-shadow);width:min(760px,100%);min-width:0;padding:22px}#quality-daily-app .q-dialog.compact{width:min(560px,100%);margin:35px auto 0}#quality-daily-app .q-dialog-head{display:flex;gap:10px;align-items:start;justify-content:space-between;margin-bottom:16px}#quality-daily-app .q-dialog-head h2{font-size:19px}#quality-daily-app .q-dialog-foot{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}#quality-daily-app .q-chat{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px}#quality-daily-app .q-chat-messages{background:var(--q-bg);border-radius:6px;padding:14px;min-width:0}#quality-daily-app .q-message{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:14px;font-size:12px}#quality-daily-app .q-message.staff{align-items:flex-end}#quality-daily-app .q-message-meta{color:var(--q-sub);font-size:11px;margin-bottom:5px}#quality-daily-app .q-message-bubble{background:var(--q-panel);padding:9px 12px;border:1px solid var(--q-line);border-radius:0 8px 8px 8px;max-width:94%;overflow-wrap:anywhere}#quality-daily-app .staff .q-message-bubble{background:var(--q-soft);border-radius:8px 0 8px 8px}#quality-daily-app .q-message.evidence .q-message-bubble{border:2px solid var(--q-brand)}#quality-daily-app .q-evidence-label{color:var(--q-brand);font-size:11px;margin-top:3px}#quality-daily-app .q-review-box{border:1px solid var(--q-line);border-radius:6px;padding:12px;margin-top:12px}#quality-daily-app .q-review-box.active{border-color:var(--q-brand)}#quality-daily-app .q-review-box .q-field{margin-top:10px;min-width:0}#quality-daily-app .q-review-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}#quality-daily-app .q-error{color:var(--q-danger);font-size:12px;margin-top:8px}#quality-daily-app .q-toast{background:var(--q-soft);color:var(--q-brand);border:1px solid var(--q-line);padding:10px 15px;border-radius:5px;margin-bottom:12px;font-size:13px}#quality-daily-app .q-footer{font-size:11px;color:var(--q-sub);display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;margin-top:14px}#quality-daily-app .q-definition{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px;font-size:12px;margin:12px 0}#quality-daily-app .q-definition dt{color:var(--q-sub)}#quality-daily-app .q-definition dd{margin:0;overflow-wrap:anywhere}#quality-daily-app .q-dim-table td{padding:9px 10px}#quality-daily-app .q-cost{font-variant-numeric:tabular-nums}#quality-daily-app .q-hidden{display:none}#quality-daily-app #q-live{display:block;position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:900px){#quality-daily-app .q-shell{grid-template-columns:1fr}#quality-daily-app .q-sidebar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:8px 14px;border-right:0;border-bottom:1px solid var(--q-line)}#quality-daily-app .q-nav{width:auto;font-size:12px;padding:8px}#quality-daily-app .q-nav-heading,#quality-daily-app .q-tenant{display:none}#quality-daily-app .q-main{padding:18px}#quality-daily-app .q-top-label{font-size:12px}#quality-daily-app .q-grid2{grid-template-columns:1fr}}
+@media(max-width:560px){#quality-daily-app .q-brand{min-width:106px;padding:15px 12px;font-size:16px}#quality-daily-app .q-top-label{display:none}#quality-daily-app .q-main{padding:12px}#quality-daily-app h1{font-size:20px}#quality-daily-app .q-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#quality-daily-app .q-kpi{padding:12px}#quality-daily-app .q-kpi-number{font-size:25px}#quality-daily-app .q-intent-cards{grid-template-columns:repeat(2,minmax(0,1fr))}#quality-daily-app .q-config-grid,#quality-daily-app .q-chat{grid-template-columns:1fr}#quality-daily-app .q-overlay{padding:10px}#quality-daily-app .q-dialog{padding:14px}#quality-daily-app .q-dialog.compact{margin-top:15px}#quality-daily-app .q-tabs{gap:2px}#quality-daily-app .q-tab{min-width:80px}#quality-daily-app .q-panel{padding:13px}#quality-daily-app input,#quality-daily-app select,#quality-daily-app textarea{font-size:16px}}
+@media(prefers-reduced-motion:reduce){#quality-daily-app *{transition:none!important}}
+#quality-daily-app .q-drag-handle{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:54px;padding:5px 6px;min-height:36px;border:1px solid transparent;border-radius:4px;background:transparent;color:var(--q-sub);touch-action:none;cursor:grab}
+#quality-daily-app .q-drag-handle:hover{background:var(--q-soft);color:var(--q-brand)}
+#quality-daily-app .q-drag-handle:active{cursor:grabbing}
+#quality-daily-app tr.q-dragging{background:var(--q-soft)}
+#quality-daily-app tr.q-drop-before>td{box-shadow:inset 0 2px var(--q-brand)}
+#quality-daily-app tr.q-drop-after>td{box-shadow:inset 0 -2px var(--q-brand)}
+@media(pointer:coarse){#quality-daily-app .q-drag-handle{min-height:44px}}
+</style>
+<div id="quality-daily-app"><div id="q-storage-status" class="q-notice warn" role="alert" style="display:none"></div>
+  <header class="q-top"><div class="q-brand">碎银管理</div><div class="q-top-label">演示企业 · 管理后台</div></header>
+  <div class="q-shell">
+    <aside class="q-sidebar" aria-label="管理导航">
+      <div class="q-nav-heading">聊天管理</div>
+      <button class="q-nav active cursor-interaction" data-action="channel" data-value="wecom"><i data-lucide="messages-square" aria-hidden="true"></i>企微会话质检日报</button>
+      <button class="q-nav cursor-interaction" data-action="channel" data-value="wechat"><i data-lucide="message-circle" aria-hidden="true"></i>个微会话质检日报</button>
+      <div class="q-nav-heading">AI 管理</div>
+      <button class="q-nav cursor-interaction" data-action="settings"><i data-lucide="sliders-horizontal" aria-hidden="true"></i>质检规则与指标</button>
+      <button class="q-nav cursor-interaction" data-action="prompt"><i data-lucide="notebook-pen" aria-hidden="true"></i>AI 提示词库</button>
+      <div class="q-tenant">当前租户：演示企业<br>当前可见工作号范围<br><span class="q-tag">交互评审 · 合成数据</span><br><button type="button" class="q-button link" data-action="reset-demo">重置演示</button></div>
+    </aside>
+    <main class="q-main" id="q-main"></main>
+  </div>
+  <div id="q-modal"></div>
+  <div id="q-live" aria-live="polite" class="q-hidden"></div>
+</div>
+
+<script>
+/* All records in this prototype are synthetic. No API or production data is used. */
+(function (root) {
+  'use strict';
+  const dates = ['2026-10-28', '2026-10-27', '2026-10-26'];
+  const channels = [{ id: 'wecom', name: '企微' }, { id: 'wechat', name: '个微' }];
+  const departments = [{ id: 'consulting', name: '咨询部' }, { id: 'service', name: '客户服务部' }];
+  const accounts = channels.flatMap(channel => Array.from({ length: 4 }, (_, index) => ({
+    id: `${channel.id}-${index + 1}`,
+    channel: channel.id,
+    name: `演示${channel.name} ${String(index + 1).padStart(2, '0')}`,
+    departmentId: departments[index < 2 ? 0 : 1].id,
+    departmentName: departments[index < 2 ? 0 : 1].name,
+    shared: index === 3,
+    attribution: index === 3 ? '多人共号，具体接待人待确认' : '按工作号统计',
+  })));
+  const products = [
+    { id: 'light', name: '光子护理' },
+    { id: 'hydration', name: '补水护理' },
+    { id: 'consult', name: '抗衰咨询' },
+    { id: 'followup', name: '术后随访' },
+    { id: 'lifting', name: '紧致评估' },
+  ];
+  // Keep this configured zero-touch product outside the synthetic mention rotation.
+  const touchedProducts = products.slice(0, 4);
+  const ruleVersion = 'synthetic-quality-rules-v1';
+  const judgementDimensionIds = ['safety', 'promise', 'unresolved', 'complaint', 'closing', 'interaction', 'needs', 'appointment', 'followup'];
+  const dimensionStatusLabels = { conform: '符合', nonconform: '不符合', insufficient: '信息不足', not_applicable: '不适用' };
+  const dimensionKinds = {
+    response: ['response_event', '分别记录已回复事件与待回复事件，后者保留截至观察点的等待下限。'],
+    depth: ['count', '统计日客户有效文字／语音条数及深聊阈值；未转写语音的语义另记缺口。'],
+    product: ['extraction', '提取产品、提及方、消息证据及统计日归属。'],
+    referral: ['business_action', '保留实际老带新提及动作和证据，不等同转介绍完成。'],
+    responsibility: ['attribution', '保留工作号归属及实际操作人可得性，未知不推断个人。'],
+  };
+  const dimensionContracts = {
+    response: { rule: '将需要答复的客户消息与随后有效员工回复配对；超过配置分钟数记超时。待回复单列等待下限，不混入已回复均值。', applicability: '统计日内存在客户请求且消息方向、时间可确认；员工单向触达不适用。', evidenceRequirement: '客户请求与员工回复的消息 ID 和时间；未回复保留客户消息及观察截止点。', parameterKeys: ['timeoutMinutes'] },
+    safety: { rule: '涉及项目安全、禁忌或术后症状时检查是否保留专业评估与必要安全提醒；明确绕过评估、淡化明显风险作为风险候选。', applicability: '涉及项目适用性、安全或症状；即使客户未回复，可读员工安全话术仍需检查。', evidenceRequirement: '引用具体员工话术及必要客户上下文；缺少评估资料时保留信息不足，不虚构禁忌结论。', severity: 'high', redline: true },
+    promise: { rule: '检查员工是否作百分之百有效、绝对安全等确定性承诺；专业评估后的审慎说明不等同确定效果承诺。', applicability: '存在可读员工效果或适用性表达；不以客户是否回复作为免检条件。', evidenceRequirement: '必须引用员工作出承诺的原文消息，区分客户转述与员工表达。', severity: 'high', redline: true },
+    unresolved: { rule: '识别客户提出的具体诉求及后续答复；截至观察点仍无明确答复或结果时标记未解决，不能把登记等同解决。', applicability: '可读客户消息中存在具体待答复或待处理事项。', evidenceRequirement: '诉求消息和答复／待处理消息；未回复注明观察截止点，缺失上下文保留信息不足。', severity: 'medium', redline: false },
+    complaint: { rule: '客户明确不满、焦虑或投诉时检查员工是否针对问题回应和安抚；客户表达不满与员工服务失当分别记录。', applicability: '存在可读的负面情绪或投诉表达；无此情境为不适用。', evidenceRequirement: '客户情绪原文和员工随后处理消息；仅有未解析媒体不能认定情绪或处理失当。', severity: 'medium', redline: false },
+    closing: { rule: '检查需要继续答复的诉求是否被承接、结束安排是否明确；客户最后追问未答复与正常礼貌收尾分开。', applicability: '已经形成双向接待或客户提出需要答复的请求。', evidenceRequirement: '末段客户与员工消息及观察截止点；员工单向触达不推断接待收尾是否合格。', severity: 'medium', redline: false },
+    depth: { rule: '按统计日客户 text/voice 发言数量与配置阈值判深聊；图片、表情和员工消息不混计。未转写语音仍算发言次数，语义是否可读另记。', applicability: '存在统计日客户消息并能确认消息类型及方向。', evidenceRequirement: '用于计数的客户消息 ID、类型和时间；语音解析状态独立保留。', parameterKeys: ['deepMinMessages'] },
+    interaction: { rule: '对达到深聊阈值的可读会话判断是否有实质追问、需求展开和针对性回应；不能用消息数量替代互动质量。', applicability: '达到配置的深聊阈值；需有足够可读内容，未达到阈值不适用，达到但不可读则信息不足。', evidenceRequirement: '客户表达与员工追问／回应的成对消息证据。', severity: 'low', redline: false },
+    needs: { rule: '检查是否识别并承接客户实际咨询需求；只记录员工推介的产品不能代替客户需求澄清。', applicability: '客户已提出可读咨询需求或有待澄清的可读问题。', evidenceRequirement: '客户需求原文和员工澄清、记录或确认的消息。', severity: 'low', redline: false },
+    product: { rule: '按企业产品目录提取实际提及的产品、提及方与消息证据；员工主动提及和客户表达需求分别统计。', applicability: '可读文本或已有转写包含产品目录可匹配的实际提及。', evidenceRequirement: '产品 ID、员工／客户提及方及原文消息 ID；同会话去重与提及事件数分开。' },
+    referral: { rule: '记录员工是否主动提及老带新或转介绍安排，并区分触达、客户回应和已完成动作；触达不等于转介绍成功。', applicability: '存在可读老带新相关表达；未提及不凭空生成行动事实。', evidenceRequirement: '实际提及消息与提及方；只有明确后续证据才记客户接受或完成。' },
+    appointment: { rule: '有预约意图时检查是否明确具体时间、项目及必要确认；客户说周末有空只构成时间意向，不等同预约完成。', applicability: '客户表达咨询、到店或项目预约意图。', evidenceRequirement: '客户时间意向、员工安排及最终确认消息；缺少确认保留信息不足。', severity: 'low', redline: false },
+    followup: { rule: '需要后续跟进时检查是否交代跟进内容、时间或触发条件；泛称继续跟进不能证明结果已落实。', applicability: '存在已承诺、待处理或需要后续联系的事项。', evidenceRequirement: '跟进承诺及可核对的时间／条件／结果；不得推断会话以外已经完成的动作。', severity: 'low', redline: false },
+    responsibility: { rule: '按工作号和统计日归属快照统计；仅凭账号名称不认定实际接待人，共号缺少操作者记录时标记责任未知。', applicability: '所有工作号会话；具体个人责任仅在来源记录充分时可确认。', evidenceRequirement: '工作号 ID、部门归属快照和实际操作者／接待记录；缺失个人来源不由模型猜测。' },
+  };
+  const dimensions = [
+    ['response', '回复及时性', '程序统计'], ['safety', '安全告知', 'AI 判断'],
+    ['promise', '效果承诺', 'AI 判断'], ['unresolved', '诉求解决', 'AI 判断'],
+    ['complaint', '客户情绪处理', 'AI 判断'], ['closing', '会话收尾', 'AI 判断'],
+    ['depth', '沟通深度', '程序统计'], ['interaction', '有效互动', 'AI 判断'],
+    ['needs', '需求澄清', 'AI 判断'], ['product', '产品触达', 'AI 判断'],
+    ['referral', '老带新引导', 'AI 判断'], ['appointment', '预约推进', 'AI 判断'],
+    ['followup', '后续跟进', 'AI 判断'], ['responsibility', '接待归属', '来源记录'],
+  ].map(([id, name, source]) => ({
+    id, name, source, enabled: true, semanticVersion: 1, ruleVersion, ...dimensionContracts[id],
+    kind: judgementDimensionIds.includes(id) ? 'judgement' : dimensionKinds[id][0],
+    description: judgementDimensionIds.includes(id) ? '预设合成场景的逐维度判定，独立于候选问题和人工复核状态。' : dimensionKinds[id][1],
+  }));
+  const metricLibrary = [
+    ['conv_count', '质检会话', '个', '会话事实', '会话去重计数', '无', '当前范围内有统计日消息的客户×工作号会话数。'],
+    ['risk_count', '高风险会话', '个', 'AI 问题事实', '按会话去重', '无', '至少含一条重大问题的会话；复核口径排除已判误报的问题。'],
+    ['timeout_count', '回复超时会话', '个', '程序统计', '按会话去重', '无', '至少一次有效回复耗时超过 20 分钟；按配对消息时间计算。'],
+    ['deep_count', '深聊会话', '个', '程序统计', '按会话去重', '无', '统计日有效客户 text/voice 发言不少于 6 条；未转写语音计条数，语义另记未知；图片、视频及员工消息不计入。'],
+    ['high_issue_count', '重大问题', '条', 'AI 问题事实', '问题事件计数', '无', '重大级别的问题条数，与高风险会话数口径不同。'],
+    ['unresolved_count', '未解决诉求', '个', 'AI 判断', '按会话去重', '无', '存在未解决诉求问题的会话；复核口径排除相应误报。'],
+    ['complaint_count', '负面情绪会话', '个', 'AI 判断', '按会话去重', '无', '存在客户不满问题的会话；仅为演示判定。'],
+    ['complaint_rate', '负面情绪占比', '%', 'AI 判断 + 会话事实', '比例', '当前范围全部质检会话', '负面情绪会话数 ÷ 质检会话数，空范围显示 —。'],
+    ['referral_count', '老带新触达', '个', 'AI 行为事实', '按会话去重', '无', '工作号主动提及老带新安排的会话，保留对应原文。'],
+    ['response_avg', '平均回复耗时', '分钟', '程序统计', '有效回复总耗时 ÷ 有效回复次数', '有效回复次数', '按消息配对加权计算，不对各工作号均值再次求平均。跨日回复计入原客户请求。'],
+  ].map(([id, name, unit, source, aggregation, denominator, description]) => ({ id, name, unit, source, aggregation, denominator, description }));
+  const intentLabels = { 1: 'L1 高意向', 2: 'L2 明确咨询', 3: 'L3 需求待明', 4: 'L4 持续维护', 5: 'L5 当日未回应', unknown: '信息不足' };
+  // These declared synthetic assessments are fixtures, not model execution or inference from a missing issue.
+  function declaredDimensionResults(scenarioId, messages, intentScenario) {
+    const cases = {
+      safety: ['insufficient', [3], '已提到专业评估，但未提供完整风险和禁忌核查信息，不判为安全告知已完成。'],
+      promise: ['conform', [3], '合成场景明确要求先专业评估，再确认具体方案，未在该表达中作确定效果承诺。'],
+      unresolved: ['insufficient', [6, 7], '已承接联系安排，是否实际落实仍缺少明确结果。'],
+      complaint: ['not_applicable', [4], '本合成场景中客户是在询问安排，没有进入投诉安抚情境。'],
+      closing: ['conform', [-1], '本合成场景以工作号明确回应和收尾结束。'],
+      needs: ['conform', [2, 5], '客户表达咨询项目与时间，工作号明确记录并承接其需求。'],
+      appointment: ['insufficient', [2, 7], '仅有周末意向和后续联系说明，没有可核对的具体预约结果。'],
+      followup: ['insufficient', [7], '已说明继续联系，但缺少完整可核对的跟进时间与结果。'],
+      interaction: ['not_applicable', [0], '客户文字／语音发言数未达到演示深聊阈值，不以短会话推断互动不足。'],
+    };
+    const speechMessages = messages.filter(m => m.sender === 'customer' && ['text', 'voice'].includes(m.type) && m.inReportDay);
+    if (speechMessages.length >= 6) cases.interaction = speechMessages.some(m => m.status === 'unparsed')
+      ? ['insufficient', [0], '发言数量达到阈值，但存在未解析语音，缺少足够的语义证据判断互动质量。']
+      : ['conform', [8, 9], '合成场景中员工针对客户咨询准备继续追问具体需求，存在可核对的互动证据。'];
+    if (intentScenario === 'project_only') {
+      cases.needs = ['conform', [2, 5], '客户明确咨询项目，工作号已承接需求；尚无明确时间意向。'];
+      cases.appointment = ['not_applicable', [2], '客户仅咨询项目，没有提出预约或到店时间意向。'];
+    }
+    if (intentScenario === 'general_long' || intentScenario === 'general_short') {
+      cases.needs = ['insufficient', [2], '客户尚未表达明确项目需求，不能把员工产品介绍当成需求已澄清。'];
+      cases.appointment = ['not_applicable', [2], '客户未表达预约意图，暂不评价预约推进。'];
+      cases.followup = ['not_applicable', [2], '客户明确暂不安排，尚无约定的后续跟进事项。'];
+      cases.unresolved = ['not_applicable', [2], '当前没有明确待答复或待处理诉求。'];
+      if (intentScenario === 'general_short') {
+        cases.safety = ['insufficient', [1], '员工提到专业评估，但本段招呼不包含完整安全核查信息。'];
+        cases.promise = ['conform', [1], '员工明确保留专业评估边界，未承诺确定效果。'];
+        cases.complaint = ['not_applicable', [2], '本段仅为日常招呼，没有投诉安抚情境。'];
+      }
+    }
+    if (intentScenario === 'aftercare') {
+      cases.needs = ['conform', [6, 7], '客户明确要求处理已有售后事项，员工已记录；这不是新的购买项目意向。'];
+      cases.appointment = ['not_applicable', [0, 2], '本段为既有售后诉求，没有新项目预约意图。'];
+    }
+    if (scenarioId === 'unsafe_promise') {
+      cases.safety = ['nonconform', [3], '合成消息明确表示无需先面诊，绕过专业评估。'];
+      cases.promise = ['nonconform', [3], '合成消息明确承诺百分之百有效。'];
+    }
+    if (scenarioId === 'complaint' || scenarioId === 'complaint_unresolved') {
+      cases.complaint = ['nonconform', [4, 5], '客户明确表达不满，随后仅收到登记和继续跟进的通用回应，没有针对该情绪安抚。'];
+    }
+    if (scenarioId === 'unresolved' || scenarioId === 'complaint_unresolved') {
+      cases.unresolved = ['nonconform', [6, 7], '客户明确表示售后未解决，工作号也确认处理结果仍待落实。'];
+    }
+    if (scenarioId === 'pending_staff_reply') {
+      cases.unresolved = ['nonconform', [-1], '客户新增的咨询时间问题截至次日 04:00 仍未获得答复。'];
+      cases.closing = ['nonconform', [-1], '最后一条为客户需要答复的追问，截至观察点没有工作号回复。'];
+    }
+    if (scenarioId === 'outreach_only' || scenarioId === 'outreach_redline') {
+      ['unresolved', 'complaint', 'closing', 'interaction', 'needs', 'appointment', 'followup'].forEach(id => {
+        cases[id] = ['not_applicable', [0], '仅员工单向触达，没有发生该项所需的客户接待情境；员工自身话术仍单独检查。'];
+      });
+      cases.safety = scenarioId === 'outreach_redline'
+        ? ['nonconform', [2], '员工单向触达中明确表示无需面诊，客户未回复不豁免安全话术检查。']
+        : ['insufficient', [2], '员工保留专业评估边界，但缺少客户具体情况，不能认定完整安全告知已完成。'];
+      cases.promise = scenarioId === 'outreach_redline'
+        ? ['nonconform', [2], '员工单向触达中承诺百分之百有效；这是可直接定位的红线候选。']
+        : ['conform', [2], '员工明确具体方案须经专业评估后确认，未作确定效果承诺。'];
+    }
+    if (scenarioId === 'unreadable_customer') {
+      ['unresolved', 'complaint', 'closing', 'needs', 'appointment', 'followup'].forEach(id => {
+        cases[id] = ['insufficient', [0, 1], '客户仅发送未解析媒体，无法可靠获知该项所需的诉求或上下文。'];
+      });
+      cases.safety = ['insufficient', [3], '员工要求补充可读内容并保留评估边界；缺少客户信息，安全核查完整性未知。'];
+      cases.promise = ['conform', [3], '尽管客户媒体不可读，员工可读文字明确不承诺效果，仍可检查该段表达。'];
+    }
+    return judgementDimensionIds.map(dimensionId => {
+      const [status, indexes, explanation] = cases[dimensionId];
+      const definition = dimensions.find(d => d.id === dimensionId);
+      return { dimensionId, kind: 'judgement', status, explanation, source: 'synthetic_scenario', scenarioId,
+        ruleVersion, severity: definition.severity, redline: definition.redline,
+        evidenceMessageIds: [...new Set(indexes.map(index => messages[index < 0 ? messages.length + index : index]?.id).filter(Boolean))] };
+    });
+  }
+  function isoAt(date, hour, minute) { return new Date(`${date}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00+08:00`); }
+  function isoChina(date) {
+    const shifted = new Date(date.getTime() + 8 * 60 * 60000);
+    return shifted.toISOString().slice(0, 19) + '+08:00';
+  }
+  function addMinutes(date, minutes) { return new Date(date.getTime() + minutes * 60000); }
+  function sameDay(message, date) { return message.time.slice(0, 10) === date; }
+  // Read only explicit signals in these authored fixtures; this is not a replacement for model intent analysis.
+  function declaredIntent(intentScenario, messages, date) {
+    const customer = messages.filter(m => m.sender === 'customer' && sameDay(m, date));
+    const readable = customer.filter(m => m.status !== 'unparsed');
+    const projectEvidence = readable.flatMap(message => products.filter(p => message.text.includes(p.name)).map(p => ({ productId: p.id, messageId: message.id })));
+    const timeEvidence = readable.flatMap(message => [...message.text.matchAll(/周末|明天|下周三|本周五/g)].map(match => ({ expression: match[0], messageId: message.id })));
+    const level = !customer.length ? 5 : !readable.length ? 'unknown' : intentScenario === 'aftercare' ? 4
+      : projectEvidence.length && timeEvidence.length ? 1 : projectEvidence.length || timeEvidence.length ? 2
+        : messages.filter(m => sameDay(m, date)).length > 6 ? 3 : 4;
+    return { level, scenario: intentScenario, source: 'synthetic_scenario',
+      projects: projectEvidence, timeExpressions: timeEvidence,
+      evidenceMessageIds: [...new Set([...projectEvidence, ...timeEvidence].map(e => e.messageId).concat(
+        level === 3 || level === 4 ? readable.map(m => m.id) : []))],
+      explanation: level === 'unknown' ? '客户确有消息，但都是未解析媒体，不能判为当日未回应。'
+        : level === 5 ? '统计日无客户消息，仅员工触达；与客户价值和员工话术合规分别判断。'
+          : intentScenario === 'aftercare' ? '仅咨询已有售后事项，没有新项目意向；服务优先级单独保持较高。'
+            : level === 1 ? '客户同时表达具体项目和时间意向。' : level === 2 ? '客户仅明确项目或时间之一。'
+              : level === 3 ? '客户没有明确项目或时间，双方统计日消息超过 6 条。' : '客户没有明确项目或时间，双方统计日消息不超过 6 条。' };
+  }
+  const conversations = [];
+  channels.forEach((channel, channelIndex) => dates.slice(0, 2).forEach((date, dateIndex) => {
+    for (let index = 0; index < 12; index += 1) {
+      const account = accounts.find(a => a.channel === channel.id && a.id.endsWith(`-${Math.floor(index / 3) + 1}`));
+      const id = `${channel.id}-${date}-${String(index + 1).padStart(2, '0')}`;
+      const product = touchedProducts[(index + channelIndex + dateIndex) % touchedProducts.length];
+      const crossDay = index === 0;
+      const unreadable = index === 6;
+      const voice = index === 2;
+      const noCustomerReply = index === 11;
+      const outreachRedline = noCustomerReply && dateIndex === 0;
+      const pendingStaffReply = index === 5;
+      const deepSample = channelIndex === 0 && dateIndex === 0 && (index === 1 || index === 2);
+      // Both channels have reviewable severe examples on 10/28; 10/27 retains an empty severe state.
+      const critical = index === 3 && dateIndex === 0;
+      const complaint = index === 4 || (index === 10 && dateIndex === 1);
+      const unresolved = index === 4 || index === 7;
+      const referral = index === 1 || index === 8;
+      const intentScenario = noCustomerReply ? 'outreach_only' : unreadable ? 'unreadable_customer'
+        : index === 4 || index === 7 ? 'aftercare' : index === 8 ? 'general_long'
+          : index === 9 ? 'general_short' : index === 1 || index === 10 ? 'project_only' : 'project_and_time';
+      const firstDelay = [3, 25, 5, 42, 3, 12, 22, 4, 2, 35, 6, 18][index] + dateIndex * 2;
+      const base = isoAt(date, crossDay ? 23 : 8 + Math.floor(index / 2), crossDay ? 20 : (index % 2) * 10);
+      const times = [base];
+      [firstDelay, 2, 3, 2, 2, 1, 1].forEach(delay => times.push(addMinutes(times[times.length - 1], delay)));
+      if (crossDay) { times[6] = isoAt(date, 23, 56); times[7] = addMinutes(times[6], 8); }
+      const lines = [
+        ['customer', `您好，想了解一下${product.name}，可以先咨询吗？`],
+        ['staff', `您好，可以先了解您的需求。${product.name}需要结合实际情况沟通。`],
+        ['customer', `我主要想了解${product.name}的流程，周末有时间。`],
+        ['staff', critical ? '这个项目保证百分之百有效，不需要先做面诊。' : '可以先安排咨询，具体方案和适用情况需要专业人员评估。'],
+        ['customer', complaint ? '我上次的问题还没有处理好，等待太久了，有点不满意。' : '好的，我想再了解一下后续安排。'],
+        ['staff', referral ? '如果朋友也有咨询需求，可以了解我们的老带新咨询安排。' : '我已记录您的需求，会继续跟进咨询安排。'],
+        ['customer', unresolved ? '我提出的售后问题还没有明确答复，麻烦继续处理。' : '了解了，请帮我确认一下后续怎么联系。'],
+        ['staff', unresolved ? '收到，我先登记，具体处理结果还需要进一步确认。' : '好的，我们会按您确认的时间联系，感谢您的沟通。'],
+      ];
+      if (intentScenario === 'project_only') lines[2][1] = `我主要想了解${product.name}的流程，目前还没有确定时间。`;
+      if (intentScenario === 'aftercare') {
+        lines[0][1] = '您好，我想跟进之前的售后处理结果，这次没有咨询新项目。';
+        lines[2][1] = '还是上次留下的售后问题，希望能把处理情况说明清楚。';
+      }
+      if (intentScenario === 'general_long') {
+        lines[0][1] = '您好，我想先了解咨询通常怎样开始。';
+        lines[2][1] = '目前还没有确定咨询哪个项目，也没有安排时间。';
+        lines[4][1] = '具体需求还没想清楚，先了解一下流程。';
+        lines[6][1] = '先了解就好，暂时不用安排。';
+        lines[7][1] = '好的，等您有明确需求后可以再联系。';
+      }
+      if (intentScenario === 'general_short') {
+        lines.splice(0, lines.length, ['customer', '您好，我来打个招呼。'],
+          ['staff', `您好，如需了解${product.name}，具体适用情况仍需要专业评估。`],
+          ['customer', '谢谢，暂时没有具体咨询需求，也不安排后续联系。'],
+          ['staff', '好的，有明确需求时可以再联系。']);
+        times.splice(lines.length);
+      }
+      if (deepSample) {
+        lines.push(['customer', '咨询前需要准备哪些资料？'], ['staff', '为了明确咨询重点，请说明您最想了解的问题和既往相关体验，专业人员会进一步沟通。'],
+          ['customer', '好的，我会准备好相关问题，方便时再确认时间。'], ['staff', '收到，等您确认后我们再安排。']);
+        [2, 1, 2, 1].forEach(delay => times.push(addMinutes(times[times.length - 1], delay)));
+      }
+      if (noCustomerReply) {
+        const outreach = [`您好，这里是演示工作号，为您发送${product.name}的咨询信息。`, `${product.name}可先通过咨询了解适用情况。`,
+          outreachRedline ? '这个项目保证百分之百有效，不需要先做面诊。' : '具体方案需要专业评估后再确认。', '咨询准备说明已发送，您可以方便时查看。',
+          '如有想了解的问题，可以留言。', '如果暂时不方便沟通，可以之后再联系。', '是否安排后续咨询，请以您的确认为准。', '当日未收到您的回复，先保留本次触达记录。'];
+        lines.splice(0, lines.length, ...outreach.map(text => ['staff', text]));
+        times.splice(0, times.length, ...outreach.map((_, i) => isoAt(date, 8 + i, 0)));
+      }
+      if (unreadable) {
+        lines[0][1] = '[图片：尚未识别]'; lines[2][1] = '[语音：尚未转写]';
+        lines[4][1] = '[视频：尚未识别]'; lines[6][1] = '[图片：尚未识别]';
+        lines[1][1] = '已收到资料，需要补充可读的文字信息。';
+        lines[3][1] = '目前看不到资料中的具体内容，请描述咨询问题；具体方案需要专业评估，不能承诺效果。';
+      }
+      if (pendingStaffReply) {
+        lines.push(['customer', '请帮我确认明天几点可以继续咨询，需要提前安排时间。']);
+        times.push(addMinutes(times[times.length - 1], 5));
+      }
+      const messages = lines.map(([sender, text], messageIndex) => ({
+        id: `${id}-m${messageIndex + 1}`, time: isoChina(times[messageIndex]), sender, text,
+        type: unreadable && sender === 'customer' ? ['image', 'voice', 'video', 'image'][messageIndex / 2] : voice && messageIndex === 2 ? 'voice' : 'text',
+        status: unreadable && sender === 'customer' ? 'unparsed' : voice && messageIndex === 2 ? 'transcribed' : 'normal',
+        inReportDay: isoChina(times[messageIndex]).slice(0, 10) === date,
+      }));
+      const responseEvents = (noCustomerReply ? [] : messages.map((m, i) => m.sender === 'customer' ? i : -1).filter(i => i >= 0 && messages[i + 1]?.sender === 'staff')).map(messageIndex => ({
+        id: `${id}-reply${messageIndex / 2 + 1}`,
+        durationMinutes: (times[messageIndex + 1] - times[messageIndex]) / 60000,
+        customerMessageId: messages[messageIndex].id, replyMessageId: messages[messageIndex + 1].id,
+        crossDay: !sameDay(messages[messageIndex + 1], date),
+      }));
+      const observedUntil = addMinutes(isoAt(date, 0, 0), 28 * 60);
+      const lastMessage = messages[messages.length - 1];
+      const pendingResponseEvents = pendingStaffReply ? [{
+        id: `${id}-pending-reply`, customerMessageId: lastMessage.id, lastCustomerAt: lastMessage.time,
+        observedUntil: isoChina(observedUntil),
+        waitLowerBoundMinutes: (observedUntil.getTime() - new Date(lastMessage.time).getTime()) / 60000,
+      }] : [];
+      const scenarioId = noCustomerReply ? outreachRedline ? 'outreach_redline' : 'outreach_only' : unreadable ? 'unreadable_customer'
+        : critical ? 'unsafe_promise' : pendingStaffReply ? 'pending_staff_reply'
+          : complaint && unresolved ? 'complaint_unresolved' : complaint ? 'complaint' : unresolved ? 'unresolved' : 'consultation';
+      const dimensionResults = declaredDimensionResults(scenarioId, messages, intentScenario);
+      const highlights = channelIndex === 0 && dateIndex === 0 && index === 2 ? [{
+        id: `${id}-highlight-1`, title: '先评估再沟通方案',
+        summary: '工作号明确说明适用情况需要专业人员评估，保留了审慎沟通的边界。',
+        evidenceMessageIds: [messages[3].id], source: 'synthetic_scenario',
+      }] : [];
+      const issues = [];
+      function issue(ruleId, title, severity, summary, messageIndexes, review = 'pending', redline = dimensionContracts[ruleId]?.redline === true) {
+        issues.push({ id: `${id}-issue-${issues.length + 1}`, ruleId, title, severity, summary,
+          redline, ruleVersion, source: ruleId === 'response' ? 'program' : 'synthetic_scenario',
+          evidenceIds: messageIndexes.map(i => messages[i].id), review });
+      }
+      if (responseEvents.some(e => e.durationMinutes > 20)) {
+        issue('response', '回复超过 20 分钟', 'medium', `首次回复耗时 ${firstDelay} 分钟，超过演示规则的 20 分钟阈值。`, [0, 1]);
+      }
+      if (critical) {
+        issue('promise', '未经评估承诺确定效果', 'high', '合成示例中出现“保证百分之百有效”，需要人工复核并纠正沟通方式。', [2, 3]);
+        issue('safety', '忽略专业评估环节', 'high', '同条合成消息表示“不需要先做面诊”，作为安全告知风险候选。', [3]);
+      }
+      if (outreachRedline) {
+        issue('promise', '单向触达仍出现确定效果承诺', 'high', '员工单向推介中承诺百分之百有效，客户未回应不豁免话术检查。', [2]);
+        issue('safety', '单向触达绕过专业评估', 'high', '同条可读员工消息表示无需面诊，独立记录安全红线候选。', [2]);
+      }
+      if (complaint) issue('complaint', '客户表达不满', 'medium', '客户明确表达等待过久和不满意，需要继续处理。', [4, 5], index === 4 && dateIndex === 1 ? 'confirmed' : 'pending');
+      if (unresolved) issue('unresolved', '售后诉求尚未形成结果', 'medium', '截至当前会话，售后请求仍在登记或待处理状态。', [6, 7]);
+      if (pendingStaffReply) {
+        issue('closing', '客户追问截至观察点仍未回复', 'medium', '客户最后提出需要答复的咨询时间问题，截至次日 04:00 未收到工作号回复。', [messages.length - 1]);
+        issue('unresolved', '新增咨询时间问题尚未得到答复', 'medium', '此条客户追问仍未解决；等待下限单列，不计入已回复耗时。', [messages.length - 1]);
+      }
+      const productMentions = [];
+      messages.forEach(message => products.forEach(p => {
+        if (message.status !== 'unparsed' && message.text.includes(p.name)) {
+          productMentions.push({ id: `${message.id}-${p.id}`, productId: p.id, speaker: message.sender, messageId: message.id, inReportDay: sameDay(message, date) });
+        }
+      }));
+      const speechCount = customerSpeechCount({ messages, date });
+      const intentAssessment = declaredIntent(intentScenario, messages, date);
+      const intent = intentAssessment.level;
+      conversations.push({
+        id, date, channel: channel.id, accountId: account.id,
+        departmentId: account.departmentId, departmentName: account.departmentName,
+        customerId: `synthetic-${channel.id}-${index + 1}`, customerName: `演示客户 ${channelIndex + 1}${String(index + 1).padStart(2, '0')}`,
+        accountName: account.name, intent, intentLabel: intentLabels[intent],
+        intentEvidence: intentAssessment.evidenceMessageIds, intentAssessment,
+        servicePriority: noCustomerReply || unreadable ? 'unknown' : critical || complaint || unresolved ? 'high' : intent === 1 || intent === 2 ? 'medium' : 'low',
+        sentiment: complaint ? 'negative' : unreadable || noCustomerReply ? 'unknown' : index % 3 === 0 ? 'positive' : 'neutral',
+        unresolved: unresolved || pendingStaffReply, complaint, referral, deep: speechCount >= 6,
+        responsibility: account.shared ? 'unknown' : 'account',
+        responsibilityLabel: account.shared ? '工作号共用，具体接待人未知' : '按工作号归属统计',
+        analysisStatus: unreadable ? 'limited' : 'success',
+        dataNotes: [crossDay ? '最后一次回复跨日 8 分钟，作为原请求的上下文。' : '', unreadable ? '客户仅发送未解析媒体，意向保留 unknown。' : '', voice ? '语音已有文字转写，本次按转写文本分析。' : '', pendingStaffReply ? '客户最后追问截至次日 04:00 尚无回复，等待下限单列，不进入已回复均值。' : '', noCustomerReply ? '员工单向触达，当日没有客户消息；不能据此推断客户价值或服务优先级。' : '', account.shared ? '没有具体操作者记录，不归责到员工个人。' : ''].filter(Boolean),
+        summary: noCustomerReply ? '当日仅有员工触达，客户未回应；这不代表客户价值低或没有后续意向。' : unreadable ? '客户媒体尚未解析，信息不足，无法可靠判定意向。' : pendingStaffReply ? '客户新增咨询时间追问，截至次日 04:00 尚未收到回复。' : unresolved ? '客户仍有待处理诉求，应继续跟进明确结果。' : `围绕${product.name}开展咨询，已记录后续联系安排。`,
+        messages, issues, productMentions, responseEvents, pendingResponseEvents, dimensionResults, highlights,
+      });
+    }
+  }));
+  function reviewStatus(issue, reviewsMap = {}) { return reviewsMap[issue.id]?.status || issue.review || 'pending'; }
+  function activeIssues(conversation, reviewsMap = {}, mode = 'ai') {
+    return conversation.issues.filter(issue => mode !== 'effective' || reviewStatus(issue, reviewsMap) !== 'dismissed').map(issue => {
+      const review = reviewsMap[issue.id] || {};
+      return { ...issue, aiSeverity: issue.severity, aiRedline: issue.redline === true,
+        severity: mode === 'effective' && ['low', 'medium', 'high'].includes(review.severity) ? review.severity : issue.severity,
+        redline: mode === 'effective' && typeof review.redline === 'boolean' ? review.redline : issue.redline === true,
+        redlineConfirmed: reviewStatus(issue, reviewsMap) === 'confirmed' && review.redline === true,
+        review: reviewStatus(issue, reviewsMap), reviewReason: review.reason || '' };
+    });
+  }
+  function issuesFor(list, reviewsMap = {}, mode = 'ai') {
+    return list.flatMap(c => activeIssues(c, reviewsMap, mode).map(issue => ({ ...issue, conversationId: c.id, accountId: c.accountId, accountName: c.accountName, customerName: c.customerName, date: c.date, channel: c.channel })));
+  }
+  function hasIssue(c, ruleId, reviewsMap, mode) { return activeIssues(c, reviewsMap, mode).some(issue => issue.ruleId === ruleId); }
+  function riskLevel(c, reviewsMap = {}, mode = 'ai') {
+    const issues = activeIssues(c, reviewsMap, mode);
+    if (issues.some(issue => issue.severity === 'high')) return 'high';
+    if (issues.filter(issue => issue.severity === 'medium').length >= 2 || issues.some(issue => issue.ruleId === 'unresolved')) return 'medium';
+    if(c.analysisStatus==='limited'&&c.intent==='unknown')return 'unknown';
+    return 'low';
+  }
+  function confirmedRedlineCount(list, reviewsMap = {}) {
+    return issuesFor(list, reviewsMap, 'effective').filter(issue => issue.redline === true && issue.redlineConfirmed).length;
+  }
+  function customerSpeechCount(c) {
+    return c.messages.filter(m => sameDay(m, c.date) && m.sender === 'customer' && ['text', 'voice'].includes(m.type)
+      && m.valid !== false && !['failed', 'recalled', 'revoked', 'withdrawn', 'system'].includes(m.status)).length;
+  }
+  function validReplies(c) { return c.responseEvents.filter(event => Number.isFinite(event.durationMinutes) && event.durationMinutes >= 0 && c.messages.some(m => m.id === event.customerMessageId && sameDay(m, c.date))); }
+  function thresholds(options = {}) {
+    return { timeoutMinutes: Number.isFinite(Number(options.timeoutMinutes)) && Number(options.timeoutMinutes) >= 0 ? Number(options.timeoutMinutes) : 20,
+      deepMinMessages: Number.isFinite(Number(options.deepMinMessages)) && Number(options.deepMinMessages) > 0 ? Number(options.deepMinMessages) : 6 };
+  }
+  function isDeep(c, options = {}) {
+    return customerSpeechCount(c) >= thresholds(options).deepMinMessages;
+  }
+  function metricMatches(c, metricId, reviewsMap = {}, mode = 'ai', options = {}) {
+    switch (metricId) {
+      case 'conv_count': return true;
+      case 'risk_count': case 'high_issue_count': return riskLevel(c, reviewsMap, mode) === 'high';
+      case 'medium_risk': return riskLevel(c, reviewsMap, mode) === 'medium';
+      case 'redline_confirmed': return confirmedRedlineCount([c], reviewsMap) > 0;
+      case 'timeout_count': return validReplies(c).some(event => event.durationMinutes > thresholds(options).timeoutMinutes);
+      case 'deep_count': return isDeep(c, options);
+      case 'unresolved_count': return hasIssue(c, 'unresolved', reviewsMap, mode);
+      case 'complaint_count': case 'complaint_rate': return hasIssue(c, 'complaint', reviewsMap, mode);
+      case 'referral_count': return c.referral;
+      case 'response_avg': return validReplies(c).length > 0;
+      default: return false;
+    }
+  }
+  function drilldown(list, metricId, reviewsMap = {}, mode = 'ai', options = {}) { return list.filter(c => metricMatches(c, metricId, reviewsMap, mode, options)); }
+  function round(value) { return Math.round(value * 10) / 10; }
+  function metricValue(metricId, list, reviewsMap = {}, mode = 'ai', options = {}) {
+    if (metricId === 'response_avg') {
+      const replies = list.flatMap(validReplies);
+      return replies.length ? round(replies.reduce((sum, event) => sum + event.durationMinutes, 0) / replies.length) : null;
+    }
+    if (metricId === 'complaint_rate') return list.length ? round(100 * drilldown(list, 'complaint_count', reviewsMap, mode, options).length / list.length) : null;
+    if (metricId === 'high_issue_count') return issuesFor(list, reviewsMap, mode).filter(issue => issue.severity === 'high').length;
+    if (metricId === 'medium_risk') return drilldown(list, metricId, reviewsMap, mode, options).length;
+    if (metricId === 'redline_confirmed') return confirmedRedlineCount(list, reviewsMap);
+    if (!metricLibrary.some(metric => metric.id === metricId)) return null;
+    return drilldown(list, metricId, reviewsMap, mode, options).length;
+  }
+  function getMetrics(list, reviewsMap, mode, options) { return Object.fromEntries(metricLibrary.map(metric => [metric.id, metricValue(metric.id, list, reviewsMap, mode, options)])); }
+  function filter(list, filters = {}, reviewsMap = {}, mode = 'ai', options = {}) {
+    function accepts(actual, expected) { return expected == null || expected === '' || expected === 'all' || (Array.isArray(expected) ? expected.includes(actual) : String(actual) === String(expected)); }
+    return list.filter(c => {
+      if (!accepts(c.date, filters.date) || !accepts(c.channel, filters.channel) || !accepts(c.departmentId, filters.departmentId) || !accepts(c.accountId, filters.accountId) || !accepts(c.intent, filters.intent) || !accepts(c.servicePriority, filters.servicePriority) || !accepts(c.sentiment, filters.sentiment)) return false;
+      if (filters.search && !`${c.customerName} ${c.accountName} ${c.summary} ${c.messages.map(m => m.text).join(" ")} ${c.issues.map(i => i.title + " " + i.summary).join(" ")}`.toLowerCase().includes(String(filters.search).toLowerCase())) return false;
+      if (filters.productId && filters.productId !== 'all' && !c.productMentions.some(p => p.inReportDay && accepts(p.productId, filters.productId))) return false;
+      if (filters.metricId && !metricMatches(c, filters.metricId, reviewsMap, mode, options)) return false;
+      if (filters.riskLevel && !accepts(riskLevel(c, reviewsMap, mode), filters.riskLevel)) return false;
+      const needsIssue = ['severity', 'ruleId', 'reviewStatus', 'redline'].some(key => filters[key] != null && filters[key] !== '' && filters[key] !== 'all');
+      if (needsIssue && !activeIssues(c, reviewsMap, mode).some(issue => accepts(issue.severity, filters.severity) && accepts(issue.ruleId, filters.ruleId) && accepts(issue.redline, filters.redline) && accepts(reviewStatus(issue, reviewsMap), filters.reviewStatus))) return false;
+      if (filters.responsibility && !accepts(c.responsibility, filters.responsibility)) return false;
+      return true;
+    });
+  }
+  function aggregate(list, reviewsMap = {}, mode = 'ai', options = {}) {
+    const selectedAccounts = accounts.filter(account => list.some(c => c.accountId === account.id));
+    const dailyMessages = list.flatMap(c => c.messages.filter(m => sameDay(m, c.date)));
+    const allIssues = list.flatMap(c => c.issues);
+    const replyEvents = list.flatMap(validReplies);
+    return {
+      total: list.length,
+      metrics: getMetrics(list, reviewsMap, mode, options),
+      riskCounts: Object.fromEntries(['high', 'medium', 'low'].map(level => [level, list.filter(c => riskLevel(c, reviewsMap, mode) === level).length])),
+      intents: [1, 2, 3, 4, 5, 'unknown'].map(id => ({ id, label: intentLabels[id], count: list.filter(c => String(c.intent) === String(id)).length })),
+      accounts: selectedAccounts.map(account => {
+        const own = list.filter(c => c.accountId === account.id);
+        return { accountId: account.id, name: account.name, channel: account.channel, departmentId: account.departmentId, departmentName: account.departmentName, shared: account.shared, metrics: getMetrics(own, reviewsMap, mode, options), messageCount: own.reduce((sum, c) => sum + c.messages.filter(m => sameDay(m, c.date)).length, 0), issueCount: issuesFor(own, reviewsMap, mode).length };
+      }),
+      products: products.map(product => {
+        const mentioned = list.flatMap(c => c.productMentions.filter(m => m.productId === product.id && m.inReportDay).map(m => ({ ...m, conversationId: c.id })));
+        return { productId: product.id, name: product.name, mentions: mentioned.length, staffMentions: mentioned.filter(m => m.speaker === 'staff').length, customerMentions: mentioned.filter(m => m.speaker === 'customer').length, conversationCount: new Set(mentioned.map(m => m.conversationId)).size };
+      }),
+      issues: issuesFor(list, reviewsMap, mode),
+      coverage: {
+        totalConversations: list.length, analyzedConversations: list.filter(c => c.analysisStatus === 'success').length,
+        limitedConversations: list.filter(c => c.analysisStatus === 'limited').length,
+        messageCount: dailyMessages.length, contextMessageCount: list.reduce((sum, c) => sum + c.messages.filter(m => !sameDay(m, c.date)).length, 0),
+        unparsedMessages: dailyMessages.filter(m => m.status === 'unparsed').length,
+        transcribedVoices: dailyMessages.filter(m => m.type === 'voice' && m.status === 'transcribed').length,
+        replyCount: replyEvents.length, replyMinutes: replyEvents.reduce((sum, event) => sum + event.durationMinutes, 0),
+        timeoutEvents: replyEvents.filter(event => event.durationMinutes > thresholds(options).timeoutMinutes).length,
+        reviewedIssues: allIssues.filter(issue => reviewStatus(issue, reviewsMap) !== 'pending').length,
+        pendingIssues: allIssues.filter(issue => reviewStatus(issue, reviewsMap) === 'pending').length,
+        dismissedIssues: allIssues.filter(issue => reviewStatus(issue, reviewsMap) === 'dismissed').length,
+        confirmedIssues: allIssues.filter(issue => reviewStatus(issue, reviewsMap) === 'confirmed').length,
+        redlineCandidates: issuesFor(list, reviewsMap, mode).filter(issue => issue.redline === true).length,
+        confirmedRedlines: confirmedRedlineCount(list, reviewsMap),
+      },
+    };
+  }
+  // Independent status fixtures; changing a status does not invent additional conversation/model results.
+  const runScenarios = [
+    { id:'running',status:'running',label:'生成中',total:12,completed:5,waiting:0,failed:0,description:'已完成5个会话，其余仍在处理；仅显示已完成范围。' },
+    { id:'failed',status:'failed',label:'全部分析失败',total:12,completed:0,waiting:0,failed:12,description:'12个会话均未形成可用结果，不能展示为零问题；查看失败原因后，仅补跑可恢复任务。' },
+    { id: 'complete', status: 'complete', label: '全部完成', total: 12, completed: 12, waiting: 0, failed: 0, description: '12 个应处理会话均已形成结果；媒体局限仍单独展示，不等于所有语义均可判断。' },
+    { id: 'waiting', status: 'waiting', label: '等待模型额度', total: 12, completed: 8, waiting: 4, failed: 0, description: '8 个已完成，4 个等待共享模型额度；已完成结果可查看，08:00 前完成仍待容量验证。' },
+    { id: 'partial', status: 'partial', label: '部分完成', total: 12, completed: 11, waiting: 0, failed: 1, description: '11 个已完成，1 个失败待重试；统计仅覆盖已完成会话，不能显示全部完成。' },
+    { id: 'not_generated', status: 'not_generated', label: '尚未生成', total: null, completed: 0, waiting: 0, failed: 0, description: '尚未生成或扫描范围未知，不能把未知会话数显示为零。' },
+    { id: 'no_data', status: 'no_data', label: '当日无可处理会话', total: 0, completed: 0, waiting: 0, failed: 0, description: '已确认当前统计日范围内没有消息；这是无数据状态，不是生成完成。' },
+  ];
+  root.QualityDemo = { synthetic: true, channels, departments, accounts, dates, products, dimensions, judgementDimensionIds, dimensionStatusLabels, ruleVersion, metricLibrary, conversations, intentLabels, runScenarios, filter, aggregate, metricValue, drilldown, activeIssues, reviewStatus, issuesFor, isDeep, customerSpeechCount, riskLevel, confirmedRedlineCount };
+  if (typeof module !== 'undefined' && module.exports) module.exports = root.QualityDemo;
+}(typeof window !== 'undefined' ? window : globalThis));
+
+</script>
+
+<script>
+/* Prototype-only calculations over supplied facts. No DOM, network or persistence. */
+(function (root) {
+  'use strict';
+  const aliases = { timeout_rate: 'timeout_count', timeout_events: 'timeout_count', response_max: 'response_avg', complaint_rate: 'complaint_count' };
+  const names = {
+    conv_count: '质检会话', message_count: '当日消息', high_issue_count: '重大问题',
+    timeout_count: '超时回复', response_avg: '有效回复时长', risk_count: '高风险会话',
+    deep_count: '深聊会话', unresolved_count: '未解决诉求', complaint_count: '负面情绪会话',
+    referral_count: '老带新触达', closing_count: '收尾问题', medium_risk: '中风险会话',
+    interaction_insufficient: '互动不足', negligent_closing: '失职收尾',
+    redline_confirmed: '红线认定', referral_unprepared: '未铺垫引导', new: '新增 AI 判定字段',
+  };
+  const unavailable = new Set(['interaction_insufficient', 'negligent_closing', 'referral_unprepared', 'new']);
+  const dependencyMap = {
+    timeout_count: ['response'], response_avg: ['response'], deep_count: ['depth'],
+    unresolved_count: ['unresolved'], complaint_count: ['complaint'], referral_count: ['referral'],
+    closing_count: ['closing'], interaction_insufficient: ['interaction'], negligent_closing: ['closing'],
+    referral_unprepared: ['referral'],
+  };
+  function canonical(id) { return aliases[id] || id; }
+  function sourceOf(metric) { return typeof metric === 'string' ? metric : metric?.sourceId || metric?.base || metric?.id || 'new'; }
+  const dimensionPrefix = 'dimension:';
+  const dimensionKinds = new Set(['judgement', 'number', 'enum']);
+  function dimensionId(source) { return String(source).startsWith(dimensionPrefix) ? String(source).slice(dimensionPrefix.length) : ''; }
+  function dimensionDefinition(source, dimensions = []) { return dimensions.find(d => d.id === dimensionId(source)); }
+  function sources(dimensions = []) {
+    return [
+      ...Object.entries(names).filter(([id]) => !['new','interaction_insufficient'].includes(id)).map(([id, name]) => ({ id, name, kind: 'builtin' })),
+      ...dimensions.filter(d => dimensionKinds.has(d.kind)).map(d => ({
+        id: dimensionPrefix + d.id, dimensionId: d.id, name: d.name, kind: d.kind,
+        unit: d.unit || '', enumOptions: (d.enumOptions || []).map(option => ({ ...option })),
+        enabled: d.enabled !== false, newField: !!d.newField,
+        definitionVersion: d.definitionVersion ?? d.semanticVersion ?? d.version ?? 1,
+      })),
+    ];
+  }
+  function descriptor(id, name, unit, formula, denominator = '无') { return { id, name, unit, formula, denominator }; }
+  function methods(sourceId, dimensions = []) {
+    const source = canonical(sourceId);
+    const dimension = dimensionDefinition(source, dimensions);
+    if (dimension?.kind === 'number') return [
+      descriptor('count', '有效数值会话数', '个', '该维度已判定且有有效数值的去重会话数'),
+      descriptor('sum', '数值合计', dimension.unit || '数值', '该维度已判定有效数值之和'),
+      descriptor('avg', '数值平均', dimension.unit || '数值', '该维度已判定有效数值之和 ÷ 有效数值会话数', '该维度有有效数值的已判定会话'),
+      descriptor('min', '最小数值', dimension.unit || '数值', '该维度已判定有效数值的最小值'),
+      descriptor('max', '最大数值', dimension.unit || '数值', '该维度已判定有效数值的最大值'),
+    ];
+    if (dimension) {
+      const condition = dimension.kind === 'enum' ? '该维度等于所选选项' : '该维度判定不符合';
+      return [
+        descriptor('conversation_count', '命中会话数', '个', condition + '的去重会话数'),
+        descriptor('ratio', '命中会话占比', '%', condition + '的去重会话数 ÷ 所选分母 × 100%', '由分母口径确定'),
+      ];
+    }
+    const label = names[source] || '满足判定的';
+    if (source === 'conv_count') return [descriptor('count', '会话数', '个', '当前范围内去重的质检会话数')];
+    if (source === 'message_count') return [descriptor('count', '消息条数', '条', '统计日内消息计数，跨日上下文不重复计入')];
+    if (source === 'redline_confirmed') return [descriptor('event_count', '人工认定事件数', '条', '人工确认的红线事件去重计数，不以 AI 候选会话数代替')];
+    if (source === 'response_avg') return [
+      descriptor('average', '平均回复耗时', '分钟', '有效回复事件总耗时 ÷ 有效回复事件数', '有效回复事件数'),
+      descriptor('maximum', '最长回复耗时', '分钟', '有效回复事件耗时的最大值'),
+    ];
+    if (source === 'high_issue_count') return [
+      descriptor('event_count', '问题事件数', '条', '当前口径下重大问题事件去重计数'),
+      descriptor('conversation_count', '问题会话数', '个', '至少含一条重大问题的会话去重计数'),
+      descriptor('ratio', '问题会话占比', '%', '含重大问题的去重会话数 ÷ 全部质检会话数 × 100%', '当前范围全部质检会话'),
+    ];
+    if (source === 'timeout_count') return [
+      descriptor('conversation_count', '超时会话数', '个', '至少一次有效回复超过当前阈值的会话去重计数'),
+      descriptor('event_count', '超时事件数', '次', '耗时超过当前阈值的有效回复事件去重计数'),
+      descriptor('response_ratio', '已回复会话超时率', '%', '有超时回复的会话数 ÷ 存在有效回复的会话数 × 100%', '存在有效回复事件的会话'),
+      descriptor('ratio', '占全部质检会话比例', '%', '有超时回复的会话数 ÷ 全部质检会话数 × 100%', '当前范围全部质检会话'),
+    ];
+    return [
+      descriptor('conversation_count', '满足条件的会话数', '个', `${label}涉及的会话去重计数`),
+      descriptor('ratio', '占全部质检会话比例', '%', `${label}涉及的去重会话数 ÷ 全部质检会话数 × 100%`, '当前范围全部质检会话'),
+    ];
+  }
+  function defaultMethod(sourceId, dimensions = []) {
+    if (dimensionDefinition(sourceId, dimensions)?.kind === 'number') return 'count';
+    if (sourceId === 'timeout_rate') return 'response_ratio';
+    if (sourceId === 'timeout_events') return 'event_count';
+    if (sourceId === 'response_max') return 'maximum';
+    if (sourceId === 'complaint_rate') return 'ratio';
+    if (sourceId === 'redline_confirmed') return 'event_count';
+    return { conv_count: 'count', message_count: 'count', high_issue_count: 'event_count', timeout_count: 'conversation_count', response_avg: 'average' }[canonical(sourceId)] || 'conversation_count';
+  }
+  function supportedMethod(sourceId, method, dimensions = []) {
+    const dimension = dimensionDefinition(sourceId, dimensions);
+    const compatible = dimension?.kind === 'number' ? { average: 'avg', minimum: 'min', maximum: 'max' } : dimension ? { count: 'conversation_count' } : {};
+    const requested = !method || method === 'native' ? defaultMethod(sourceId, dimensions) : compatible[method] || method;
+    const available = methods(sourceId, dimensions);
+    return available.find(item => item.id === requested) || available.find(item => item.id === defaultMethod(sourceId, dimensions)) || available[0];
+  }
+  function suggestName(sourceId, method, dimensions = [], optionId = '') {
+    const source = canonical(sourceId);
+    const actual = supportedMethod(sourceId, method, dimensions).id;
+    const dimension = dimensionDefinition(sourceId, dimensions);
+    if (dimension) {
+      if (dimension.kind === 'number') return dimension.name + ({ count: '有效数值会话数', sum: '合计', avg: '平均值', min: '最小值', max: '最大值' }[actual] || '会话数');
+      const option = (dimension.enumOptions || []).find(o => o.id === optionId);
+      return dimension.name + (dimension.kind === 'enum' ? (option ? ' · ' + option.name : ' · 所选选项') : '不符合') + (actual === 'ratio' ? '占比' : '会话数');
+    }
+    const label = names[source] || '判定';
+    if (source === 'conv_count') return '质检会话数';
+    if (source === 'message_count') return '当日消息数';
+    if (source === 'response_avg') return actual === 'maximum' ? '最长回复耗时' : '平均回复耗时';
+    if (source === 'high_issue_count') return { event_count: '重大问题条数', conversation_count: '重大问题会话数', ratio: '重大问题会话占比' }[actual];
+    if (source === 'timeout_count') return { event_count: '回复超时次数', conversation_count: '回复超时会话数', response_ratio: '已回复会话超时率', ratio: '超时会话占全部会话比例' }[actual];
+    const prefix = source === 'new' ? '新判定' : label.endsWith('会话') ? label.slice(0, -2) : label;
+    return `${prefix}会话${actual === 'ratio' ? '占比' : '数'}`;
+  }
+  function normalize(metric, dimensions = []) {
+    const input = typeof metric === 'string' ? { base: metric } : { ...(metric || {}) };
+    const source = sourceOf(input);
+    const method = supportedMethod(source, input.method, dimensions);
+    const dimension = dimensionDefinition(source, dimensions);
+    const denominatorMode = input.denominatorMode === 'assessed' ? 'assessed' : 'all';
+    const denominator = dimension && method.id === 'ratio'
+      ? denominatorMode === 'assessed' ? '该维度适用且已判定的会话' : '当前范围全部质检会话'
+      : method.denominator;
+    const out = { ...input, base: canonical(source), method: method.id, unit: method.unit, aggregation: method.name,
+      denominatorMode, denominator, formula: method.formula.replace('所选分母', denominator),
+      name: typeof input.name === 'string' && input.name.trim() ? input.name : suggestName(source, method.id, dimensions, input.optionId) };
+    if (dimensionId(source)) {
+      out.dimensionId = dimensionId(source);
+      out.definitionVersion = input.definitionVersion ?? dimension?.definitionVersion ?? dimension?.semanticVersion ?? dimension?.version ?? 1;
+      out.optionId = input.optionId || '';
+      delete out.rule; // The definition owns its rule; a metric only references its stable ID/version.
+      delete out.noFacts;
+    }
+    if (source === 'redline_confirmed') delete out.noFacts;
+    return out;
+  }
+  function sourceIds(Q, dimensions = Q?.dimensions || []) {
+    const result = [];
+    const seen = new Set();
+    for (const metric of Q?.metricLibrary || []) {
+      const id = canonical(metric.id);
+      if (seen.has(id) || id === 'new') continue;
+      seen.add(id);
+      result.push({ id, name: names[id] || metric.name || id });
+    }
+    for (const source of sources(dimensions)) {
+      if (seen.has(source.id)) continue;
+      seen.add(source.id); result.push(source);
+    }
+    return result;
+  }
+  function dependencies(sourceId) { return dimensionId(sourceId) ? [dimensionId(sourceId)] : (dependencyMap[canonical(sourceId)] || []).slice(); }
+  function uniqueList(list) {
+    const seen = new Set();
+    return (list || []).filter(c => {
+      const key = c.id || c;
+      if (seen.has(key)) return false;
+      seen.add(key); return true;
+    });
+  }
+  function reportDay(c, message) {
+    return message.inReportDay !== false && (!c.date || !message.time || message.time.slice(0, 10) === c.date);
+  }
+  function replies(c) {
+    const messages = new Map((c.messages || []).map(message => [message.id, message]));
+    const seen = new Set();
+    return (c.responseEvents || []).filter(event => {
+      if (!Number.isFinite(event.durationMinutes) || event.durationMinutes < 0 || !event.customerMessageId || !event.replyMessageId) return false;
+      const customer = messages.get(event.customerMessageId), reply = messages.get(event.replyMessageId);
+      if (messages.size && (!customer || !reply || customer.sender !== 'customer' || reply.sender !== 'staff' || !reportDay(c, customer))) return false;
+      if ([customer, reply].some(m => m && ['failed', 'recalled', 'withdrawn'].includes(m.status))) return false;
+      const key = event.id || `${event.customerMessageId}|${event.replyMessageId}`;
+      if (seen.has(key)) return false;
+      seen.add(key); return true;
+    });
+  }
+  function activeIssues(Q, c, reviews, mode) {
+    const rows = typeof Q?.activeIssues === 'function' ? Q.activeIssues(c, reviews, mode) : (c.issues || []).filter(issue => mode !== 'effective' || (reviews?.[issue.id]?.status || issue.review) !== 'dismissed');
+    const seen = new Set();
+    return rows.filter(issue => {
+      const key = issue.id || issue;
+      if (seen.has(key)) return false;
+      seen.add(key); return true;
+    });
+  }
+  function limit(options) { return Number.isFinite(Number(options?.timeoutMinutes)) && Number(options.timeoutMinutes) >= 0 ? Number(options.timeoutMinutes) : 20; }
+  function isUnavailable(Q, metric, dimensions = []) {
+    const source = sourceOf(metric), canonicalSource = canonical(source);
+    if (dimensionId(source)) {
+      const d = dimensionDefinition(source, dimensions);
+      return !d || !dimensionKinds.has(d.kind) || d.enabled === false || !!d.newField || !!metric.newField;
+    }
+    if (canonicalSource === 'redline_confirmed') return false;
+    return !!metric.newField || !!metric.noFacts || unavailable.has(canonicalSource) || !!Q?.metricLibrary?.find(item => item.id === source || item.id === canonicalSource)?.noFacts || !Object.hasOwn(names, canonicalSource);
+  }
+  function dimensionResult(c, definition) {
+    const rows = (c.dimensionResults || []).filter(row => row.dimensionId === definition.id);
+    return rows.length === 1 ? rows[0] : null;
+  }
+  function assessedResult(result, definition) {
+    if (!result || !['conform', 'nonconform'].includes(result.status)) return false;
+    if (definition.kind === 'number') return typeof result.value === 'number' && Number.isFinite(result.value);
+    if (definition.kind === 'enum') return (definition.enumOptions || []).some(option => option.id === result.value);
+    return true;
+  }
+  function dimensionMatches(result, definition, metric) {
+    if (!assessedResult(result, definition)) return false;
+    if (definition.kind === 'judgement') return result.status === 'nonconform';
+    if (definition.kind === 'enum') return !!metric.optionId && result.value === metric.optionId;
+    return true;
+  }
+  function dimensionSample(Q, metric, list, options) {
+    const dimensions = options.dimensions || Q?.dimensions || [];
+    const normalized = normalize(metric, dimensions);
+    const definition = dimensionDefinition(sourceOf(normalized), dimensions);
+    if (isUnavailable(Q, normalized, dimensions)) return null;
+    if (definition.kind === 'enum' && !(definition.enumOptions || []).some(option => option.id === normalized.optionId)) return null;
+    const scope = uniqueList(list);
+    const rows = scope.map(conversation => ({ conversation, result: dimensionResult(conversation, definition) }));
+    if (!rows.some(row => row.result)) return null;
+    return { metric: normalized, definition, scope, rows };
+  }
+  function riskLevel(Q, c, reviews, mode) {
+    if (typeof Q?.riskLevel === 'function') return Q.riskLevel(c, reviews, mode);
+    const issues = activeIssues(Q, c, reviews, mode);
+    if (issues.some(issue => issue.severity === 'high')) return 'high';
+    if (issues.some(issue => issue.ruleId === 'unresolved') || issues.filter(issue => issue.severity === 'medium').length >= 2) return 'medium';
+    if(c.analysisStatus==='limited'&&c.intent==='unknown')return 'unknown';
+    return 'low';
+  }
+  function confirmedRedlines(Q, list, reviews) {
+    if (typeof Q?.confirmedRedlineCount === 'function') return Q.confirmedRedlineCount(list, reviews);
+    return uniqueList(list).reduce((count, c) => count + activeIssues(Q, c, reviews, 'effective').filter(issue => {
+      const review = reviews?.[issue.id];
+      return review?.status === 'confirmed' && review.redline === true;
+    }).length, 0);
+  }
+  function matches(Q, source, c, reviews, mode, options) {
+    const issues = activeIssues(Q, c, reviews, mode);
+    switch (source) {
+      case 'conv_count': return true;
+      case 'message_count': return (c.messages || []).some(m => reportDay(c, m));
+      case 'high_issue_count': return issues.some(issue => issue.severity === 'high');
+      case 'risk_count': return riskLevel(Q, c, reviews, mode) === 'high';
+      case 'redline_confirmed': return confirmedRedlines(Q, [c], reviews) > 0;
+      case 'timeout_count': return replies(c).some(event => event.durationMinutes > limit(options));
+      case 'response_avg': return replies(c).length > 0;
+      case 'deep_count': {
+        if (typeof Q?.isDeep === 'function') return Q.isDeep(c, options);
+        const threshold = Number.isFinite(Number(options?.deepMinMessages)) && Number(options.deepMinMessages) > 0 ? Number(options.deepMinMessages) : 6;
+        return (c.messages || []).filter(m => reportDay(c, m) && m.sender === 'customer' && m.valid !== false && ['text', 'voice'].includes(m.type) && !['failed', 'recalled', 'withdrawn', 'revoked', 'system'].includes(m.status)).length >= threshold;
+      }
+      case 'unresolved_count': return issues.some(issue => issue.ruleId === 'unresolved');
+      case 'complaint_count': return issues.some(issue => issue.ruleId === 'complaint');
+      case 'closing_count': return issues.some(issue => issue.ruleId === 'closing');
+      case 'referral_count': return c.referral === true;
+      case 'medium_risk': return riskLevel(Q, c, reviews, mode) === 'medium';
+      default: return false;
+    }
+  }
+  // Returns affected conversations, even when the selected value counts events/messages.
+  function drilldown(Q, metric, list, reviews = {}, mode = 'ai', options = {}) {
+    const m = normalize(metric, options.dimensions || Q?.dimensions || []);
+    if (dimensionId(sourceOf(m))) {
+      const sample = dimensionSample(Q, m, list, options);
+      return sample ? sample.rows.filter(row => dimensionMatches(row.result, sample.definition, sample.metric)).map(row => row.conversation) : [];
+    }
+    if (isUnavailable(Q, m, options.dimensions)) return [];
+    return uniqueList(list).filter(c => matches(Q, canonical(sourceOf(m)), c, reviews, mode, options));
+  }
+  function rounded(number) { return Math.round(number * 10) / 10; }
+  function value(Q, metric, list, reviews = {}, mode = 'ai', options = {}) {
+    const m = normalize(metric, options.dimensions || Q?.dimensions || []);
+    if (dimensionId(sourceOf(m))) {
+      const sample = dimensionSample(Q, m, list, options);
+      if (!sample) return null;
+      const assessed = sample.rows.filter(row => assessedResult(row.result, sample.definition));
+      const matched = assessed.filter(row => dimensionMatches(row.result, sample.definition, sample.metric));
+      if (m.method === 'ratio') {
+        const denominator = m.denominatorMode === 'assessed' ? assessed.length : sample.scope.length;
+        return denominator ? rounded(100 * matched.length / denominator) : null;
+      }
+      if (sample.definition.kind === 'number' && m.method !== 'count') {
+        const values = assessed.map(row => row.result.value);
+        if (!values.length) return null;
+        const sum = values.reduce((total, number) => total + number, 0);
+        if (m.method === 'sum') return sum;
+        if (m.method === 'avg') return sum / values.length;
+        if (m.method === 'min') return Math.min(...values);
+        if (m.method === 'max') return Math.max(...values);
+      }
+      return matched.length;
+    }
+    if (isUnavailable(Q, m, options.dimensions)) return null;
+    const source = canonical(sourceOf(m)), scope = uniqueList(list);
+    const matched = drilldown(Q, m, scope, reviews, mode, options);
+    if (m.method === 'ratio') return scope.length ? rounded(100 * matched.length / scope.length) : null;
+    if (m.method === 'response_ratio') {
+      const denominator = scope.filter(c => replies(c).length).length;
+      return denominator ? rounded(100 * matched.length / denominator) : null;
+    }
+    if (source === 'message_count') {
+      return scope.reduce((count, c) => count + new Set((c.messages || []).filter(message => reportDay(c, message)).map(message => message.id || message)).size, 0);
+    }
+    if (source === 'response_avg') {
+      const durations = scope.flatMap(replies).map(event => event.durationMinutes);
+      if (!durations.length) return null;
+      return m.method === 'maximum' ? Math.max(...durations) : rounded(durations.reduce((sum, duration) => sum + duration, 0) / durations.length);
+    }
+    if (m.method === 'event_count') {
+      if (source === 'timeout_count') return scope.reduce((count, c) => count + replies(c).filter(event => event.durationMinutes > limit(options)).length, 0);
+      if (source === 'high_issue_count') return scope.reduce((count, c) => count + activeIssues(Q, c, reviews, mode).filter(issue => issue.severity === 'high').length, 0);
+      if (source === 'redline_confirmed') return confirmedRedlines(Q, scope, reviews);
+    }
+    return matched.length;
+  }
+  root.QualityMetric = { sources, sourceIds, methods, defaultMethod, normalize, suggestName, value, drilldown, dependencies };
+  if (typeof module !== 'undefined' && module.exports) module.exports = root.QualityMetric;
+}(typeof window !== 'undefined' ? window : globalThis));
+
+</script>
+
+<script>
+(function () {
+  'use strict';
+  const root = document.getElementById('quality-daily-app');
+  const Q = window.QualityDemo;
+  const M = window.QualityMetric;
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const clone = v => JSON.parse(JSON.stringify(v));
+  const defaultIds = ['conv_count','risk_count','timeout_count','deep_count','high_issue_count','unresolved_count'];
+  const baseline = {version:1, metrics:defaultIds.map(id => ({...Q.metricLibrary.find(m => m.id === id),enabled:true,base:id})), dimensions:clone(Q.dimensions), products:clone(Q.products), timeoutMinutes:20, deepMinMessages:6, groupMinutes:5, prompt:{wecom:'按统计日检查本工作号与客户的单聊。结合已配置维度判断诉求、风险、客户意向与产品触达。所有判断引用当前会话内真实消息；信息不足时明确标记，不推断实际操作人。',wechat:'按统计日检查本工作号与客户的单聊。检查客户诉求、服务过程、风险与产品触达；已有语音转写作为文字分析。无法解析的媒体保留信息不足，不认定为客户未回应。'}};
+  const additionalMetrics = [
+    ['message_count','当日消息','条','程序统计','按统计日消息计数'],['timeout_rate','已回复会话超时率','%','程序统计','超时会话 / 有效响应会话'],['timeout_events','回复超时次数','次','程序统计','超时响应事件计数'],['response_avg','平均回复耗时','分钟','程序统计','总响应时长 / 已回复事件数'],['response_max','最长回复耗时','分钟','程序统计','已回复事件最大耗时'],['interaction_insufficient','互动不足','个','AI 判断','有效互动不符合的会话去重',false],['closing_count','收尾问题','个','AI 判断','按会话去重'],['negligent_closing','失职收尾','个','人工认定','需责任认定事实',true],['redline_confirmed','已认定红线','条','人工认定','已确认的红线事件'],['referral_count','老带新触达','个','AI 行为事实','按会话去重'],['referral_unprepared','未铺垫引导','个','AI 判断','需业务动作判定事实',true],['medium_risk','中风险会话','个','AI 判断','无严重问题，至少两条一般问题或存在诉求未解决']
+  ].map(([id,name,unit,source,aggregation,noFacts])=>({id,name,unit,source,aggregation,noFacts:!!noFacts,base:id==='interaction_insufficient'?'dimension:interaction':id,enabled:true,card:false,denominator:id==='timeout_rate'?'存在有效回复事件的会话':'无',description:aggregation}));
+  additionalMetrics.forEach(m=>{if(!Q.metricLibrary.some(x=>x.id===m.id))Q.metricLibrary.push(m);});
+  baseline.metrics.forEach(m=>m.card=true);baseline.metrics.push(...additionalMetrics);
+  baseline.metrics=baseline.metrics.map(m=>M.normalize(m,baseline.dimensions));
+  const baselineTemplates = Object.fromEntries(['wecom','wechat'].map(channel=>[channel,{name:(channel==='wecom'?'企微':'个微')+'会话质检日报',text:baseline.prompt[channel],modelBinding:'managed-deepseek',version:1,cronEnabled:true}]));
+  delete baseline.prompt;
+  let state = {page:'report',channel:'wecom',date:Q.dates[0],department:'all',account:'all',tab:'overview',mode:'ai',view:'saved',settingsTab:'metrics',config:clone(baseline),templates:clone(baselineTemplates),reviews:{},intentReviews:{},handling:{},history:[],search:'',intent:'all',severity:'all',reviewFilter:'all',redlineFilter:'all',metricFilter:'',productFilter:'',mentionSpeaker:'all',pageNumber:1,sortBy:'issues',runScenario:'complete'};
+  const initialState=clone(state);
+  let draft = null, modal = null, notice = '', lastSentSnapshot = '', returnFocus = null, returnScroll = 0, modalParents = [];
+  const reviewDrafts = {}, intentDrafts = {}, sentSnapshots = new Set();
+  function restore(raw) {
+    if(!raw?.state||!['quality-daily-v1','quality-daily-v2'].includes(raw.schema))return;
+    const saved=clone(raw.state),c=saved.config||{};
+    if(raw.schema==='quality-daily-v2')c.dimensions=baseline.dimensions.map(d=>({...d,...(c.dimensionOverrides||[]).find(x=>x.id===d.id)})).concat((c.dimensionOverrides||[]).filter(d=>!baseline.dimensions.some(x=>x.id===d.id)));
+    else c.dimensions=baseline.dimensions.map(d=>({...d,name:c.dimensions?.find(x=>x.id===d.id)?.name||d.name}));
+    delete c.dimensionOverrides;delete c.accountScope;delete c.prompt;delete c.enabled;
+    c.metrics=(c.metrics||baseline.metrics).filter(m=>m.base!=='new').map(m=>{const source=(m.base||m.id)==='interaction_insufficient'?'dimension:interaction':(m.base||m.id);return M.normalize({...Q.metricLibrary.find(x=>x.id===(m.base||m.id)),...m,base:source,sourceId:source,noFacts:['negligent_closing','referral_unprepared'].includes(source)},c.dimensions);});
+    state={...initialState,...saved,config:{...clone(baseline),...c},templates:Object.fromEntries(['wecom','wechat'].map(ch=>[ch,{...clone(baselineTemplates[ch]),...saved.templates?.[ch]}]))};
+    if(state.settingsTab==='prompt'){state.page='prompts';state.settingsTab='metrics';}if(!['metrics','dimensions','parameters','products'].includes(state.settingsTab))state.settingsTab='metrics';
+  }
+  restore(window.openai?.widgetState?.privateContent);
+  function packState(next){const v=clone(next);v.history=[];v.config.metrics=v.config.metrics.map(m=>Object.fromEntries(['id','base','name','enabled','card','method','denominatorMode','optionId','definitionVersion'].filter(k=>m[k]!==undefined).map(k=>[k,m[k]])));v.config.dimensionOverrides=v.config.dimensions.map(d=>{const b=baseline.dimensions.find(x=>x.id===d.id);return b?Object.fromEntries(Object.entries(d).filter(([k,val])=>k==='id'||JSON.stringify(val)!==JSON.stringify(b[k]))):d;}).filter(d=>Object.keys(d).length>1);delete v.config.dimensions;return v;}
+  function fitsSnapshot(next){return new TextEncoder().encode(JSON.stringify(packState(next))).length<=13000;}
+  function storageWarning(message){notice=message;const box=root.querySelector('#q-storage-status');box.textContent=message;box.style.display='block';}
+  function persist() { const snapshot=packState(state);const serialized=JSON.stringify(snapshot);if(new TextEncoder().encode(serialized).length>13000){storageWarning('本次演示修改尚未保存：内容超过预览存储容量，刷新可能丢失。');return;}lastSentSnapshot=serialized;sentSnapshots.add(serialized);if(sentSnapshots.size>40)sentSnapshots.delete(sentSnapshots.values().next().value); if(typeof window.openai?.setWidgetState==='function') window.openai.setWidgetState({modelContent:{prototype:'工作号每日质检',channel:state.channel,date:state.date,tab:state.tab,configVersion:state.config.version,promptVersions:Object.fromEntries(Object.entries(state.templates).map(([k,v])=>[k,v.version])),page:state.page,metrics:state.config.metrics.filter(m=>m.enabled).map(m=>m.name),reviewed:Object.keys(state.reviews).length},privateContent:{schema:'quality-daily-v2',state:snapshot}}).catch(()=>{storageWarning('演示保存失败：修改仅在当前页面生效，刷新会丢失。');render();}); }
+  window.addEventListener('openai:set_globals', e=>{ const saved=e.detail?.globals?.widgetState?.privateContent;if(['quality-daily-v1','quality-daily-v2'].includes(saved?.schema)&&!sentSnapshots.has(JSON.stringify(saved.state))){restore(saved);render();} });
+  const channelNameFor=channel=>channel==='wecom'?'企微':'个微';
+  const channelName = () => channelNameFor(state.channel);
+  const cfg = () => state.view==='original'?baseline:state.view==='preview'?state.config:{...state.config,dimensions:state.config.dimensions.map(d=>{const old=baseline.dimensions.find(x=>x.id===d.id);return old?{...old,name:d.name,enabled:d.enabled}:d;}),products:baseline.products.map(p=>({...p,name:state.config.products.find(x=>x.id===p.id)?.name||p.name})).concat(state.config.products.filter(p=>!baseline.products.some(x=>x.id===p.id)))};
+  const activeTemplate = () => (state.view==='preview'?state.templates:baselineTemplates)[state.channel];
+  const options = () => ({timeoutMinutes:cfg().timeoutMinutes,deepMinMessages:cfg().deepMinMessages,dimensions:cfg().dimensions});
+  function button(label, action, data={}, cls='', disabled=false) {return `<button type="button" class="q-button cursor-interaction ${cls}" data-action="${action}" ${disabled?'disabled':''} ${Object.entries(data).map(([k,v])=>`data-${k}="${esc(v)}"`).join(' ')}>${label}</button>`;}
+  const tag=(text,type='')=>`<span class="q-tag ${type}">${esc(text)}</span>`;
+  const priorityLabel=v=>({high: "高",medium: "中",low: "低",unknown: "信息不足"}[v]||"未判定");
+  const riskLabel=v=>({high:'重大',medium:'一般',low:'提示'}[v]||v);
+  const reviewLabel=v=>({pending:'待复核',confirmed:'已确认',dismissed:'已判误报'}[v]||v);
+  const reviewTag=v=>tag(reviewLabel(v),v==='confirmed'?'red':v==='pending'?'amber':'');
+  const accountName=id=>Q.accounts.find(a=>a.id===id)?.name||id;
+  function select(label, name, values, selected, extra='') {return `<label class="q-field">${label}<select class="q-input" name="${name}" aria-label="${esc(label)}" ${extra}>${values.map(v=>`<option value="${esc(v.id)}" ${String(v.id)===String(selected)?'selected':''}>${esc(v.name)}</option>`).join('')}</select></label>`;}
+  function table(headers,rows) {return `<div class="q-table-wrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;}
+  const empty=(title='没有匹配记录',desc='调整日期或筛选范围后查看。')=>`<div class="q-empty"><strong>${esc(title)}</strong><span>${esc(desc)}</span></div>`;
+  function data() {
+    return Q.conversations.map(c=>state.mode==='effective'&&state.intentReviews?.[c.id]?{...c,originalIntent:c.intent,intent:state.intentReviews[c.id].value,intentLabel:Q.intentLabels[state.intentReviews[c.id].value]}:c);
+  }
+  function scopeAll(){return Q.filter(data(),{channel:state.channel,date:state.date,departmentId:state.department,accountId:state.account},{},'ai',options());}
+  function runState(){const all=scopeAll(),scenario=(Q.runScenarios||[]).find(r=>r.id===state.runScenario)||{id:'complete',label:'已完成',completed:12};const global=Q.filter(data(),{channel:state.channel,date:state.date},{},'ai',options());const ids=new Set(global.slice(0,scenario.completed||0).map(c=>c.id));return {...scenario,total:scenario.id==='not_generated'?null:scenario.id==='no_data'?0:all.length,completed:scenario.id==='complete'?all.length:all.filter(c=>ids.has(c.id)).length,ids};}
+  function scoped(){const r=runState(),all=scopeAll();return ['not_generated','no_data'].includes(r.id)?[]:r.id==='complete'?all:all.filter(c=>r.ids.has(c.id));}
+  const aggregate=list=>Q.aggregate(list,state.reviews,state.mode,options());
+  function drilldown(list,id){const m=typeof id==='object'?id:cfg().metrics.find(m=>m.id===id)||Q.metricLibrary.find(m=>m.id===id)||{base:id};return M.drilldown(Q,m,list,state.reviews,state.mode,options());}
+  function metricStatus(m,c=cfg(),preview=state.view==='preview'){
+    const source=m.sourceId||m.base||m.id;if(source.startsWith('dimension:')){const d=c.dimensions.find(x=>x.id===source.slice(10));if(!d)return {label:'未采集',reason:'该来源不存在于本报告规则中。'};if(!d.enabled)return {label:'未评估',reason:'对应检查已停用，不能用零填补。'};if(d.newField)return {label:'未采集',reason:'该定义在本报告中没有同版本结果，需新分析。'};}if(m.newField)return {label:'待生成',reason:'新增分析字段尚无事实，生成新日报后才能统计。'};
+    if(m.noFacts)return {label:m.source==='人工认定'?'待认定':'待采集',reason:m.source==='人工认定'?'缺少独立人工认定记录，不能直接用 AI 候选数代替。':'本演示未采集该字段，不能按 0 统计。'};
+    if(c.groupMinutes!==baseline.groupMinutes&&['timeout_count','timeout_rate','timeout_events','response_avg','response_max'].includes(m.base||m.id))return {label:'待重算',reason:'发言归组窗口已变化，需要从原始消息重建响应事件；不调用模型。本原型不伪造新事件。'};if(['risk_count','high_issue_count','medium_risk'].includes(m.base||m.id)&&!c.dimensions.some(d=>d.enabled))return {label:'未评估',reason:'未启用检查维度，不能计算风险统计。'};
+    const deps=M.dependencies(m.base||m.id),missing=deps.map(id=>c.dimensions.find(d=>d.id===id)).filter(d=>d&&d.enabled===false);
+    if(missing.length)return {label:'未评估',reason:'对应检查已停用：'+missing.map(d=>d.name).join('、')+'。历史结果可从报告原口径查看。'};if(['risk_count','high_issue_count','medium_risk'].includes(m.base||m.id)&&c.dimensions.some(d=>d.kind==='judgement'&&!d.enabled))return {label:'未评估',reason:'检查范围已变化，当前配置未完成完整风险评估；可查看报告原口径。'};if(!preview)return null;
+    const semantic=!['conv_count','message_count','timeout_count','timeout_rate','timeout_events','deep_count','response_avg','response_max'].includes(m.base||m.id);
+    if(semantic&&((deps.some(id=>c.dimensions.some(d=>d.id===id&&d.enabled&&d.newField))||(['risk_count','high_issue_count','medium_risk'].includes(m.base||m.id)&&c.dimensions.some(d=>d.enabled&&d.newField)))||state.templates[state.channel].text!==baselineTemplates[state.channel].text||state.templates[state.channel].modelBinding!==baselineTemplates[state.channel].modelBinding))return {label:'待生成',reason:'分析规则或提示词已变化，需要新分析事实。下方原文仍为历史记录。'};
+    return null;
+  }
+  function pendingMetric(m){return !!metricStatus(m);}
+  function metricValue(m,list){return pendingMetric(m)?null:M.value(Q,m,list,state.reviews,state.mode,options());}
+  function metricDisplay(m,value){return value===null?(metricStatus(m)?.label||'无样本'):Number.isInteger(value)?String(value):Number(value).toFixed(1);}
+  function metricNote(m,list){return metricStatus(m)?.reason||(M.value(Q,m,list,state.reviews,state.mode,options())===null?(list.length?'无适用样本：没有有效回复事件或分母为 0。':'当前范围没有会话数据。'):M.normalize(m,cfg().dimensions).aggregation);}
+  function draftDirty(){return !!draft&&JSON.stringify(draft)!==JSON.stringify(state.config);}
+  function updateDraftNotice(){const el=root.querySelector('#q-draft-notice');if(el)el.textContent=draftDirty()?'有未保存修改 · 切换页面会保留，刷新前请保存。':'显示设置即时生效；判定规则用于新分析，历史结果保留原标准。';}
+  function pagination(total,pages,current,unit){return `<div class="q-pagination"><span>共 ${total} ${unit}</span>${button('上一页','page',{value:-1},'small',current<=1)}<span>${current} / ${pages}</span>${button('下一页','page',{value:1},'small',current>=pages)}</div>`;}
+  function productAnalysisStatus(){if(state.view!=='preview')return null;const d=cfg().dimensions.find(d=>d.id==='product');if(d?.enabled===false)return '产品触达维度未启用，当前预览未评估。';if(d?.newField||activeTemplate().text!==baselineTemplates[state.channel].text||activeTemplate().modelBinding!==baselineTemplates[state.channel].modelBinding)return '产品分析规则或提示词已变化，需要生成新分析事实。';return null;}
+  function productMentions(list){if(productAnalysisStatus())return [];const active=cfg().products.filter(p=>p.enabled!==false&&!p.newField&&!p.needsAnalysis).map(p=>p.id);return filtered(list).flatMap(c=>c.productMentions.filter(p=>p.inReportDay&&active.includes(p.productId)&&(!state.mentionSpeaker||state.mentionSpeaker==='all'||p.speaker===state.mentionSpeaker)&&(!state.productFilter||state.productFilter===p.productId)).map(p=>({...p,c})));}
+  function metricLabel(id){return cfg().metrics.find(m=>m.id===id)?.name||Q.metricLibrary.find(m=>m.id===id)?.name||id;}
+  function filtered(list){let out=Q.filter(list,{search:state.search,intent:state.intent,severity:state.severity,reviewStatus:state.reviewFilter,productId:state.productFilter},state.reviews,state.mode,options());if(state.metricFilter){const d=cfg().metrics.find(m=>m.id===state.metricFilter);out=d?.newField?[]:drilldown(out,d||state.metricFilter);}return out;}
+  function resetLocal(){state.search='';state.intent='all';state.severity='all';state.reviewFilter='all';state.redlineFilter='all';state.metricFilter='';state.productFilter='';state.mentionSpeaker='all';state.pageNumber=1;}
+  function topFilters(){const acc=Q.accounts.filter(a=>a.channel===state.channel&&(state.department==='all'||a.departmentId===state.department));return `<div class="q-filters">${select('统计日期','date',Q.dates.map(d=>({id:d,name:d})),state.date)}${select('部门','department',[{id:'all',name:'全部部门'},...Q.departments],state.department)}${select('工作号','account',[{id:'all',name:'全部可见工作号'},...acc.map(a=>({id:a.id,name:a.name}))],state.account)}${select('统计口径','mode',[{id:'ai',name:'AI 原始结果'},{id:'effective',name:'复核后有效结果'}],state.mode)}</div>`;}
+  function reportPage(){const list=scoped(),a=aggregate(list);const metrics=cfg().metrics.filter(m=>m.enabled);const tabs=[['overview','今日概览'],['intent','客户意向'],['accounts','工作号看板'],['issues','问题明细'],['risk','严重红线'],['business','产品与老带新'],['standards','质检标准']];return `<div class="q-breadcrumb">聊天管理 / ${channelName()}会话质检日报</div><div class="q-title-row"><div><h1>${channelName()}会话质检日报</h1><div class="q-sub">工作号每日质检 · ${state.date} · 北京时间</div></div><div class="q-actions">${button('生成记录','runs')}${button('质检配置','settings')}</div></div>${notice?`<div class="q-toast" role="status">${esc(notice)}</div>`:''}${topFilters()}${runBanner()}<div class="q-notice ${a.coverage.unparsedMessages?'warn':''}"><span>${list.length?`当前统计包含 ${list.length} 个已分析会话 · ${a.coverage.messageCount} 条当日消息${a.coverage.limitedConversations?` · ${a.coverage.limitedConversations} 个会话存在未解析媒体`:''}`:'当前筛选范围没有可展示的日报'}${state.mode==='effective'?' · 待复核候选仍保留，已判误报排除':''}</span>${list.length?button('查看覆盖情况','coverage',{},'link'):''}</div>${configurationNotice()}${historicalFactsNotice()}<div class="q-tabs" role="tablist" aria-label="日报模块">${tabs.map(([id,name])=>`<button type="button" class="q-tab cursor-interaction ${state.tab===id?'active':''}" role="tab" aria-selected="${state.tab===id}" aria-controls="q-tab-content" data-action="tab" data-value="${id}">${name}${id==='issues'?` ${a.issues.length}`:''}</button>`).join('')}</div><div id="q-tab-content" role="tabpanel">${!list.length?empty(runState().id==='not_generated'?'日报尚未生成':runState().id==='no_data'?'统计日无会话':runState().id==='failed'?'本次分析全部失败':'当前筛选范围暂无已完成会话',runState().id==='not_generated'?'可从生成记录查看本次生成范围。':'缺失或尚未完成的分析不计为零问题。'):state.tab==='overview'?overview(list,a,metrics):state.tab==='intent'?intentPage(list,a):state.tab==='accounts'?accountsPage(list,a,metrics):state.tab==='issues'||state.tab==='risk'?issuesPage(list,a):state.tab==='business'?businessPage(list,a):standardsPage()}</div><div class="q-footer"><span>合成演示数据 · 不产生模型调用或实际费用</span><span>${['not_generated','failed'].includes(runState().id)?'尚无可读报告':runState().id==='no_data'?'已检查范围 · 无会话':(state.view==='preview'?`配置预览 v${state.config.version} · 明细事实来自报告 v1`:'报告 v1 · 分析规则 v1 · 提示词 v1')+' · 已复核 '+a.coverage.reviewedIssues+' 条'}</span></div>`;}
+  function metricText(id,list){const m=M.normalize(Q.metricLibrary.find(x=>x.id===id)||{base:id},cfg().dimensions);return metricDisplay(m,metricValue(m,list));}
+  function kpis(list,metrics){return `<div class="q-kpis">${metrics.map(m=>{const v=metricValue(m,list);return `<button class="q-kpi cursor-interaction" type="button" data-action="metric" data-id="${m.id}"><div class="q-kpi-label"><span>${esc(m.name)}</span><span>↗</span></div><div class="q-kpi-number ${['risk_count','high_issue_count'].includes(m.base)?'risk':''}">${metricDisplay(m,v)}${v!==null?`<small>${esc(m.unit)}</small>`:''}</div><div class="q-kpi-note">${esc(metricNote(m,list))}</div></button>`;}).join('')}</div>`;}
+  function bars(items){const max=Math.max(1,...items.map(v=>v.value));return items.map(v=>`<button type="button" class="q-bar-row cursor-interaction" data-action="${v.action||'account-detail'}" data-id="${esc(v.id)}"><span class="q-rank-label">${esc(v.name)}</span><div class="q-bar-track"><div class="q-bar-fill" style="width:${Math.max(0,v.value/max*100)}%"></div></div><span class="q-num">${v.value} ${v.unit||'个'}</span></button>`).join('');}
+  function historicalFactsNotice(){return state.view==='preview'?'<div class="q-notice warn">明细、意向、问题和维度判定均来自历史报告 v1。新配置只预览可复算指标；受语义变化影响的结果待新分析，不能视为已按新规则判定。</div>':'';}
+  function pendingResponses(list){return list.flatMap(c=>(c.pendingResponseEvents||[]).map(e=>({...e,c})));}
+  function dimensionDistribution(list,d){const labels=Q.dimensionStatusLabels||{conform:'符合',nonconform:'不符合',insufficient:'信息不足',not_applicable:'不适用'};if(d.newField)return '<td colspan="4">待新分析</td>';if((d.kind||Q.dimensions.find(x=>x.id===d.id)?.kind)!=='judgement')return '<td colspan="4">'+esc(d.description||Q.dimensions.find(x=>x.id===d.id)?.description||'程序统计或行为抽取，按对应事实展示')+'</td>';return Object.keys(labels).map(status=>{const count=list.filter(c=>(c.dimensionResults||[]).some(r=>r.dimensionId===d.id&&r.status===status)).length;return '<td>'+button(String(count),'dimension-status',{id:d.id,status},'link')+'</td>';}).join('');}
+  function overview(list,a,metrics){const top=a.issues.slice().sort((x,y)=>({high:0,medium:1,low:2}[x.severity]-{high:0,medium:1,low:2}[y.severity])).slice(0,4);return `${kpis(list,metrics.filter(m=>m.card!==false))}<div class="q-grid2"><section class="q-panel"><div class="q-panel-head"><h2>${state.view==='preview'?'已保存事实中的重点':'今日重点'}</h2>${button('查看全部问题','tab',{value:'issues'},'link')}</div><div class="q-insight risk"><strong>${metricStatus(M.normalize({base:"risk_count"},cfg().dimensions))?"风险统计 · "+metricText("risk_count",list):metricText("high_issue_count",list)+" 条重大问题，涉及 "+metricText("risk_count",list)+" 个会话"}</strong><p>候选结论需结合原文复核，不能直接认定个人责任。</p>${button('查看严重红线','tab',{value:'risk'},'link')}</div><div class="q-insight">${metricStatus(M.normalize({base:'timeout_count'},cfg().dimensions))?`<strong>回复时效 · ${metricText('timeout_count',list)}</strong><p>${esc(metricStatus(M.normalize({base:'timeout_count'},cfg().dimensions)).reason)}</p>`:`<strong>${metricText('timeout_events',list)} 次已回复超时</strong><p>涉及 ${metricText('timeout_count',list)} 个会话，阈值 ${cfg().timeoutMinutes} 分钟；平均回复 ${metricText('response_avg',list)} 分钟。</p>`}${button('查看回复时效','metric',{id:'timeout_count'},'link')}</div><div class="q-insight"><strong>${metricStatus(M.normalize({base:"unresolved_count"},cfg().dimensions))?"诉求统计 · "+metricText("unresolved_count",list):metricText("unresolved_count",list)+" 个会话仍有待处理诉求"}</strong><p>请核对客户诉求是否得到明确答复。</p>${button('查看待跟进名单','metric',{id:'unresolved_count'},'link')}</div><div class="q-insight"><strong>${new Set(pendingResponses(list).map(e=>e.c.id)).size} 个会话有客户消息待回复</strong><p>截至次日 04:00 的等待下限；不混入已回复耗时和超时率。</p>${button('查看待回复名单','pending-responses',{},'link')}</div></section><section class="q-panel"><div class="q-panel-head"><h2>工作号问题会话排行</h2>${button('全部指标','tab',{value:'accounts'},'link')}</div>${bars(a.accounts.map(x=>({id:x.accountId,name:x.name,value:list.filter(c=>c.accountId===x.accountId&&Q.activeIssues(c,state.reviews,state.mode).length).length})).sort((x,y)=>y.value-x.value))}<p class="q-help">按工作号统计。多人共号的实际接待人另行确认。</p><div class="q-insight"><strong>客户意向</strong><p>一级 ${a.intents[0].count} 个 · 二级 ${a.intents[1].count} 个 · 信息不足 ${a.intents[5].count} 个</p>${button('查看客户名单','tab',{value:'intent'},'link')}</div></section></div><section class="q-panel"><div class="q-panel-head"><h2>${state.view==='preview'?'历史事实中的亮点':'服务亮点'}</h2></div>${list.flatMap(c=>(c.highlights||[]).map(h=>`<div class="q-insight"><strong>${esc(h.title)}</strong><p>${esc(c.accountName)} · ${esc(h.summary)}</p>${button('查看亮点证据','conversation',{id:c.id,message:h.evidenceMessageIds?.[0]},'link')}</div>`)).join('')||empty('当前范围暂无已记录亮点','未记录不表示没有良好服务。')}</section><section class="q-panel"><div class="q-panel-head"><h2>重点问题与原文</h2><span class="q-sub">点击即可查看证据并复核</span></div>${top.length?table(['风险','工作号 / 客户','问题','复核',''],top.map(i=>`<tr><td>${tag(riskLabel(i.severity),i.severity==='high'?'red':'amber')}</td><td><div class="q-row-title">${esc(i.accountName)}</div><div class="q-sub">${esc(i.customerName)}</div></td><td>${esc(i.title)}</td><td>${reviewTag(i.review)}</td><td>${button('查看原文','conversation',{id:i.conversationId,issue:i.id},'link')}</td></tr>`)):empty('当前范围未发现候选问题','这不等于未解析媒体也已通过检查。')}</section>`;}
+  function searchControls(extra=''){return `<div class="q-toolbar"><label class="q-field">搜索客户或会话<input name="search" class="q-input" placeholder="客户名称 / 会话内容" value="${esc(state.search)}"></label>${extra}${button('搜索','search')}${button('清除筛选','clear-filters',{},'link')}</div>`;}
+  function conversationTable(items){const pending=items.filter(i=>state.tab==='risk'?redlineState(i)==='pending':i.review==='pending').length,total=items.length,size=6,pages=Math.max(1,Math.ceil(total/size)),owner=modal?.type==='conversations'?modal:state;owner.pageNumber=Math.min(owner.pageNumber||1,pages);const visible=items.slice((owner.pageNumber-1)*size,owner.pageNumber*size);return `${items.length?table(['客户 / 工作号','意向与诉求','服务优先级',...(modal?.pending?['等待下限']:[]),'问题',''],visible.map(c=>`<tr><td><div class="q-row-title">${esc(c.customerName)}</div><div class="q-sub">${esc(c.accountName)}</div></td><td>${tag(Q.intentLabels[c.intent],c.intent===1?'green':'')}<div class="q-sub" style="margin-top:5px">${esc(c.summary)}</div></td><td>${tag(priorityLabel(c.servicePriority),c.servicePriority==='high'?'amber':'')}</td>${modal?.pending?`<td>至少 ${Math.max(...c.pendingResponseEvents.map(e=>e.waitLowerBoundMinutes))} 分钟<div class="q-sub">截至次日 04:00</div></td>`:''}<td>${Q.activeIssues(c,state.reviews,state.mode).length} 条${c.analysisStatus==='limited'?`<br>${tag('媒体信息不足','amber')}`:''}</td><td>${button('查看会话','conversation',{id:c.id},'link')}</td></tr>`)):empty()}${pagination(total,pages,owner.pageNumber,'个会话')}`;}
+  function intentPage(list,a){return `<div class="q-intent-cards">${a.intents.map(i=>`<button type="button" class="q-intent cursor-interaction ${String(state.intent)===String(i.id)?'active':''}" data-action="intent" data-id="${i.id}"><span class="q-sub">${esc(i.label)}</span><strong>${i.count}</strong></button>`).join('')}</div><section class="q-panel"><div class="q-panel-head"><h2>客户意向名单</h2><span class="q-sub">意向与售后服务优先级分别判断</span></div>${searchControls()}${conversationTable(filtered(list))}</section><section class="q-panel"><div class="q-panel-head"><h2>工作号意向分布</h2></div>${table(['工作号','会话','一级','二级','高意向占比','未判定'],a.accounts.map(x=>{const own=list.filter(c=>c.accountId===x.accountId),one=own.filter(c=>c.intent===1).length,two=own.filter(c=>c.intent===2).length;return `<tr><td>${button(esc(x.name),'account-detail',{id:x.accountId},'link')}</td><td>${own.length}</td><td>${one}</td><td>${two}</td><td>${own.length?((one+two)/own.length*100).toFixed(1):'—'}%</td><td>${own.filter(c=>c.intent==='unknown').length}</td></tr>`;}))}<p class="q-help">当日未回应不代表客户无价值；收到无法理解的媒体时保留“信息不足”。</p></section>`;}
+  function accountsPage(list,a,metrics){const rows=a.accounts.slice().sort((x,y)=>state.sortBy==='response'?(y.metrics.response_avg||0)-(x.metrics.response_avg||0):y.issueCount-x.issueCount);const cols=metrics.filter(m=>m.enabled);return `<section class="q-panel"><div class="q-panel-head"><h2>工作号全指标对照</h2><div class="q-row">${button('按问题数排序','sort',{value:'issues'},'small')}${button('按回复耗时排序','sort',{value:'response'},'small')}${button('配置统计指标','settings',{},'link')}</div></div><p class="q-help">统计列由本报告指标配置决定；点击工作号查看该账号的会话。</p>${table(['工作号 / 部门',...cols.map(m=>esc(m.name)+'<div class="q-sub">'+esc(m.unit)+'</div>')],rows.map(x=>{const own=list.filter(c=>c.accountId===x.accountId);return `<tr><td>${button(esc(x.name),'account-detail',{id:x.accountId},'link')}<div class="q-sub">${esc(x.departmentName)}${x.shared?' · 共号':''}</div></td>${cols.map(m=>`<td class="q-num">${metricDisplay(m,metricValue(m,own))}${metricValue(m,own)!==null&&m.unit==='%'?'%':''}</td>`).join('')}</tr>`;}))}</section><section class="q-panel"><div class="q-panel-head"><h2>质检维度对照</h2><span class="q-sub">${cfg().dimensions.filter(d=>d.enabled).length} 个已启用维度</span></div>${table(['维度','当前口径问题会话','符合','不符合','信息不足','不适用'],cfg().dimensions.filter(d=>d.enabled).map(d=>`<tr><td>${esc(d.name)}<div class="q-sub">${esc(d.source)}</div></td><td>${d.newField?'待生成':list.filter(c=>Q.activeIssues(c,state.reviews,state.mode).some(i=>i.ruleId===d.id)).length}</td>${dimensionDistribution(list,d)}</tr>`))}<p class="q-help">四种判定展示本报告 AI 原始结果，可点击数量查看证据。人工排除问题不自动推导为维度符合；当前口径问题数单独更新。程序统计和行为抽取不强套符合／不符合。</p></section>`;}
+  function redlineState(i){const r=state.reviews[i.id];return r?.status==='confirmed'&&r.redline===true?'confirmed':r?.status==='dismissed'||(r?.status==='confirmed'&&r.redline===false)?'not_recognized':'pending';}
+  function redlineTag(i){const v=redlineState(i);return tag(({confirmed:'已认定红线',not_recognized:'未认定为红线',pending:'红线待复核'})[v],v==='confirmed'?'red':v==='pending'?'amber':'');}
+  function issuesPage(list,a){let items=Q.issuesFor(filtered(list),state.reviews,state.mode);if(state.tab==='risk'){items=items.filter(i=>i.redline||(state.reviews[i.id]?.redline===true&&state.reviews[i.id]?.status==='confirmed'));if(state.redlineFilter!=='all')items=items.filter(i=>redlineState(i)===state.redlineFilter);}if(state.severity!=='all')items=items.filter(i=>i.severity===state.severity);if(state.reviewFilter!=='all')items=items.filter(i=>i.review===state.reviewFilter);const pending=items.filter(i=>state.tab==='risk'?redlineState(i)==='pending':i.review==='pending').length,total=items.length,size=6,pages=Math.max(1,Math.ceil(total/size));state.pageNumber=Math.min(state.pageNumber,pages);items=items.slice((state.pageNumber-1)*size,state.pageNumber*size);return `<section class="q-panel"><div class="q-panel-head"><h2>${state.tab==='risk'?'红线候选与人工复核':'问题明细'}</h2>${tag(`${pending} 条待复核`,'amber')}</div>${searchControls(`${state.tab==='risk'?'':select('风险','severity',[{id:'all',name:'全部风险'},{id:'high',name:'重大'},{id:'medium',name:'一般'},{id:'low',name:'提示'}],state.severity)}${state.tab==='risk'?select('红线复核','redlineFilter',[{id:'all',name:'全部状态'},{id:'pending',name:'红线待复核'},{id:'confirmed',name:'已认定红线'},{id:'not_recognized',name:'未认定为红线'}],state.redlineFilter):select('复核状态','reviewFilter',[{id:'all',name:'全部状态'},{id:'pending',name:'待复核'},{id:'confirmed',name:'已确认'},{id:'dismissed',name:'已判误报'}],state.reviewFilter)}`)}${state.metricFilter?`<div class="q-notice">当前下钻：${esc(metricLabel(state.metricFilter))}${button('清除','clear-filters',{},'link')}</div>`:''}${items.length?table(['风险','工作号 / 客户','问题与依据','复核状态',''],items.map(i=>`<tr><td>${tag(riskLabel(i.severity),i.severity==='high'?'red':'amber')}</td><td><div class="q-row-title">${esc(i.accountName)}</div><div class="q-sub">${esc(i.customerName)}</div></td><td><div class="q-row-title">${esc(i.title)}</div><div class="q-sub" style="max-width:290px;margin-top:5px">${esc(i.summary)}</div></td><td>${state.tab==='risk'?redlineTag(i):reviewTag(i.review)}</td><td>${button('原文与复核','conversation',{id:i.conversationId,issue:i.id},'link')}</td></tr>`)):empty(state.search||state.reviewFilter!=='all'||state.redlineFilter!=='all'?'没有符合当前筛选的问题':state.tab==='risk'?'当前范围暂无红线候选':'当前范围暂无问题候选',state.search||state.reviewFilter!=='all'||state.redlineFilter!=='all'?'清除搜索或复核状态筛选后查看。':state.mode==='effective'?'当前为复核后有效结果；可切换 AI 原始结果查看已判误报的候选。':'这里展示当前日期、部门和工作号范围内的候选，可调整范围查看。')}${pagination(total,pages,state.pageNumber,'条问题')}</section>${state.tab==='risk'?`<div class="q-notice warn">红线按规则识别；AI 候选、人工认定与误报分别保留。严重程度不代替红线归类。</div>`:''}`;}
+  function businessPage(list,a){const referralMetric=M.normalize(Q.metricLibrary.find(m=>m.id==='referral_count')),referralValue=metricValue(referralMetric,list),productStatus=productAnalysisStatus(),productPendingLabel=cfg().dimensions.find(d=>d.id==='product')?.enabled===false?'未评估':'待生成';const activeProductIds=cfg().products.filter(p=>p.enabled!==false).map(p=>p.id);const stats=cfg().products.filter(p=>p.enabled!==false).map(p=>{const saved=a.products.find(x=>x.productId===p.id);return saved?{...saved,name:p.name,pending:!!p.needsAnalysis||!!productStatus}:{productId:p.id,name:p.name,mentions:0,staffMentions:0,customerMentions:0,conversationCount:0,pending:true};});const mentions=productMentions(list),pendingProduct=!!productStatus||stats.find(p=>p.productId===state.productFilter)?.pending;const productPages=Math.max(1,Math.ceil(mentions.length/8));state.pageNumber=Math.min(state.pageNumber,productPages);return `<div class="q-grid2"><section class="q-panel"><div class="q-panel-head"><h2>产品触达排行</h2></div>${bars(stats.filter(p=>!p.pending).map(p=>({id:p.productId,name:p.name,value:p.conversationCount,unit:'会话',action:'product'})))}${stats.some(p=>p.pending)?`<p class="q-help">${esc(productStatus||'新产品或别名变更需要重新识别，对应统计待生成。')}</p>`:''}<p class="q-help">按会话去重；目录内零触达产品仍显示。</p></section><section class="q-panel"><div class="q-panel-head"><h2>老带新触达</h2></div><div class="q-kpi-number">${metricDisplay(referralMetric,referralValue)}${referralValue!==null?'<small>个会话</small>':''}</div><p class="q-help">${esc(metricStatus(referralMetric)?.reason||'保留实际提及动作与原文，不代表客户已完成转介绍。')}</p>${button('查看老带新会话','metric',{id:'referral_count'},'link')}<div class="q-insight"><strong>产品计数口径</strong><p>分别记录提及次数、触达会话，以及客户或工作号提及。</p></div></section></div><section class="q-panel"><div class="q-panel-head"><h2>产品全量统计</h2>${button('维护产品目录','settings-products',{},'link')}</div>${table(['产品','提及次数','触达会话','工作号提及','客户提及'],stats.map(p=>`<tr><td>${button(esc(p.name),'product',{id:p.productId},'link')}</td><td>${p.pending?productPendingLabel:p.mentions}</td><td>${p.pending?productPendingLabel:p.conversationCount}</td><td>${p.pending?productPendingLabel:p.staffMentions}</td><td>${p.pending?productPendingLabel:p.customerMentions}</td></tr>`))}</section><section class="q-panel"><div class="q-panel-head"><h2>产品提及明细${state.productFilter?' · '+esc(cfg().products.find(p=>p.id===state.productFilter)?.name):''}</h2>${state.productFilter?button('查看全部产品','clear-filters',{},'link'):''}</div>${select('明细提及方','mentionSpeaker',[{id:'all',name:'全部提及方'},{id:'staff',name:'工作号提及'},{id:'customer',name:'客户提及'}],state.mentionSpeaker||'all')}<p class="q-help">此筛选作用于下方明细和相关会话。</p>${pendingProduct?empty(productStatus?'产品统计暂不可用':'该产品统计待生成',productStatus||'新增产品或别名变更尚无新分析事实；不按零触达处理。'):!mentions.length?empty('当前范围没有产品提及','该结果基于已记录事实；可调整产品或提及方筛选。'):table(['工作号 / 客户','产品','提及方','原文'],mentions.slice((state.pageNumber-1)*8,state.pageNumber*8).map(p=>`<tr><td>${esc(p.c.accountName)}<div class="q-sub">${esc(p.c.customerName)}</div></td><td>${esc(cfg().products.find(x=>x.id===p.productId)?.name)}</td><td>${p.speaker==='staff'?'工作号':'客户'}</td><td>${button('定位消息','conversation',{id:p.c.id,message:p.messageId},'link')}</td></tr>`))}<div class="q-sub" style="margin-top:10px">${pendingProduct?'对应事实待生成':`共 ${mentions.length} 次提及`} · ${button('查看相关会话','product-conversations',{},'link',pendingProduct)}</div>${pendingProduct?'':pagination(mentions.length,productPages,state.pageNumber,'次提及')}</section>`;}
+  function standardsPage(){const c=state.view==='preview'?cfg():baseline;return `<section class="q-panel"><div class="q-panel-head"><h2>${state.view==='preview'?'新分析规则预览':'本报告使用的质检标准'}</h2>${tag('规则 v'+c.version,'green')}</div><div class="q-config-grid"><div><h3>统计范围</h3><p class="q-help">${state.date} 00:00—24:00，北京时间。跨日回复观察至次日 04:00。</p><h3>程序统计参数</h3><p class="q-help">回复超时 &gt; ${c.timeoutMinutes} 分钟；连续发言归组 ${c.groupMinutes} 分钟；深聊客户有效文字／语音 ≥ ${c.deepMinMessages} 条。</p></div><div><h3>数据与责任边界</h3><p class="q-help">单聊、文字和已有语音转写。图片／视频未识别时标明缺口。按工作号汇总，共号无历史操作人时不归责个人。</p><h3>模型</h3><p class="q-help">DeepSeek · 现有托管模型绑定。原型不连接模型。</p></div></div>${table(["检查维度","判定标准与适用条件","证据要求","分类"],c.dimensions.filter(d=>d.enabled).map(d=>`<tr><td>${esc(d.name)}<div class="q-sub">${esc(d.source)} · v${d.semanticVersion||1}</div></td><td>${esc(d.rule)}<div class="q-sub">${esc(d.applicability)}</div></td><td>${esc(d.evidenceRequirement)}</td><td>${d.kind==="judgement"?esc(d.redline?"红线规则":riskLabel(d.severity||"low")):kindName(d.kind)}</td></tr>`))}<p class="q-help">风险分级：任一严重问题为高；无严重问题且至少两条一般问题或有诉求未解决为中；其余为低。信息不足逐维记录。</p>${table(['当前统计指标','统计方法','分母'],cfg().metrics.filter(m=>m.enabled).map(m=>`<tr><td>${esc(m.name)}</td><td>${esc(m.newField?'等待新分析字段':M.normalize(m,cfg().dimensions).aggregation)}</td><td>${esc(M.normalize(m,cfg().dimensions).denominator)}</td></tr>`))}<details style="margin-top:16px"><summary>${state.view==='preview'?'查看当前提示词':'查看本报告提示词'} · v${activeTemplate().version}</summary><p class="q-help" style="white-space:pre-wrap">${esc(activeTemplate().text)}</p></details><p class="q-help" style="margin-bottom:0">上方分析规则来自本报告快照；当前统计指标可用新口径重算，分析结论不改写。</p></section>`;}
+  function settingsPage(){if(!draft)draft=clone(state.config);const tabs=[['metrics','统计指标'],['dimensions','质检维度'],['parameters','判定参数'],['products','产品目录']];return `<div class="q-breadcrumb">AI 管理 / 质检规则与指标</div><div class="q-title-row"><div><h1>质检规则与指标</h1><div class="q-sub">当前租户：演示企业 · 配置 v${state.config.version}</div></div><div class="q-actions">${button('返回日报','back-report')}${button('保存配置','save-config',{},'primary')}${button('保存并预览','save-config',{preview:'yes'})}</div></div>${notice?`<div class="q-toast" role="status">${esc(notice)}</div>`:''}<div class="q-notice"><span id="q-draft-notice">${draftDirty()?'有未保存修改 · 切换页面会保留，刷新前请保存。':'显示设置即时生效；判定规则用于新分析，历史结果保留原标准。'}</span>${draftDirty()?button('放弃本次修改','discard-config',{},'link'):''}</div><div class="q-tabs" role="tablist" aria-label="质检配置">${tabs.map(([id,name])=>`<button type="button" class="q-tab cursor-interaction ${state.settingsTab===id?'active':''}" role="tab" aria-selected="${state.settingsTab===id}" aria-controls="q-config-content" data-action="settings-tab" data-value="${id}">${name}</button>`).join('')}</div><div id="q-config-content" role="tabpanel">${state.settingsTab==='metrics'?metricSettings():state.settingsTab==='dimensions'?dimensionSettings():state.settingsTab==='parameters'?parameterSettings():productSettings()}</div>`;}
+  function metricSettings(){return `<section class="q-panel"><div class="q-panel-head"><div><h2>日报统计指标</h2><p class="q-sub">决定概览卡片、工作号统计列和下钻入口</p></div>${button('新增统计指标','add-metric',{},'primary')}</div>${table(['纳入报表','指标名称','数据来源 / 统计方式','概览卡片','拖动排序',''],draft.metrics.map(m=>`<tr data-metric-row="${esc(m.id)}"><td><label class="q-switch"><input type="checkbox" name="metric-enabled" data-id="${m.id}" aria-label="纳入报表${esc(m.name)}" ${m.enabled?'checked':''}></label></td><td><strong>${esc(m.name)}</strong><div class="q-sub">${esc(m.unit)}</div></td><td>${esc(m.newField?'新增 AI 分析字段':m.source)}<div class="q-sub">${esc(M.normalize(m,cfg().dimensions).aggregation)}</div></td><td><input type="checkbox" name="metric-card" data-id="${m.id}" aria-label="概览显示${esc(m.name)}" ${m.card!==false?'checked':''} ${!m.enabled?'disabled':''}></td><td><button type="button" class="q-drag-handle cursor-interaction" data-metric-drag="${esc(m.id)}" aria-label="拖动排序：${esc(m.name)}" aria-describedby="q-sort-help" aria-keyshortcuts="ArrowUp ArrowDown"><i data-lucide="grip-vertical" aria-hidden="true"></i><span>拖动</span></button></td><td><div class="q-actions">${button('编辑','edit-metric',{id:m.id},'link')}${button('移除','remove-metric',{id:m.id},'link danger')}</div></td></tr>`))}<p id="q-sort-help" class="q-help">拖动手柄调整顺序，保存配置后同步到概览卡片和工作号看板；也可聚焦手柄使用上下方向键。</p><p class="q-help">指标只引用检查结果和程序事实；新增检查内容请先到“质检维度”定义。移除指标不会停止检查或删除原数据。</p></section>`;}
+  function dimensionSettings(){return `<section class="q-panel"><div class="q-panel-head"><h2>会话检查维度</h2>${button('新增质检维度','add-dimension',{},'primary')}</div>${table(['执行检查','维度 / 来源','适用与判定标准','问题分类',''],draft.dimensions.map(d=>`<tr><td><input type="checkbox" name="dimension-enabled" data-id="${d.id}" aria-label="执行${esc(d.name)}" ${d.enabled?'checked':''}></td><td><strong>${esc(d.name)}</strong><div class="q-sub">${esc(d.source)} · ${kindName(d.kind)}</div></td><td><div>${esc(d.rule)}</div><div class="q-sub">适用：${esc(d.applicability||'按实际业务场景判断')}</div></td><td>${d.kind==='judgement'?tag(d.redline?'红线规则':riskLabel(d.severity||'low'),d.redline?'red':''):tag('采集结果')}</td><td>${button('编辑','edit-dimension',{id:d.id},'link')}</td></tr>`))}<p class="q-help">停用只影响新分析；引用此检查的指标会显示未评估。员工可读话术仍须检查，客户无回复或媒体不可读不等于全部不适用。</p></section>`;}
+  function parameterSettings(){return `<section class="q-panel"><div class="q-panel-head"><h2>回复与会话口径</h2></div><div class="q-config-grid"><label class="q-field">回复超时阈值（分钟）<input class="q-input" type="number" min="1" max="1440" name="timeoutMinutes" value="${draft.timeoutMinutes}"><span class="q-sub">耗时严格大于阈值才计超时</span></label><label class="q-field">深聊客户文字／语音条数<input class="q-input" type="number" min="1" max="100" name="deepMinMessages" value="${draft.deepMinMessages}"><span class="q-sub">只计客户有效文字与语音；语音未转写仍计条数，语义另标信息不足</span></label><label class="q-field">客户连续发言归组窗口（分钟）<input class="q-input" type="number" min="1" max="60" name="groupMinutes" value="${draft.groupMinutes}"><span class="q-sub">归组规则改变需要重新生成事件；不直接覆盖历史</span></label></div><div class="q-criterion"><h3>跨日口径</h3><p>事件归首次客户发言日期，响应从该组末条开始计算；观察至次日 04:00。</p></div><div class="q-criterion"><h3>无法判定</h3><p>未知方向、未解析媒体、没有实际操作人时分别保留缺口，不用“合格”填补。</p></div></section>`;}
+  function productSettings(){return `<section class="q-panel"><div class="q-panel-head"><h2>当前租户产品目录</h2>${button('新增产品','add-product',{},'primary')}</div>${table(['参与统计','产品名称','别名',''],draft.products.map(p=>`<tr><td><input type="checkbox" name="product-enabled" data-id="${p.id}" aria-label="统计${esc(p.name)}" ${p.enabled!==false?'checked':''}></td><td>${esc(p.name)}</td><td class="q-sub">${esc(p.aliases||'未设置')}</td><td>${button('编辑','edit-product',{id:p.id},'link')}</td></tr>`))}<p class="q-help">新产品需生成对应识别事实；零触达展示以当时有效目录为准。</p></section>`;}
+  function configurationNotice(){if(state.config.version<=1&&state.templates[state.channel].version<=1)return '';return `<div class="q-notice"><span>${state.view==='preview'?`新分析规则预览 · v${state.config.version} · 尚未重新分析`:state.view==='original'?'报告原始口径 · v1':`报告分析 v1 · 当前显示与统计配置 v${state.config.version}`}</span><div class="q-actions">${button(state.view==='preview'?'返回日报':'预览新规则','toggle-preview',{},'link')}${button(state.view==='original'?'使用当前显示':'查看报告原口径','toggle-original',{},'link')}</div></div>`;}
+  function promptLibraryPage(){return `<div class="q-breadcrumb">AI 管理 / AI 提示词库</div><div class="q-title-row"><div><h1>AI 提示词库</h1><p class="q-sub">当前租户：演示企业 · 会话质检日报场景</p></div>${button('返回日报','back-report')}</div>${notice?`<div class="q-toast" role="status">${esc(notice)}</div>`:''}<section class="q-panel"><div class="q-panel-head"><h2>Prompt 模板</h2><span class="q-sub">既有页面参考 · 两个日报场景接入示意</span></div>${table(['模板名称','使用场景','定时状态','模型绑定','版本','操作'],['wecom','wechat'].map(channel=>{const t=state.templates[channel];return `<tr><td><strong>${esc(t.name)}</strong></td><td>${channel==='wecom'?'企微':'个微'}会话质检日报</td><td>${tag(t.cronEnabled?'已开启':'未开启',t.cronEnabled?'green':'')}</td><td>${t.modelBinding==='scene-default'?'使用场景默认模型':'DeepSeek · 托管模型'}</td><td>v${t.version}</td><td>${button('编辑','edit-prompt',{id:channel},'link')}</td></tr>`;}))}</section>`;}
+  function promptEditor(){const t=state.templates[modal.id];return `<div class="q-dialog-head"><div><h2>编辑 Prompt 模板</h2><p class="q-sub">${modal.id==='wecom'?'企微':'个微'}会话质检日报 · 当前版本 v${t.version}</p></div>${button('关闭','close-modal')}</div><label class="q-field">模板名称<input class="q-input" name="templateName" value="${esc(t.name)}"></label><div style="margin-top:16px">${select('模型绑定','templateModel',[{id:'scene-default',name:'使用场景默认模型（DeepSeek · 托管）'},{id:'managed-deepseek',name:'指定 DeepSeek · 托管模型'}],t.modelBinding)}</div><label class="q-field" style="margin-top:16px">提示词正文<textarea class="q-input" name="templateText" aria-label="提示词正文" rows="9">${esc(t.text)}</textarea></label><p class="q-help">维度、阈值和统计指标由「质检规则与指标」配置，生成时自动带入。</p><label class="q-switch" style="margin-top:16px"><input type="checkbox" name="templateCron" ${t.cronEnabled?'checked':''}>定时启动</label><p class="q-help">每天北京时间 04:00 自动生成前一自然日的工作号单聊质检日报。</p><div id="q-form-error" role="alert" class="q-error"></div><div class="q-dialog-foot">${button('取消','close-modal')}${button('保存','save-prompt',{},'primary')}</div>`;}
+  function openModal(m){if(!modal){const b=document.activeElement;returnFocus=b?.dataset?.action?{...b.dataset,label:b.textContent}:null;returnScroll=window.scrollY;modalParents=[];}else if(modal.type==='conversations'&&m.type==='conversation'){modalParents.push({...modal,scroll:window.scrollY});}modal=m;renderModal();root.scrollIntoView({block:'start',behavior:'auto'});root.querySelector('#q-modal [data-action="close-modal"]')?.focus();if(m.message||m.issue||m.dimension)requestAnimationFrame(()=>root.querySelector('.q-message.evidence')?.scrollIntoView({block:'center',behavior:'auto'}));}
+  function closeModal(){modal=null;modalParents=[];renderModal();window.scrollTo({top:returnScroll,behavior:'auto'});if(returnFocus){const b=Array.from(root.querySelectorAll('[data-action]')).find(b=>b.dataset.action===returnFocus.action&&b.dataset.id===returnFocus.id&&b.dataset.issue===returnFocus.issue&&b.textContent===returnFocus.label);b?.focus({preventScroll:true});}}
+  function intentControls(c){const original=Q.conversations.find(x=>x.id===c.id),review=state.intentReviews?.[c.id];return `<div class="q-review-box"><h3>客户意向复核</h3><p class="q-help">AI 原判：${esc(Q.intentLabels[original.intent])}${review?'；人工更正：'+esc(Q.intentLabels[review.value]):''}</p>${select('人工意向','intentCorrection',[1,2,3,4,5,'unknown'].map(id=>({id,name:Q.intentLabels[id]})),intentDrafts[c.id]?.value??review?.value??original.intent)}<label class="q-field">更正说明<textarea class="q-input" name="intentReason" aria-label="更正说明" placeholder="结合客户原文说明更正依据">${esc(intentDrafts[c.id]?.reason??review?.reason??'')}</textarea></label>${button('保存意向更正','save-intent',{id:c.id},'small',state.view==='preview')}</div>`;}
+  function conversationModal(){const c=data().find(x=>x.id===modal.id);if(!c)return empty('会话不存在');const selected=c.issues.find(i=>i.id===modal.issue);const evidence=new Set(modal.message?[modal.message]:modal.dimension?(c.dimensionResults||[]).find(r=>r.dimensionId===modal.dimension)?.evidenceMessageIds||[]:selected?.evidenceIds||c.intentEvidence||[]);return `<div class="q-dialog-head"><div><h2>${esc(c.customerName)}</h2><p class="q-sub">${esc(c.accountName)} · ${c.date} · ${esc(c.responsibilityLabel)}</p></div><div class="q-actions">${modalParents.length?button('返回名单','modal-back'):''}${button('关闭','close-modal')}</div></div><div class="q-notice"><span>${esc(c.summary)}</span>${tag(Q.intentLabels[c.intent],'green')}${tag('服务优先级：'+(priorityLabel(c.servicePriority)))}</div>${(c.pendingResponseEvents||[]).map(e=>`<div class="q-notice warn">截至 ${esc(e.observedUntil.replace('T',' ').slice(0,16))}（北京时间），客户消息仍未获回复，等待至少 ${e.waitLowerBoundMinutes} 分钟。</div>`).join('')}${c.dataNotes.length?`<div class="q-notice warn">${c.dataNotes.map(esc).join(' ')}</div>`:''}<div class="q-chat"><section class="q-chat-messages" aria-label="只读会话原文">${c.messages.map(m=>`<div class="q-message ${m.sender==='staff'?'staff':''} ${evidence.has(m.id)?'evidence':''}" data-message-id="${esc(m.id)}"><div class="q-message-meta">${m.sender==='staff'?'工作号':'客户'} · ${m.time.slice(5,16).replace('T',' ')}${m.inReportDay===false?' · 跨日上下文':''}</div><div class="q-message-bubble">${m.type==='voice'&&m.status==='transcribed'?`${tag('语音 · 已转写')}<br>`:''}${esc(m.text)}</div>${evidence.has(m.id)?`<div class="q-evidence-label">${modal.searchHit?'搜索命中':'关联证据'}</div>`:''}</div>`).join('')}</section><section>${intentControls(c)}<h3 style="margin-top:16px">问题与人工复核</h3><p class="q-help">${state.view==='preview'?'当前是配置效果预览；请返回历史日报后提交复核。':'查看原文后确认或标记误报；AI 原判断始终保留。未保存说明在本次页面中保留，刷新前请提交。'}</p>${c.issues.length?c.issues.map(i=>{const s=Q.reviewStatus(i,state.reviews);return `<div class="q-review-box ${modal.issue===i.id?'active':''}"><div class="q-row">${tag(riskLabel(i.severity),i.severity==='high'?'red':'amber')}${reviewTag(s)}</div><h3 style="margin-top:8px">${esc(i.title)}</h3><p class="q-help">${esc(i.summary)}</p>${ruleDetail(i)}${button('定位相关消息','highlight',{id:i.id},'link')}<label class="q-field">复核说明<textarea class="q-input" name="review-reason" aria-label="复核说明" data-id="${i.id}" placeholder="请填写判断依据">${esc(reviewDrafts[i.id]??state.reviews[i.id]?.reason??'')}</textarea></label><div class="q-config-grid">${select("复核严重程度","review-severity-"+i.id,[{id:"high",name:"严重"},{id:"medium",name:"一般"},{id:"low",name:"轻微"}],state.reviews[i.id]?.severity||i.severity)}<label class="q-switch"><input type="checkbox" name="review-redline-${i.id}" ${(state.reviews[i.id]?.redline===true)?"checked":""}>认定为红线</label></div><label class="q-field">处理进度<select class="q-input" name="handling" data-id="${i.id}">${[['open','未处理'],['progress','处理中'],['done','已处理']].map(([v,l])=>`<option value="${v}" ${(state.handling?.[i.id]||'open')===v?'selected':''}>${l}</option>`).join('')}</select><span class="q-sub">处理进度不改变是否成立或客户诉求是否解决</span></label><div class="q-review-actions">${button('保存确认结论','review',{id:i.id,status:'confirmed'},'small primary',state.view==='preview')}${button('标记误报','review',{id:i.id,status:'dismissed'},'small',state.view==='preview')}${s!=='pending'?button('恢复待复核','review',{id:i.id,status:'pending'},'small',state.view==='preview'):''}</div>${state.reviews[i.id]?`<div class="q-sub" style="margin-top:7px">本地复核记录已保存 · ${esc(state.reviews[i.id].reason)}</div>`:''}</div>`;}).join(''):empty('没有候选问题','可查看意向依据和原始消息。')}<div id="q-review-error" role="alert" class="q-error"></div></section></div>`;}
+  function metricModal(){
+    const old=draft.metrics.find(x=>x.id===modal.id),source=modal.metricSource||old?.base||'complaint_count',sources=M.sources(draft.dimensions),definition=sources.find(x=>x.id===source),dim=draft.dimensions.find(d=>'dimension:'+d.id===source);
+    const candidate=M.normalize({...((old?.base===source)?old:Q.metricLibrary.find(x=>x.id===source)),base:source,sourceId:source,method:modal.metricMethod||old?.method,denominatorMode:modal.metricDenominator||old?.denominatorMode||'all',optionId:modal.metricOption??old?.optionId},draft.dimensions),methods=M.methods(source,draft.dimensions),status=metricStatus(candidate,draft,true),list=scoped(),value=status?null:M.value(Q,candidate,list,state.reviews,state.mode,{...options(),dimensions:draft.dimensions});
+    return `<div class="q-dialog-head"><h2>${old?'编辑':'新增'}统计指标</h2>${button('关闭','close-modal')}</div><div class="q-config-grid"><label class="q-field">指标名称<input class="q-input" name="metricName" value="${esc(modal.metricName??old?.name??definition?.name??'')}" placeholder="填写展示名称"></label>${select('数据来源','metricSource',sources,source)}</div><div style="margin-top:16px">${select('统计方式','metricMethod',methods,candidate.method)}</div>${dim?.kind==='enum'?`<div style="margin-top:16px">${select('统计选项','metricOption',[{id:'',name:'请选择选项'},...(dim.enumOptions||[])],candidate.optionId||'')}</div>`:''}${candidate.method==='ratio'&&dim?`<div style="margin-top:16px">${select('比例分母','metricDenominator',[{id:'all',name:'当前范围全部质检会话'},{id:'assessed',name:'该事实适用且已判定的会话'}],candidate.denominatorMode)}</div>`:''}<dl class="q-definition"><dt>结果单位</dt><dd>${esc(candidate.unit)}</dd><dt>计算公式</dt><dd>${esc(candidate.formula||candidate.aggregation)}</dd><dt>比例分母</dt><dd>${esc(candidate.denominator)}</dd>${dim?.kind==='judgement'?`<dt>来源覆盖</dt><dd>${['conform','nonconform','insufficient','not_applicable'].map(status=>Q.dimensionStatusLabels[status]+' '+list.filter(c=>c.dimensionResults?.some(r=>r.dimensionId===dim.id&&r.status===status)).length).join(' · ')}；未采集 ${list.filter(c=>!c.dimensionResults?.some(r=>r.dimensionId===dim.id)).length}</dd>`:''}<dt>当前数据示例</dt><dd>${status?esc(status.label):value===null?'无可用样本':value+' '+esc(candidate.unit)}</dd></dl>${status?`<p class="q-help">${esc(status.reason)}</p>`:''}<p class="q-help">判定标准在“质检维度”统一维护；此处只决定如何统计。比例分母为零显示无适用样本，信息不足不填零。</p><div id="q-form-error" role="alert" class="q-error"></div><div class="q-dialog-foot">${button('取消','close-modal')}${button('应用到配置','submit-metric',{},'primary')}</div>`;
+  }
+  function renderModal(){const host=root.querySelector('#q-modal');if(!modal){host.innerHTML='';root.style.minHeight='';root.querySelector('.q-shell').inert=false;return;}let content='',compact=!['conversation','edit-prompt'].includes(modal.type);if(modal.type==='metric-status')content=`<div class="q-dialog-head"><h2>${esc(modal.title)}</h2>${button('关闭','close-modal')}</div><div class="q-notice warn">${esc(modal.reason)}</div>`;else if(modal.type==='edit-prompt')content=promptEditor();else if(modal.type==='conversation')content=conversationModal();else if(modal.type==='add-metric'||modal.type==='edit-metric')content=metricModal();else if(modal.type==='conversations'){const items=modal.pending?scoped().filter(c=>(c.pendingResponseEvents||[]).length):modal.dimension?scoped().filter(c=>(c.dimensionResults||[]).some(r=>r.dimensionId===modal.dimension&&r.status===modal.dimensionStatus)):modal.metric?drilldown(scoped(),modal.metric):modal.product?Array.from(new Map(productMentions(scoped()).map(p=>[p.c.id,p.c])).values()):filtered(scoped());content=`<div class="q-dialog-head"><div><h2>${esc(modal.title||'会话明细')}</h2><p class="q-sub">涉及 ${items.length} 个会话 · ${state.date}</p></div>${button('关闭','close-modal')}</div>${modal.pending?'<p class="q-help">客户有消息而工作号未回复，与客户当日未回应不同。点击会话查看等待下限及客户原文。</p>':''}${conversationTable(items)}`;compact=false;}else if(modal.type==='coverage'){const a=aggregate(scoped());content=`<div class="q-dialog-head"><h2>数据覆盖情况</h2>${button('关闭','close-modal')}</div><dl class="q-definition"><dt>工作号</dt><dd>${a.accounts.length} 个</dd><dt>质检会话</dt><dd>${a.total} 个</dd><dt>当日消息</dt><dd>${a.coverage.messageCount} 条</dd><dt>跨日上下文</dt><dd>${a.coverage.contextMessageCount} 条，不重复计入当日消息</dd><dt>存在媒体缺口</dt><dd>${a.coverage.limitedConversations} 个会话，${a.coverage.unparsedMessages} 条未解析媒体</dd><dt>已有语音转写</dt><dd>${a.coverage.transcribedVoices} 条</dd></dl><div class="q-notice warn">文本及已有转写的处理已完成；媒体缺口不代表相关内容已通过质检。</div>`;}else if(modal.type==='runs'){content=runsModal();}else if(modal.type==='run-action'){content=runAction();}else if(modal.type==='add-dimension'||modal.type==='edit-dimension'){content=dimensionEditor();}else if(modal.type==='add-product'||modal.type==='edit-product'){const p=draft.products.find(p=>p.id===modal.id);content=`<div class="q-dialog-head"><h2>${p?'编辑':'新增'}产品</h2>${button('关闭','close-modal')}</div><label class="q-field">产品名称<input class="q-input" name="productName" value="${esc(p?.name||'')}"></label><label class="q-field" style="margin-top:14px">别名<input class="q-input" name="productAliases" value="${esc(p?.aliases||'')}" placeholder="多个别名用逗号分隔"></label><div id="q-form-error" role="alert" class="q-error"></div><div class="q-dialog-foot">${button('取消','close-modal')}${button('保存产品','submit-product',{},'primary')}</div>`;}root.querySelector('.q-shell').inert=true;host.innerHTML=`<div class="q-overlay" ><section role="dialog" aria-modal="true" aria-label="${modal.type==='conversation'?'会话原文与复核':'质检详情'}" class="q-dialog ${compact?'compact':''}">${content}</section></div>`;requestAnimationFrame(()=>{const h=host.querySelector('.q-dialog')?.offsetHeight||0;root.style.minHeight=Math.max(800,h+70)+'px';});}
+
+  function kindName(kind){return ({judgement:'判定型',number:'数值型',enum:'单选型',count:'程序计数',response_event:'响应事件',attribution:'来源归属',extraction:'行为提取',business_action:'业务动作'})[kind]||kind;}
+  function dimensionEditor(){const old=draft.dimensions.find(x=>x.id===modal.id),v={...old,...modal.dimensionDraft};if((v.kind||'judgement')==='enum'&&!v.enumOptions?.length){v.enumOptions=[{id:'choice_'+Date.now()+'_a',name:''},{id:'choice_'+Date.now()+'_b',name:''}];modal.dimensionDraft={...v};}const kind=v.kind||'judgement',program=old&&old.source!=='AI 判断';return `<div class="q-dialog-head"><h2>${old?'编辑':'新增'}质检维度</h2>${button('关闭','close-modal')}</div><div class="q-config-grid"><label class="q-field">维度名称<input class="q-input" name="dimensionName" value="${esc(v.name||'')}" placeholder="例如：预约信息完整性"></label>${old?`<div class="q-field">结果类型<div>${kindName(kind)} · ${esc(old.source)}</div></div>`:select('结果类型','dimensionKind',[{id:'judgement',name:'判定：符合／不符合'},{id:'number',name:'数值：金额、次数等'},{id:'enum',name:'单选：从选项中选择'}],kind)}</div>${program?`<p class="q-help">程序规则由明确参数控制，不由自由提示词决定。</p>${old.id==='response'||old.id==='depth'?button('调整判定参数','edit-program',{},'link'):''}`:''}<label class="q-field" style="margin-top:14px">判定标准<textarea class="q-input" name="dimensionRule" aria-label="判定标准" ${program?'readonly':''} placeholder="何时成立、何时不成立，或如何抽取值">${esc(v.rule||'')}</textarea></label><div class="q-config-grid" style="margin-top:14px"><label class="q-field">适用条件<textarea class="q-input" name="dimensionApplicable" aria-label="适用条件" ${program?'readonly':''}>${esc(v.applicability||'')}</textarea></label><label class="q-field">证据要求<textarea class="q-input" name="dimensionEvidence" aria-label="证据要求" ${program?'readonly':''}>${esc(v.evidenceRequirement||'引用本会话中的消息原文；信息不足时保留未知。')}</textarea></label></div>${kind==='judgement'?`<div class="q-config-grid" style="margin-top:14px">${select('问题严重程度','dimensionSeverity',[{id:'low',name:'轻微'},{id:'medium',name:'一般'},{id:'high',name:'严重'}],v.severity||'medium')}<label class="q-switch"><input type="checkbox" name="dimensionRedline" ${v.redline?'checked':''}>属于红线规则</label></div>`:kind==='number'?`<div class="q-config-grid" style="margin-top:14px">${select('数值单位','dimensionUnit',[{id:'次',name:'次'},{id:'条',name:'条'},{id:'元',name:'元'},{id:'分钟',name:'分钟'},{id:'个',name:'个'}],v.unit||'次')}<label class="q-field">小数位数<input type="number" min="0" max="4" class="q-input" name="dimensionPrecision" value="${v.precision??0}"></label><label class="q-field">最小值<input type="number" class="q-input" name="dimensionMin" value="${v.min??0}"></label><label class="q-field">最大值<input type="number" class="q-input" name="dimensionMax" value="${v.max??100000}"></label></div>`:kind==='enum'?`<div style="margin-top:14px"><h3>业务选项</h3>${(v.enumOptions||[]).map((o,index)=>`<div class="q-row" style="margin-top:8px"><label class="q-field" style="flex:1">选项 ${index+1}<input class="q-input" name="dimension-option" data-option-id="${esc(o.id)}" value="${esc(o.name)}"></label>${button('移除','remove-option',{id:o.id},'small')}</div>`).join('')}${button('添加选项','add-option',{},'link')}<p class="q-help">重命名保留选项身份，移除只作用于新规则。</p></div>`:''}<p class="q-help">未知与不适用单独保存，不当作零、合格或业务选项。仅修改名称不会改变判定版本。</p><div id="q-form-error" role="alert" class="q-error"></div><div class="q-dialog-foot">${button('取消','close-modal')}${button('保存维度','submit-dimension',{},'primary')}</div>`;}
+  function dimensionForm(){const kind=formValue('dimensionKind')||draft.dimensions.find(x=>x.id===modal.id)?.kind||'judgement';return {name:formValue('dimensionName'),kind,rule:formValue('dimensionRule'),applicability:formValue('dimensionApplicable'),evidenceRequirement:formValue('dimensionEvidence'),severity:formValue('dimensionSeverity'),redline:!!root.querySelector('[name="dimensionRedline"]')?.checked,unit:formValue('dimensionUnit'),precision:Number(formValue('dimensionPrecision')),min:Number(formValue('dimensionMin')),max:Number(formValue('dimensionMax')||100000),enumOptions:Array.from(root.querySelectorAll('[name="dimension-option"]')).map(el=>({id:el.dataset.optionId,name:el.value.trim()}))};}
+  function ruleDetail(i){const d=baseline.dimensions.find(x=>x.id===i.ruleId);return `<details style="margin:10px 0"><summary>判定依据 · ${esc(d?.name||i.ruleId)} · v${d?.semanticVersion||1}</summary><p class="q-help">${esc(d?.rule||'按本报告规则核对原文')}</p><p class="q-help">适用：${esc(d?.applicability||'依据会话场景')}<br>证据：${esc(d?.evidenceRequirement||'真实消息原文')}</p>${tag(i.redline?'红线候选':'一般质检问题',i.redline?'red':'')}</details>`;}
+  function runBanner(){const r=runState();return `<div class="q-notice ${r.id==='complete'?'':'warn'}"><span>${r.id==='not_generated'?'尚未生成，覆盖数未知':r.id==='no_data'?'统计日无会话，已检查接入范围':`${r.label} · 已分析 ${r.completed}/${r.total} 个会话${r.id==='complete'?'':' · 统计仅覆盖已完成部分'}`}</span></div>`;}
+  function runsModal(){const r=runState();return `<div class="q-dialog-head"><h2>日报生成记录</h2>${button('关闭','close-modal')}</div><div class="q-notice">合成数据演示，不调用模型、不产生费用</div>${select('查看状态示例','runScenario',(Q.runScenarios||[]).map(x=>({id:x.id,name:x.label})),r.id)}<dl class="q-definition"><dt>本次批次状态</dt><dd>${esc(r.label)}</dd><dt>自动生成</dt><dd>${state.templates[state.channel].cronEnabled?'已开启':'已关闭'} · 由 AI 提示词库的定时任务开关控制</dd><dt>执行时间</dt><dd>每天北京时间 04:00，处理前一自然日；目标 08:00 前完成，容量待验证</dd><dt>覆盖范围</dt><dd>${r.total===null?'尚未扫描':r.completed+' / '+r.total+' 个会话'}</dd><dt>说明</dt><dd>${esc(r.description)}</dd><dt>规则与模型</dt><dd>规则 v1 · 提示词 v1 · DeepSeek 托管模型</dd><dt>调用与用量</dt><dd>正式接入公共 AI Task 和既有用量记录</dd></dl>${['partial','failed'].includes(r.id)?button('查看失败补跑范围','run-action',{kind:'retry'},'primary'):r.id==='not_generated'?button('查看生成范围','run-action',{kind:'generate'},'primary'):r.id==='waiting'?'<p class="q-help">等待公共额度恢复后继续原任务，已完成会话不重复调用。</p>':''}${r.completed?button('按新规则重新分析','run-action',{kind:'reanalyze'}):''}`;}
+  function runAction(){const re=modal.kind==='reanalyze',r=runState();return `<div class="q-dialog-head"><h2>${re?'重新分析':modal.kind==='retry'?'补跑失败会话':'生成日报'}</h2>${button('关闭','close-modal')}</div><dl class="q-definition"><dt>范围</dt><dd>${state.date} · ${channelName()} · ${state.account==='all'?'当前有权查看的工作号范围':esc(accountName(state.account))}</dd><dt>处理对象</dt><dd>${modal.kind==='retry'?r.total-r.completed+' 个未完成会话':'本次范围内的会话'}</dd><dt>所用规则</dt><dd>${re?'当前规则 v'+state.config.version:'原批次规则 v1'}</dd><dt>历史结果</dt><dd>${re?'保留，另存新分析修订':'保留已完成结果'}</dd><dt>调用影响</dt><dd>可能产生模型调用和用量，受公共配额约束</dd></dl><p class="q-help">此处仅预览操作范围；原型不会提交真实任务。</p>${button('返回生成记录','runs')}`;}
+
+  function render(){root.querySelector('#q-main').innerHTML=state.page==='settings'?settingsPage():state.page==='prompts'?promptLibraryPage():reportPage();root.querySelectorAll('.q-nav').forEach(b=>b.classList.toggle('active',state.page==='report'?b.dataset.action==='channel'&&b.dataset.value===state.channel:state.page==='prompts'?b.dataset.action==='prompt':b.dataset.action==='settings'));if(window.lucide?.createIcons)window.lucide.createIcons({attrs:{width:16,height:16}});renderModal();}
+  function formValue(name){return root.querySelector(`#q-modal [name="${name}"]`)?.value?.trim()||'';}
+  function formError(text){const el=root.querySelector('#q-form-error');if(el)el.textContent=text;}
+  function doAction(action,d){notice='';switch(action){
+    case 'reset-demo':Object.keys(reviewDrafts).forEach(k=>delete reviewDrafts[k]);Object.keys(intentDrafts).forEach(k=>delete intentDrafts[k]);root.querySelector('#q-storage-status').style.display='none';closeModal();state=clone(initialState);draft=null;notice='已恢复合成数据与默认规则';break;
+    case 'channel':state.page='report';state.channel=d.value;state.account='all';state.department='all';state.tab='overview';resetLocal();break;
+    case 'settings':state.page='settings';state.settingsTab='metrics';draft=draft||clone(state.config);break;
+    case 'prompt':state.page='prompts';break;
+    case 'edit-prompt':openModal({type:'edit-prompt',id:d.id});return;
+    case 'save-prompt':{const name=formValue('templateName'),text=formValue('templateText'),modelBinding=formValue('templateModel');if(!name||!text)return formError('请填写模板名称和提示词正文。');const channel=modal.id,previous=state.templates[channel],cronEnabled=!!root.querySelector('[name="templateCron"]')?.checked;const templates={...state.templates,[channel]:{...previous,name,text,modelBinding,cronEnabled,version:previous.version+((previous.text!==text||previous.modelBinding!==modelBinding)?1:0)}};if(!fitsSnapshot({...state,templates}))return formError('未保存：内容超出演示存储容量，请缩短提示词。');state.templates=templates;closeModal();notice=`${name}已保存为 v${templates[channel].version}，用于后续日报。`;break;}
+    case 'settings-products':state.page='settings';state.settingsTab='products';draft=draft||clone(state.config);break;
+    case 'back-report':state.page='report';break;
+    case 'discard-config':draft=clone(state.config);notice='已放弃未保存修改。';break;
+    case 'tab':state.tab=d.value;resetLocal();break;
+    case 'settings-tab':state.settingsTab=d.value;break;
+    case 'toggle-original':state.view=state.view==='original'?'saved':'original';resetLocal();break;
+    case 'toggle-preview':state.view=state.view==='saved'?'preview':'saved';resetLocal();break;
+    case 'save-config':{const broken=draft.metrics.find(m=>m.enabled&&m.base?.startsWith('dimension:')&&draft.dimensions.find(d=>'dimension:'+d.id===m.base)?.kind==='enum'&&!draft.dimensions.find(d=>'dimension:'+d.id===m.base).enumOptions?.some(o=>o.id===m.optionId));if(broken){notice='指标“'+broken.name+'”引用的选项已移除，请先重新选择统计选项。';break;}}if(!fitsSnapshot({...state,config:draft})){notice='未保存：内容超出演示存储容量，请缩短提示词或减少示例字段。';break;}if(!draft.metrics.some(m=>m.enabled)){notice='请至少启用一个统计指标。';break;}if(!(draft.timeoutMinutes>=1&&draft.timeoutMinutes<=1440&&draft.deepMinMessages>=1&&draft.deepMinMessages<=100&&draft.groupMinutes>=1&&draft.groupMinutes<=60)){notice='请检查判定参数范围。';break;}if(!Number.isInteger(draft.deepMinMessages)){notice='深聊发言数必须是整数。';break;}if(draftDirty()){draft.version=state.config.version+1;state.config=clone(draft);}state.view='saved';notice=`配置 v${state.config.version} 已保存；显示和可复算统计已更新，历史分析不改写。`;if(d.preview==='yes'){state.page='report';state.view='preview';state.tab='overview';resetLocal();}break;
+    case 'add-metric':openModal({type:'add-metric'});return;
+    case 'edit-metric':{const m=draft.metrics.find(x=>x.id===d.id),defaults=[Q.metricLibrary.find(x=>x.id===m.id)?.name,Q.metricLibrary.find(x=>x.id===m.base)?.name,...M.methods(m.base).map(x=>M.suggestName(m.base,x.id))];openModal({type:'edit-metric',id:d.id,customName:!defaults.includes(m.name)});return;}
+    case 'remove-metric':draft.metrics=draft.metrics.filter(m=>m.id!==d.id);notice='指标已从本次配置移除，保存后用于新报告。';break;
+
+    case 'submit-metric':{const name=formValue('metricName'),source=formValue('metricSource'),method=formValue('metricMethod'),optionId=formValue('metricOption'),denominatorMode=formValue('metricDenominator')||'all',dim=draft.dimensions.find(x=>'dimension:'+x.id===source);if(!name)return formError('请填写指标名称。');if(dim?.kind==='enum'&&!optionId)return formError('请选择要统计的选项。');const old=draft.metrics.find(x=>x.id===modal.id);if(draft.metrics.some(x=>x.id!==old?.id&&x.name===name))return formError('已有同名指标，请使用可区分的名称。');const metric=M.normalize({...Q.metricLibrary.find(x=>x.id===source),id:old?.id||'metric_'+Date.now(),name,base:source,method,optionId,denominatorMode,enabled:old?.enabled??true,card:old?.card??true},draft.dimensions);if(old)draft.metrics=draft.metrics.map(x=>x.id===old.id?metric:x);else draft.metrics.push(metric);closeModal();notice='指标已应用到配置，保存后显示。';break;}
+    case 'add-option':case 'remove-option':{const v=dimensionForm();v.enumOptions=action==='add-option'?[...v.enumOptions,{id:'choice_'+Date.now(),name:''}]:v.enumOptions.filter(x=>x.id!==d.id);modal.dimensionDraft=v;renderModal();return;}
+    case 'edit-program':closeModal();state.settingsTab='parameters';break;
+    case 'run-action':openModal({type:'run-action',kind:d.kind});return;
+    case 'add-dimension':case 'edit-dimension':case 'add-product':case 'edit-product':openModal({type:action,id:d.id});return;
+    case 'submit-dimension':{const v=dimensionForm(),old=draft.dimensions.find(x=>x.id===modal.id);if(!v.name||!v.rule||!v.applicability||!v.evidenceRequirement)return formError('请填写名称、判定标准、适用条件和证据要求。');if(draft.dimensions.some(x=>x.id!==old?.id&&x.name===v.name))return formError('已有同名维度。');if(v.kind==='number'&&(!Number.isInteger(v.precision)||v.precision<0||v.precision>4||!Number.isFinite(v.min)||!Number.isFinite(v.max)||v.min>v.max))return formError('检查数值范围和小数位数（0—4）。');if(v.kind==='enum'&&(v.enumOptions.length<2||v.enumOptions.some(x=>!x.name)||new Set(v.enumOptions.map(x=>x.name)).size!==v.enumOptions.length))return formError('至少填写两个不重复的选项。');const clean={name:v.name,kind:v.kind,rule:v.rule,applicability:v.applicability,evidenceRequirement:v.evidenceRequirement,...(v.kind==='judgement'?{severity:v.severity,redline:v.redline}:{}),...(v.kind==='number'?{unit:v.unit,precision:v.precision,min:v.min,max:v.max}:{}),...(v.kind==='enum'?{enumOptions:v.enumOptions}:{})};const changed=old&&Object.entries(clean).some(([k,val])=>k!=='name'&&(k==='enumOptions'?JSON.stringify(val.map(x=>x.id))!==JSON.stringify((old[k]||[]).map(x=>x.id)):JSON.stringify(val)!==JSON.stringify(old[k])));if(old)Object.assign(old,clean,{newField:!!old.newField||!!changed,semanticVersion:(old.semanticVersion||1)+(changed?1:0),ruleVersion:(old.ruleVersion||1)+(changed?1:0)});else draft.dimensions.push({id:'dim_'+Date.now(),...clean,source:'AI 判断',enabled:true,semanticVersion:1,ruleVersion:1,newField:true});closeModal();notice='维度已应用；可在统计指标中直接选择该来源。';break;}
+    case 'submit-product':{const name=formValue('productName'),aliases=formValue('productAliases');if(!name)return formError('请填写产品名称。');const old=draft.products.find(x=>x.id===modal.id);if(old){old.needsAnalysis=!!old.needsAnalysis||(old.aliases||'')!==aliases;old.name=name;old.aliases=aliases;}else draft.products.push({id:'product_'+Date.now(),name,aliases,enabled:true,newField:true});closeModal();notice='产品目录已更新，保存后用于后续报告。';break;}
+    case 'pending-responses':openModal({type:'conversations',pending:true,pageNumber:1,title:'客户消息待回复'});return;
+    case 'dimension-status':openModal({type:'conversations',dimension:d.id,dimensionStatus:d.status,pageNumber:1,title:(cfg().dimensions.find(x=>x.id===d.id)?.name||'质检维度')+' · '+Q.dimensionStatusLabels[d.status]});return;
+    case 'metric':{const m=cfg().metrics.find(x=>x.id===d.id)||Q.metricLibrary.find(x=>x.id===d.id);if(m&&pendingMetric(m)){openModal({type:'metric-status',title:m.name,reason:metricStatus(m).reason});return;}openModal({type:'conversations',metric:m||{base:d.id},pageNumber:1,title:m?.name||'会话明细'});return;}
+    case 'conversation':{const c=data().find(x=>x.id===d.id),hit=!d.issue&&!d.message&&state.search?c?.messages.find(m=>m.text.toLowerCase().includes(state.search.toLowerCase())):null;openModal({type:'conversation',id:d.id,issue:d.issue,message:d.message||hit?.id||(modal?.pending?c?.pendingResponseEvents?.[0]?.customerMessageId:null),dimension:modal?.dimension,searchHit:!!hit});return;}
+    case 'highlight':modal.issue=d.id;modal.message=null;modal.searchHit=false;renderModal();requestAnimationFrame(()=>root.querySelector('.q-message.evidence')?.scrollIntoView({block:'center',behavior:'auto'}));return;
+    case 'save-intent':{if(state.view==='preview'){root.querySelector('#q-review-error').textContent='请返回已生成日报后复核。';return;}const raw=formValue('intentCorrection'),value=raw==='unknown'?'unknown':Number(raw),reason=formValue('intentReason'),c=Q.conversations.find(x=>x.id===d.id);if(!reason){root.querySelector('#q-review-error').textContent='请填写意向更正说明。';return;}if(value===5&&c.messages.some(m=>m.sender==='customer'&&m.inReportDay!==false)){root.querySelector('#q-review-error').textContent='当日有客户消息，不能更正为当日未回应。';return;}if(!fitsSnapshot({...state,intentReviews:{...state.intentReviews,[d.id]:{value,reason}}})){root.querySelector('#q-review-error').textContent='未保存：演示存储容量不足，请缩短说明。';return;}state.intentReviews=state.intentReviews||{};state.intentReviews[d.id]={value,reason};delete intentDrafts[d.id];notice='意向复核已保存，AI 原判保留；切换复核后有效结果可查看更新统计。';persist();render();return;}
+    case 'review':{if(state.view==='preview'){root.querySelector('#q-review-error').textContent='配置预览不能提交复核，请返回已生成日报。';return;}const field=root.querySelector(`textarea[data-id="${d.id}"]`),reason=field?.value.trim(),severity=root.querySelector(`[name="review-severity-${d.id}"]`)?.value,redline=!!root.querySelector(`[name="review-redline-${d.id}"]`)?.checked;if(!reason){root.querySelector('#q-review-error').textContent='请先填写复核说明。';return;}if(!fitsSnapshot({...state,reviews:{...state.reviews,[d.id]:{status:d.status,reason,severity,redline}}})){root.querySelector('#q-review-error').textContent='未保存：演示存储容量不足，请缩短说明。';return;}state.reviews[d.id]={status:d.status,reason,severity,redline};delete reviewDrafts[d.id];state.history.push({id:d.id,status:d.status,reason});notice='复核已保存。AI 原始结果保留，切换“复核后有效结果”查看更新统计；AI 原始结果保留。';persist();render();return;}
+    case 'account-detail':state.account=d.id;state.tab='overview';resetLocal();break;
+    case 'intent':state.intent=String(state.intent)===String(d.id)?'all':d.id;state.pageNumber=1;break;
+    case 'sort':state.sortBy=d.value;break;
+    case 'search':state.pageNumber=1;break;
+    case 'clear-filters':resetLocal();break;
+    case 'page':{const owner=modal?.type==='conversations'?modal:state;owner.pageNumber=Math.max(1,(owner.pageNumber||1)+Number(d.value));break;}
+    case 'product':state.productFilter=d.id;state.search='';state.pageNumber=1;break;
+    case 'product-conversations':openModal({type:'conversations',product:true,pageNumber:1,title:'产品提及会话'});return;
+    case 'runs':case 'coverage':openModal({type:action});return;
+    case 'modal-back':{modal=modalParents.pop();renderModal();window.scrollTo({top:modal?.scroll||0,behavior:'auto'});return;}
+    case 'close-modal':closeModal();return;
+    case 'overlay-close':closeModal();return;
+    default:return;
+  }persist();render();}
+  root.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b||b.disabled||!root.contains(b))return;if(b.dataset.action==='overlay-close'&&e.target!==b)return;doAction(b.dataset.action,b.dataset);});
+  root.addEventListener('input',e=>{const n=e.target.name;if(n==='search')state.search=e.target.value;if(n==='metricName'&&modal){modal.metricName=e.target.value;modal.customName=true;}if(n==='review-reason')reviewDrafts[e.target.dataset.id]=e.target.value;if(n==='intentReason'&&modal?.id)intentDrafts[modal.id]={...intentDrafts[modal.id],reason:e.target.value};if(n==='metricRule'&&modal)modal.metricRule=e.target.value;if(draft&&['timeoutMinutes','deepMinMessages','groupMinutes'].includes(n)){draft[n]=Number(e.target.value);updateDraftNotice();}});
+  root.addEventListener('change',e=>{const n=e.target.name,v=e.target.value;if(n==='handling'){if(state.view==='preview'){root.querySelector('#q-review-error').textContent='请返回已生成日报后修改处理进度。';return;}state.handling=state.handling||{};state.handling[e.target.dataset.id]=v;persist();return;}if(n==='metricSource'){modal.metricSource=v;modal.metricMethod=M.methods(v,draft.dimensions)[0]?.id;modal.metricOption='';modal.metricDenominator='all';if(!modal.customName)modal.metricName=M.sources(draft.dimensions).find(x=>x.id===v)?.name;renderModal();return;}if(n==='redlineFilter'){state.redlineFilter=v;state.pageNumber=1;if(v==='not_recognized'&&state.mode==='effective'){state.mode='ai';notice='已切换到 AI 原始候选，查看未认定的记录。';}persist();render();return;}if(n==='runScenario'){state.runScenario=v;resetLocal();persist();render();return;}if(n==='dimensionKind'){modal.dimensionDraft={...dimensionForm(),kind:v};renderModal();return;}if(n==='metricDenominator'||n==='metricOption'){modal.metricName=formValue('metricName');modal[n]=v;renderModal();return;}if(n==='metricMethod'){modal.metricMethod=v;const source=modal.metricSource||draft.metrics.find(m=>m.id===modal.id)?.base||'complaint_count';if(!modal.customName)modal.metricName=M.suggestName(source,v,draft.dimensions);renderModal();return;}if(n==='intentCorrection'&&modal?.id){intentDrafts[modal.id]={...intentDrafts[modal.id],value:v};return;}if(n==='metric-card'){draft.metrics.find(m=>m.id===e.target.dataset.id).card=e.target.checked;updateDraftNotice();return;}if(n==='metric-enabled'){draft.metrics.find(m=>m.id===e.target.dataset.id).enabled=e.target.checked;render();return;}if(n==='dimension-enabled'){const id=e.target.dataset.id;draft.dimensions.find(m=>m.id===id).enabled=e.target.checked;notice=e.target.checked?'检查已启用，保存后用于新分析。':'检查将停用于新分析；依赖指标会标记未评估，历史判断保留。';render();return;}if(n==='product-enabled'){draft.products.find(m=>m.id===e.target.dataset.id).enabled=e.target.checked;render();return;}if(['date','department','account','mode','severity','reviewFilter','mentionSpeaker'].includes(n)){state[n]=v;state.pageNumber=1;if(n==='reviewFilter'&&v==='dismissed'&&state.mode==='effective'){state.mode='ai';notice='已切换到 AI 原始结果，显示判为误报的候选。';}if(n==='mode'&&v==='effective'&&state.reviewFilter==='dismissed')state.reviewFilter='all';if(n==='department')state.account='all';if(['date','department','account'].includes(n))resetLocal();persist();render();}});
+  root.addEventListener('keydown',e=>{if(e.key==='Tab'&&modal){const controls=Array.from(root.querySelectorAll('#q-modal button,#q-modal input,#q-modal select,#q-modal textarea')).filter(x=>!x.disabled);const first=controls[0],last=controls[controls.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}if(e.key==='Escape'&&modal){closeModal();}if(e.key==='Enter'&&e.target.name==='search'){e.preventDefault();doAction('search',{});}});
+  let metricDrag = null;
+  function finishMetricDrag(commit) {
+    const drag = metricDrag;
+    if (!drag) return;
+    metricDrag = null;
+    root.querySelectorAll('[data-metric-row]').forEach(row=>row.classList.remove('q-dragging','q-drop-before','q-drop-after'));
+    if(drag.handle.hasPointerCapture(drag.pointerId))drag.handle.releasePointerCapture(drag.pointerId);
+    if(commit&&drag.active&&drag.targetId)reorderMetric(drag.id,drag.targetId,drag.after);
+  }
+  function reorderMetric(id,targetId,after) {
+    if(!draft||id===targetId)return;
+    const from=draft.metrics.findIndex(m=>m.id===id),target=draft.metrics.findIndex(m=>m.id===targetId);
+    if(from<0||target<0)return;
+    const before=draft.metrics.map(m=>m.id).join('|'),items=draft.metrics.slice(),item=items.splice(from,1)[0];
+    const at=items.findIndex(m=>m.id===targetId)+(after?1:0);items.splice(at,0,item);
+    if(before===items.map(m=>m.id).join('|'))return;
+    draft.metrics=items;notice=items.map(m=>m.id).join('|')===state.config.metrics.map(m=>m.id).join('|')?'指标顺序已恢复到已保存配置。':'顺序已调整，保存配置后同步到概览和工作号看板。';render();
+    Array.from(root.querySelectorAll('[data-metric-drag]')).find(el=>el.dataset.metricDrag===id)?.focus({preventScroll:true});
+  }
+  root.addEventListener('pointerdown',e=>{
+    const handle=e.target.closest('[data-metric-drag]');
+    if(!handle||modal||e.button!==0||!e.isPrimary)return;
+    e.preventDefault();handle.focus({preventScroll:true});handle.setPointerCapture(e.pointerId);
+    metricDrag={id:handle.dataset.metricDrag,handle,pointerId:e.pointerId,startY:e.clientY,active:false,targetId:null,after:false};
+  });
+  root.addEventListener('pointermove',e=>{
+    const drag=metricDrag;if(!drag||e.pointerId!==drag.pointerId)return;
+    if(!drag.active&&Math.abs(e.clientY-drag.startY)<5)return;
+    drag.active=true;e.preventDefault();
+    const rows=Array.from(root.querySelectorAll('[data-metric-row]'));
+    rows.forEach(row=>{row.classList.toggle('q-dragging',row.dataset.metricRow===drag.id);row.classList.remove('q-drop-before','q-drop-after');});
+    const target=rows.find(row=>{const r=row.getBoundingClientRect();return e.clientY>=r.top&&e.clientY<=r.bottom&&e.clientX>=r.left&&e.clientX<=r.right;});
+    drag.targetId=target?.dataset.metricRow||null;
+    if(!target||drag.targetId===drag.id)return;
+    const r=target.getBoundingClientRect();drag.after=e.clientY>r.top+r.height/2;
+    target.classList.add(drag.after?'q-drop-after':'q-drop-before');
+  });
+  root.addEventListener('pointerup',e=>{if(metricDrag?.pointerId===e.pointerId)finishMetricDrag(true);});
+  root.addEventListener('pointercancel',e=>{if(metricDrag?.pointerId===e.pointerId)finishMetricDrag(false);});
+  root.addEventListener('lostpointercapture',e=>{if(metricDrag?.pointerId===e.pointerId)finishMetricDrag(false);});
+  root.addEventListener('keydown',e=>{
+    if(metricDrag&&e.key==='Escape'){e.preventDefault();finishMetricDrag(false);return;}
+    const handle=e.target.closest('[data-metric-drag]');if(!handle||!['ArrowUp','ArrowDown'].includes(e.key)||!draft)return;
+    e.preventDefault();const at=draft.metrics.findIndex(m=>m.id===handle.dataset.metricDrag),next=at+(e.key==='ArrowUp'?-1:1);
+    if(next>=0&&next<draft.metrics.length)reorderMetric(handle.dataset.metricDrag,draft.metrics[next].id,e.key==='ArrowDown');
+  });
+  render();
+}());
+
+</script>
+
+</body></html>
