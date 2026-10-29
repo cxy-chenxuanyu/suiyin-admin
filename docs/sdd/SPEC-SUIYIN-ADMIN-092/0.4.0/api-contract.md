@@ -22,7 +22,7 @@
 
 `QualityDailyMessage={id:string,at:string,direction:'customer'|'staff'|'unknown',type:'text'|'voice'|'image'|'video'|'other',status:'success'|'failed'|'withdrawn'|'unknown',text:string,parseStatus:'parsed'|'unparsed',automated:'yes'|'no'|'unknown',system:boolean,actualOperatorId?:string,reason?:string}`。at为消息时间（RFC3339）；receivedAt只供后台采集使用，不对外返回。automated是三态字符串，不能按布尔真值判断（'no'和'unknown'也都是非空字符串）；system独立表达系统记录，不与自动发送状态合并。方向、发送状态及解析状态按各自枚举显示，unknown不猜成客户／员工／发送成功，unparsed不当作“无消息”；actualOperatorId缺失时不推断真实操作者。
 
-`Coverage={total:number|null,eligible:number|null,analyzed:number,skipped:number,failed:number,pending:number,paused:number,skipReasons:{code:string,count:number}[],unreadable:number,collectionComplete:boolean,gaps:string[]}`。所有响应中的coverage.gaps统一为string[]，没有缺口时返回[]，不返回null；取数未完整时total不能猜测，使用null，已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|paused|partial_failed|failed|no_data|completed`。
+`Coverage={total:number|null,eligible:number|null,analyzed:number,skipped:number|null,failed:number,pending:number,paused:number|null,skipReasons:{code:string,count:number}[],unreadable:number,collectionComplete:boolean,gaps:string[]}`。所有响应中的coverage.gaps统一为string[]，没有缺口时返回[]，不返回null；取数未完整时total不能猜测，使用null，已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|paused|partial_failed|failed|no_data|completed`。
 
 `RunRow={id, batchId,reportId,revision,state,coverage,waitReason?,retryAt?,failureReason?,canRecover,tasks?:[{id,state}]}`，id等于reportId；没有真实任务时不伪造task ID。`versions={name:string,version:number}[]`，`limitations:string[]`。
 
@@ -77,14 +77,14 @@ parameters：`responseGroupMinutes,timeoutMinutes,deepChatCustomerMessages`，�
 - `POST /generate`：`{channel,date,workAccountIds?:string[],operationId,mode:'generate'|'reanalyze'}` → `{operationId,batchId,reportIds,state}`。无原报告generate沿用该日意图，reanalyze明确创建新修订，冻结当前规则/Prompt/模型；请求只完成有界准入，取数与调用走持久公共任务。手动请求未选工作号时，“全部”只表示当前操作者可见工作号，先解析并冻结实际范围，不能占用租户自动调度的全企业空范围批次身份；无可见号不扩为全租户。准入成功时批次和各工作号报表元数据已经持久可读，异步采集尚未完成也显示generating及覆盖缺口；取数失败／中断须落报表失败状态和原因（采集未完成为partial_failed），不能让已提交任务从生成记录消失或显示为无消息。
 - `POST /reports/:id/recover`：`{operationId}` → `{operationId,batchId,reportId,state,unknownTaskCount:number}`。恢复本报告未完成任务，成功会话不调用，未知外呼保持隔离；规则/Prompt/模型不刷新。
 
-执行只注册一个公共`TaskQualityDaily`任务类型，内部`ExtraSnapshot.daily_phase`为`capture|analysis|statistics|recover`。capture、statistics、recover复用公共本地阶段与持久恢复，analysis才进入公共模型调用及用量链路，不增加日报独立队列／worker。恢复控制任务冻结目标及原execution attempt，未知调用只计入unknownTaskCount并保持隔离；成功任务不重发，失败任务仍使用原模型／Prompt快照与原会话输入，不因当前配置改变转用新模型或新语义。新分析修订由明确的reanalyze请求产生。
+执行只注册一个公共`TaskQualityDaily`任务类型，内部`ExtraSnapshot.daily_phase`为`scan|capture|analysis|statistics|recover`。capture、statistics、recover复用公共本地阶段与持久恢复，analysis才进入公共模型调用及用量链路，不增加日报独立队列／worker。恢复控制任务冻结目标及原execution attempt，未知调用只计入unknownTaskCount并保持隔离；成功任务不重发，失败任务仍使用原模型／Prompt快照与原会话输入，不因当前配置改变转用新模型或新语义。新分析修订由明确的reanalyze请求产生。
 
 统一错误：400非法合同、403无权限、404权限内记录不存在、409版本冲突、422配置依赖或数据缺口不允许操作、503暂时不可用。具体HTTP/业务code按现有errs映射保持一致。所有生成和复核mutation具备稳定operationId及幂等语义。实现时若改路径/字段，先更新同一合同通知两端，不靠前端兼容旧日报大JSON。
 
 
 ## 2026-10-30 准入与暂停增补
 
-准入、定时和六条AC以[调整Plan](adjustment-20261030.md)为准。Coverage中total收集完成后=eligible+skipped，eligible=analyzed+failed+pending+paused；eligible是本报告来源下的分析准入（明确手动可免自动5+5），未采集历史及尚未判定时可null。unreadable与上述状态可以重叠，不相加。每个skipped只存一个主analysisReason，skipReasons按该主因计数，合计等于skipped。已采集但不足门槛保留程序事实，AI保持unknown。全跳过状态completed，analyzed=0且skipped=total，不能显示no_data或全员合格；no_data只表示完整范围确认0会话。无消息、未采齐和客户身份查询出错不同。
+准入、定时和六条AC以[调整Plan](adjustment-20261030.md)为准。Coverage中total收集完成后=eligible+skipped，eligible=analyzed+failed+pending+paused；新增eligible/skipped/paused在未采集历史上为null，不能补0；新报告已确认的计数返回number。eligible是本报告来源下的分析准入（明确手动可免自动5+5），未采集历史及尚未判定时可null。unreadable与上述状态可以重叠，不相加。每个skipped只存一个主analysisReason，skipReasons按该主因计数，合计等于skipped。已采集但不足门槛保留程序事实，AI保持unknown。全跳过状态completed，analyzed=0且skipped=total，不能显示no_data或全员合格；no_data只表示完整范围确认0会话。无消息、未采齐和客户身份查询出错不同。
 
 ConversationRow.state可为skipped|paused，analysisReason受控code首版为message_threshold|no_readable_content|cron_disabled；值不能作为模型原文输出。暂停同时沿RunRow.waitReason说明模板关闭及明确补跑要求。缺字段表示历史未采集，前端不得猜0。context数据及coverage继续属于其reportRefs；displayingPreviousRevision时最新生成进度只在RunRow/最新修订提示表达，不能与旧可读指标相加。
 
