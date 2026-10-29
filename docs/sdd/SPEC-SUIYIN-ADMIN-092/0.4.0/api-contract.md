@@ -1,6 +1,6 @@
 # 质检日报实施接口合同 v0.4.0（已确认Plan的工程细化）
 
-适用两渠道 `wecom` / `wechat`；企业由可信请求上下文选择数据库，客户端不传 tenant_id。原Prompt接口与保存保留；这里只定义日报及规则接口。根路径 `/api/v1/ai/quality-daily`，使用既有 ApiResponse envelope。日期格式 YYYY-MM-DD，北京自然日；ID均为不透明字符串。
+适用两渠道 `wecom` / `wechat`；企业由可信请求上下文选择数据库，客户端不传 tenant_id。原Prompt接口与保存保留；这里只定义日报及规则接口。根路径 `/api/v1/ai/quality-daily`，使用既有 ApiResponse envelope。日期格式 YYYY-MM-DD，北京自然日；ID均为不透明字符串。所有result／review／config／definition／analysis／projection的revision或version均为整数。`intention.level`为`level_1`至`level_5`或`unknown`。
 
 ## 查询及一致视图
 
@@ -18,6 +18,10 @@
 - `GET /conversations/:id/evidence?resultVersion=...`：`{conversation,messages:[{id,at,direction,type,status,text,parseStatus,automated,actualOperatorId?,reason?}],facts,reviews,coverage}`。重新验证证据权限，原文不混入普通列表。
 - `POST /runs/query`：Scope+cursor+limit → Page<RunRow>；包含batchId/reportId与关联task摘要、revision、state、coverage、waitReason、retryAt、failureReason、canRecover，不暴露原文或密钥。
 
+`Coverage={total:number|null,analyzed:number,failed:number,pending:number,unreadable:number,collectionComplete:boolean,gaps:string[]}`。取数未完整时total不能猜测，使用null；已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|partial_failed|failed|no_data|completed`。
+
+`RunRow={id, batchId,reportId,revision,state,coverage,waitReason?,retryAt?,failureReason?,canRecover,tasks?:[{id,state}]}`，id等于reportId；没有真实任务时不伪造task ID。`versions={name:string,version:number}[]`，`limitations:string[]`。
+
 `MetricValue={code,name,value:number|null,unit,numerator?,denominator?,availability:'ready'|'unknown'|'not_applicable'|'not_collected'|'pending',reason?,definitionVersion}`。未知不补0，前端不重新计算统计或风险。
 
 `ConversationRow={id,reportId,workAccountId,workAccountName,customerName,relationId,state,risk,intention:{level,summary,projects?,timeExpressions?,evidenceIds},originalIntention?,servicePriority,unresolvedCount,issueCount,reviewVersion,resultVersion,coverage}`。列表不得带全部消息。
@@ -29,6 +33,8 @@
 - `GET /config` → `{revision,value:QualityConfig,limits,operations}`。
 - `PUT /config`：`{expectedRevision,value}` → `{revision,value,changeKinds:('display'|'statistics'|'analysis')[],affectedMetricCodes,warnings}`。只有保存不自动启动模型；同输入无实际变化不升语义版本。冲突409，不静默覆盖。
 - `POST /statistics/rebuild`：`{scope,reportRefs,expectedConfigRevision,operationId}` → `{operationId,reportRefs,statisticsPending}`；只按可用事实重算选定工作号日，不调用模型。新语义缺失明确not_collected。
+
+`limits={parameters:{[name:string]:{min:number,max:number}},maxFacts:number,maxMetrics:number,maxProducts:number}`。`operations={judgment:Operation[],number:Operation[],enum:Operation[]}`，Operation取下面MetricDefinition的operation受控枚举；前端按返回值展示可选算法及上限。
 
 QualityConfig：`facts:FactDefinition[],metrics:MetricDefinition[],parameters,products:ProductDefinition[]`；不含渠道执行开关或Prompt正文。
 FactDefinition：`code,name,type:'judgment'|'number'|'enum',source:'ai'|'program',enabled,version,criteria,applicability,evidenceRequired,severity,redline:{enabled,criteria},unit?,precision?,min?,max?,options?:[{id,label,enabled}]`。program来源只能用既有目录code，不能改其实现为自由文本。
