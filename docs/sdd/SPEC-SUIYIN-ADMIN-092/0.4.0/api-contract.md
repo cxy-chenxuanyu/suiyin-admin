@@ -17,10 +17,10 @@
 - `POST /facts/query`：Scope+reportRefs+cursor+limit+`kind?,factCode?,valueStatus?,severity?,redlineStatus?,reviewStatus?,handlingStatus?,conversationId?,productId?` → `FactPage=Page<FactRow>&{summary?:RedlineSummary}`。问题、红线和维度下钻共用此入口，按固定kind含义过滤，不放任意表达式。红线查询参数`redlineStatus`为`all|candidate|confirmed|rejected`；省略或空字符串不返回summary，其余非法值拒绝。
 - `POST /products/query`：Scope+reportRefs → `{context,items:[{id,name,category,mentionCount,conversationCount,staffConversationCount,availability}],actions:MetricValue[]}`；零触达由该版目录补齐。
 - `POST /standards/query`：Scope+reportRefs → `{context,config,versions,limitations}`，按选定报告完整快照解释。
-- `GET /conversations/:id/evidence?resultVersion=...`：`{conversation,messages:[{id,at,direction,type,status,text,parseStatus,automated,actualOperatorId?,reason?}],facts,reviews,coverage}`。重新验证证据权限，原文不混入普通列表。
+- `GET /conversations/:id/evidence?resultVersion=...`：`{conversation,messages:[{id,at,direction,type,status,text,parseStatus,automated,actualOperatorId?,reason?}],facts:FactRow[],reviews:ReviewRecord[],reviewsHasMore:boolean,coverage}`。重新验证证据权限，原文不混入普通列表。
 - `POST /runs/query`：Scope+cursor+limit → Page<RunRow>；包含batchId/reportId与关联task摘要、revision、state、coverage、waitReason、retryAt、failureReason、canRecover，不暴露原文或密钥。
 
-`Coverage={total:number|null,analyzed:number,failed:number,pending:number,unreadable:number,collectionComplete:boolean,gaps:string[]}`。取数未完整时total不能猜测，使用null；已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|partial_failed|failed|no_data|completed`。
+`Coverage={total:number|null,analyzed:number,failed:number,pending:number,unreadable:number,collectionComplete:boolean,gaps:string[]}`。所有响应中的coverage.gaps统一为string[]，没有缺口时返回[]，不返回null；取数未完整时total不能猜测，使用null，已知部分计数不代表完整覆盖。统一state为`not_generated|generating|waiting_quota|partial_failed|failed|no_data|completed`。
 
 `RunRow={id, batchId,reportId,revision,state,coverage,waitReason?,retryAt?,failureReason?,canRecover,tasks?:[{id,state}]}`，id等于reportId；没有真实任务时不伪造task ID。`versions={name:string,version:number}[]`，`limitations:string[]`。
 
@@ -29,6 +29,14 @@
 `ConversationRow={id,reportId,workAccountId,workAccountName,customerName,relationId,state,risk,intention:{level,summary,projects?,timeExpressions?,evidenceIds},originalIntention?,servicePriority,unresolvedCount,issueCount,reviewVersion,resultVersion,coverage}`。列表不得带全部消息。
 
 `FactRow={id,reportId,conversationId,workAccountId,customerName,kind,code,name,definitionVersion,resultVersion,status,value?,valueLabel?,unit?,severity,redlineCandidate,redlineConfirmed,redlineStatus,reviewStatus,handlingStatus,evidenceIds,evidencePreview?,reviewVersion,original?}`。判定类型使用`true/false/unknown/not_applicable`四态，数值／枚举的合法值状态为`known`，缺口仍为`unknown/not_applicable`；因此FactRow.status的总枚举为`true|false|known|unknown|not_applicable`，value为boolean/number/string单值。`valueLabel?:string`、`unit?:string`来自与事实definitionVersion匹配的定义，枚举按稳定ID找标签，不用当前新语义猜旧值。
+
+`FactRow.original:ValueSnapshot`仅为模型原始判定值快照，`ValueSnapshot={status:FactStatus,boolean?:boolean,number?:number,enum?:string,severity:string,redlineConfirmed:boolean}`。这里使用boolean／number／enum受控字段，不是FactRow的副本，不包含redlineCandidate；原AI候选标记读取FactRow顶层redlineCandidate，不能由original.redlineConfirmed=false推断“AI未命中红线”。
+
+`ReviewRecord={id:string,reportId:string,targetKind:'fact'|'intention',targetId:string,resultVersion:number,reviewVersion:number,operationId:string,actor:string,reason:string,before:ReviewSnapshot,after:ReviewSnapshot,createdAt:string}`，createdAt是实际审计时间（RFC3339）。该形状对应持久化QualityDailyReview的JSON字段，requestDigest不对外返回，不提供patch或at字段。
+
+before／after是受控字段完整前后快照，不是提交patch：fact目标为`{value:ValueSnapshot,reviewStatus:string,handlingStatus:string,redlineReviewStatus:string}`；intention目标为`{level:IntentionLevel,summary:string,projects?:string[],timeExpressions?:string[],evidenceIds:string[]}`。意向复核首版只改level，但前后快照保留整个意向对象。界面按targetKind解读前后值，展示操作者、实际时间和理由，不能从请求补造审计内容。
+
+原文接口的reviews按createdAt倒序有界读取，当前最多200条；reviewsHasMore=true时明确提示仅显示部分记录，不能将已读取项冒称完整审计历史，首版不据此虚构一个未定义的分页接口。
 
 `redlineStatus='none'|'candidate'|'confirmed'|'rejected'`为独立红线认定状态；候选不算已认定。它不能通过严重度、问题reviewStatus或handlingStatus推断：确认问题不自动确认红线，处理完成不自动改变认定，误报问题不能继续保留有效红线。所选事实值按mode读取原始或有效值，独立人工认定状态和审计仍明确展示。
 
