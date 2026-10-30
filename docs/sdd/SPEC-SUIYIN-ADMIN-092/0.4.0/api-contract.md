@@ -114,3 +114,5 @@ ratio的MetricValue.denominatorBasis必返all_conversations或assessed_conversat
 任务状态收敛与统计恢复使用原公共AI Task及现有集合；capture success不能等同captureComplete。取数未完成且任务终态、没有明确恢复时应准确显示未完成原因，不能强写游标完成。相同版本已终态统计任务不得形成永久空转；本地投影恢复不重发模型、不改通用任务终态。
 
 实际04:00调度与08:00容量需要独立运行证据。旧文“Cron资源不由admin流水线自动下发”不再作为现状结论：当前流水线包含清单下发，实际集群对象仍须按权限读回，不能把仓库YAML或部署成功冒充自动执行已验证。本轮不修改Cron清单、开关或价格。
+
+本轮处理进度补充：`FactRow.handleable:boolean`与已有`reviewable`分开。真实AI问题或AI未解决诉求（原始status=true、当前结果版本）可提交仅handlingStatus的补丁和必填reason；request不可提交confirmed/severity/redlineConfirmed。问题复核能力仍仅适用于已有AI问题，不扩大为程序事实复核。处理完成不篡改AI原判或将诉求status强置false，原始识别与人工处理状态分别解释。概览unresolved对象的真实问题说明使用`requestSummary?:string`，可处理目标使用`requestFactId?:string,handlingStatus?:string`；缺少对应事实时明确无可更新目标，不造内容。
