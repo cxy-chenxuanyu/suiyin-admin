@@ -120,3 +120,5 @@ ratio的MetricValue.denominatorBasis必返all_conversations或assessed_conversat
 当前自动开关读数明确为`context.automaticEnabled:boolean|null`、`automaticReason?:string`：当前渠道0个启用模板=false，恰1个=true，多于1个=null并提示配置冲突；多模板冲突不冒称正常开启，也不阻断已有日报阅读。真实读取失败沿服务错误返回，不静默当关闭。当前开关按scene查询，不按旧报告PromptSnapshot.ID推测。意向页默认已分析筛选只适用于普通浏览；程序指标下钻清除该默认，保留未分析会话的程序统计结果。
 
 数值展示沿已有定义补充`FactRow.precision?:number`，只从与definitionVersion匹配的冻结定义返回；程序response_minutes缺自定义定义时默认1位，其他固定计数为0位。仅格式化显示，不舍入覆盖原值，不将所有minutes强制一位。新配置的number仍沿原0–6精度能力，不新增计算方法。
+
+`context.historicalAnalysis`同时比较启用事实定义与启用产品id/version。产品统计已有版本隔离；新语义not_collected等非ready状态禁止以新产品名称下钻旧事实，original视图保留原定义的合法下钻。不新增产品版本表或新统计算法。
