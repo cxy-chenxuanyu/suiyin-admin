@@ -110,3 +110,6 @@ flowchart LR
 ```
 
 后续真实功能仍按独立合同先跑通企微和个微调用／校验／持久化闭环，再验证04:00至08:00；静态与Codex离线结果不能替代API、生产或容量验收。旧过程版流程及0.3.x回执只作历史，当前规则以本版本及[来源收敛账本](../docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/source-convergence.md)为准。
+
+
+2026-10-30后续已批准实施增补：[日报可靠性与运营操作调整](../docs/sdd/SPEC-SUIYIN-ADMIN-092/0.4.0/operator-corrections-20261030.md)。本轮详细Plan/AC和接口增量以此为准；历史合同仅按明确保留范围适用。

@@ -70,3 +70,6 @@
 已保存深圳分析来源为Codex、`apiExecuted=false`；API执行暂停，未执行／未验收的本地runtime不打入本次静态包。真实DeepSeek闭环、生产权限和持久化、每天调度、04:00启动／08:00前完成、费用与容量仍需独立运行和工程回执。此次完整推送只交付原型与安全文档，不建立工程Issue，不更新开发进度表，不公开私有数据。
 
 旧0.3.0／0.3.1／0.3.2文档、截图及[早期版式记录](../docs/verification/chat-quality-daily-20261025/report-layout.md)保留为历史；其中右上筛选与原文弹窗不再表示当前界面。当前来源关系见[收敛账本](../docs/sdd/SPEC-SUIYIN-ADMIN-092/0.3.3/source-convergence.md)，最终抽屉证据见[验收回执](../docs/verification/chat-quality-daily-20261025/chat-drawer.md)。
+
+
+2026-10-30后续已批准实施增补：[日报可靠性与运营操作调整](../docs/sdd/SPEC-SUIYIN-ADMIN-092/0.4.0/operator-corrections-20261030.md)。本轮详细Plan/AC和接口增量以此为准；历史合同仅按明确保留范围适用。
