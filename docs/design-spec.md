@@ -248,3 +248,8 @@ prototype/admin-street-trajectories.js/css及data/street-trajectories.js仅提�
 
 
 2026-10-30后续已批准实施增补：[日报可靠性与运营操作调整](sdd/SPEC-SUIYIN-ADMIN-092/0.4.0/operator-corrections-20261030.md)。本轮详细Plan/AC和接口增量以此为准；历史合同仅按明确保留范围适用。
+
+
+### 2026-10-31 运营工作流已批准增补
+
+效果以[运营配置和两渠道日报Plan／六条AC](sdd/SPEC-SUIYIN-ADMIN-092/0.4.0/operator-workflow-20261031.md)及其可点击合成原型为准。沿现有管理页组件、token、布局和权限实现，不以演示Shell替换整站。用户已批准实施，源仓正式审阅仍待审；生产部署、付费实跑和恢复定时不在本轮实施授权内。

@@ -96,3 +96,21 @@ ratio的MetricValue.denominatorBasis必返all_conversations或assessed_conversat
 
 
 2026-10-30 独立审查增补（原六条AC内）：采集未完成且coverage.total=null时，all_conversations比例的value=null、denominator=null、availability=unknown，保留已知numerator并说明“全部会话数尚未确认”；不能用当前已采集数冒充全量。assessed_conversations仍按该指标明确评估样本计算。跨工作号合并含未知全量时同样不发布全量比例；分母已确认0才显示合法0与not_applicable。首次创建会话AI任务前复核当前正式客户、有效非Purged关联及启用工作号；已入队任务继续。失去资格但已保存的会话保留程序事实，state=skipped、analysisReason=eligibility_changed。原capture阶段遇持久暂停不自动恢复，明确recover才可续派；已有新版五表运行快照通过原可信定时操作标识识别自动来源，不把缺字段默认为手动，不读取六旧集合。普通任务创建拒绝日报/沟通进度专用scene/type与未注册scene，保留既有合法语音和内部场景。
+
+
+## 2026-10-31 已批准运营工作流增补
+
+以[运营工作流Plan／六条AC](operator-workflow-20261031.md)为本轮最小补充；未涉及字段保留。普通手动generate/reanalyze新批次与自动生成执行相同准入（当天双方有效消息各至少5条且有可读内容）；Automatic仍表达来源和定时暂停，不将手动冒充自动。已有报告recover保留原冻结快照，不反向重写旧批次准入。上述约束取代旧文“手动免5+5”的说明。
+
+- `FactRow`补充`workAccountName:string`，正式声明已有`explanation:string`。AI判断理由展示explanation，evidencePreview仅在真实引用可用时展示，不将解释冒充原话。名称沿可见reportRefs批量映射，不逐行取消息或跨企业找身份。
+- `Insight`补充`workAccountId,workAccountName,customerName`；概览需跟进对象使用已有事实中的真实未解决问题说明，不拿意向摘要冒充问题。名单保持有界。
+- conversations查询增加可选`analysisState:'all'|'assessed'|'unassessed'|'failed'|'skipped'|'paused'`，缺省all；assessed精确定义为state=completed且resultVersion>0，unassessed为其补集。筛选在服务端分页前执行并绑定游标，前端显式选已分析优先，不对当前页过滤冒充全量。
+- 自动生成开关只读展示沿已有Prompt场景配置；不得从某份报告状态猜测。若因权限或历史数据不能获得，不假设已开启。规则配置不新增第二个开关。
+- standards沿既有original执行快照查询；报告多版本不一致时明确提示并引导按单工作号查看，不能以当前配置解释旧日报。无需新增标准分组表/API。
+- FactDefinition增加可选`examples:{positive?:string,negative?:string}`；分类options条目增加可选`criteria:string`。它们与criteria/applicability同一份冻结定义、输入和版本，无单独发布或模板绑定表。空值可省略；服务端受控长度、分类非空可用选项、名称标准、数值范围、红线依赖校验仍必须通过。
+- AI项目名称、分类标签和分类标准、示例、产品名称/类别等进入模型的内容变化计入分析版本；纯指标标题/排序/卡片显示不触发模型。旧定义和长标准不自动截断或批量替换。
+- 处理进度沿原reviews仅提交handlingStatus和必填reason；未提交的confirmed/severity/redlineConfirmed保持原值。无法判断留待复核时不发送confirmed=false。
+
+任务状态收敛与统计恢复使用原公共AI Task及现有集合；capture success不能等同captureComplete。取数未完成且任务终态、没有明确恢复时应准确显示未完成原因，不能强写游标完成。相同版本已终态统计任务不得形成永久空转；本地投影恢复不重发模型、不改通用任务终态。
+
+实际04:00调度与08:00容量需要独立运行证据。旧文“Cron资源不由admin流水线自动下发”不再作为现状结论：当前流水线包含清单下发，实际集群对象仍须按权限读回，不能把仓库YAML或部署成功冒充自动执行已验证。本轮不修改Cron清单、开关或价格。
