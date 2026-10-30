@@ -56,7 +56,9 @@
 
 ## 接口增补与一致性
 
-沿原路径，以实现对应契约追加必要可读字段：覆盖显式本地采集完成（captureComplete，历史缺失不猜）、原文reportDate/消息scope（day/before/after）及原文事实sourceKind/reviewable；Run任务摘要补phase/customerName/conversationId/errorMsg/waitReason/retryAt（仅安全诊断，无模型原文或密钥）。错误原因通过受控中文映射展示，保留可追踪code。
+沿原路径，以实现对应契约追加必要可读字段：覆盖显式本地采集完成（captureComplete，历史缺失不猜）、会话errorMsg、原文reportDate/消息scope（day/before/after）及事实sourceKind/reviewable/redlineReviewable；Run任务摘要补phase/customerName/conversationId/errorMsg/waitReason/retryAt（仅安全诊断，无模型原文或密钥；本地阶段无conversationId）。错误原因通过受控中文映射展示，保留可追踪code。
+
+redlineReviewable仅对当前成立、原始为真的AI问题且冻结规则已启用红线返回true；程序统计及普通非红线问题均为false。已驳回的问题先重新确认成立，再单独认定红线。Scope可带date读取当日可见工作号历史归属快照，departmentBasis=work_account_group_snapshot明确标识来自采集时工作号分组，不冒充历史组织部门；归属未知保留独立选项。
 
 collectionComplete沿原完整性语义，不因本地取数完毕一律设true；captureComplete只表示本次本地范围查询完成。程序统计与AI问题分别按sourceKind/kind限制复核。前后端不自行用时间或缺省值推断来源。最终字段与Swagger/前端类型同步到api-contract，不额外新造接口。
 
