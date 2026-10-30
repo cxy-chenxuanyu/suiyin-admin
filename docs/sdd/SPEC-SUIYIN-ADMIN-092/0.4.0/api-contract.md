@@ -118,3 +118,5 @@ ratio的MetricValue.denominatorBasis必返all_conversations或assessed_conversat
 本轮处理进度补充：`FactRow.handleable:boolean`与已有`reviewable`分开。真实AI问题或AI未解决诉求（原始status=true、当前结果版本）可提交仅handlingStatus的补丁和必填reason；request不可提交confirmed/severity/redlineConfirmed。问题复核能力仍仅适用于已有AI问题，不扩大为程序事实复核。处理完成不篡改AI原判或将诉求status强置false，原始识别与人工处理状态分别解释。概览unresolved对象的真实问题说明使用`requestSummary?:string`，可处理目标使用`requestFactId?:string,handlingStatus?:string`；缺少对应事实时明确无可更新目标，不造内容。
 
 当前自动开关读数明确为`context.automaticEnabled:boolean|null`、`automaticReason?:string`：当前渠道0个启用模板=false，恰1个=true，多于1个=null并提示配置冲突；多模板冲突不冒称正常开启，也不阻断已有日报阅读。真实读取失败沿服务错误返回，不静默当关闭。当前开关按scene查询，不按旧报告PromptSnapshot.ID推测。意向页默认已分析筛选只适用于普通浏览；程序指标下钻清除该默认，保留未分析会话的程序统计结果。
+
+数值展示沿已有定义补充`FactRow.precision?:number`，只从与definitionVersion匹配的冻结定义返回；程序response_minutes缺自定义定义时默认1位，其他固定计数为0位。仅格式化显示，不舍入覆盖原值，不将所有minutes强制一位。新配置的number仍沿原0–6精度能力，不新增计算方法。
