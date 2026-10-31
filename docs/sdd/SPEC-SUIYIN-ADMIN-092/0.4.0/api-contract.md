@@ -126,3 +126,10 @@ ratio的MetricValue.denominatorBasis必返all_conversations或assessed_conversat
 程序事实重算后的原文精度沿同租户可证实的定义：先按报告配置匹配，必要时从当前配置只补code/definitionVersion完全匹配的precision，不重贴名字或判定标准。仅内建definitionVersion=1的程序response_minutes允许缺定义时默认1位；自定义/重算版无可匹配定义时省略precision，前端保留原数值，不能强用1位或拿不匹配新版猜测。不新增事实字段、集合或历史重写。
 
 状态维护扫描轮转：报告增一个JSON隐藏的可选`progress_checked_at`维护检查时间，按它与_id在原每15秒恢复器中有界轮转；用$max防并发检查时间回退，配现有报告集合索引，不改业务updated_at/DataVersion或dirty。用于避免前20份无变化活跃报告永久占满扫描窗口，既不伪造业务进度，也不饿死后续旧孤儿报告。不新增表、监听、队列或定时任务；旧报告缺字段按尚未检查进入轮转，无数据迁移/历史付费补跑。
+
+
+## 2026-10-31 页面分布与证据入口小修（已批准）
+
+Overview增`distributionCoverage:{assessed:number,unassessed:number}`，均为当前授权reportRefs/工作号范围中实际已保存会话的计数。assessed精确定义与conversations的analysisState=assessed一致；unassessed是同范围已保存会话中的补集，不代表尚未取得的上游全量。risk/priorities只来自assessed。mode=ai读取original_risk，effective读取risk；服务优先级沿service_priority。空值/缺失/非法类别保留为unknown，unknown下钻使用同一归一边界。无报告返回0个已保存会话，但UI继续未生成/未采集，不宣称0风险。
+
+该分布与新鲜度来自当前已保存会话；原投影统计卡片继续保留原配置与上次完整统计语义。读取只做一次有权限范围的聚合，不读取消息正文，不执行RebuildStats/更新旧投影、不调用模型。FactRow沿原evidenceIds与证据抽屉，页面取消未赋值的evidencePreview列；DTO及持久字段不作无关清理。
