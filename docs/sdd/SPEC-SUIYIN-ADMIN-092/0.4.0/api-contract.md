@@ -15,7 +15,7 @@
 `latestReports:{reportId:string,workAccountId:string,revision:number,state:ReportState}[]`描述当前所选账号的最新分析修订；`displayingPreviousRevision:boolean`说明显示的reportRefs仍指向上一可读修订，最新生成进度通过latestReports／生成记录表达，不能把旧数据当作新修订完成。`historicalAnalysis:boolean`在current视图表示已显示报告的启用事实定义版本与当前配置不一致。数据、覆盖和下钻始终使用同一reportRefs，前端分别提示“显示上一可读修订”和“分析沿用历史标准”，不得静默混合新旧版本。
 
 - `GET /scope?channel=...`：`{workAccounts:[{id,name,departmentId?,departmentName?,available,reason?}],departments:[{id,name}],capabilities:{read,evidence,review,config,execute},timeZone:'Asia/Shanghai'}`。工作号按可信权限收敛。
-- `POST /overview/query`：Scope → `{context,metrics:MetricValue[],risk:{high,medium,low,unknown},priorities:[{code,count}],highlights:Insight[],suggestions:Insight[],unresolved:ConversationRow[]}`。`Insight={conversationId:string,title:string,evidenceIds:string[],resultVersion:number}`，亮点和建议打开原文时同时携带resultVersion；以上名单有界，更多用列表查询。
+- `POST /overview/query`：Scope → `{context,metrics:MetricValue[],risk:{none,high,medium,low,unknown},priorities:[{code,count}],highlights:Insight[],suggestions:Insight[],unresolved:ConversationRow[]}`。none显示未发现问题，low表示确有一般问题；各分组互斥。`Insight={conversationId:string,title:string,evidenceIds:string[],resultVersion:number}`，亮点和建议打开原文时同时携带resultVersion；以上名单有界，更多用列表查询。
 - `POST /accounts/query`：Scope+reportRefs+cursor+limit → Page<AccountRow>；行含 `{workAccountId,name,departmentName?,metrics:MetricValue[],dimensions:DimensionSummary[],coverage,state}`。
 - `POST /conversations/query`：Scope+reportRefs+cursor+limit+`intention?,servicePriority?,risk?,metricCode?` → Page<ConversationRow>。
 - `POST /facts/query`：Scope+reportRefs+cursor+limit+`kind?,factCode?,valueStatus?,severity?,redlineStatus?,reviewStatus?,handlingStatus?,conversationId?,productId?` → `FactPage=Page<FactRow>&{summary?:RedlineSummary}`。问题、红线和维度下钻共用此入口，按固定kind含义过滤，不放任意表达式。红线查询参数`redlineStatus`为`all|candidate|confirmed|rejected`；省略或空字符串不返回summary，其余非法值拒绝。
@@ -34,7 +34,7 @@
 
 展示以服务端value是否为null判断是否有数值，并结合availability／reason说明缺口；合法0必须展示为0，null不补0。普通count／conversation_count／sum／min／max的denominator=0并不表示指标不可用，不能用统一“分母为0”规则隐藏这些数值。仅operation为ratio或average时，numerator／denominator用于展示比率或均值的计算依据；零分母由服务端给出null与not_applicable等适用状态。ratio的value已经是百分数，不再乘100；前端不得重算统计或平均各工作号比率。
 
-`ConversationRow={id,reportId,workAccountId,workAccountName,customerName,relationId,state,analysisReason?,risk,intention:{level,summary,projects?,timeExpressions?,evidenceIds},originalIntention?,servicePriority,unresolvedCount,issueCount,reviewVersion,resultVersion,coverage}`。列表不得带全部消息。
+`ConversationRow={id,reportId,workAccountId,workAccountName,customerName,relationId,state,analysisReason?,risk,riskReason?,intention:{level,summary,projects?,timeExpressions?,evidenceIds},originalIntention?,servicePriority,unresolvedCount,issueCount,reviewVersion,resultVersion,coverage}`。risk枚举none/low/medium/high/unknown，风险筛选使用同一枚举。riskReason为安全中文说明，详细检查理由与证据仍在原文抽屉；列表不得带全部消息。
 
 `FactRow={id,reportId,conversationId,workAccountId,customerName,kind,code,name,definitionVersion,resultVersion,status,value?,valueLabel?,unit?,severity,redlineCandidate,redlineConfirmed,redlineStatus,reviewStatus,handlingStatus,evidenceIds,evidencePreview?,reviewVersion,original?}`。判定类型使用`true/false/unknown/not_applicable`四态，数值／枚举的合法值状态为`known`，缺口仍为`unknown/not_applicable`；因此FactRow.status的总枚举为`true|false|known|unknown|not_applicable`，value为boolean/number/string单值。`valueLabel?:string`、`unit?:string`来自与事实definitionVersion匹配的定义，枚举按稳定ID找标签，不用当前新语义猜旧值。
 
