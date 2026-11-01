@@ -1,5 +1,7 @@
 # 质检日报实施接口合同 v0.4.0（已确认Plan的工程细化）
 
+2026-11-01风险结果增补见[risk-results Plan/AC](risk-results-20261101.md)：风险增加none（未发现问题），low保留确有一般问题；Overview、过滤和原AI/有效口径保持互斥一致，ConversationRow可追加安全riskReason。资料完整性不直接否决已具备依据的结论。沿现有本地重算更新派生结果，不新增模型调用、配置项或集合。
+
 2026-10-30上线纠正以[live-corrections Plan/AC](live-corrections-20261030.md)为增补：Coverage追加可缺省captureComplete表示本地取数结束，collectionComplete继续表达完整性；原文追加reportDate及消息scope（day/before/after），FactRow追加sourceKind与reviewable，RunRow.tasks追加安全的phase/customerName/conversationId/errorMsg/waitReason/retryAt。程序统计不可提交严重度/红线复核；实际字段约束随本轮Swagger更新。未知历史字段不补完成，不新增环境变量。
 
 适用两渠道 `wecom` / `wechat`；企业由可信请求上下文选择数据库，客户端不传 tenant_id。原Prompt接口与保存保留；这里只定义日报及规则接口。根路径 `/api/v1/ai/quality-daily`，使用既有 ApiResponse envelope。日期格式 YYYY-MM-DD，北京自然日；ID均为不透明字符串。所有result／review／config／definition／analysis／projection的revision或version均为整数。`intention.level`为`level_1`至`level_5`或`unknown`。
