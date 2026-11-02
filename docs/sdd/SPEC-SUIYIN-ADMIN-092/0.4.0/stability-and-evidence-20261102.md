@@ -13,7 +13,7 @@
 
 ## 原接口最小增量
 
-- `intention.applicability?: 'applicable'|'not_applicable'|'unknown'`。新模型协议要求填写；not_applicable用于内部协调/代人传话等不能作为本人购买咨询的会话，level为unknown，保留业务说明和证据。不等于认定对象真实员工身份。历史缺字段不反推分类，不补写旧数据。
+- `intention.applicability?: 'applicable'|'not_applicable'|'unknown'`。新模型协议要求填写；not_applicable用于内部协调/代人传话等不能作为本人购买咨询的会话，level为unknown，保留业务说明和证据。不等于认定对象真实员工身份。历史缺字段不反推分类，不补写旧数据。意向复核沿现有一个下拉：选不适用提交level=unknown/applicability=not_applicable，选暂无法判断提交unknown/unknown，选具体等级提交对应level/applicable；ReviewPatch增加可选applicability，before/after保留。旧客户端仅改具体等级时服务端同步为applicable，避免保留矛盾适用性；仅改为unknown时保留不适用或置unknown，不推断身份。
 - `ConversationRow.servicePriorityReason?:string` 与 `servicePriorityEvidenceIds?:string[]`：与servicePriority一起冻结。complaint/aftercare/urgent必须有独立原因与可核对的当前日可读依据；normal/unknown不冒充待办。模型原文摘要应为简洁业务说明，不夹带message ID或level_x等协议内容。
 - `GET /conversations/:id/evidence`增加`mode?:'ai'|'effective'`，默认effective；响应增加mode并按该模式构建conversation/facts。原判值与复核审计保留，不能点击原判入口后静默显示复核后。
 - `FactRow`追加`occurrenceKey:string`、`programVersion:number`、`mentionedBy?:'staff'|'customer'|'unknown'`，正式保留`startedAt?`、`endedAt?`、`waitMinutes?`。客户端事件标识结合reportId/conversationId/programVersion/occurrenceKey，不用时长或回复ID猜配对。
