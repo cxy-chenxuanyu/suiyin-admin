@@ -1,5 +1,7 @@
 # 质检日报实施接口合同 v0.4.0（已确认Plan的工程细化）
 
+2026-11-02已批准[稳定性与运营依据六组调整](stability-and-evidence-20261102.md)：服务优先级独立原因与证据、原判模式、回复事件及产品下钻增量以该文为准；不新增表/队列/环境变量，不追加生产分析或开定时。
+
 2026-11-01风险结果增补见[risk-results Plan/AC](risk-results-20261101.md)：风险增加none（未发现问题），low保留确有一般问题；Overview、过滤和原AI/有效口径保持互斥一致，ConversationRow可追加安全riskReason。资料完整性不直接否决已具备依据的结论。沿现有本地重算更新派生结果，不新增模型调用、配置项或集合。
 
 2026-10-30上线纠正以[live-corrections Plan/AC](live-corrections-20261030.md)为增补：Coverage追加可缺省captureComplete表示本地取数结束，collectionComplete继续表达完整性；原文追加reportDate及消息scope（day/before/after），FactRow追加sourceKind与reviewable，RunRow.tasks追加安全的phase/customerName/conversationId/errorMsg/waitReason/retryAt。程序统计不可提交严重度/红线复核；实际字段约束随本轮Swagger更新。未知历史字段不补完成，不新增环境变量。
