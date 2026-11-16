@@ -16,11 +16,11 @@
 
 接口前缀沿用 `/api/v1/ai/quality-daily`。企业 `GET/PUT /config` 继续使用当前响应、参数和单文档版本比较保存。以下配置接口复用 `quality_daily_config` 权限，范围由可信租户决定。配置权限带来的分组信息限于该企业的名称和配置状态。工作号、日报、原文权限分别沿用原入口。
 
-- `GET /config/department-scopes` 返回 `{items: DepartmentScope[]}`。`DepartmentScope` 包含 `id: string`、`name: string`、`active: boolean`、`hasOverrides: boolean`。服务端沿日报归一口径生成 `group:<归一分组名>`，企微、个微去重。`active=false` 表示该名称当前无可配置工作号且仍有旧覆盖。
+- `GET /config/department-scopes` 返回 `{items: DepartmentScope[]}`。`DepartmentScope` 包含 `id: string`、`name: string`、`active: boolean`、`hasOverrides: boolean`、`overriddenFactCodes: string[]`。服务端沿日报归一口径生成 `group:<归一分组名>`，企微、个微去重。`active=false` 表示该名称当前无可配置工作号且仍有旧覆盖。企业保存前用 `overriddenFactCodes` 标明受影响的分组。
 - `GET /config/department?departmentId=...` 返回 `DepartmentConfig`。它沿用 `ConfigDTO` 的 `revision`、`value`、`limits`、`operations`、`sourceCatalog`、`warnings` 等字段，`value` 为完整生效配置，并增加 `department: DepartmentScope`、`enterpriseValue: QualityConfig`、`overrides: DepartmentOverrides`。不在配置范围内的标识返回可辨别的不存在错误。
 - `PUT /config/department` 接收 `{departmentId,expectedRevision,overrides}`，返回保存后的 `DepartmentConfig`。部门只提交自己的完整稀疏覆盖；省略的项继承默认。`DepartmentOverrides` 仅包含 `parameters?: Partial<Parameters>` 和 `facts?: {code:string,criteria:string,applicability?:string,examples?:{positive?:string,negative?:string}}[]`。空对象清掉全部覆盖。对无工作号的旧分组可清理覆盖，仍然存在的旧项可逐项恢复默认。没有变化时沿用版本。非法字段或参数返回 `400`，无权限返回 `403`，企业或部门配置的修订过期返回 `409`。拒绝旧分组新增覆盖、重复规则编号及保护字段的提交。
 - 生成按单一可信设置版本冻结企业基准及所选工作号用到的覆盖，日报可直接读取完整的生效配置。保留规则编号，区分不同有效定义的版本，规则字典、AI 合同及指标来源绑定同一个实际定义。原设置结构兼容读取，原批次格式继续可恢复。
-- 日报查询沿用实际 `reportRefs`。`context.mixedRuleStandards?: boolean` 表示选定报告采用不同判定标准。概览增加 `mixedRuleMetrics?: string[]` 标识受影响指标和相关排行。是否混合由实际计算所需规则及参数决定，分组名或配置版本变化本身不代表口径变化。单工作号的标准与原文按该报告或程序投影的冻结版本，`standards/query` 的 `reportConfigs` 可增配置信息用于解释标准来源。合看不同口径时，管理页提示并引导选择单一部门或工作号，统一口径的指标正常展示。
+- 日报查询沿用实际 `reportRefs`。`context.mixedRuleStandards?: boolean` 表示选定报告采用不同判定标准。`overview/query` 增加 `mixedRuleMetrics?: string[]`，固定卡用卡片键（如 `timeout`、`deep_chat`），扩展指标用指标 `code`；`mixedRuleRankings?: string[]` 的值为 `problemAccounts`、`lowProblemAccounts` 或 `timeoutAccounts`（哪一项受到影响就返回该项）。是否混合由实际计算所需规则及参数决定，分组名或配置版本变化本身不代表口径变化。单工作号的标准与原文按该报告或程序投影的冻结版本。`standards/query` 中 `reportConfigs[].ruleScope?` 为 `{kind: 'enterprise'|'department', departmentId?: string, departmentName?: string}`，缺省表示历史无单独记录。合看不同口径时，管理页提示并引导选择单一部门或工作号，统一口径的指标正常展示。
 
 ## 验收与交付顺序
 
