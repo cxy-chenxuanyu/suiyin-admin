@@ -1,5 +1,5 @@
 {
-  "tag": "v2026112302-admin-friend-request-time",
+  "tag": "v2026112303-admin-friend-request-time",
   "spec": "SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME@1.0.0",
   "baseline": "SPEC-SUIYIN-ADMIN-051@1.1.0",
   "specs": [
@@ -29,7 +29,7 @@
     "routes": 93,
     "tenantRoutes": 832
   },
-  "generatedAt": "2026-11-23T10:26:00.864Z",
+  "generatedAt": "2026-11-23T12:19:52.258Z",
   "files": {
     "CLAUDE.md": "736c61c7bd7e4f90aba2fda421d4591e5b7285806a43d644573677485c9c002e",
     "README.md": "950a62e179571bd1a77f83ac21f3b3b465d43f140ba6fe6a33064d5079e02028",
@@ -722,8 +722,8 @@
     "docs/sdd/SPEC-SUIYIN-ADMIN-ACCOUNT-TYPE-001/0.2.0/test-contract.md": "b4b8e27b12d4d3ae30ae0eaf93c0e428d0446718d485a01b93e591c10ed6cdd1",
     "docs/sdd/SPEC-SUIYIN-ADMIN-ACCOUNT-TYPE-001/0.2.0/verification.md": "23b7b356189d607c166fbb16e8cbb863436be22b462fcebb1d7b21432acbb0a0",
     "docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/README.md": "42d35aa2e976ffe4919bf2ea47c1ca8acf67e2d707c3b32bae5a160e39ae0aff",
-    "docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/plan.md": "4aa47e82c785883a84ec5b7be9485d50895bb5520827256dc21adc9d7f781ae6",
-    "docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/spec.md": "5e8be604aa35874a8b4b8122a710a14dfcfd32d8d180e28f8405c46ab6f76b01",
+    "docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/plan.md": "0b92862b674690522cd567db6dabd55ae29ecdfc86bc59e98d917b0d316d0504",
+    "docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/spec.md": "9d1e4d17c382dee827bd5a17e4174c2d973d83aa212a33f40ece7f77b53c7492",
     "docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/verification.md": "0b4134b67c5e78d9810bd949de48ac28551e56900fc81a11d2002fa210807344",
     "docs/sdd/SPEC-SUIYIN-ADMIN-REFRESH-001/0.2.0/README.md": "fcdefb754bd17224a8619d0bcb027ca61ad6e2d08622150853887550dcf2f768",
     "docs/sdd/SPEC-SUIYIN-ADMIN-REFRESH-001/0.2.0/checks/validation-results.json": "3a568d644f948777b4ac63c3425c380593e588502ba51c1b91e4a81201a3052f",
@@ -885,7 +885,7 @@
     "prd/all-account-status.md": "89a619f2ad40e1731527cca591e3d60d2db62109a89f25d912e671aa113d8030",
     "prd/appointment-chart.md": "a113ebd3b2085212eafb1658107d17acda5e4cbe8c44be0297b505098b75085c",
     "prd/chat-quality-daily.md": "e1837a510ced51ff06b8e213ef0286f91284fcc7e27c002a57043c897f7a100f",
-    "prd/friend-list.md": "c24d388bb2224a9823c0bd3d4d62c97ac2a78faf8c046fec56cc09fba920ffd2",
+    "prd/friend-list.md": "0c95edcc5b10eb20f4f7b38e3156c367a5d11e4c0b1039e8a5e27823af67ca33",
     "prd/language-manage.md": "ea2a9457e051b0b163803adf2b15123c65d485f3356e4abe2ee1364df45bbf61",
     "prd/platform-menu-drag.md": "95bf1ed26ec9ff6db2bcd844a8ca7750d5353cfd05ab9577951554b1cfa7c062",
     "prd/street-trajectories.md": "df045161cc2e717308b66452c5c0bb8b2f9e3c40dbc16602087a9ee239470862",
