@@ -26,7 +26,7 @@ clientTimeRanges可增加{field:"friend_request_time",startTime:"2026-11-19T16:0
 个微回调的申请凭据可能非最终客户wxid，企微FromWxId为contactID，必须依服务商已有身份映射，不用昵称猜匹配。
 
 ## 页面
-普通list.vue的search_params.vue在好友信息现有添加时间附近放申请时间daterange；共享组件新增默认false的入口prop，仅list.vue开启，群发选择器和条件标签编辑不新增UI/参数；艺星yx_list_search.vue在展开区添加日期附近放申请时间daterange，不改变默认前八项。
+普通list.vue的search_params.vue在好友信息现有添加时间附近放申请时间daterange；共享组件新增默认false的入口prop，仅list.vue开启，群发选择器和条件标签编辑不新增UI、不主动生成申请时间条件；列表原有保存条件标签所带的friend_request_time范围在再次编辑时原样保留，不因默认关闭而丢失；艺星yx_list_search.vue在展开区添加日期附近放申请时间daterange，不改变默认前八项。
 两套列表在添加时间旁增加申请时间列。值空显示—，CSV未知留空。执行筛选回第一页，清空取消对应条件，重置清掉新条件并复用原关键词/其他状态行为。失败沿页面原结果有效性处理，不能伪装空成功；旧请求晚返回不得覆盖当前账号/条件。
 不增加菜单、角色、租户白名单，不修改群发/回访规则/Flutter。
 
