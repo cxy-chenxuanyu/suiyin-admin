@@ -73,7 +73,7 @@
   if(!filter.dataset.yxParity){
    filter.dataset.yxParity='true';
    filter.querySelectorAll(':scope>.field').forEach(field=>{
-    const caption=field.querySelector(':scope>span'),key=caption?.textContent.replace(/[:：]$/,'');if(!key)return;caption.textContent=key+':';
+    const caption=field.querySelector(':scope>span'),key=caption?.textContent.replace(/[:：]$/,'');if(!key)return;caption.textContent=key+':';if(key==='申请时间')return;
     const old=field.querySelector('input[data-filter],button.source-uncollected-select');if(!old)return;
     const select=node('select');select.append(new Option('请选择',''));const column=A.getTable().headers.indexOf(key),own=A.source.sampleTenant===A.tenant&&A.source.state!=='reference';
     const choices=A.optionsFor(key);const values=choices.length?choices:own&&column>=0?[...new Set(A.getTable().rows.map(r=>r.cells[column]).filter(v=>v&&v.length<65))]:[];
@@ -91,7 +91,7 @@
   let footer=root.querySelector('.customer-batch-footer');if(!footer){footer=node('div','customer-batch-footer source-toolbar');root.append(footer);}for(const label of ['批量删除','批量分组'])if(![...footer.querySelectorAll('button')].some(control=>text(control)===label))footer.append(button(label,()=>label==='批量分组'?pending(label):A.action(label)));footer.querySelectorAll('button').forEach(control=>{control.disabled=!A.selectedRows.length;control.querySelector('.button-icon')?.remove();});
   root.querySelectorAll('.source-toolbar:not(.customer-batch-footer)').forEach(toolbar=>{if(!toolbar.querySelector('button'))toolbar.hidden=true;});
   const table=root.querySelector('#results table');
-  const fitColumns=()=>{if(!table)return;const width=Math.max(1775,root.clientWidth);if(table.dataset.yxWidth===String(width))return;table.dataset.yxWidth=String(width);const extra=width-1775,widths=[55,200+extra*45/143,140,160+extra*35/143,140+extra*30/143,160,120,100,100,100,120,150+extra*33/143,230];table.querySelectorAll('col').forEach((col,i)=>col.style.width=widths[i]+'px');table.style.width=width+'px';};fitColumns();
+  const fitColumns=()=>{if(!table)return;const hasRequestTime=A.getTable().headers.includes('申请时间'),base=hasRequestTime?1935:1775,width=Math.max(base,root.clientWidth);if(table.dataset.yxWidth===String(width))return;table.dataset.yxWidth=String(width);const extra=width-base,widths=[55,200+extra*45/143,140,160+extra*35/143,140+extra*30/143,160,120,100,100,100,120,150+extra*33/143,230];if(hasRequestTime)widths.splice(A.getTable().headers.indexOf('申请时间'),0,160);table.querySelectorAll('col').forEach((col,i)=>col.style.width=widths[i]+'px');table.style.width=width+'px';};fitColumns();
   const headers=A.getTable().headers,nick=headers.indexOf('微信昵称');
   root.querySelectorAll('#results tbody tr:not([data-yx-parity])').forEach(tr=>{tr.dataset.yxParity='true';const checkbox=tr.querySelector('input[type=checkbox]'),row=A.getTable().rows.find(r=>checkbox?.getAttribute('aria-label')==='选择记录 '+r.id);if(!row)return;
    const group=node('div','customer-nickname'),avatar=node('img','customer-avatar');avatar.src='assets/avatar-default.png';avatar.alt='';avatar.width=avatar.height=40;const link=button(row.cells[nick],()=>A.details(row),'link customer-name');link.title=row.cells[nick];group.append(avatar,link);tr.cells[nick].replaceChildren(group);

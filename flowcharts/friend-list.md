@@ -32,3 +32,22 @@ flowchart TD
 ```
 
 参考内容必须说明来源，不借入其他租户销售或账号。当前保留已知入口不等于分类 Popover、完整高级筛选或账号级联已完成；不得沿用旧流程中的合成分类人数。独立关键词区按来源放置，其与高级条件的完整实站组合语义仍需展开采集核对。
+
+## 2026-11-23 申请时间流程增量
+
+有效合同：[FRIEND-REQUEST-TIME@1.0.0](../docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/README.md)。
+
+```mermaid
+flowchart TD
+  Request[申请事实保存可靠时间] --> Bind[确认通过并建立本账号关系]
+  Existing[客户关系先存在] --> Match[申请补齐后核本轮关系]
+  Bind --> Match
+  Match --> CAS[同轮条件写申请时间 新轮未知清旧值]
+  CAS --> ES[既有Mongo到ES链路投影]
+  ES --> Query[search-list组合范围查询与total]
+  Query --> Page[两套好友列表展示与分页]
+  Query --> Export[相同条件导出]
+  Unknown[无可靠时间] --> Blank[显示— 不命中申请日期范围]
+```
+
+未通过申请不提前建客户，也不覆盖旧关系。重复/迟到/跨账号回调拒绝覆盖。生产历史回填为独立任务，预演后另行批准。

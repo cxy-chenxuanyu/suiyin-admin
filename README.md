@@ -98,3 +98,7 @@
 仅截图第3、4项已建立生产待办：[时间配置入口移除 #448](https://github.com/PetWebOrg/suiyin-admin/issues/448)、[菜单状态胶囊 #449](https://github.com/PetWebOrg/suiyin-admin/issues/449)。两张均指派王争（kitesky），提出人房昕，提出环境佰智德三；原型发布不代表这两项生产功能已经上线。
 
 扫街轨迹工程待办：[Admin #486](https://github.com/PetWebOrg/suiyin-admin/issues/486)，负责人王梓先（build996），提出环境深圳艺星、提出人孤狼，适用所有医美租户。当前为原型交付，生产实现待完成。
+
+## 2026-11-23 好友申请时间（当前新增合同）
+
+[正式SPEC与计划](docs/sdd/SPEC-SUIYIN-ADMIN-FRIEND-REQUEST-TIME/1.0.0/README.md)：所有实际租户普通与艺星好友列表申请时间展示、范围筛选与导出；customer仅增加账号关系上的一个可空日期。合成演示与真实样本分开，生产历史处理需预演后批准。业务开发/部署状态以关联工程任务记录为准。
